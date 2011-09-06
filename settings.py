@@ -1,8 +1,5 @@
-from os.path import abspath, dirname
-import sys
-sys.path.insert(0, dirname(dirname(abspath(__file__))))
-
 # Django settings for mymd project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -110,7 +107,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/Users/fmaj7/dev/mymd/src/mymd/templates',
+    os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),
 )
 
 INSTALLED_APPS = (
@@ -149,5 +146,5 @@ LOGGING = {
 }
 
 AUTHENTICATION_BACKENDS = (
-    'registration.backends.EmailAuthBackend'
+    'registration.backends.EmailAuthBackend',
 )
