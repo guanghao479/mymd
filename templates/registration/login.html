@@ -1,28 +1,71 @@
-{% extends "registration/base.html" %}
+{% extends "base_layout.html" %}
 {% load url from future %}
+
+{% block title %} MyMD - Log In {% endblock %}
+
+{% block head %}
+	{% include "module_header_includes.html" %}
+{% endblock %}
 
 {% block body %}
 
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+	{% include "module_nav.html" %}    
 
-<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
-{% csrf_token %}
-<table>
-    <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
-    </tr>
-    <tr>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
-    </tr>
-</table>
-
-<input type="submit" value="login" />
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
-
+    <div class="grid_8 patients_counting">
+		<p>
+			<span class="number">123456</span>
+            <span class="text">Patients</span>
+            <span class="number">123456</span>
+            <span class="text">Caregivers</span>
+            <span class="number">123456</span>
+            <span class="text">Students</span>
+        </p>
+		<div class="floating-images">
+            <ul>
+                <li><img src="{{ STATIC_URL }}images/twitter/0.jpg"/></li>
+                <li><img src="{{ STATIC_URL }}images/twitter/1.jpg"/></li>
+                <li><img src="{{ STATIC_URL }}images/twitter/2.jpg"/></li>
+                <li><img src="{{ STATIC_URL }}images/twitter/3.jpg"/></li>
+                <li><img src="{{ STATIC_URL }}images/twitter/4.jpg"/></li>
+                <li><img src="{{ STATIC_URL }}images/twitter/5.jpg"/></li>
+                <li><img src="{{ STATIC_URL }}images/twitter/6.jpg"/></li>
+                <li><img src="{{ STATIC_URL }}images/twitter/7.jpg"/></li>
+                <li><img src="{{ STATIC_URL }}images/twitter/8.jpg"/></li>
+                <li><img src="{{ STATIC_URL }}images/twitter/9.jpg"/></li>
+                <li><img src="{{ STATIC_URL }}images/twitter/10.jpg"/></li>
+                <li><img src="{{ STATIC_URL }}images/twitter/11.jpg"/></li>
+            </ul>
+    	</div>
+	</div>
+    <div class="grid_4">
+        <label>Sign in</label>
+        <div style="text-align:right;">
+            {% if form.errors %}
+				<p>Your username and password didn't match. Please try again.</p>
+			{% endif %}
+			<form id="register_form" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+				{% csrf_token %}
+				<table>
+    				<tr>
+        				<td>{{ form.username.label_tag }}</td>
+        				<td>{{ form.username }}</td>
+    				</tr>
+    				<tr>
+        				<td>{{ form.password.label_tag }}</td>
+        				<td>{{ form.password }}</td>
+    				</tr>
+				</table>
+				<input type="submit" name="login" value="login" />
+				<input type="hidden" name="next" value="{{ next }}" />
+			</form>     
+        </div>
+    </div>
+        
+    <div class="grid_12 clearfix">&nbsp;</div>
+        
+	<div class="grid_12 hr"></div>
+	
+	{% include "module_footer.html" %}
+		
 {% endblock body %}
 

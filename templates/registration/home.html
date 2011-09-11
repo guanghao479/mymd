@@ -1,0 +1,124 @@
+{% extends "base_layout.html" %}
+
+{% block title %}
+HOME - MYMD
+{% endblock%}
+
+{% block head %}
+	{% include "module_header_includes.html" %}    
+    <style type="text/css">
+        .demoHeaders { margin-top: 2em; }
+        #dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+        #dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+        ul#icons {margin: 0; padding: 0;}
+        ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+        ul#icons span.ui-icon {float: left; margin: 0 4px;}
+        .stream .post {
+            width:95%;
+            border-bottom:solid 1px #ccc;
+            padding-bottom:1em;
+            margin-left:1em;
+            padding-top:1em;
+        }
+        .stream .post .post-metadata {
+            color:#666;
+            font-size:12px;
+        }
+        .stream .post .post-content {
+            width:100%;
+            font-size:13px;
+        }
+    </style>
+	<script type="text/javascript">
+	$(function(){
+	    // Accordion
+	    $("#accordion").accordion({ header: "h3" });
+	    //Autocomplete
+	    $("#autocomplete").autocomplete({
+	        source: ["c++", "java", "php", "coldfusion", "javascript", "asp", "ruby", "python", "c", "scala", "groovy", "haskell", "perl"]
+	    });
+	    // Button
+	    $("#button").button();
+	    $("#radioset").buttonset();
+	    // Tabs
+	    $('#tabs').tabs();
+	    // Dialog
+	    $('#dialog').dialog({
+	        autoOpen: false,
+	        width: 600,
+	        buttons: {
+	            "Ok": function() {
+	                $(this).dialog("close");
+	            },
+	            "Cancel": function() {
+	                $(this).dialog("close");
+	            }
+	        }
+	    });
+	    $("#progressbar").progressbar({
+	        value: 20
+	    });
+	    // Slider
+	    $('#slider').slider({
+	        range: true,
+	        values: [17, 67]
+	    });
+	    // Dialog Link
+	    $('#dialog_link').click(function(){
+	        $('#dialog').dialog('open');
+	        return false;
+	    });
+	    //hover states on the static widgets
+	    $('#dialog_link, ul#icons li').hover(
+	        function() { $(this).addClass('ui-state-hover'); }, 
+	        function() { $(this).removeClass('ui-state-hover'); }
+	    );
+	
+	    $.jqplot('chart',
+	        [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]],
+	        { title:'Blood Pressure',
+	          axes:{yaxis:{min:-10, max:240}},
+	         series:[{color:'#5FAB78'}]
+	    });
+	});
+	</script>
+{% endblock %}
+
+
+{% block body %}
+
+	{% include "module_mini_nav.html" %}    
+
+    <div id="mymd-body">    
+		{% include 'module_top_message.html' %}
+        <div id="mymd-home-streaming">
+            <div>
+                <div class="avatar">
+                    <img src="images/avatar.jpg" />
+                </div>
+                <div class="personalinfo">
+                    <ul>
+                        <li>Guanghao Ding</li>
+                        <li>Amazon.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="status-update">
+                <textarea placeholder="Share an update"></textarea>
+                <br/>
+                <ul>
+                    <li class="active">Status</li>
+                    <li>Photo</li>
+                    <li>Link</li>
+                    <li>Video</li>
+                </ul>
+            </div>
+			{% include 'module_stream.html' %}
+        </div>
+        <div class="vertical-hr"></div>
+        {% include 'module_monitoring.html' %}
+    </div>
+		{% include 'module_footer.html' %}
+{% endblock %}
+
+

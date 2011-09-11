@@ -49,13 +49,15 @@ class RegistrationForm(forms.Form):
             return self.cleaned_data['username']
         raise forms.ValidationError(_("A user with that username already exists."))
 
-    def clean_email1(self)
+    def clean_email1(self):
         if not email_re.search(self.cleaned_data['email1']):
             raise forms.ValidationError(_("Please enter a valid email address"));
+        return self.cleaned_data['email1']
 
-    def clean_email2(self)
+    def clean_email2(self):
         if not email_re.search(self.cleaned_data['email2']):
             raise forms.ValidationError(_("Please enter an valid email address"));
+        return self.cleaned_data['email2']
 
     def clean(self):
         """
@@ -79,6 +81,7 @@ class RegistrationFormTermsOfService(RegistrationForm):
     for agreeing to a site's Terms of Service.
 
     """
+    attrs_dict = {'class': 'required'}
     tos = forms.BooleanField(widget=forms.CheckboxInput(attrs=attrs_dict),
                              label=_(u'I have read and agree to the Terms of Service'),
                              error_messages={'required': _("You must agree to the terms to register")})

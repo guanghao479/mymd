@@ -1,0 +1,10 @@
+{% extends "base_layout.html" %}
+{% load url from future %}
+
+{% block body %}
+<form method="post" action=".">{% csrf_token %}
+    {{ form.as_p }}
+    <p><input type="submit" value="Register" /></p>
+</form>
+{% endblock body %}
+
