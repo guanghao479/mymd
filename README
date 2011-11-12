@@ -1,0 +1,2 @@
+== How to run ==
+sudo apt-get install python-django-debug-toolbar
