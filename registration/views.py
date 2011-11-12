@@ -21,7 +21,7 @@ def register(request, template_name='registration/registration_form.html'):
     else:
         form = RegistrationForm()
 
-    c['form']  = form
+    c['form'] = form
     return render_to_response('registration/register.html', c)
 
 def activate(request, activation_key):
@@ -30,3 +30,4 @@ def activate(request, activation_key):
         path = '/user/{0}'.format(user.username)
         return redirect(path)
     return redirect(home)
+
