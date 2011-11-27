@@ -22,7 +22,7 @@ def register(request, template_name='registration/registration_form.html'):
         form = RegistrationForm()
 
     c['form'] = form
-    return render_to_response('registration/register.html', c)
+    return render_to_response('registration/register.html', RequestContext(request, c))
 
 def activate(request, activation_key):
     user = RegManager.objects.activate_user(request, activation_key)
