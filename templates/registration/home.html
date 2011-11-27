@@ -5,30 +5,7 @@ HOME - MYMD
 {% endblock%}
 
 {% block head %}
-	{% include "module_header_includes.html" %}    
-    <style type="text/css">
-        .demoHeaders { margin-top: 2em; }
-        #dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
-        #dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
-        ul#icons {margin: 0; padding: 0;}
-        ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
-        ul#icons span.ui-icon {float: left; margin: 0 4px;}
-        .stream .post {
-            width:95%;
-            border-bottom:solid 1px #ccc;
-            padding-bottom:1em;
-            margin-left:1em;
-            padding-top:1em;
-        }
-        .stream .post .post-metadata {
-            color:#666;
-            font-size:12px;
-        }
-        .stream .post .post-content {
-            width:100%;
-            font-size:13px;
-        }
-    </style>
+	{% include "module_header_includes.html" %}
 	<script type="text/javascript">
 	$(function(){
 	    // Accordion
@@ -94,7 +71,7 @@ HOME - MYMD
         <div id="mymd-home-streaming">
             <div>
                 <div class="avatar">
-                    <img src="images/avatar.jpg" />
+                    <img src="{{STATIC_URL}}images/avatar.jpg" />
                 </div>
                 <div class="personalinfo">
                     <ul>
