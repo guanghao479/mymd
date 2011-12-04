@@ -116,6 +116,8 @@ INTERNAL_IPS = ('127.0.0.1',)
 
 ROOT_URLCONF = 'mymd.urls'
 
+LOGIN_URL = '/login'
+
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
@@ -134,6 +136,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'debug_toolbar',
     'south',
+    'home',
     'registration',
 )
 

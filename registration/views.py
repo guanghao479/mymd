@@ -1,13 +1,9 @@
 from django.shortcuts import render_to_response
 from django.shortcuts import redirect
-from django.http import HttpResponse
 from registration.forms import RegistrationForm
 from registration.models import Activation as RegManager
 from django.core.context_processors import csrf
 from django.template import RequestContext
-
-def home(request):
-    return render_to_response('registration/home.html', RequestContext(request, {}))
 
 def register(request, template_name='registration/registration_form.html'):
     c = {}
@@ -29,5 +25,4 @@ def activate(request, activation_key):
     if user:
         path = '/user/{0}'.format(user.username)
         return redirect(path)
-    return redirect(home)
-
+    return redirect('/')
