@@ -116,7 +116,7 @@ INTERNAL_IPS = ('127.0.0.1',)
 
 ROOT_URLCONF = 'mymd.urls'
 
-LOGIN_URL = '/login'
+LOGIN_URL = '/register'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
