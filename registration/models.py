@@ -11,6 +11,7 @@ SHA1_RE = re.compile('^[a-f0-9]{40}$')
 class RegistrationManager(models.Manager):
     def register(self, request, **kwargs):
         username, email, password = kwargs['username'], kwargs['email1'], kwargs['password']
+        # Disable email sending for now
         new_user = self.create_inactive_user(username, email, password)
         return new_user
 
@@ -33,7 +34,7 @@ class RegistrationManager(models.Manager):
                 return user
         return False
 
-    def create_inactive_user(self, username, email, password, send_email=True):
+    def create_inactive_user(self, username, email, password, send_email=False):
         new_user = User.objects.create_user(username, email, password)
         new_user.is_active = False
         new_user.save()
