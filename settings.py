@@ -15,7 +15,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'mymd', # Or path to database file if using sqlite3.
         'USER': 'postgres', # Not used with sqlite3.
-        'PASSWORD': '369958', # Not used with sqlite3.
+        'PASSWORD': 'c1x2h34', # Not used with sqlite3.
         'HOST': 'localhost', # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '5432', # Set to empty string for default. Not used with sqlite3.
     }
@@ -117,6 +117,7 @@ INTERNAL_IPS = ('127.0.0.1',)
 ROOT_URLCONF = 'mymd.urls'
 
 LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".

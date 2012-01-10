@@ -18,9 +18,10 @@ urlpatterns += patterns('',
     # url(r'^mymd/', include('mymd.foo.urls')),
     # url(r'^login/$', 'django.contrib.auth.views.login', {
     #    'template_name': 'auth/login.html'}),
-    url(r'^/$', 'home.views.home'),
-    url(r'^register/$', 'registration.views.register'),
-    url(r'^login/$', 'django.contrib.auth.views.login'), # Using default registration/login.html
+    url(r'^/$', 'home.views.home', name='home'),
+    url(r'^register/$', 'registration.views.register', name='register'),
+    url(r'^register/needs_activation/$', 'registration.views.needs_activation', name='needs_activation'),
+    url(r'^login/$', 'django.contrib.auth.views.login', name='login'), # Using default registration/login.html
     url(r'^activate/(?P<activation_key>\w+)/$', 'registration.views.activate'),
     url(r'^activate/$', 'registration.views.activate'),
     url(r'^user/(?P<username>\w+)/$', 'home.views.home'),

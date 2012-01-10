@@ -36,6 +36,9 @@ class RegistrationForm(forms.Form):
                               label=_("E-mail (again)"))
     password = forms.CharField(widget=forms.PasswordInput(attrs=attrs_dict, render_value=False),
                                label=_("Password"))
+    
+    def clean_password(self):
+        return self.cleaned_data['password']
 
     def clean_username(self):
         """
@@ -67,10 +70,10 @@ class RegistrationForm(forms.Form):
         field.
 
         """
-        if 'email1' in self.cleaned_data and 'emails2' in self.cleaned_data:
+        if 'email1' in self.cleaned_data and 'email2' in self.cleaned_data:
             if self.cleaned_data['email1'] != self.cleaned_data['email2']:
                 raise forms.ValidationError(_("The two email fields didn't match."))
-            elif User.objects.filter(self.cleaned_data['email1']):
+            elif User.objects.filter(email__iexact=self.cleaned_data['email1']):
                 raise forms.ValidationError(_("This email address is already in use. Please supply a different email address"))
         return self.cleaned_data
 

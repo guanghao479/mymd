@@ -53,7 +53,7 @@ class RegistrationManager(models.Manager):
         return self.create(user=user, activation_key=activation_key)
 
 
-class Activation(models.Model):
+class RegistrationActivation(models.Model):
     ACTIVATED = u"ALREADY_ACTIVATED"
 
     user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
