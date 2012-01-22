@@ -73,11 +73,7 @@ class RegistrationForm(forms.Form):
         if 'email1' in self.cleaned_data and 'email2' in self.cleaned_data:
             if self.cleaned_data['email1'] != self.cleaned_data['email2']:
                 raise forms.ValidationError(_("The two email fields didn't match."))
-<<<<<<< HEAD
-            elif User.objects.filter(email__iexact=self.cleaned_data['email1']):
-=======
             elif User.objects.filter(email__iexact = self.cleaned_data['email1']):
->>>>>>> origin/master
                 raise forms.ValidationError(_("This email address is already in use. Please supply a different email address"))
         return self.cleaned_data
 

@@ -15,7 +15,7 @@ class RegistrationManager(models.Manager):
         new_user = self.create_inactive_user(username, email, password)
         return new_user
 
-    def activate_user(self, request, activation_key):
+    def activate_user(self, activation_key):
         # Make sure the key we're trying conforms to the pattern of a
         # SHA1 hash; if it doesn't, no point trying to look it up in
         # the database.
@@ -53,6 +53,17 @@ class RegistrationManager(models.Manager):
         activation_key = sha_constructor(salt + username).hexdigest()
         return self.create(user=user, activation_key=activation_key)
 
+    def delete_expiration_user(self):
+        """
+        System should clear un-inactivation user periodically.
+        This function only delete user, but not RegistrationActivation
+        objects.
+        """
+        for activation in self.all():
+            if activation.activation_key_expired():
+                user = activation.user
+                if not user.is_active:
+                    user.delete()
 
 class RegistrationActivation(models.Model):
     ACTIVATED = u"ALREADY_ACTIVATED"
@@ -68,6 +79,7 @@ class RegistrationActivation(models.Model):
         self.user.email_user('Needs activation', self.activation_key, 'dingguanghao@gmail.com')
 
     def activation_key_expired(self):
-        expiration_date = datetime.timedelta(days=15)
+        from django.conf import settings
+        expiration_date = datetime.timedelta(days=settings.ACCOUNT_ACTIVATION_DAYS)
         return self.activation_key == self.ACTIVATED or (self.user.date_joined + expiration_date <= datetime.datetime.now())
     activation_key_expired.boolean = True

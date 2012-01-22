@@ -43,7 +43,7 @@
             {% if form.errors %}
 				<p>Your username and password didn't match. Please try again.</p>
 			{% endif %}
-			<form id="register_form" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+			<form id="register_form" method="post" action="{% url 'registration.views.login' %}">
 				{% csrf_token %}
 				<table>
     				<tr>
