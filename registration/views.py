@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect
 
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_
+from django.contrib.auth import logout as logout_
 from django.contrib.auth.forms import AuthenticationForm
 
 from django.core.urlresolvers import reverse
@@ -18,6 +19,12 @@ from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 @csrf_protect
 def register(request, template_name='registration/registration_form.html'):
+    """
+    Register user view. Using registration form to valid data. If success,
+    redirect to needs activation page. Otherwise generate registration page
+    with error message.
+
+    """
     c = {}
     c.update(csrf(request))
 
@@ -34,10 +41,19 @@ def register(request, template_name='registration/registration_form.html'):
                               RequestContext(request, c))
 
 def needs_activation(request):
+    """
+    View for need activation page.
+
+    """
     return render_to_response('registration/needs_activation.html',
                               RequestContext(request, {}))
 
 def activate(request, activation_key):
+    """
+    Activate user using activation key. If success, redirect to login
+    Page. Otherwise redirect to activation error page.
+
+    """
     user = RegManager.objects.activate_user(request, activation_key)
     if user:
         path = '/user/{0}'.format(user.username)
@@ -46,6 +62,17 @@ def activate(request, activation_key):
 
 @csrf_protect
 def login(request):
+    """
+    Login user using Django build-in login and authentication method.
+    If user authentication success, redirect to home page. Otherwise
+    Generate login page with error message.
+
+    """
+    #If user already login, we just render home page.
+    if request.user.is_authenticated():
+        return render_to_response('home/home.html')
+
+    #Otherwise we check login user in.
     if request.POST:
         login_user = authenticate(username=request.POST['username'],
                                   password=request.POST['password'])
@@ -65,3 +92,12 @@ def login(request):
         'form': form,
         'request': request,})
     return render_to_response('registration/login.html', context)
+
+@csrf_protect
+def logout(request):
+    """
+    Log out user. If succeed. redirect to index page.
+
+    """
+    logout_(request)
+    return redirect(reverse('login'))

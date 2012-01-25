@@ -36,51 +36,7 @@ class RegistrationViewTestCases(TestCase):
         self.assertRedirects(response, reverse('needs_activation'),
                              status_code=302, target_status_code=200)
 
-    def test_failure_register_with_empty_username(self):
-        """
-        Register should fail and remain on the same page,
-        with empty username.
 
-        """
-        response = self.client.post(reverse('register'), {'username': '',
-                                                          'email1': 'example@eee.com',
-                                                          'email2': 'example@eee.com',
-                                                          'password': '123445'})
-        self.assertEqual(response.status_code, 200)
-        self.failIf(response.context['form'].is_valid())
-        self.assertFormError(response, 'form', 'username',
-                             errors=u'This field is required.')
-
-    def test_failure_register_with_wrong_email_format(self):
-        """
-        Register should fail and remain on the same page
-        with wrong email format.
-
-        """
-        response = self.client.post(reverse('register'), {'username': 'example',
-                                                          'email1': 'example',
-                                                          'email2': 'example@eee.com',
-                                                          'password': '123445'})
-        self.assertEqual(response.status_code, 200)
-        self.failIf(response.context['form'].is_valid())
-        self.assertFormError(response, 'form', 'email1',
-                             errors=u'Enter a valid e-mail address.')
-
-    def test_failure_register_with_unmatched_email(self):
-        """
-        Register should fail and remain on the same page
-        with wrong email format.
-
-        """
-        response = self.client.post(reverse('register'), {'username': 'example1',
-                                                          'email1': 'example@eee1.com',
-                                                          'email2': 'example@eee.com',
-                                                          'password': '123445'})
-        self.assertEqual(response.status_code, 200)
-        self.failIf(response.context['form'].is_valid())
-        self.assertFormError(response, 'form', field=None,
-                             errors=u"The two email fields didn't match.")
-        self.assertEqual(RegistrationActivation.objects.count(), 0)
 
 class LoginViewTestCases(TestCase):
 
@@ -125,6 +81,17 @@ class LoginViewTestCases(TestCase):
                                                        'password': '123456'})
         self.assertRedirects(response, '/', status_code=302, target_status_code=200)
 
+    def test_render_homepage_with_login_user_login_again(self):
+        """
+        When login user try to access login view again, we should just
+        render home page.
+
+        """
+        self.client.post(reverse('login'), {'username': 'example@example.com',
+                                                       'password': '123456'})
+        response = self.client.get(reverse('login'))
+        self.assertTemplateUsed(response, 'home/home.html')
+
     def test_user_login_fail_with_wrong_password(self):
         """
         Test user fail login using wrong password.
@@ -144,3 +111,9 @@ class LoginViewTestCases(TestCase):
                                                        'password': '123456'})
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'registration/login.html')
+
+    def test_user_logout_succeed(self):
+        self.client.post(reverse('login'), {'username': 'example',
+                                            'password': '123456'})
+        response = self.client.post(reverse('logout'))
+        self.assertRedirects(response, reverse('login'), status_code=302, target_status_code=200)
