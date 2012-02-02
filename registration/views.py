@@ -90,7 +90,8 @@ def login(request):
     context = csrf(request)
     context.update({
         'form': form,
-        'request': request,})
+        'request': request,
+	'STATIC_URL':'/static/'}) #to be fixed
     return render_to_response('registration/login.html', context)
 
 @csrf_protect
