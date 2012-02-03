@@ -70,7 +70,7 @@ def login(request):
     """
     #If user already login, we just render home page.
     if request.user.is_authenticated():
-        return render_to_response('home/home.html')
+        return render_to_response('home/home.html', RequestContext(request,{}))
 
     #Otherwise we check login user in.
     if request.POST:
@@ -90,9 +90,8 @@ def login(request):
     context = csrf(request)
     context.update({
         'form': form,
-        'request': request,
-	'STATIC_URL':'/static/'}) #to be fixed
-    return render_to_response('registration/login.html', context)
+        'request': request})
+    return render_to_response('registration/login.html', RequestContext(request, context))
 
 @csrf_protect
 def logout(request):
