@@ -175,4 +175,7 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 
 # Import local setting overrides
-from settings_local import *
+try:
+    from settings_local import *
+except ImportError:
+    pass
