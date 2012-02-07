@@ -663,3 +663,10 @@ div#mymd-footer {
 	margin: 0;
 }
 
+/* After Bootstrap */
+.below-mini-nav {
+  padding-top: 60px;
+}
+
+
+
