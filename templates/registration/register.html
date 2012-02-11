@@ -1,27 +1,45 @@
 {% extends "base_layout.html" %}
 {% load url from future %}
+{% load widget_tweaks %}
 
 {% block title %} MyMD - Signup {% endblock %}
 
 {% block head %}
 	{% include "module_header_includes.html" %}
-<script>
-$(function() {
-	$('.submit').click(function (){
-		$(this).closest('form').submit();
-	});
-});
-</script>
 {% endblock %}
 
 {% block body %}
 	{% include "module_nav.html" %}
-<div id="signup">
-	<form id="singupForm" method="post" action=".">{% csrf_token %}
-		<table>
-		{{ form.as_table }}
-    	<tr><td colspan="2" align="right"><div><a class="button button-red submit">Register</a></div></td></tr>
-		</table>
+<div class="container">
+<div class="row">
+	<div class="span6 offset3">
+	<form class="form-horizontal" method="post" action=".">
+	{% csrf_token %}
+		<fieldset>
+			<legend>Sign up for Mymd</legend>			
+        	<div class="control-group">
+        		<label class="control-label">Username</label>
+            	<div class="controls">{{ form.username|add_class:"input-xlarge" }}</div>
+        	</div>
+        	<div class="control-group">
+        		<label class="control-label">Email</label>
+            	<div class="controls">{{ form.email1|add_class:"input-xlarge" }}</div>
+        	</div>			
+        	<div class="control-group">
+        		<label class="control-label">Re-enter Email</label>
+            	<div class="controls">{{ form.email2|add_class:"input-xlarge" }}</div>
+        	</div>			
+        	<div class="control-group">
+        		<label class="control-label">Password</label>
+            	<div class="controls">{{ form.password|add_class:"input-xlarge" }}</div>
+        	</div>
+        	<div class="form-actions">
+        		<button type="submit" class	="btn btn-primary">Sign up</button>
+        		<button class="btn">Cancel</button>
+        	</div>
+		</fieldset>
 	</form>
+	</div>
+</div>
 </div>
 {% endblock body %}

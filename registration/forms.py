@@ -21,8 +21,7 @@ class RegistrationForm(forms.Form):
     registration backend.
 
     """
-    attrs_dict = {'class': 'required'}
-
+    attrs_dict = {}
     username = forms.RegexField(regex=r'^[\w.@+-]+$',
                                 max_length=30,
                                 widget=forms.TextInput(attrs=attrs_dict),

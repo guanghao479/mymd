@@ -1,2 +1,6 @@
-== How to run ==
-sudo apt-get install python-django-debug-toolbar
+###### Install ######
+# outside of mymd source directory
+virtualenv mymd-env
+source mymd-env/bin/activate
+easy_install -U pip
+sudo pip install -U -r mymd/requirements.txt
