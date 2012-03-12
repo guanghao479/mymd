@@ -1,0 +1,81 @@
+{% extends "base_layout.html" %}
+{% load url from future %}
+
+{% block title %} MyMD - Log In {% endblock %}
+
+{% block head %}
+	{% include "module_header_includes.html" %}
+{% endblock %}
+
+{% block body %}
+
+	{% include "module_nav.html" %}
+<div class="container">
+	<section id="buttonGroups">
+		<div class="row">
+			<div class="span6 patients_counting">
+				<p>
+					<span class="number">123456</span> <span class="text">Patients</span>
+					<span class="number">123456</span> <span class="text">Caregivers</span>
+					<span class="number">123456</span> <span class="text">Students</span>
+				</p>
+				<div class="floating-images">
+					<ul>
+						<li><img src="{{ STATIC_URL }}images/twitter/0.jpg" /></li>
+						<li><img src="{{ STATIC_URL }}images/twitter/1.jpg" /></li>
+						<li><img src="{{ STATIC_URL }}images/twitter/2.jpg" /></li>
+						<li><img src="{{ STATIC_URL }}images/twitter/3.jpg" /></li>
+						<li><img src="{{ STATIC_URL }}images/twitter/4.jpg" /></li>
+						<li><img src="{{ STATIC_URL }}images/twitter/5.jpg" /></li>
+						<li><img src="{{ STATIC_URL }}images/twitter/6.jpg" /></li>
+						<li><img src="{{ STATIC_URL }}images/twitter/7.jpg" /></li>
+						<li><img src="{{ STATIC_URL }}images/twitter/8.jpg" /></li>
+						<li><img src="{{ STATIC_URL }}images/twitter/9.jpg" /></li>
+						<li><img src="{{ STATIC_URL }}images/twitter/10.jpg" /></li>
+						<li><img src="{{ STATIC_URL }}images/twitter/11.jpg" /></li>
+					</ul>
+				</div>
+			</div>
+			<div class="span6">
+				<div class="page-header">
+					<h2>Sign in</h2>
+				</div>
+				{% if form.errors %}
+				<div class="alert alert-error">Your username and password didn't match. Please try again.</div>
+				{% endif %}
+				<form method="post" class="form-horizontal"
+					action="{% url 'registration.views.login' %}">
+					<fieldset>
+						{% csrf_token %}
+						<div class="control-group">
+							<label class="control-label">
+								{{ form.username.label_tag }}
+							</label>
+							<div class="controls">
+								{{ form.username }}
+								<p class="help-block">Your username</p>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">
+								{{ form.password.label_tag }}
+							</label>
+							<div class="controls">
+								{{ form.password }}
+								<p class="help-block">Your password</p>
+							</div>
+						</div>
+						<div class="form-actions">
+							<button type="submit" class="btn btn-primary">Login</button>
+							&nbsp;or&nbsp;<a href="/register">Sign up for MyMD</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</section>
+</div>
+{% include "module_footer.html" %}
+		
+{% endblock body %}
+

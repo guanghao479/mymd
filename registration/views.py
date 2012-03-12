@@ -15,7 +15,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.core.urlresolvers import reverse
 from django.core.context_processors import csrf
 
-from django.views.decorators.csrf import csrf_protect, csrf_exempt
+from django.views.decorators.csrf import csrf_protect
 
 @csrf_protect
 def register(request, template_name='registration/registration_form.html'):
@@ -68,11 +68,11 @@ def login(request):
     Generate login page with error message.
 
     """
-    #If user already login, we just render home page.
+    #If user already login, we just render home page
     if request.user.is_authenticated():
-        return render_to_response('home/home.html', RequestContext(request,{}))
+        return redirect('/home', RequestContext(request,{}))
 
-    #Otherwise we check login user in.
+    #Otherwise we check login user in
     if request.POST:
         login_user = authenticate(username=request.POST['username'],
                                   password=request.POST['password'])
@@ -97,7 +97,7 @@ def login(request):
 def logout(request):
     """
     Log out user. If succeed. redirect to index page.
-
+ 
     """
     logout_(request)
-    return redirect(reverse('login'))
+    return redirect('/')
