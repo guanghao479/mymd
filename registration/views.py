@@ -12,7 +12,6 @@ from django.contrib.auth import login as login_
 from django.contrib.auth import logout as logout_
 from django.contrib.auth.forms import AuthenticationForm
 
-from django.core.urlresolvers import reverse
 from django.core.context_processors import csrf
 
 from django.views.decorators.csrf import csrf_protect
@@ -40,6 +39,7 @@ def register(request, template_name='registration/registration_form.html'):
     return render_to_response('registration/register.html',
                               RequestContext(request, c))
 
+@csrf_protect
 def needs_activation(request):
     """
     View for need activation page.
@@ -48,6 +48,7 @@ def needs_activation(request):
     return render_to_response('registration/needs_activation.html',
                               RequestContext(request, {}))
 
+@csrf_protect
 def activate(request, activation_key):
     """
     Activate user using activation key. If success, redirect to login

@@ -1,8 +1,6 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from registration.models import RegistrationActivation
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
 
 class HomePageViewTest(TestCase):
     user_infor = {'username': 'example',
