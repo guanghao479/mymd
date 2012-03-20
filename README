@@ -1,0 +1,12 @@
+###### Install & Run ######
+$ pwd
+......../mymd
+$ cd ..
+$ virtualenv mymd-env
+$ source mymd-env/bin/activate
+(mymd-env)$ easy_install -U pip
+(mymd-env)$ pip install -U -r mymd/requirements/project.txt
+
+# Now you can run the project as normal Django project
+(mymd-env)$ python manage.py syncdb
+(mymd-env)$ python manage.py runserver
