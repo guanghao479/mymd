@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^login/$', 'registration.views.login', name='login'), # Using default registration/login.html
     url(r'^activate/(?P<activation_key>\w+)/$', 'registration.views.activate'),
     url(r'^activate/$', 'registration.views.activate'),
-    url(r'^user/(?P<username>\w+)/$', 'home.views.index'),
+    url(r'^user/(?P<username>\w+)/$', 'home.views.profile'),
     url(r'^logout/$', 'registration.views.logout', name='logout'),
     url(r'^password_change/$', 'django.contrib.auth.views.password_change'),
     url(r'^password_change/done/$', 'django.contrib.auth.views.password_change_done'),

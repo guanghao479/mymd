@@ -16,7 +16,6 @@ from django.core.context_processors import csrf
 
 from django.views.decorators.csrf import csrf_protect
 
-@csrf_protect
 def register(request, template_name='registration/registration_form.html'):
     """
     Register user view. Using registration form to valid data. If success,
@@ -39,7 +38,6 @@ def register(request, template_name='registration/registration_form.html'):
     return render_to_response('registration/register.html',
                               RequestContext(request, c))
 
-@csrf_protect
 def needs_activation(request):
     """
     View for need activation page.
@@ -48,7 +46,6 @@ def needs_activation(request):
     return render_to_response('registration/needs_activation.html',
                               RequestContext(request, {}))
 
-@csrf_protect
 def activate(request, activation_key):
     """
     Activate user using activation key. If success, redirect to login
@@ -61,7 +58,6 @@ def activate(request, activation_key):
         return redirect(path)
     return redirect('/')
 
-@csrf_protect
 def login(request):
     """
     Login user using Django build-in login and authentication method.
@@ -94,7 +90,6 @@ def login(request):
         'request': request})
     return render_to_response('registration/login.html', RequestContext(request, context))
 
-@csrf_protect
 def logout(request):
     """
     Log out user. If succeed. redirect to index page.

@@ -1,0 +1,30 @@
+{% extends "base_layout.html" %} 
+{% block title %} HOME - MYMD {% endblock %} 
+
+{% block head %}
+	{% include "module_header_includes.html" %}
+	<script type="text/javascript">
+	</script>
+{% endblock %}
+
+{% block body %}
+{% include "module_mini_nav.html" %}
+<div class="container-fluid below-mini-nav">
+	<div class="row-fluid">
+		<div class="span6">
+			<div>
+				<div class="avatar">
+					<img src="{{STATIC_URL}}images/avatar.jpg" />
+				</div>
+				<div class="personalinfo">
+					<ul>
+						<li>Guanghao Ding</li>
+						<li>Amazon.com</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% include 'module_footer.html' %}
+{% endblock %}
