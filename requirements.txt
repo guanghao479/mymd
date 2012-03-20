@@ -1,3 +1,0 @@
-Django
-django-widget-tweaks
-python-django-debug-toolbar
