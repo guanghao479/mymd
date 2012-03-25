@@ -1,10 +1,15 @@
-###### Install & Run ######
+## Install & Run ##
 $ pwd
 ......../mymd
 $ cd ..
+
+# Install virtualenv and pip
+$ sudo apt-get install python-pip python-dev build-essential 
+$ sudo pip install --upgrade pip 
+$ sudo pip install --upgrade virtualenv
+
 $ virtualenv mymd-env
 $ source mymd-env/bin/activate
-(mymd-env)$ easy_install -U pip
 (mymd-env)$ pip install -U -r mymd/requirements/project.txt
 
 # Now you can run the project as normal Django project
