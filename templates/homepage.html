@@ -19,13 +19,12 @@
         {% endblocktrans %}
     </p>
     
-    <h2>About Account Project</h2>
+    <h2>About Basic Project</h2>
     <p>
         {% blocktrans %}
-        This project takes the zero_project and adds basic account management
-        functionality such as sign up, log in, password change/reset and email
-        confirmation. It is a foundation suitable for most sites that have user
-        accounts.
+        This project takes the account_project and adds profiles and notifications.
+        It is a foundation suitable for many sites that have user accounts with
+        profiles.
         {% endblocktrans %}
     </p>
     
@@ -36,9 +35,9 @@
         {% url acct_login as login_url %}
         {% ifsetting ACCOUNT_OPEN_SIGNUP %}
             {% url acct_signup as signup_url %}
-            <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn">Log In</a> or <a href="{{ signup_url }}" class="btn primary">Sign Up</a> to try out the site.{% endblocktrans %}</p>
+            <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn">Log In</a> or <a href="{{ signup_url }}" class="btn btn-primary">Sign Up</a> to try out the site.{% endblocktrans %}</p>
         {% else %}
-            <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn primary large">Log In</a> to try out the site.{% endblocktrans %}</p>
+            <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn btn-primary btn-large">Log In</a> to try out the site.{% endblocktrans %}</p>
         {% endifsetting %}
     {% endif %}
 {% endblock %}

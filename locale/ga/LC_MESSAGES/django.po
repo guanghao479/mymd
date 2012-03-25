@@ -52,48 +52,55 @@ msgstr ""
 #: templates/homepage.html:34
 msgid ""
 "\n"
-"        This project lays the foundation for all other Pinax starter "
-"projects. It\n"
-"        provides the project directory layout and some key infrastructure "
-"apps on\n"
-"        which the other starter projects are based.\n"
+"        This project comes with the bare minimum set of applications and\n"
+"        templates to get you started. It includes no extra tabs, only the\n"
+"        profile and notices tabs are included by default. From here you can\n"
+"        add any extra functionality and applications that you would like.\n"
 "        "
 msgstr ""
 
-#: templates/homepage.html:44
+#: templates/homepage.html:45
 #, python-format
 msgid "Wondering <a href=\"%(what_next_url)s\">What Next</a>?"
 msgstr ""
 
-#: templates/homepage.html:49
+#: templates/homepage.html:50
 #, python-format
 msgid ""
 "You can <a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s"
 "\">Log in</a> to try out the site."
 msgstr ""
 
-#: templates/homepage.html:51
+#: templates/homepage.html:52
 #, python-format
 msgid "You can <a href=\"%(login_url)s\">Log in</a> to try out the site."
 msgstr ""
 
-#: templates/site_base.html:18
-msgid "&copy; 2010 &lt;your company here&gt;"
-msgstr ""
-
-#: templates/site_base.html:19
-msgid "About"
-msgstr ""
-
 #: templates/site_base.html:20
-msgid "Terms of Service"
+msgid "Profile"
 msgstr ""
 
 #: templates/site_base.html:21
+msgid "Notices"
+msgstr ""
+
+#: templates/site_base.html:28
+msgid "&copy; 2010 &lt;your company here&gt;"
+msgstr ""
+
+#: templates/site_base.html:29
+msgid "About"
+msgstr ""
+
+#: templates/site_base.html:30
+msgid "Terms of Service"
+msgstr ""
+
+#: templates/site_base.html:31
 msgid "Privacy Policy"
 msgstr ""
 
-#: templates/site_base.html:22
+#: templates/site_base.html:32
 msgid "DMCA Notice"
 msgstr ""
 
@@ -101,14 +108,14 @@ msgstr ""
 msgid "What Next?"
 msgstr ""
 
-#: templates/about/what_next.html:32
+#: templates/about/what_next.html:35
 #, python-format
 msgid ""
 "Start by <a href=\"%(signup_url)s\">signing up</a> and <a href=\"%(login_url)"
 "s\">logging in</a>."
 msgstr ""
 
-#: templates/about/what_next.html:34
+#: templates/about/what_next.html:37
 #, python-format
 msgid "Start by <a href=\"%(login_url)s\">logging in</a>."
 msgstr ""

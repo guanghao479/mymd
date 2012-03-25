@@ -64,73 +64,120 @@ msgstr "Об этом проекте"
 #: templates/homepage.html:34
 msgid ""
 "\n"
-"        This project lays the foundation for all other Pinax starter "
-"projects. It\n"
-"        provides the project directory layout and some key infrastructure "
-"apps on\n"
-"        which the other starter projects are based.\n"
+"        This project comes with the bare minimum set of applications and\n"
+"        templates to get you started. It includes no extra tabs, only the\n"
+"        profile and notices tabs are included by default. From here you can\n"
+"        add any extra functionality and applications that you would like.\n"
 "        "
 msgstr ""
 "\n"
-"        Этот проект представляет из себя базу для всех других стартовых "
-"проектов Pinax. Он\n"
-"        предоставляет структуру директорий проекта и некоторые ключевые "
-"инфраструктурные приложения,\n"
-"        на которых основаны другие стартовые проекты.\n"
+"        Этот проект включает в себя самый минимальный набор приложений и\n"
+"        шаблонов, чтобы начать. Он не включает в себя дополнительных "
+"вкладок, включены только\n"
+"        вкладкипо умолчанию - профиль и уведомления. Теперь вы можете\n"
+"        добавлять дополнительный функционал и прилжения.\n"
 "        "
 
-#: templates/homepage.html:44
+#: templates/homepage.html:45
 #, python-format
 msgid "Wondering <a href=\"%(what_next_url)s\">What Next</a>?"
-msgstr ""
+msgstr "Думаете <a href=\"%(what_next_url)s\">что делать дальше</a>?"
 
-#: templates/homepage.html:49
+#: templates/homepage.html:50
 #, python-format
 msgid ""
 "You can <a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s"
 "\">Log in</a> to try out the site."
 msgstr ""
+"Вы можете <a href=\"%(signup_url)s\">Зарегистрироваться</a> и <a href=\"%"
+"(login_url)s\">Войти</a>, чтобы посмотреть сайт."
 
-#: templates/homepage.html:51
+#: templates/homepage.html:52
 #, python-format
 msgid "You can <a href=\"%(login_url)s\">Log in</a> to try out the site."
-msgstr ""
+msgstr "Вы можете <a href=\"%(login_url)s\">Войти</a>, чтобы посмотреть сайт."
 
-#: templates/site_base.html:18
+#: templates/site_base.html:20
+msgid "Profile"
+msgstr "Профиль"
+
+#: templates/site_base.html:21
+msgid "Notices"
+msgstr "Уведомления"
+
+#: templates/site_base.html:28
 msgid "&copy; 2010 &lt;your company here&gt;"
 msgstr "&copy; 2010 &lt;ваша компания&gt;"
 
-#: templates/site_base.html:19
+#: templates/site_base.html:29
 msgid "About"
-msgstr ""
+msgstr "О нас"
 
-#: templates/site_base.html:20
+#: templates/site_base.html:30
 msgid "Terms of Service"
-msgstr ""
+msgstr "Условия предоставления услуг"
 
-#: templates/site_base.html:21
+#: templates/site_base.html:31
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Политика конфиденциальности"
 
-#: templates/site_base.html:22
+#: templates/site_base.html:32
 msgid "DMCA Notice"
-msgstr ""
+msgstr "DMCA уведомление"
 
 #: templates/about/what_next.html:6 templates/about/what_next.html.py:9
 msgid "What Next?"
-msgstr ""
+msgstr "Что дальше?"
 
-#: templates/about/what_next.html:32
+#: templates/about/what_next.html:35
 #, python-format
 msgid ""
 "Start by <a href=\"%(signup_url)s\">signing up</a> and <a href=\"%(login_url)"
 "s\">logging in</a>."
 msgstr ""
+"Начнте с <a href=\"%(signup_url)s\">регистрации</a> и <a href=\"%(login_url)s"
+"\">входа</a>."
 
-#: templates/about/what_next.html:34
+#: templates/about/what_next.html:37
 #, python-format
 msgid "Start by <a href=\"%(login_url)s\">logging in</a>."
-msgstr ""
+msgstr "Начните со <a href=\"%(login_url)s\">входа</a>."
 
-#~ msgid "Tab 1"
-#~ msgstr "Вкладка 1"
+#~ msgid "Account"
+#~ msgstr "Аккаунт"
+
+#~ msgid "Admin"
+#~ msgstr "Админская"
+
+#~ msgid "Logout"
+#~ msgstr "Выйти"
+
+#~ msgid "Login"
+#~ msgstr "Войти"
+
+#~ msgid "or"
+#~ msgstr "или"
+
+#~ msgid "Sign up"
+#~ msgstr "Зарегистрироваться"
+
+#~ msgid "E-Mail Addresses"
+#~ msgstr "Адреса электронной почты"
+
+#~ msgid "OpenID Associations"
+#~ msgstr "Ассоциированные OpenID"
+
+#~ msgid "Change Password"
+#~ msgstr "Изменить пароль"
+
+#~ msgid "Set Password"
+#~ msgstr "Установить пароль"
+
+#~ msgid "Delete Password"
+#~ msgstr "Удалить пароль"
+
+#~ msgid "Language"
+#~ msgstr "Язык"
+
+#~ msgid "Timezone"
+#~ msgstr "Часовой пояс"

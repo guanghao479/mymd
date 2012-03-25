@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 __about__ = """
-This project takes the zero_project and adds basic account management
-functionality such as sign up, log in, password change/reset and email
-confirmation. It is a foundation suitable for most sites that have user
-accounts.
+This project takes the account_project and adds profiles and notifications.
+It is a foundation suitable for many sites that have user accounts with
+profiles.
 """

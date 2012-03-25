@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Django settings for account project
+# Django settings for basic pinax project.
 
 import os.path
 import posixpath
@@ -92,7 +92,7 @@ ADMIN_MEDIA_PREFIX = posixpath.join(STATIC_URL, "admin/")
 COMPRESS_OUTPUT_DIR = "cache"
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = "d^84-1ler_y*49n=3rt#p95(s4-aha6ni443$hv%%=d5jq7k&$"
+SECRET_KEY = "*7fpnh$m3v*wa$atz@s3$hj228p5!coarj6c59*5p2agyi4#_-"
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = [
@@ -108,6 +108,7 @@ MIDDLEWARE_CLASSES = [
     "django_openid.consumer.SessionConsumer",
     "django.contrib.messages.middleware.MessageMiddleware",
     "pinax.apps.account.middleware.LocaleMiddleware",
+    "pagination.middleware.PaginationMiddleware",
     "pinax.middleware.security.HideSensistiveFieldsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
@@ -131,6 +132,9 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "pinax.core.context_processors.pinax_settings",
     
     "pinax.apps.account.context_processors.account",
+    
+    "notification.context_processors.notification",
+    "announcements.context_processors.site_wide_announcements",
 ]
 
 INSTALLED_APPS = [
@@ -149,6 +153,7 @@ INSTALLED_APPS = [
     "pinax_theme_bootstrap",
     
     # external
+    "notification", # must be first
     "staticfiles",
     "compressor",
     "debug_toolbar",
@@ -156,6 +161,9 @@ INSTALLED_APPS = [
     "django_openid",
     "timezones",
     "emailconfirmation",
+    "announcements",
+    "pagination",
+    "idios",
     "metron",
     
     # Pinax
@@ -164,6 +172,7 @@ INSTALLED_APPS = [
     
     # project
     "about",
+    "profiles",
 ]
 
 FIXTURE_DIRS = [
@@ -173,6 +182,13 @@ FIXTURE_DIRS = [
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
 EMAIL_BACKEND = "mailer.backend.DbBackend"
+
+ABSOLUTE_URL_OVERRIDES = {
+    "auth.user": lambda o: "/profiles/profile/%s/" % o.username,
+}
+
+AUTH_PROFILE_MODULE = "profiles.Profile"
+NOTIFICATION_LANGUAGE_MODULE = "account.Account"
 
 ACCOUNT_OPEN_SIGNUP = True
 ACCOUNT_USE_OPENID = False
