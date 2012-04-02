@@ -4,3 +4,4 @@
 dev.db
 settings_local.py
 migrations/
+.#*

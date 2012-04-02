@@ -5,7 +5,7 @@ import os.path
 import posixpath
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-
+SITE_NAME = "MYMD"
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -198,10 +198,12 @@ ACCOUNT_REQUIRED_EMAIL = True
 ACCOUNT_EMAIL_VERIFICATION = False
 ACCOUNT_EMAIL_AUTHENTICATION = True
 ACCOUNT_UNIQUE_EMAIL = EMAIL_CONFIRMATION_UNIQUE_EMAIL = True
+
 AUTHENTICATION_BACKENDS = [
     "pinax.apps.account.auth_backends.AuthenticationBackend",
     "django.contrib.auth.backends.ModelBackend",
-]
+    ]
+
 LOGIN_URL = "/account/login/" # @@@ any way this can be a url name?
 LOGIN_REDIRECT_URLNAME = "what_next"
 LOGOUT_REDIRECT_URLNAME = "home"
@@ -213,7 +215,7 @@ EMAIL_DEBUG = DEBUG
 DEBUG_TOOLBAR_CONFIG = {
     "INTERCEPT_REDIRECTS": False,
 }
-
+SITE_NAME = "mymd"
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
 try:
