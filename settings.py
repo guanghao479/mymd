@@ -48,6 +48,8 @@ TIME_ZONE = "US/Eastern"
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = "en-us"
 
+## SITE configurations
+# site id to lookup in the sites app, defaults to 1
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
@@ -126,13 +128,13 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.media",
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
-    
+
     "staticfiles.context_processors.static",
-    
+
     "pinax.core.context_processors.pinax_settings",
-    
+
     "pinax.apps.account.context_processors.account",
-    
+
     "notification.context_processors.notification",
     "announcements.context_processors.site_wide_announcements",
 ]
@@ -146,12 +148,12 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.humanize",
-    
+
     "pinax.templatetags",
-    
+
     # theme
     "pinax_theme_bootstrap",
-    
+
     # external
     "notification", # must be first
     "staticfiles",
@@ -165,11 +167,11 @@ INSTALLED_APPS = [
     "pagination",
     "idios",
     "metron",
-    
+
     # Pinax
     "pinax.apps.account",
     "pinax.apps.signup_codes",
-    
+
     # project
     "about",
     "profiles",
@@ -187,20 +189,19 @@ ABSOLUTE_URL_OVERRIDES = {
     "auth.user": lambda o: "/profiles/profile/%s/" % o.username,
 }
 
+# Account/Authentication related configuration
 AUTH_PROFILE_MODULE = "profiles.Profile"
 NOTIFICATION_LANGUAGE_MODULE = "account.Account"
-
 ACCOUNT_OPEN_SIGNUP = True
 ACCOUNT_USE_OPENID = False
 ACCOUNT_REQUIRED_EMAIL = True
 ACCOUNT_EMAIL_VERIFICATION = False
 ACCOUNT_EMAIL_AUTHENTICATION = True
 ACCOUNT_UNIQUE_EMAIL = EMAIL_CONFIRMATION_UNIQUE_EMAIL = True
-
 AUTHENTICATION_BACKENDS = [
     "pinax.apps.account.auth_backends.AuthenticationBackend",
+    "django.contrib.auth.backends.ModelBackend",
 ]
-
 LOGIN_URL = "/account/login/" # @@@ any way this can be a url name?
 LOGIN_REDIRECT_URLNAME = "what_next"
 LOGOUT_REDIRECT_URLNAME = "home"
@@ -208,6 +209,7 @@ LOGOUT_REDIRECT_URLNAME = "home"
 EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG
 
+# Debug toolbar
 DEBUG_TOOLBAR_CONFIG = {
     "INTERCEPT_REDIRECTS": False,
 }
