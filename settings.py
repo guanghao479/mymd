@@ -5,7 +5,7 @@ import os.path
 import posixpath
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-SITE_NAME = "MYMD"
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -215,7 +215,7 @@ EMAIL_DEBUG = DEBUG
 DEBUG_TOOLBAR_CONFIG = {
     "INTERCEPT_REDIRECTS": False,
 }
-SITE_NAME = "mymd"
+
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
 try:
