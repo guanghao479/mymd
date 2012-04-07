@@ -6,3 +6,4 @@
 # Put project-specific requirements here.
 # See http://pip-installer.org/requirement-format.html for more information.
 django-friends==0.1.5
+django-avatar==1.0.5
