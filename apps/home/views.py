@@ -4,15 +4,22 @@ from django.template import RequestContext
 from django.contrib.auth.models import User
 from idios.utils import get_profile_base
 
-def index(request):
+def index(request, template='home/home.html'):
+    """
+    View for index page. When user is authenticated, we check whether
+    or not this user is complete his profile, here we just using city
+    to check profile completion, because only when a user is first sign
+    up, the city can be leave as blank. So I think it's OK for now.
+
+    """
     if request.user.is_authenticated():
         base_profile_class = get_profile_base();
         profiles = base_profile_class.objects.filter(user=request.user)
-        print profiles[0]
-        if profiles[0].is_profile_filled:
-            return render_to_response(reverse('index'), RequestContext(request,{}))
+        if profiles[0].city != "":
+            print profiles[0].city
+            return render_to_response('home/home.html', RequestContext(request,{}))
         else:
-            return redirect(reverse('profile_detail', kwargs={'username':request.user}),  RequestContext(request,{}))
+            return redirect(reverse('profile_edit'), RequestContext(request,{}))
     else:
-        return render_to_response('home/index.html', RequestContext(request, locals()))
+        return render_to_response('home/index.html', RequestContext(request, {}))
 
