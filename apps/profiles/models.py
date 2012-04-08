@@ -16,4 +16,3 @@ class Profile(ProfileBase):
     city = models.CharField(_("city"), max_length=50)
     gender = models.CharField(max_length=2, choices=GENDER_CHOICES)
     birth_date = models.DateField(null=True)
-    is_profile_filled = models.BooleanField(default=False, editable=False)

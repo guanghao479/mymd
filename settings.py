@@ -113,7 +113,6 @@ MIDDLEWARE_CLASSES = [
     "pagination.middleware.PaginationMiddleware",
     "pinax.middleware.security.HideSensistiveFieldsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
     "django.middleware.csrf.CsrfResponseMiddleware",
 ]
 
@@ -218,7 +217,6 @@ EMAIL_DEBUG = DEBUG
 DEBUG_TOOLBAR_CONFIG = {
     "INTERCEPT_REDIRECTS": False,
 }
-#Avatar settings
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.

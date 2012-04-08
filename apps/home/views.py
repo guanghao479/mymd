@@ -4,7 +4,7 @@ from django.template import RequestContext
 from django.contrib.auth.models import User
 from idios.utils import get_profile_base
 
-def index(request, template='home/home.html'):
+def index(request):
     """
     View for index page. When user is authenticated, we check whether
     or not this user is complete his profile, here we just using city
