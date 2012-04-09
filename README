@@ -3,6 +3,9 @@ $ pwd
 ......../mymd
 $ cd ..
 
+# Install necessary library on Ubuntu
+$ sudo apt-get install libjpeg libjpeg-dev libfreetype6 libfreetype6-dev zlib1g-dev
+
 # Install virtualenv and pip
 $ sudo apt-get install python-pip python-dev build-essential 
 $ sudo pip install --upgrade pip 
