@@ -168,7 +168,6 @@ INSTALLED_APPS = [
     "pagination",
     "idios",
     "metron",
-    "avatar",
 
     # Pinax
     "pinax.apps.account",
@@ -177,6 +176,8 @@ INSTALLED_APPS = [
     # project
     "about",
     "profiles",
+    "south",
+    "avatar",
 ]
 
 FIXTURE_DIRS = [
