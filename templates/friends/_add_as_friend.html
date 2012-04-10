@@ -1,0 +1,51 @@
+{% load i18n %}
+
+<span class="hide" id="friends-username">{{page_user.username}}</span>
+<div id="request-sent" class="hide">
+	<p><a class="action btn" disabled="disabled">{% trans "+1 Friend request sent" %}</a></p>
+</div>
+
+<div id="add-as-friend" class="hide">
+  <form>
+    <input type="hidden" name="username" value="{{page_user.username}}" />
+    <p><a class="action btn" data-processing-text="{% trans "+1 Sending request" %}" data-processed-text="{% trans "+1 Friend request sent" %}">
+    {% trans "+1 Add as Friend" %}
+  </a></p>
+  </form>
+</div>
+
+<div id="accept-invitation" class="hide">
+  <form>
+    <input type="hidden" name="username" value="{{page_user.username}}" />
+    <p><a class="action btn " data-processing-text="{% trans "Accepting" %}" data-processed-text="{% trans "You are now friends with" %}">
+    {% trans "Acception Invitation" %}
+  </a></p>
+  </form>
+</div>
+
+<script>
+  mymd.friends.renderWidget($('#friends-username').text());
+  $('#add-as-friend .action')
+    .off('click')
+    .click(function(){
+      var promise = mymd.friends.invite($('#friends-username').text())
+      var btn = $(this);
+      btn.attr('disabled', 'disabled')
+         .text(btn.attr('data-processing-text'));
+      promise.done(function(){
+        btn.attr('disabled', 'disabled')
+           .text(btn.attr('data-processed-text'));
+      })
+      promise.fail(function(){
+        btn.popover({
+          trigger: 'manual',
+          title: 'Hoops...',
+          content: 'Failed.... Please try again later'
+        });
+        btn.popover('show');
+        btn.attr('disabled', '');
+      })
+
+      return false;
+    });
+</script>
