@@ -1,0 +1,11 @@
+{% load bootstrap_tags %}
+
+<form method="POST" action="{% url blog_create %}">
+<fieldset>
+{% csrf_token %}
+{{ form|as_bootstrap }}
+<div class="form-actions">
+  <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</fieldset>
+</form>

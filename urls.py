@@ -30,6 +30,7 @@ urlpatterns = patterns("",
     url(r"^experience/$", direct_to_template, {'template': 'experience/index.html'}),
     url(r"^experience/new$", direct_to_template, {'template': 'experience/new.html'}),
     url(r"^pins/$", include("pins.urls")),
+    url(r"^blogs/", include("blogs.urls")),
 )
 
 

@@ -1,0 +1,12 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Create Blog" %}{% endblock %}
+
+{% block body %}
+
+    <h1>{% trans "Create Blog" %}</h1>
+    {% include "blogs/_blog_form.html" %}
+
+{% endblock %}
