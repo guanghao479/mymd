@@ -13,9 +13,6 @@ def add_as_friend(request):
     if not request.is_ajax():
         return Http404
 
-    import logging
-    logging.debug("Is this debug working?")
-
     if not request.user.is_authenticated():
         result = { "error": { "code" : "NOT_AUTHENTICATED", }, }
     else:
@@ -24,7 +21,7 @@ def add_as_friend(request):
         from_user = request.user
         if Friendship.objects.are_friends(to_user, from_user):
             result = { "error": { "code": "FRIENDSHIP_EXISTS", }, }
-        elif FriendshipInvitation.objects.filter(from_user=to_user, to_user=from_user):
+        elif FriendshipInvitation.objects.get(from_user=to_user, to_user=from_user):
             result = { "error": { "code": "INVITATION_EXISTS", }, }
         else:
             new_inv = FriendshipInvitation(from_user=from_user, to_user=to_user)
@@ -36,16 +33,87 @@ def add_as_friend(request):
 
     return HttpResponse(json.dumps(result), content_type="application/json")
 
+def accept(request):
+    """
+    accept friendship invitation
+    Currently taking AJAX request only
+
+    """
+    result = {}
+    if not request.is_ajax():
+        return Http404
+
+    if not request.user.is_authenticated():
+        result = { "error": { "code" : "NOT_AUTHENTICATED", }, }
+    else:
+        from_username = request.POST["to_user"]
+        from_user = User.objects.get(username=from_username)
+        to_user = request.user
+        invite = FriendshipInvitation.objects.get(from_user=from_user, to_user=to_user);
+        if not invite:
+            result = { "error": { "code" : "NO_INVITATION_FOUND", }, }
+        else:
+            invite.accept()
+            result = { "success":True }
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
+
+def decline(request):
+    """
+    decline friendship invitation
+    Currently taking AJAX request only
+
+    """
+    result = {}
+    if not request.is_ajax():
+        return Http404
+
+    if not request.user.is_authenticated():
+        result = { "error": { "code" : "NOT_AUTHENTICATED", }, }
+    else:
+        from_username = request.POST["to_user"]
+        from_user = User.objects.get(username=from_username)
+        to_user = request.user
+        invite = FriendshipInvitation.objects.get(from_user=from_user, to_user=to_user);
+        if not invite:
+            result = { "error": { "code" : "NO_INVITATION_FOUND", }, }
+        else:
+            invite.decline()
+            result = { "success":True }
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
+
+def ignore(request):
+    """
+    ignore friendship invitation
+    Currently taking AJAX request only
+
+    """
+    result = {}
+    if not request.is_ajax():
+        return Http404
+
+    if not request.user.is_authenticated():
+        result = { "error": { "code" : "NOT_AUTHENTICATED", }, }
+    else:
+        from_username = request.POST["to_user"]
+        from_user = User.objects.get(username=from_username)
+        to_user = request.user
+        invite = FriendshipInvitation.objects.get(from_user=from_user, to_user=to_user);
+        if not invite:
+            result = { "error": { "code" : "NO_INVITATION_FOUND", }, }
+        else:
+            invite.ignore()
+            result = { "success":True }
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
 def my_friends(request):
-    return HttpResponse()
+    pass
 
 def status(request):
     result = {}
     if not request.is_ajax():
         return Http404
-
-    import logging
-    logging.debug("Is this debug working?")
 
     if not request.user.is_authenticated():
         result = { "error": { "code" : "NOT_AUTHENTICATED", }, }
@@ -55,9 +123,9 @@ def status(request):
         from_user = request.user
         if Friendship.objects.are_friends(to_user, from_user):
             result = { "friends": { "status": "FRIENDSHIP_EXISTS", }, }
-        elif FriendshipInvitation.objects.filter(from_user=to_user, to_user=from_user):
+        elif FriendshipInvitation.objects.filter(from_user=to_user, to_user=from_user).exclude(status__in=["3", "4", "5", "6", "7"]):
             result = { "friends": { "status": "INVITATION_EXISTS", }, }
-        elif FriendshipInvitation.objects.filter(from_user=from_user, to_user=to_user):
+        elif FriendshipInvitation.objects.filter(from_user=from_user, to_user=to_user, status__in=["1", "2", "8"]):
             result = { "friends": { "status": "INVITATION_MADE", }, }
         else:
             result = { "friends": { "status": "AVAILABLE"} }

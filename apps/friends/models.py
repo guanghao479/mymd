@@ -171,6 +171,9 @@ class FriendshipInvitationManager(models.Manager):
     def invitations(self, *args, **kwargs):
         return self.filter(*args, **kwargs).exclude(status__in=["6", "8"])
 
+    def invitation_exist(self, *args, **kwargs):
+        pass
+
 
 class FriendshipInvitation(models.Model):
     """
@@ -202,6 +205,11 @@ class FriendshipInvitation(models.Model):
     def decline(self):
         if not Friendship.objects.are_friends(self.to_user, self.from_user):
             self.status = "6"
+            self.save()
+
+    def ignore(self):
+        if not Friendship.objects.are_friends(self.to_user, self.from_user):
+            self.status = "8"
             self.save()
 
 

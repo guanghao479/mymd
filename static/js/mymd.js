@@ -56,22 +56,18 @@ if (typeof mymd === 'undefined') {
       return status.promise();
     };
 
-    // public variables
-    this.renderWidget = function(to_user) {
+    var renderWidget = function(to_user) {
       var promise = getStatus(to_user);
       promise.done(function(status){
-        if (status === 'FRIENDSHIP_EXISTS' || status === 'BLOCKED' 
-          || status === 'DECLINED') {
-          return;
+        if (status === 'AVAILABLE') {
+          // add as friend
+          $('#add-as-friend').show();
         } else if (status === 'INVITATION_EXISTS') {
           // Accept?
           $('#accept-invitation').show();
         } else if (status === 'INVITATION_MADE') {
           // requested
           $('#request-sent').show();
-        } else {
-          // add as friend
-          $('#add-as-friend').show();
         }
       });
       promise.fail(function(){
@@ -79,19 +75,111 @@ if (typeof mymd === 'undefined') {
       });
     };
 
-    this.invite = function(to_user) {
-      var status = new $.Deferred();
-      data = {to_user:to_user};
+    var inviteHandler = function(event) {
+      var data = {to_user:event.data.to_user};
       var promise = mymd.ajax.post('/friend/add/', data);
-      promise.done(function(result) {
-        status.resolve(result);
+      var btn = $(this);
+      btn.attr('disabled', 'disabled')
+         .text(btn.attr('processing-text'));
+      promise.done(function(result){
+        btn.attr('disabled', 'disabled')
+           .text(btn.attr('processed-text'));
       });
-      promise.fail(function(errorCode, error) {
-        status.reject(errorCode, error);
+      promise.fail(function(errorCode, error){
+        btn.popover({
+          trigger: 'manual',
+          title: 'Hoops...',
+          content: 'Failed.... Please try again later'
+        });
+        btn.popover('show');
+        btn.attr('disabled', '');
       });
-      return status.promise();
+      return false;
     };
-  }
 
+    var acceptHandler = function(event) {
+      var data = {to_user:event.data.to_user};
+      var promise = mymd.ajax.post('/friend/accept/', data);
+      var btn = $(this);
+      btn.attr('disabled', 'disabled')
+         .text(btn.attr('processing-text'));
+      btn.siblings('a.action').hide();
+      promise.done(function(result){
+        var processedText = btn.attr('processed-text');
+        btn.parents('form').remove();
+        $('#accept-invitation').append('<p>'+processedText+'</p>').fadeOut('slow');
+      });
+      promise.fail(function(errorCode, error){
+        btn.popover({
+          trigger: 'manual',
+          title: 'Hoops...',
+          content: 'Failed.... Please try again later'
+        });
+        btn.popover('show');
+        btn.attr('disabled', '');
+        btn.siblings('a.action').show();
+      });
+      return false;
+    };
+
+    var declineHandler = function(event) {
+      var data = {to_user:event.data.to_user};
+      var promise = mymd.ajax.post('/friend/decline/', data);
+      var btn = $(this);
+      btn.attr('disabled', 'disabled')
+         .text(btn.attr('processing-text'));
+      btn.siblings('a.action').hide();
+      promise.done(function(result){
+        var processedText = btn.attr('processed-text');
+        btn.parents('form').remove();
+        $('#accept-invitation').append('<p>'+processedText+'</p>').fadeOut('slow');
+      });
+      promise.fail(function(errorCode, error){
+        btn.popover({
+          trigger: 'manual',
+          title: 'Hoops...',
+          content: 'Failed.... Please try again later'
+        });
+        btn.popover('show');
+        btn.attr('disabled', '');
+        btn.siblings('a.action').show();
+      });
+      return false;
+    };
+
+    var ignoreHandler = function(event) {
+      var data = {to_user:event.data.to_user};
+      var promise = mymd.ajax.post('/friend/ignore/', data);
+      var btn = $(this);
+      btn.attr('disabled', 'disabled')
+         .text(btn.attr('processing-text'));
+      btn.siblings('a.action').hide();
+      promise.done(function(result){
+        var processedText = btn.attr('processed-text');
+        btn.parents('form').remove();
+        $('#accept-invitation').append('<p>'+processedText+'</p>').fadeOut('slow');
+      });
+      promise.fail(function(errorCode, error){
+        btn.popover({
+          trigger: 'manual',
+          title: 'Hoops...',
+          content: 'Failed.... Please try again later'
+        });
+        btn.popover('show');
+        btn.attr('disabled', '');
+        btn.siblings('a.action').show();
+      });
+      return false;
+    };
+
+    // public variables
+    this.initWidget = function(to_user) {
+      renderWidget(to_user);
+      $('#add-as-friend .action').click({to_user:to_user}, inviteHandler);
+      $('#accept-invitation a[action="accept"]').click({to_user:to_user}, acceptHandler);
+      $('#accept-invitation a[action="decline"]').click({to_user:to_user}, declineHandler);
+      $('#accept-invitation a[action="ignore"]').click({to_user:to_user}, ignoreHandler);
+    };
+  } // friends definition ends
   mymd.friends = new friends();
 })(jQuery);
