@@ -3,10 +3,14 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from blogs.forms import PostForm
-from django.shortcuts import redirect
+from blogs.models import Post
+from django.shortcuts import redirect, get_object_or_404
 import datetime
 
 class BlogCreateView(CreateView):
+    """
+    Create a new blog.
+    """
     template_name = 'blogs/blog_create.html'
     form_class = PostForm
 
@@ -26,5 +30,32 @@ class BlogCreateView(CreateView):
         return "/blogs"
 
     @method_decorator(login_required)
-    def dispath(self, *args, **kwargs):
+    def dispatch(self, *args, **kwargs):
         return super(BlogCreateView, self).dispatch(*args, **kwargs)
+
+
+class BlogListView(ListView):
+    """
+    List all blogs of current user.
+    """
+    template_name = "blogs/blogs.html"
+    context_object_name = "blogs_list"
+
+    def get_queryset(self):
+        username = self.kwargs.get('username')
+        self.user = get_object_or_404(User, username=username)
+        blogs = Post.objects.filter(author=self.user)
+        return blogs
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(BlogListView, self).dispatch(*args, **kwargs)
+
+class BlogDetailView(DetailView):
+    template_name = "blogs/blog_details.html"
+    context_object_name = "blog"
+
+    def get_object(self):
+        blog_class = "Post"
+        post_id = self.kwargs.get('id')
+        return get_object_or_404(blog_class, pk=post_id)
