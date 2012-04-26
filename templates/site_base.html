@@ -1,7 +1,16 @@
 {% extends "theme_base.html" %}
-
+{% load staticfiles %}
 {% load metron_tags %}
 {% load i18n %}
+
+
+{% block extra_style %}
+  <link href="{% static "css/mymd.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block extra_script %}
+  <script src="{% static "js/mymd.js" %}"></script>
+{% endblock %}
 
 {% block nav %}
     {% if user.is_authenticated %}
