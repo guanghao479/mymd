@@ -1,0 +1,37 @@
+{% load i18n %}
+
+<span class="hide" id="pageuser_username">{{page_user.username}}</span>
+<div id="request-sent" class="hide">
+	<p><a class="action btn" disabled="disabled">{% trans "+1 Friend request sent" %}</a></p>
+</div>
+
+<div id="add-as-friend" class="hide">
+  <form>
+    <input type="hidden" name="username" value="{{page_user.username}}" />
+    <p><a class="action btn" processing-text="{% trans "+1 Sending request" %}" processed-text="{% trans "+1 Friend request sent" %}">
+    {% trans "+1 Add as Friend" %}
+  </a></p>
+  </form>
+</div>
+
+<div id="accept-invitation" class="hide">
+  <form>
+    <p>You have an invitation from {{page_user.username}}:</p>
+    <input type="hidden" name="username" value="{{page_user.username}}" />
+    <p>
+      <a class="action btn btn-small" action="accept" processing-text="{% trans "Accepting" %}" processed-text="{% trans "Accepted" %}">
+        {% trans "Accept" %}
+      </a>
+      <a class="action btn btn-small" action="decline" processing-text="{% trans "Declining" %}" processed-text="{% trans "Declined" %}">
+        {% trans "Decline" %}
+      </a>
+      <a class="action btn btn-small" action="ignore" processing-text="{% trans "Ignoring" %}" processed-text="{% trans "Ignored" %}">
+        {% trans "Ignore" %}
+      </a>
+    </p>
+  </form>
+</div>
+
+<script>
+  mymd.friends.initWidget($('#pageuser_username').text());
+</script>

@@ -178,6 +178,7 @@ INSTALLED_APPS = [
     "profiles",
     "south",
     "avatar",
+    "friends",
 ]
 
 FIXTURE_DIRS = [
