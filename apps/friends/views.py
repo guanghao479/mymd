@@ -123,9 +123,9 @@ def status(request):
         from_user = request.user
         if Friendship.objects.are_friends(to_user, from_user):
             result = { "friends": { "status": "FRIENDSHIP_EXISTS", }, }
-        elif FriendshipInvitation.objects.filter(from_user=to_user, to_user=from_user).exclude(status__in=["3", "4", "5", "6", "7"]):
+        elif FriendshipInvitation.objects.filter(from_user=to_user, to_user=from_user).exclude(status__in=["3", "4", "5", "6", "7", "8"]):
             result = { "friends": { "status": "INVITATION_EXISTS", }, }
-        elif FriendshipInvitation.objects.filter(from_user=from_user, to_user=to_user, status__in=["1", "2", "8"]):
+        elif FriendshipInvitation.objects.filter(from_user=from_user, to_user=to_user).exclude(status__in=["3", "4", "5", "6", "7", "8"]):
             result = { "friends": { "status": "INVITATION_MADE", }, }
         else:
             result = { "friends": { "status": "AVAILABLE"} }
