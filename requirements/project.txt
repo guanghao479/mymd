@@ -9,6 +9,7 @@ django-avatar==1.0.5
 PIL==1.1.7
 South==0.7.4
 django-activity-stream==0.4.3
+django-authority==0.4
 
 # Informal requirements, the apps we copied the source code
 # django-friends

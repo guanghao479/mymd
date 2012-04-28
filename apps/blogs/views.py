@@ -9,6 +9,7 @@ from django.shortcuts import redirect, get_object_or_404
 from django.http import HttpResponseForbidden
 import datetime
 from authority.decorators import permission_required_or_403, permission_required
+from blogs.decorators import ownership_required
 
 class BlogCreateView(CreateView):
     """
@@ -72,6 +73,9 @@ class BlogDetailView(DetailView):
         context['blog_author'] = blog_author
         return context
 
+def get_owner(request, *args, **kwargs):
+    return Post.objects.get(pk=kwargs['id']).author
+
 class BlogUpdateView(UpdateView):
 
     template_name = 'blogs/blog_edit.html'
@@ -105,14 +109,9 @@ class BlogUpdateView(UpdateView):
         context['blog_form'] = context['form']
         return context
 
-    @method_decorator(login_required)
+    @method_decorator(ownership_required(get_owner))
     def dispatch(self, request, *args, **kwargs):
-        post_id = kwargs['id']
-        blog = Post.objects.get(pk=post_id)
-        if request.user == blog.author:
             return super(BlogUpdateView, self).dispatch(request, *args, **kwargs)
-        else:
-            return HttpResponseForbidden("Sorry, you are not allowed to see this group details")
 
 
 class BlogDeleteView(DeleteView):
@@ -136,3 +135,4 @@ class BlogDeleteView(DeleteView):
         context = super(BlogDeleteView, self).get_context_data(**kwargs)
         context['blog'] = kwargs.get('id')
         return context
+
