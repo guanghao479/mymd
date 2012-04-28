@@ -1,0 +1,10 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load account_tags %}
+
+{% block body %}
+
+<h1>{% blocktrans %}{{ blog_author }}'s Blogs{% endblocktrans %}</h1>
+{% include "blogs/_blog_info.html" %}
+{% endblock %}

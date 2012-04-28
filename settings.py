@@ -169,6 +169,7 @@ INSTALLED_APPS = [
     "idios",
     "metron",
     "blogs",
+    "authority",
 
     # Pinax
     "pinax.apps.account",

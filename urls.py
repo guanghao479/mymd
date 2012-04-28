@@ -1,3 +1,4 @@
+import authority
 from django.conf import settings
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
@@ -31,6 +32,7 @@ urlpatterns = patterns("",
     url(r"^experience/new$", direct_to_template, {'template': 'experience/new.html'}),
     url(r"^pins/$", include("pins.urls")),
     url(r"^blogs/", include("blogs.urls")),
+    url(r'^authority/', include("authority.urls")),
 )
 
 

@@ -1,0 +1,8 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+{% block head_title %}{% trans "Edit Blog" %}{% endblock %}
+
+{% block body %}
+<h1> {% trans "Edit Blog" %} </h1>
+{% include "blogs/_blog_edit_form.html" %}
+{% endblock %}

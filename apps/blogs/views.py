@@ -1,11 +1,14 @@
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from blogs.forms import PostForm
 from blogs.models import Post
 from django.shortcuts import redirect, get_object_or_404
+from django.http import HttpResponseForbidden
 import datetime
+from authority.decorators import permission_required_or_403, permission_required
 
 class BlogCreateView(CreateView):
     """
@@ -27,7 +30,7 @@ class BlogCreateView(CreateView):
         return redirect(self.get_success_url())
 
     def get_success_url(self):
-        return "/blogs"
+        return '/'
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -38,8 +41,8 @@ class BlogListView(ListView):
     """
     List all blogs of current user.
     """
-    template_name = "blogs/blogs.html"
-    context_object_name = "blogs_list"
+    template_name = 'blogs/blog_list.html'
+    context_object_name = 'blogs_list'
 
     def get_queryset(self):
         username = self.kwargs.get('username')
@@ -52,10 +55,84 @@ class BlogListView(ListView):
         return super(BlogListView, self).dispatch(*args, **kwargs)
 
 class BlogDetailView(DetailView):
-    template_name = "blogs/blog_details.html"
-    context_object_name = "blog"
+    template_name = 'blogs/blog_details.html'
+    context_object_name = 'blog'
 
     def get_object(self):
-        blog_class = "Post"
+        blog_class = Post
         post_id = self.kwargs.get('id')
-        return get_object_or_404(blog_class, pk=post_id)
+        print post_id
+        blog = get_object_or_404(blog_class, id=post_id)
+        self.author = blog.author
+        return blog
+
+    def get_context_data(self, **kwargs):
+        blog_author = self.author
+        context = super(BlogDetailView, self).get_context_data(**kwargs)
+        context['blog_author'] = blog_author
+        return context
+
+class BlogUpdateView(UpdateView):
+
+    template_name = 'blogs/blog_edit.html'
+    context_object_name = 'blog'
+    form_class = PostForm
+    def get_template_names(self):
+        return [self.template_name]
+
+    def get_success_url(self):
+        return '/'
+
+    def get_object(self, queryset=None):
+        blog_class = Post
+        post_id = self.kwargs.get('id')
+        blog = Post.objects.get(pk=post_id)
+        self.author = blog.author
+        return blog
+
+    def form_valid(self, form):
+        blog = form.save(commit=False)
+        blog.author = self.request.user
+        blog.modified_date = datetime.datetime.now()
+        blog.save()
+        return redirect(self.get_success_url())
+
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogUpdateView, self).get_context_data(**kwargs)
+        context['blog_form'] = context['form']
+        return context
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        post_id = kwargs['id']
+        blog = Post.objects.get(pk=post_id)
+        if request.user == blog.author:
+            return super(BlogUpdateView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden("Sorry, you are not allowed to see this group details")
+
+
+class BlogDeleteView(DeleteView):
+    template_name = 'blogs/blog_delete.html'
+    model = Post
+    success_url = 'blog_list'
+    context_object_name = 'blog'
+
+    def get_success_url(self):
+        return reverse(self.success_url, kwargs={'username': self.request.user})
+
+    def get_object(self):
+        blog_class = Post
+        post_id = self.kwargs.get('id')
+        print post_id
+        blog = get_object_or_404(blog_class, id=post_id)
+        self.author = blog.author
+        return blog
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogDeleteView, self).get_context_data(**kwargs)
+        context['blog'] = kwargs.get('id')
+        return context
