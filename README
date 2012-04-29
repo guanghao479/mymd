@@ -10,8 +10,8 @@ $ sudo ln -s /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib
 $ sudo ln -s /usr/lib/x86_64-linux-gnu/libz.so /usr/lib
 
 # Install virtualenv and pip
-$ sudo apt-get install python-pip python-dev build-essential 
-$ sudo pip install --upgrade pip 
+$ sudo apt-get install python-pip python-dev build-essential
+$ sudo pip install --upgrade pip
 $ sudo pip install --upgrade virtualenv
 
 $ virtualenv mymd-env

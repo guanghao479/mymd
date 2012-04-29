@@ -179,6 +179,7 @@ INSTALLED_APPS = [
     "south",
     "avatar",
     "friends",
+    "actstream",
 ]
 
 FIXTURE_DIRS = [
@@ -219,6 +220,11 @@ EMAIL_DEBUG = DEBUG
 DEBUG_TOOLBAR_CONFIG = {
     "INTERCEPT_REDIRECTS": False,
 }
+
+# Activity Stream Specific Settings
+ACTSTREAM_ACTION_MODELS = ['auth.User',]
+ACTSTREAM_MANAGER = 'actstream.managers.ActionManager'
+
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
