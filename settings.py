@@ -149,6 +149,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.humanize",
+    "django.contrib.comments",
 
     "pinax.templatetags",
 
@@ -183,6 +184,7 @@ INSTALLED_APPS = [
     "stream",
     "pins",
     "blogs",
+    "my_comments",
 ]
 
 FIXTURE_DIRS = [
@@ -193,6 +195,7 @@ MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
 EMAIL_BACKEND = "mailer.backend.DbBackend"
 
+COMMENTS_APP = "my_comments"
 ABSOLUTE_URL_OVERRIDES = {
     "auth.user": lambda o: "/profiles/profile/%s/" % o.username,
 }
