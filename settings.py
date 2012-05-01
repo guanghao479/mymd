@@ -168,8 +168,6 @@ INSTALLED_APPS = [
     "pagination",
     "idios",
     "metron",
-    "blogs",
-    "authority",
 
     # Pinax
     "pinax.apps.account",
@@ -184,6 +182,7 @@ INSTALLED_APPS = [
     "actstream",
     "stream",
     "pins",
+    "blogs",
 ]
 
 FIXTURE_DIRS = [

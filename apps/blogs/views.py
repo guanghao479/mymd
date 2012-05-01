@@ -111,7 +111,7 @@ class BlogUpdateView(UpdateView):
 
     @method_decorator(ownership_required(get_owner))
     def dispatch(self, request, *args, **kwargs):
-            return super(BlogUpdateView, self).dispatch(request, *args, **kwargs)
+        return super(BlogUpdateView, self).dispatch(request, *args, **kwargs)
 
 
 class BlogDeleteView(DeleteView):
@@ -136,3 +136,6 @@ class BlogDeleteView(DeleteView):
         context['blog'] = kwargs.get('id')
         return context
 
+    @method_decorator(ownerhship_required(get_owner))
+    def dispatch(self, request, *args, **kwargs):
+        return super(BlogUpdateView, self).dispatch(request, *args, **kwargs)
