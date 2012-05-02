@@ -199,7 +199,7 @@ COMMENTS_APP = "my_comments"
 ABSOLUTE_URL_OVERRIDES = {
     "auth.user": lambda o: "/profiles/profile/%s/" % o.username,
 }
-
+PAGINATE_NUM = 1
 # Account/Authentication related configuration
 AUTH_PROFILE_MODULE = "profiles.Profile"
 NOTIFICATION_LANGUAGE_MODULE = "account.Account"

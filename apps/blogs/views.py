@@ -10,7 +10,7 @@ from django.http import HttpResponseForbidden
 import datetime
 from authority.decorators import permission_required_or_403, permission_required
 from blogs.decorators import ownership_required
-
+from django.conf import settings
 class BlogCreateView(CreateView):
     """
     Create a new blog.
@@ -44,12 +44,18 @@ class BlogListView(ListView):
     """
     template_name = 'blogs/blog_list.html'
     context_object_name = 'blogs_list'
+    paginate_by = settings.PAGINATE_NUM
 
     def get_queryset(self):
-        username = self.kwargs.get('username')
-        self.user = get_object_or_404(User, username=username)
+        self.username = self.kwargs.get('username')
+        self.user = get_object_or_404(User, username=self.username)
         blogs = Post.objects.filter(author=self.user)
         return blogs
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogListView, self).get_context_data(**kwargs)
+        context['username'] = self.username
+        return context
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
