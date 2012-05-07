@@ -180,6 +180,7 @@ INSTALLED_APPS = [
     "avatar",
     "friends",
     "actstream",
+    "stream",
 ]
 
 FIXTURE_DIRS = [

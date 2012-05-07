@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from friends.models import *
 from django.utils import simplejson as json
+from friends.signals import friends_connected
 
 def add_as_friend(request):
     """
@@ -21,7 +22,7 @@ def add_as_friend(request):
         from_user = request.user
         if Friendship.objects.are_friends(to_user, from_user):
             result = { "error": { "code": "FRIENDSHIP_EXISTS", }, }
-        elif FriendshipInvitation.objects.get(from_user=to_user, to_user=from_user):
+        elif FriendshipInvitation.objects.filter(from_user=to_user, to_user=from_user):
             result = { "error": { "code": "INVITATION_EXISTS", }, }
         else:
             new_inv = FriendshipInvitation(from_user=from_user, to_user=to_user)
@@ -55,6 +56,7 @@ def accept(request):
         else:
             invite.accept()
             result = { "success":True }
+            friends_connected.send(sender=invite)
     return HttpResponse(json.dumps(result), content_type="application/json")
 
 
