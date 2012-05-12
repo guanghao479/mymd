@@ -1,0 +1,11 @@
+{% load bootstrap_tags %}
+
+<form method="POST" action="{% url diary_edit diary.pk %}">
+    <fieldset>
+        {% csrf_token %}
+        {{ diary_form|as_bootstrap }}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </fieldset>
+</form>

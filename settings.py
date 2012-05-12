@@ -184,6 +184,7 @@ INSTALLED_APPS = [
     "stream",
     "pins",
     "blogs",
+    "diary",
     "my_comments",
 ]
 

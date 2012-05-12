@@ -32,6 +32,7 @@ urlpatterns = patterns("",
     url(r"^experience/new$", direct_to_template, {'template': 'experience/new.html'}),
     url(r"^pins/$", include("pins.urls")),
     url(r"^blogs/", include("blogs.urls")),
+    url(r"^diary/", include("diary.urls")),
     url(r"^comments/", include("django.contrib.comments.urls")),
 )
 

@@ -68,7 +68,6 @@ class BlogDetailView(DetailView):
     def get_object(self):
         blog_class = Post
         post_id = self.kwargs.get('id')
-        print post_id
         blog = get_object_or_404(blog_class, id=post_id)
         self.author = blog.author
         return blog
@@ -144,4 +143,4 @@ class BlogDeleteView(DeleteView):
 
     @method_decorator(ownership_required(get_owner))
     def dispatch(self, request, *args, **kwargs):
-        return super(BlogUpdateView, self).dispatch(request, *args, **kwargs)
+        return super(BlogDeleteView, self).dispatch(request, *args, **kwargs)
