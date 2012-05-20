@@ -1,11 +1,14 @@
 from django.utils.decorators import method_decorator
+from django.utils import simplejson as json
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic.list import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
 from diary.models import Diary
 from diary.forms import DiaryForm
+from diary.utils import JSONResponseMixin
 
 from django.shortcuts import redirect, get_object_or_404
 from django.http import HttpResponseForbidden
@@ -39,13 +42,14 @@ class DiaryCreateView(CreateView):
     def dispatch(self, *args, **kwargs):
         return super(DiaryCreateView, self).dispatch(*args, **kwargs)
 
-class DiaryListView(ListView):
+class DiaryListView(JSONResponseMixin, MultipleObjectTemplateResponseMixin, BaseListView):
     """
     List all diaries of current user.
     """
     template_name = 'diary/diary_list.html'
     context_object_name = 'diaries_list'
-    paginate_by = settings.PAGINATE_NUM
+    result = {}
+    #paginate_by = settings.PAGINATE_NUM
 
     def get_queryset(self):
         self.username = self.kwargs.get('username')
@@ -53,10 +57,26 @@ class DiaryListView(ListView):
         diaries = Diary.objects.filter(author=self.user)
         return diaries
 
+    def _process_result_json(self, diaries):
+        diaries_content_list = []
+        for diary in diaries:
+            diary_content = {}
+            diary_content['content'] = diary['body']
+            diary_content['feel'] = diary['feel']
+            diaries_content_list.append(diary_content)
+        return diaries_content_list
+
     def get_context_data(self, **kwargs):
         context = super(DiaryListView, self).get_context_data(**kwargs)
         context['username'] = self.username
-        return context
+        self.result['username'] = context['username']
+        self.result['diaries_list'] = self._process_result_json(list(context['diaries_list'].values()))
+        return self.result
+
+    def render_to_response(self, context):
+        #if self.request.GET.get('format', 'html') == 'json':
+        return JSONResponseMixin.render_to_response(self, context)
+        #return MultipleObjectTemplateResponseMixin.render_to_response(self, context)
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -67,9 +87,9 @@ class DiaryDetailView(DetailView):
     context_object_name = 'diary'
 
     def get_object(self):
-        blog_class = Diary
-        post_id = self.kwargs.get('id')
-        diary = get_object_or_404(diary_class, id=post_id)
+        diary_class = Diary
+        diary_id = self.kwargs.get('id')
+        diary = get_object_or_404(diary_class, id=diary_id)
         self.author = diary.author
         return diary
 

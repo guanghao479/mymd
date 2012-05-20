@@ -1,0 +1,13 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load comments %}
+{% load account_tags %}
+
+{% block body %}
+
+<h1>{% blocktrans %}{{ diary_author }}'s Diaries{% endblocktrans %}</h1>
+{% include "diary/_diary_info.html" %}
+{% render_comment_list for diary %}
+{% render_comment_form for diary %}
+{% endblock %}

@@ -20,7 +20,7 @@ def index(request):
 
             return render_to_response('home/home.html', RequestContext(request,{}))
         else:
-            return redirect(reverse('profile_edit'), RequestContext(request,{}))
+            return render_to_response('home/home.html', RequestContext(request,{}))
     else:
         return render_to_response('home/index.html', RequestContext(request,{}))
 
