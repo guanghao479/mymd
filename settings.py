@@ -181,6 +181,7 @@ INSTALLED_APPS = [
     "friends",
     "actstream",
     "stream",
+    "pins",
 ]
 
 FIXTURE_DIRS = [

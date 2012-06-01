@@ -1,3 +1,39 @@
 .hide {
   display: none;
 }
+.navbar-inner {
+  background-color: #900000; /* fallback color, place your own */
+
+  /* Gradients for modern browsers, replace as you see fit */
+  background-image: -moz-linear-gradient(top, #900000, #A00000);
+  background-image: -ms-linear-gradient(top, #900000, #A00000);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#900000), to(#A00000));
+  background-image: -webkit-linear-gradient(top, #900000, #A00000);
+  background-image: -o-linear-gradient(top, #900000, #A00000);
+  background-image: linear-gradient(top, #900000, #A00000);
+  background-repeat: repeat-x;
+
+  /* IE8-9 gradient filter */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#900000', endColorstr='#A00000', GradientType=0);
+}
+
+.navbar .nav > li > a {
+color: #FFF;
+}
+
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
+background-color: #700000;
+}
+
+
+div.pin div.title {
+  font-weight:bold;
+  color: #900000;
+}
+
+div.pin div.others {
+  color: #C0C0C0;
+  text-align:right;
+  margin-top:-5px;
+  padding:0 5px 0 0;
+}

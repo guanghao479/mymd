@@ -25,6 +25,11 @@ urlpatterns = patterns("",
     url(r"^avatar/", include("avatar.urls")),
     url(r"^friend/", include("friends.urls")),
     url(r"^activity/", include("actstream.urls")),
+    url(r"^dairy/$", direct_to_template, {'template': 'dairy/index.html'}),
+    url(r"^dairy/new$", direct_to_template, {'template': 'dairy/new.html'}),
+    url(r"^experience/$", direct_to_template, {'template': 'experience/index.html'}),
+    url(r"^experience/new$", direct_to_template, {'template': 'experience/new.html'}),
+    url(r"^pins/$", include("pins.urls")),
 )
 
 

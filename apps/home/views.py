@@ -17,9 +17,10 @@ def index(request):
         profiles = base_profile_class.objects.filter(user=request.user)
         if profiles[0].city != "":
             print profiles[0].city
+
             return render_to_response('home/home.html', RequestContext(request,{}))
         else:
             return redirect(reverse('profile_edit'), RequestContext(request,{}))
     else:
-        return render_to_response('home/index.html', RequestContext(request, {}))
+        return render_to_response('home/index.html', RequestContext(request,{}))
 
