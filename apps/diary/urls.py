@@ -4,9 +4,9 @@ from diary.views import DiaryCreateView, DiaryDetailView, DiaryListView, DiaryUp
 from diary.models import Diary
 
 urlpatterns = patterns('diary.views',
-     url(r'^people/(?P<username>\w+)/$', DiaryListView.as_view(), name='diary_list'),
-     url(r'^create/$', DiaryCreateView.as_view(), name='diary_create'),
-     url(r'^(?P<id>\d+)/$', DiaryDetailView.as_view(), name='diary_detail'),
-     url(r'^edit/(?P<id>\d+)/$', DiaryUpdateView.as_view(), name='diary_edit'),
-     url(r'^delete/(?P<id>\d+)/$', DiaryDeleteView.as_view(), name='diary_delete'),
+    url(r"^people/(?P<username>\w+)/$", DiaryListView.as_view(), name='diary_list'),
+    url(r"^create/$", DiaryCreateView.as_view(), name='diary_create'),
+    url(r"^(?P<id>\d+)/$", DiaryDetailView.as_view(), name='diary_detail'),
+    url(r"^edit/(?P<id>\d+)/$", DiaryUpdateView.as_view(), name='diary_edit'),
+    url(r"^delete/(?P<id>\d+)/$", DiaryDeleteView.as_view(), name='diary_delete'),
 )
