@@ -5,13 +5,13 @@ from django.views.generic.list import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-
+from django.template import RequestContext
 from diary.models import Diary
 from diary.forms import DiaryForm
 from diary.utils import JSONResponseMixin
 
-from django.shortcuts import redirect, get_object_or_404
-from django.http import HttpResponseForbidden
+from django.shortcuts import redirect, get_object_or_404, render_to_response
+from django.http import Http404
 import datetime
 from blogs.decorators import ownership_required
 from django.conf import settings
@@ -74,9 +74,12 @@ class DiaryListView(JSONResponseMixin, MultipleObjectTemplateResponseMixin, Base
         return self.result
 
     def render_to_response(self, context):
-        #if self.request.GET.get('format', 'html') == 'json':
-        return JSONResponseMixin.render_to_response(self, context)
-        #return MultipleObjectTemplateResponseMixin.render_to_response(self, context)
+        if not self.request.is_ajax():
+            raise Http404
+        else:
+            #if self.request.GET.get('format', 'html') == 'json':
+            return JSONResponseMixin.render_to_response(self, context)
+            #return MultipleObjectTemplateResponseMixin.render_to_response(self, context)
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -164,3 +167,12 @@ class DiaryDeleteView(DeleteView):
     @method_decorator(ownership_required(get_owner))
     def dispatch(self, request, *args, **kwargs):
         return super(DiaryDeleteView, self).dispatch(request, *args, **kwargs)
+
+@login_required
+def my_diaries(request):
+    """
+    My Diaries Home Page
+    """
+    ctx = {}
+    template_name = "diary/diary_list.html"
+    return render_to_response(template_name, RequestContext(request, ctx))

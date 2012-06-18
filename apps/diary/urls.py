@@ -1,9 +1,10 @@
 from django.conf.urls.defaults import patterns, url, include
 from django.views.generic import ListView
-from diary.views import DiaryCreateView, DiaryDetailView, DiaryListView, DiaryUpdateView, DiaryDeleteView
+from diary.views import *
 from diary.models import Diary
 
 urlpatterns = patterns('diary.views',
+    url(r"^mine/$", my_diaries, name='my_diaries'),
     url(r"^people/(?P<username>\w+)/$", DiaryListView.as_view(), name='diary_list'),
     url(r"^create/$", DiaryCreateView.as_view(), name='diary_create'),
     url(r"^(?P<id>\d+)/$", DiaryDetailView.as_view(), name='diary_detail'),
