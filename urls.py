@@ -8,10 +8,7 @@ admin.autodiscover()
 
 from pinax.apps.account.openid_consumer import PinaxConsumer
 
-
-
 handler500 = "pinax.views.server_error"
-
 
 urlpatterns = patterns("",
     url(r"^$", "home.views.index", name="home"),
@@ -33,7 +30,6 @@ urlpatterns = patterns("",
     url(r"^diary/", include("diary.urls")),
     url(r"^comments/", include("django.contrib.comments.urls")),
 )
-
 
 if settings.SERVE_MEDIA:
     urlpatterns += patterns("",
