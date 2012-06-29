@@ -229,4 +229,32 @@ if (typeof mymd === 'undefined') {
   } // friends definition ends
   mymd.pins = new pins();
 
+   function diaries(){
+       var getDiaries = function(){
+           var status = new $.Deferred();
+           $("#test").html("test");
+           var diaries = mymd.ajax.get('/diary/people/xinghan3/');
+           diaries.done(function(data){
+               if(data.error) {
+                   status.reject(data.error.code, data.error);
+               } else {
+                   status.resolve(data.diaries_list.status, data.diaries_list);
+               }
+           });
+
+           diaries.fail(function(data){
+               status.reject('NETWORK_FAILED', data);
+           });
+           return status.promise();
+       };
+
+       this.test = function(){
+           var diary = getDiaries();
+           diary.done(function(status, diary){
+               $("#idFeel").html(diary[0].feel);
+               $("#idDate").html(diary[0].date);
+           });
+       };
+   };
+    mymd.diaries = new diaries();
 })(jQuery);

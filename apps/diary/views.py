@@ -1,7 +1,7 @@
 from django.utils.decorators import method_decorator
 from django.utils import simplejson as json
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.views.generic.list import *
+from django.views.generic.list import MultipleObjectTemplateResponseMixin, BaseListView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
@@ -61,7 +61,7 @@ class DiaryListView(JSONResponseMixin, MultipleObjectTemplateResponseMixin, Base
         diaries_content_list = []
         for diary in diaries:
             diary_content = {}
-            diary_content['content'] = diary['body']
+            diary_content['date'] = diary['created_date'].isoformat()
             diary_content['feel'] = diary['feel']
             diaries_content_list.append(diary_content)
         return diaries_content_list
@@ -75,11 +75,9 @@ class DiaryListView(JSONResponseMixin, MultipleObjectTemplateResponseMixin, Base
 
     def render_to_response(self, context):
         if not self.request.is_ajax():
-            raise Http404
+            return MultipleObjectTemplateResponseMixin.render_to_response(self, context)
         else:
-            #if self.request.GET.get('format', 'html') == 'json':
             return JSONResponseMixin.render_to_response(self, context)
-            #return MultipleObjectTemplateResponseMixin.render_to_response(self, context)
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -167,7 +165,7 @@ class DiaryDeleteView(DeleteView):
     @method_decorator(ownership_required(get_owner))
     def dispatch(self, request, *args, **kwargs):
         return super(DiaryDeleteView, self).dispatch(request, *args, **kwargs)
-
+ 
 @login_required
 def my_diaries(request):
     """

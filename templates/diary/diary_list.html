@@ -1,4 +1,5 @@
 {% extends "site_base.html" %}
+{% load staticfiles %}
 {% load i18n %}
 {% block body_class %}diary{% endblock %}
 {% block body %}
@@ -6,6 +7,11 @@
 <a href="{% url diary_create %}">{% trans "Create a Diary" %}</a>
 </div>
 <div id="content">
+<b>Feels: </b><span id="idFeel"></span><br/>
+<b>Date: </b><span id="idDate"></span><br/>
+
+TEST: <span id="test"></span>
+<b>
 <h1> Diaries </h1>
 {% if diaries_list %}
     <ul>
@@ -19,4 +25,10 @@
 <p>{% trans "No Diary Found!" %}</p>
 {% endif %}
 </div>
+<input type="button" onclick="mymd.diaries.getDiaries();" value="Ajax">
+<script>
+  (function () {
+    mymd.diaries.test();
+  })();
+</script>
 {% endblock%}

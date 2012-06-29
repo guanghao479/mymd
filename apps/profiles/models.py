@@ -13,6 +13,11 @@ class Profile(ProfileBase):
         (u'M', u'Male'),
         (u'F', u'Female'),
         )
+    DISEASE_CHOICES = (
+        (u'A', u'Alzheimer\'s'),
+        (u'S', u'Stroke'),
+        )
     city = models.CharField(_("city"), max_length=50)
     gender = models.CharField(max_length=2, choices=GENDER_CHOICES)
     birth_date = models.DateField(null=True)
+    disease = models.CharField(max_length=2, choices=DISEASE_CHOICES)
