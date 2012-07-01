@@ -9,6 +9,9 @@ $ sudo ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib
 $ sudo ln -s /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib
 $ sudo ln -s /usr/lib/x86_64-linux-gnu/libz.so /usr/lib
 
+# Install xapian libraries
+$ sudo apt-get install xapian-core xapian-omega xapian-bindings
+
 # Install virtualenv and pip
 $ sudo apt-get install build-essential python-dev
 $ curl -O https://raw.github.com/pypa/virtualenv/master/virtualenv.py
