@@ -52,8 +52,9 @@ class DiaryListView(JSONResponseMixin, MultipleObjectTemplateResponseMixin, Base
     #paginate_by = settings.PAGINATE_NUM
 
     def get_queryset(self):
-        self.username = self.kwargs.get('username')
-        self.user = get_object_or_404(User, username=self.username)
+
+        self.user = self.request.user
+        self.username = self.user.username
         diaries = Diary.objects.filter(author=self.user)
         return diaries
 
@@ -165,12 +166,3 @@ class DiaryDeleteView(DeleteView):
     @method_decorator(ownership_required(get_owner))
     def dispatch(self, request, *args, **kwargs):
         return super(DiaryDeleteView, self).dispatch(request, *args, **kwargs)
- 
-@login_required
-def my_diaries(request):
-    """
-    My Diaries Home Page
-    """
-    ctx = {}
-    template_name = "diary/diary_list.html"
-    return render_to_response(template_name, RequestContext(request, ctx))

@@ -9,7 +9,7 @@
 <div id="content">
 <b>Feels: </b><span id="idFeel"></span><br/>
 <b>Date: </b><span id="idDate"></span><br/>
-
+<span class="hidden" id="pageuser_username">{{username}}</span>
 TEST: <span id="test"></span>
 <b>
 <h1> Diaries </h1>
@@ -25,10 +25,9 @@ TEST: <span id="test"></span>
 <p>{% trans "No Diary Found!" %}</p>
 {% endif %}
 </div>
-<input type="button" onclick="mymd.diaries.getDiaries();" value="Ajax">
 <script>
   (function () {
-    mymd.diaries.test();
+    mymd.diaries.listDiaries();
   })();
 </script>
 {% endblock%}

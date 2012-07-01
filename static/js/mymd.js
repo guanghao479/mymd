@@ -232,8 +232,7 @@ if (typeof mymd === 'undefined') {
    function diaries(){
        var getDiaries = function(){
            var status = new $.Deferred();
-           $("#test").html("test");
-           var diaries = mymd.ajax.get('/diary/people/xinghan3/');
+           var diaries = mymd.ajax.get('/diary/mine/');
            diaries.done(function(data){
                if(data.error) {
                    status.reject(data.error.code, data.error);
@@ -248,7 +247,7 @@ if (typeof mymd === 'undefined') {
            return status.promise();
        };
 
-       this.test = function(){
+       this.listDiaries = function(){
            var diary = getDiaries();
            diary.done(function(status, diary){
                $("#idFeel").html(diary[0].feel);

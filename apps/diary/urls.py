@@ -4,7 +4,7 @@ from diary.views import *
 from diary.models import Diary
 
 urlpatterns = patterns('diary.views',
-    url(r"^mine/$", my_diaries, name='my_diaries'),
+    url(r"^mine/$", DiaryListView.as_view(), name='diary_json'),
     url(r"^people/(?P<username>\w+)/$", DiaryListView.as_view(), name='diary_list'),
     url(r"^create/$", DiaryCreateView.as_view(), name='diary_create'),
     url(r"^(?P<id>\d+)/$", DiaryDetailView.as_view(), name='diary_detail'),
