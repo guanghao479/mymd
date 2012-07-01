@@ -10,12 +10,10 @@ $ sudo ln -s /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib
 $ sudo ln -s /usr/lib/x86_64-linux-gnu/libz.so /usr/lib
 
 # Install virtualenv and pip
-$ sudo apt-get install python-pip python-dev build-essential
-$ sudo pip install --upgrade pip
-$ sudo pip install --upgrade virtualenv
-
-$ virtualenv mymd-env
-$ source mymd-env/bin/activate
+$ sudo apt-get install build-essential
+$ curl -O https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+$ python virtualenv.py mymd-env
+$ . mymd-env/bin/activate
 (mymd-env)$ pip install -U -r mymd/requirements/project.txt
 
 # Now you can run the project as normal Django project
