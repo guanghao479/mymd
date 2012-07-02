@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from friends.models import *
 from django.utils import simplejson as json
-from friends.signals import friends_connected
+from friends.signals import *
 
 def add_as_friend(request):
     """
@@ -10,6 +10,8 @@ def add_as_friend(request):
     Currently taking AJAX request only
 
     """
+    import pdb; pdb.set_trace()
+
     result = {}
     if not request.is_ajax():
         return Http404
@@ -31,6 +33,7 @@ def add_as_friend(request):
                 result = { "error": { "code": "INVITATION_CREATION_FAILED" } }
             else:
                 result = { "success":True }
+                friends_requested.send(sender=new_inv)
 
     return HttpResponse(json.dumps(result), content_type="application/json")
 
