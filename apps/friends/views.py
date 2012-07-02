@@ -10,8 +10,6 @@ def add_as_friend(request):
     Currently taking AJAX request only
 
     """
-    import pdb; pdb.set_trace()
-
     result = {}
     if not request.is_ajax():
         return Http404
