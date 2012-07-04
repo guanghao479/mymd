@@ -10,7 +10,9 @@ PIL==1.1.7
 South==0.7.4
 django-activity-stream==0.4.3
 django-authority==0.4
+# Django Haystack
 #django-haystack==1.2.7
+-e git+https://github.com/toastdriven/django-haystack.git@master#egg=django-haystack
 django-formwizard==1.0
 
 # Informal requirements, the apps we copied the source code
