@@ -11,7 +11,7 @@ from pinax.apps.account.openid_consumer import PinaxConsumer
 handler500 = "pinax.views.server_error"
 
 urlpatterns = patterns("",
-    url(r"^$", "home.views.index", name="home"),
+    url(r"^$", "home.views.home", name="home"),
     url(r"^admin/invite_user/$", "pinax.apps.signup_codes.views.admin_invite_user", name="admin_invite_user"),
     url(r"^admin/", include(admin.site.urls)),
     url(r"^about/", include("about.urls")),
@@ -29,6 +29,7 @@ urlpatterns = patterns("",
     url(r"^blogs/", include("blogs.urls")),
     url(r"^diary/", include("diary.urls")),
     url(r"^comments/", include("django.contrib.comments.urls")),
+    url(r"^search/", include("haystack.urls")),
 )
 
 if settings.SERVE_MEDIA:

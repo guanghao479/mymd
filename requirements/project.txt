@@ -13,6 +13,12 @@ django-authority==0.4
 # Django Haystack
 #django-haystack==1.2.7
 -e git+https://github.com/toastdriven/django-haystack.git@master#egg=django-haystack
+
+#Haystack dependencies
+requests==0.13.2
+-e git+https://github.com/toastdriven/pyelasticsearch.git@master#egg=pyelasticsearch
+#pyelasticsearch==0.0.6
+
 django-formwizard==1.0
 
 # Informal requirements, the apps we copied the source code

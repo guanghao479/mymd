@@ -38,14 +38,16 @@ DATABASES = {
 }
 
 #Haystack configuration
-HAYSTACK_SITECONF = 'mymd.search_sites'
-HAYSTACK_SEARCH_ENGINE = 'xapian'
-HAYSTACK_XAPIAN_PATH = '/home/xinghan/xapian_index'
-#HAYSTACK_CONNECTIONS = {
-#    'default':{
-#        'ENGINE':'haystack.backends.xapian_backend.XapianEngine', 'PATH': os.path.join(os.path.dirname(__file__), 'xapian_index')
-#    },
-#}
+#HAYSTACK_SITECONF = 'mymd.search_sites'
+#HAYSTACK_SEARCH_ENGINE = 'xapian'
+#HAYSTACK_XAPIAN_PATH = '/home/xinghan/xapian_index'
+HAYSTACK_CONNECTIONS = {
+    'default':{
+        'ENGINE':'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+        },
+}
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -178,7 +180,7 @@ INSTALLED_APPS = [
     "pagination",
     "idios",
     "metron",
-    #"haystack",
+    "haystack",
 
     # Pinax
     "pinax.apps.account",
