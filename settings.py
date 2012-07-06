@@ -38,9 +38,6 @@ DATABASES = {
 }
 
 #Haystack configuration
-#HAYSTACK_SITECONF = 'mymd.search_sites'
-#HAYSTACK_SEARCH_ENGINE = 'xapian'
-#HAYSTACK_XAPIAN_PATH = '/home/xinghan/xapian_index'
 HAYSTACK_CONNECTIONS = {
     'default':{
         'ENGINE':'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
