@@ -16,9 +16,9 @@ from django.contrib.sites.models import Site
 from emailconfirmation.models import EmailAddress
 from timezones.forms import TimeZoneField
 
-from pinax.apps.account.models import Account, PasswordReset
-from pinax.apps.account.signals import user_login_attempt, user_signed_up, user_sign_up_attempt
-from pinax.apps.account.utils import perform_login, change_password
+from account.models import Account, PasswordReset
+from account.signals import user_login_attempt, user_signed_up, user_sign_up_attempt
+from account.utils import perform_login, change_password
 
 
 alnum_re = re.compile(r"^\w+$")

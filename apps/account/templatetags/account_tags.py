@@ -1,7 +1,7 @@
 from django import template
 from django.utils.html import conditional_escape
 
-from pinax.apps.account.utils import user_display
+from account.utils import user_display
 
 
 register = template.Library()

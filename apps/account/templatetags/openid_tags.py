@@ -1,7 +1,7 @@
 from django import template
 from django.core.exceptions import ImproperlyConfigured
 
-from pinax.apps.account.utils import has_openid
+from account.utils import has_openid
 
 
 register = template.Library()
