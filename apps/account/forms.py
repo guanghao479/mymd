@@ -20,6 +20,8 @@ from account.models import Account, PasswordReset
 from account.signals import user_login_attempt, user_signed_up, user_sign_up_attempt
 from account.utils import perform_login, change_password
 
+from profiles.models import Profile
+
 
 alnum_re = re.compile(r"^\w+$")
 
@@ -117,6 +119,15 @@ class LoginForm(GroupForm):
 
 
 class SignupForm(GroupForm):
+
+    GENDER_CHOICES = (
+        (u'M', u'Male'),
+        (u'F', u'Female'),
+        )
+    DISEASE_CHOICES = (
+        (u'A', u'Alzheimer\'s'),
+        (u'S', u'Stroke'),
+        )
     
     username = forms.CharField(
         label = _("Username"),
@@ -137,7 +148,22 @@ class SignupForm(GroupForm):
         required = False,
         widget = forms.HiddenInput()
     )
-    
+    city = forms.CharField(
+        label = _("City"),
+        widget = forms.TextInput()
+    )
+
+    gender = forms.ChoiceField(
+        label = _("Gender"), 
+        choices=GENDER_CHOICES
+    )
+    birth_date = forms.DateField()
+    disease = forms.ChoiceField(
+        label = _("Disease"),
+        choices=DISEASE_CHOICES
+    )
+
+
     def __init__(self, *args, **kwargs):
         super(SignupForm, self).__init__(*args, **kwargs)
         if REQUIRED_EMAIL or EMAIL_VERIFICATION or EMAIL_AUTHENTICATION:
@@ -187,7 +213,18 @@ class SignupForm(GroupForm):
         if commit:
             user.save()
         return user
-    
+
+    def create_profile(self, user, commit=True):
+        profile = Profile()
+        profile.city = self.cleaned_data["city"]
+        profile.gender = self.cleaned_data["gender"]
+        profile.birth_date = self.cleaned_data["birth_date"]
+        profile.disease = self.cleaned_data["disease"]
+        profile.user = user
+        if commit:
+            profile.save()
+        return profile
+
     def login(self, request, user):
         # nasty hack to get get_user to work in Django
         user.backend = "django.contrib.auth.backends.ModelBackend"
@@ -234,6 +271,7 @@ class SignupForm(GroupForm):
                     EmailAddress.objects.add_email(new_user, email)
         else:
             new_user = self.create_user(username)
+            new_profile = self.create_profile(new_user)
             if email:
                 if request and not EMAIL_VERIFICATION:
                     messages.add_message(request, messages.INFO,
@@ -246,6 +284,7 @@ class SignupForm(GroupForm):
         if EMAIL_VERIFICATION:
             new_user.is_active = False
             new_user.save()
+            new_profile.save()
         
         self.after_signup(new_user)
         
