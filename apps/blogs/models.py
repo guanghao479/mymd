@@ -34,4 +34,4 @@ class Post(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('blog_details', [str(self.id)])
+        return ('blog_detail', [str(self.id)])
