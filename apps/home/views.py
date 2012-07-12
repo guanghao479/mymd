@@ -16,14 +16,14 @@ def home(request, **kwargs):
 
     """
     current_user = request.user
-    home_page_user = kwargs.get('username')
-    if current_user == home_page_user:
+    home_page_user = User.objects.get(username=kwargs.get('username'))
+    if current_user.username == home_page_user.username:
         return render_to_response('home/home.html', RequestContext(request,{}))
     else:
         if Friendship.objects.are_friends(current_user, home_page_user):
             return render_to_response('home/home.html', RequestContext(request,{}))
         else:
-            return render_to_response('home/nofriend.html', RequestContext(request, {}))
+            return render_to_response('home/stranger.html', RequestContext(request,{}))
 
-def site_home(request):
+def index(request):
     return render_to_response('home/index.html', RequestContext(request,{}))
