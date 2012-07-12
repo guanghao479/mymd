@@ -117,7 +117,7 @@ MIDDLEWARE_CLASSES = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django_openid.consumer.SessionConsumer",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "pinax.apps.account.middleware.LocaleMiddleware",
+    "account.middleware.LocaleMiddleware",
     "pagination.middleware.PaginationMiddleware",
     "pinax.middleware.security.HideSensistiveFieldsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
@@ -142,7 +142,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
 
     "pinax.core.context_processors.pinax_settings",
 
-    "pinax.apps.account.context_processors.account",
+    "account.context_processors.account",
 
     "notification.context_processors.notification",
     "announcements.context_processors.site_wide_announcements",
@@ -180,10 +180,11 @@ INSTALLED_APPS = [
     "haystack",
 
     # Pinax
-    "pinax.apps.account",
+    #"pinax.apps.account",
     "pinax.apps.signup_codes",
 
     # project
+    "account",
     "about",
     "profiles",
     "south",
@@ -221,7 +222,7 @@ ACCOUNT_EMAIL_AUTHENTICATION = True
 ACCOUNT_UNIQUE_EMAIL = EMAIL_CONFIRMATION_UNIQUE_EMAIL = True
 
 AUTHENTICATION_BACKENDS = [
-    "pinax.apps.account.auth_backends.AuthenticationBackend",
+    "account.auth_backends.AuthenticationBackend",
     "django.contrib.auth.backends.ModelBackend",
     ]
 
