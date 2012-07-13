@@ -9,7 +9,7 @@ from django.shortcuts import redirect, get_object_or_404
 from django.http import HttpResponseForbidden
 import datetime
 from authority.decorators import permission_required_or_403, permission_required
-from blogs.decorators import ownership_required
+from mymdutils.decorators import ownership_required
 from django.conf import settings
 class BlogCreateView(CreateView):
     """

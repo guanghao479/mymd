@@ -4,10 +4,8 @@ from django.shortcuts import redirect
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from haystack.forms import SearchForm
 
-'''
-TODO: move this to a global util app
-'''
 def ownership_required(get_owner_func, login_url='/accounts/login/', redirect_field_name=REDIRECT_FIELD_NAME):
     def decorator(view_func):
         @wraps(view_func, assigned=available_attrs(view_func))
@@ -31,4 +29,14 @@ def ownership_required(get_owner_func, login_url='/accounts/login/', redirect_fi
             else:
                 return view_func(request, *args, **kwargs)
         return _wrapped_view
+    return decorator
+
+# Inject nav_search_form instance to request object
+def add_nav_search_form(function=None, load_all=True, form_class=SearchForm, redirect_url=None):
+    def decorator(view_func):
+        @wraps(view_func, assigned=available_attrs(view_func))
+        def _view(request, *args, **kwargs):
+            request['nav_search_form'] = form_class(load_all=load_all)
+            return view_func(request, *args, **kwargs)
+        return _view
     return decorator

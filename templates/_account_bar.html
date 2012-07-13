@@ -1,8 +1,21 @@
 {% load i18n %}
-
 {% load ifsetting_tag %}
+{% load widget_tweaks %}
+
 <ul class="nav pull-right">
     {% if user.is_authenticated %}
+        <!-- Search Box -->
+        {% if nav_search_form %}
+        <li>
+        <form method="get" action="{% url haystack_search %}" class="navbar-search pull-right">
+            {% csrf_token %}
+            {{ nav_search_form.non_field_errors }}
+            {{ nav_search_form.q.errors }}
+            {{ nav_search_form.q|add_class:"search-query"|attr:"placeholder:Search" }}
+        </form>
+        </li>
+        {% endif %}
+        <!-- Account -->
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 {{ user }}

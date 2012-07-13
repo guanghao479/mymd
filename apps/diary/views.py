@@ -13,7 +13,7 @@ from diary.utils import JSONResponseMixin
 from django.shortcuts import redirect, get_object_or_404, render_to_response
 from django.http import Http404
 import datetime
-from blogs.decorators import ownership_required
+from mymdutils.decorators import ownership_required
 from django.conf import settings
 
 class DiaryCreateView(CreateView):

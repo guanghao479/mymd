@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404, render_to_response
 from django.http import Http404
-from blogs.decorators import ownership_required
+from mymdutils.decorators import ownership_required
 from django.utils.decorators import method_decorator
 
 from profiles.models import Profile

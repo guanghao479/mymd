@@ -146,6 +146,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
 
     "notification.context_processors.notification",
     "announcements.context_processors.site_wide_announcements",
+    "mymdutils.context_processors.search",
 ]
 
 INSTALLED_APPS = [
@@ -183,19 +184,21 @@ INSTALLED_APPS = [
     #"pinax.apps.account",
     "pinax.apps.signup_codes",
 
-    # project
-    "account",
+    # project A->Z
     "about",
-    "profiles",
-    "south",
-    "avatar",
-    "friends",
+    "account",
     "actstream",
-    "stream",
-    "pins",
+    "avatar",
     "blogs",
     "diary",
+    "friends",
     "my_comments",
+    "mymdutils",
+    "pins",
+    "profiles",
+    "south",
+    "stream",
+    'widget_tweaks',
 ]
 
 FIXTURE_DIRS = [

@@ -5,12 +5,13 @@ from django.contrib.auth.models import User
 from idios.utils import get_profile_base
 from django.contrib.auth.decorators import login_required
 from friends.models import Friendship
+from mymdutils.decorators import add_nav_search_form
 
 @login_required
 def home(request, **kwargs):
     """
     Home page for authenticated user. For current user, we display
-    aggregated information page. For user who is current user's 
+    aggregated information page. For user who is current user's
     friend, we display friend home page. For user who is not current
     user's friend we display not friend home page.
 
