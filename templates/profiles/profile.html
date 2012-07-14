@@ -16,13 +16,3 @@
         <p><a id="edit-profile-box" href="{% url profile_edit %}" class="btn">Edit profile</a></p>
     {% endif %}
 {% endblock %}
-
-{% block extra_body %}
-    <script>
-        $(function() {
-            $("#edit-profile-box").modal({
-                backdrop: true
-            });
-        });
-    </script>
-{% endblock %}

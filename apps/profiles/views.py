@@ -17,6 +17,8 @@ class ProfileDetailView(DetailView):
     def get_object(self):
         
         username = self.kwargs.get('username')
+        if username is None:
+            username = self.request.user.username
         profile_class = Profile
         self.page_user = get_object_or_404(User, username=username)
         return get_object_or_404(profile_class, user=self.page_user)
@@ -31,18 +33,19 @@ class ProfileDetailView(DetailView):
         })
         return context
 
-def get_owner(request, *args, **kwargs):
-    return User.objects.get(useranme=kwargs['username'])
+#def get_owner(request, *args, **kwargs):
+#    return User.objects.get(useranme=kwargs['username'])
 
 class ProfileUpdateView(UpdateView):
     
-    template_name = "profile/profile_edit.html"
+    template_name = "profiles/profile_edit.html"
     context_object_name = "profile"
-    
+    form_class = ProfileForm
+
     def get_template_names(self):
         return [self.template_name]
     
-    def get_object(self, queryset=None):
+    def get_object(self):
         profile_class = Profile
         profile = profile_class.objects.get(user=self.request.user)
         return profile
@@ -54,7 +57,7 @@ class ProfileUpdateView(UpdateView):
     
     def form_valid(self, form):
         self.object = form.save()
-        return HttpResponseRedirect(self.get_success_url())
+        return redirect(self.get_success_url())
     
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))
@@ -62,7 +65,6 @@ class ProfileUpdateView(UpdateView):
     def get_success_url(self):
         return self.object.get_absolute_url()
     
-    @method_decorator(ownership_required(get_owner))
     def dispatch(self, request, *args, **kwargs):
         return super(ProfileUpdateView, self).dispatch(request, *args, **kwargs)
 
