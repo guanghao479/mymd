@@ -12,7 +12,6 @@ handler500 = "pinax.views.server_error"
 
 urlpatterns = patterns("",
     url(r"^$", "home.views.index", name="home"),
-    url(r"^(?P<username>[\w\._-]+)/$", "home.views.home", name="person_home"),
     url(r"^admin/invite_user/$", "pinax.apps.signup_codes.views.admin_invite_user", name="admin_invite_user"),
     url(r"^admin/", include(admin.site.urls)),
     url(r"^about/", include("about.urls")),
@@ -31,6 +30,7 @@ urlpatterns = patterns("",
     url(r"^diary/", include("diary.urls")),
     url(r"^comments/", include("django.contrib.comments.urls")),
     url(r"^search/", include("haystack.urls")),
+    url(r"^(?P<username>[\w\._-]+)/$", "home.views.home", name="person_home"),
 )
 
 if settings.SERVE_MEDIA:
