@@ -179,6 +179,7 @@ INSTALLED_APPS = [
     "idios",
     "metron",
     "haystack",
+    "social_auth",
 
     # Pinax
     #"pinax.apps.account",
@@ -245,6 +246,38 @@ DEBUG_TOOLBAR_CONFIG = {
 ACTSTREAM_ACTION_MODELS = ['auth.User',]
 ACTSTREAM_MANAGER = 'actstream.managers.ActionManager'
 
+
+#Django Social Auth
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.twitter.TwitterBackend',
+    'social_auth.backends.facebook.FacebookBackend',
+    'social_auth.backends.google.GoogleOAuthBackend',
+    'social_auth.backends.google.GoogleOAuth2Backend',
+    'social_auth.backends.google.GoogleBackend',
+    'social_auth.backends.yahoo.YahooBackend',
+    'social_auth.backends.contrib.linkedin.LinkedinBackend',
+    'social_auth.backends.contrib.skyrock.SkyrockBackend',
+    'social_auth.backends.contrib.flickr.FlickrBackend',
+    'social_auth.backends.contrib.instagram.InstagramBackend',
+    'social_auth.backends.contrib.github.GithubBackend',
+    'social_auth.backends.contrib.yandex.YandexBackend',
+    'social_auth.backends.contrib.yahoo.YahooOAuthBackend',
+    'social_auth.backends.contrib.foursquare.FoursquareBackend',
+    'social_auth.backends.OpenIDBackend',
+    'social_auth.backends.contrib.live.LiveBackend',
+    'social_auth.backends.contrib.livejournal.LiveJournalBackend',
+    'social_auth.backends.contrib.douban.DoubanBackend',
+    'social_auth.backends.browserid.BrowserIDBackend',
+    'social_auth.backends.contrib.vkontakte.VKontakteBackend',
+    'social_auth.backends.contrib.yandex.YandexOAuth2Backend',
+    'social_auth.backends.contrib.yandex.YaruBackend',
+    'social_auth.backends.contrib.odnoklassniki.OdnoklassnikiBackend',
+    'social_auth.backends.contrib.vkontakte.VKontakteOAuth2Backend',
+    'social_auth.backends.contrib.mailru.MailruBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+GOOGLE_CONSUMER_KEY = 'lktest.sinaapp.com'
+GOOGLE_CONSUMER_SECRET = 'Cq7ESWzLcmdTrRW7RZpor_Oo'
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.

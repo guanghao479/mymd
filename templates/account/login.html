@@ -28,6 +28,7 @@
                 <p>
                     <a href="{% url acct_passwd_reset %}">{% trans "Forgot password?" %}</a>
                 </p>
+                <p><a href="/account/login/google-oauth/">{% trans "用Google帐户登陆" %}</a></p>
             {% endif %}
 
             <form method="POST" action="{% url acct_login %}" autocapitalize="off" class="form-horizontal">

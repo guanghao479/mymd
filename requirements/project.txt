@@ -11,6 +11,7 @@ South==0.7.4
 django-activity-stream==0.4.3
 django-authority==0.4
 django-widget-tweaks
+django-social-auth
 # Django Haystack
 #django-haystack==1.2.7
 -e git+https://github.com/toastdriven/django-haystack.git@master#egg=django-haystack

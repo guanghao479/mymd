@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls.defaults import patterns, url
+from social_auth.views import auth, complete, disconnect
 
 
 #if settings.ACCOUNT_OPEN_SIGNUP:
@@ -12,6 +13,8 @@ urlpatterns = patterns("",
     url(r"^email/$", "account.views.email", name="acct_email"),
     url(r"^signup/$", "account.views.signup", name="acct_signup"),
     url(r"^login/$", "account.views.login", name="acct_login"),
+    url(r'^login/(?P<backend>[^/]+)/$', auth, name='socialauth_begin'),
+    url(r'^login/complete/(?P<backend>[^/]+)/$', complete, name='socialauth_complete'),
     url(r"^login/openid/$", "account.views.login", {"associate_openid": True}, name="acct_login_openid"),
     url(r"^password_change/$", "account.views.password_change", name="acct_passwd"),
     url(r"^password_set/$", "account.views.password_set", name="acct_passwd_set"),
