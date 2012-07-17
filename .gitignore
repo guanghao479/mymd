@@ -4,5 +4,5 @@
 dev.db
 settings_local.py
 migrations/
-site_media/media/avatars/
+site_media/
 .#*

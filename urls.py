@@ -37,3 +37,12 @@ if settings.SERVE_MEDIA:
     urlpatterns += patterns("",
         url(r"", include("staticfiles.urls")),
     )
+    
+if settings.DEBUG:
+    urlpatterns += patterns("",
+        (
+        r'^site_media/media/(?P<path>.*)$',
+        'django.views.static.serve',
+        {'document_root': settings.MEDIA_ROOT}
+        ),
+    )

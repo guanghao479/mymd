@@ -246,7 +246,6 @@ DEBUG_TOOLBAR_CONFIG = {
 ACTSTREAM_ACTION_MODELS = ['auth.User',]
 ACTSTREAM_MANAGER = 'actstream.managers.ActionManager'
 
-
 #Django Social Auth
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.twitter.TwitterBackend',

@@ -1,4 +1,5 @@
 {% extends "profiles/base.html" %}
+{% load avatar_tags %}
 
 {% load i18n %}
 {% load account_tags %}
@@ -9,6 +10,8 @@
     {% user_display page_user as page_user_display %}
     
     <h1>{% blocktrans %}Profile for {{ page_user_display }}{% endblocktrans %}</h1>
+
+    {% avatar page_user %}
     
     {% include "profiles/_profile_info.html" %}
     
