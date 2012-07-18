@@ -9,6 +9,8 @@
 
 <h1>{% blocktrans %}{{ blog_author }}'s Blogs{% endblocktrans %}</h1>
 {% include "blogs/_blog_info.html" %}
+<a href="{% url blog_edit blog.pk %}">Edit</a> | 
+<a href="{% url blog_delete blog.pk %}">Delete</a>
 {% render_comment_list for blog %}
 {% render_comment_form for blog %}
 {% endblock %}
