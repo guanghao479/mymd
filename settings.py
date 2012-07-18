@@ -176,7 +176,6 @@ INSTALLED_APPS = [
     "emailconfirmation",
     "announcements",
     "pagination",
-    "idios",
     "metron",
     "haystack",
     "social_auth",
@@ -225,11 +224,6 @@ ACCOUNT_EMAIL_VERIFICATION = False
 ACCOUNT_EMAIL_AUTHENTICATION = True
 ACCOUNT_UNIQUE_EMAIL = EMAIL_CONFIRMATION_UNIQUE_EMAIL = True
 
-AUTHENTICATION_BACKENDS = [
-    "account.auth_backends.AuthenticationBackend",
-    "django.contrib.auth.backends.ModelBackend",
-    ]
-
 LOGIN_URL = "/account/login/" # @@@ any way this can be a url name?
 LOGIN_REDIRECT_URLNAME = "what_next"
 LOGOUT_REDIRECT_URLNAME = "home"
@@ -246,7 +240,7 @@ DEBUG_TOOLBAR_CONFIG = {
 ACTSTREAM_ACTION_MODELS = ['auth.User',]
 ACTSTREAM_MANAGER = 'actstream.managers.ActionManager'
 
-#Django Social Auth
+#Django Authentication Backends
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.twitter.TwitterBackend',
     'social_auth.backends.facebook.FacebookBackend',
@@ -274,6 +268,7 @@ AUTHENTICATION_BACKENDS = (
     'social_auth.backends.contrib.vkontakte.VKontakteOAuth2Backend',
     'social_auth.backends.contrib.mailru.MailruBackend',
     'django.contrib.auth.backends.ModelBackend',
+    'account.auth_backends.AuthenticationBackend',
 )
 GOOGLE_CONSUMER_KEY = 'lktest.sinaapp.com'
 GOOGLE_CONSUMER_SECRET = 'Cq7ESWzLcmdTrRW7RZpor_Oo'

@@ -284,7 +284,6 @@ class SignupForm(GroupForm):
         if EMAIL_VERIFICATION:
             new_user.is_active = False
             new_user.save()
-            new_profile.save()
         
         self.after_signup(new_user)
         
