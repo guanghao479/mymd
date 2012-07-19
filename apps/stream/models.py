@@ -1,6 +1,7 @@
 from django.db import models
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from experiences.signals import experience_posted
 from friends.models import FriendshipInvitation
 from friends.signals import *
 from actstream import action
@@ -13,6 +14,6 @@ def friend_connected_action(sender, **kwargs):
     follow(sender.from_user, sender.to_user)
     follow(sender.to_user, sender.from_user)
 
-@receiver(friends_requested)
-def friend_requested_action(sender, **kwargs):
-    action.send(sender.from_user, verb=u'requested', action_object=sender.to_user)
+@receiver(experience_posted)
+def experience_posted_action(sender, **kwargs):
+    action.send(sender.author, verb=u'posted', action_object=sender)

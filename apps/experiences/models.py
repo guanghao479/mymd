@@ -3,6 +3,8 @@ from experiences.managers import ExperiencePublishManager
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 import datetime
+from experiences.signals import experience_posted
+from django.dispatch import receiver
 
 class Post(models.Model):
     """
@@ -35,3 +37,9 @@ class Post(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('experience_detail', [str(self.id)])
+
+
+@receiver(models.signals.post_save, sender=Post)
+def post_post_save_handler(sender, instance, created, **kwargs):
+    if (created):
+        experience_posted.send(sender=instance)

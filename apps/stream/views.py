@@ -7,9 +7,19 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from actstream.models import user_stream, actor_stream
 
+def stream(request):
+    result = {}
+    if not request.is_ajax():
+        return render_to_response('stream/index.html', RequestContext(request,{}))
+    else:
+        if not request.user.is_authenticated():
+            result = { "error": { "code" : "NOT_AUTHENTICATED", }, }
+        else:
+            result = { "success" : True, "stream" : stream_to_activities(user_stream(request.user)) }
+        return HttpResponse(json.dumps(result), content_type="application/json")
+
 def stream_mine(request):
     result = {}
-    #import pdb; pdb.set_trace()
     if not request.is_ajax():
         return render_to_response('stream/mine.html', RequestContext(request,{}))
     else:

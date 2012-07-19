@@ -285,6 +285,16 @@ if (typeof mymd === 'undefined') {
         return;
       });
     };
+    this.initStream = function() {
+      var stream = mymd.ajax.getDataObject('/stream/', 'stream');
+      stream.done(function(status, stream){
+        renderStreamMine(stream);
+      });
+      stream.fail(function(data){
+        //TODO: ERROR HANDLING
+        return;
+      });
+    };
   }
   mymd.stream = new stream();
 

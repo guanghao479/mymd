@@ -22,6 +22,7 @@
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
+                <li><a href="{% url stream_mine %}"><i class="icon-random"></i> My Stream</a></li>
                 <li><a href="{% url acct_email %}"><i class="icon-user"></i> Account</a></li>
                 {% if user.is_staff %}
                     <li><a href="{% url admin:index %}"><i class="icon-cog"></i> Admin</a></li>
