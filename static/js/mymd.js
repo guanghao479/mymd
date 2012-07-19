@@ -263,7 +263,9 @@ if (typeof mymd === 'undefined') {
     // private variables
     var renderActivity = function(activity) {
       var activityDiv = $('<div class="activity"></div>');
-      activityDiv.text(activity.string);
+      var descriptionArray = [activity.actor, activity.verb, activity.action_object]
+      var description = descriptionArray.join(' ');
+      activityDiv.text(description);
       $('#stream-activities').append(activityDiv);
     }
     var renderStreamMine = function (stream) {

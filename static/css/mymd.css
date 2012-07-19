@@ -37,3 +37,9 @@ div.pin div.others {
   margin-top:-5px;
   padding:0 5px 0 0;
 }
+
+div.activity {
+  border-bottom: 1px dotted;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
