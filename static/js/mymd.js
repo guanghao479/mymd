@@ -30,6 +30,21 @@ if (typeof mymd === 'undefined') {
     this.post = function(url, data) {
       return call(url, 'POST', data);
     };
+    this.getDataObject = function(url, data) {
+      var status = new $.Deferred();
+      var promise = mymd.ajax.get(url);
+      promise.done(function(result) {
+        if (result.error) {
+          status.reject(result.error.code, result.error);
+        } else {
+          status.resolve(result[data]['status'], result[data]);
+        }
+      });
+      promise.fail(function(result) {
+        status.reject('NETWORK_FAILED', result);
+      });
+      return status.promise();
+    };
   }
   mymd.ajax = new ajax();
 
@@ -229,31 +244,46 @@ if (typeof mymd === 'undefined') {
   } // friends definition ends
   mymd.pins = new pins();
 
-   function diaries(){
-       var getDiaries = function(){
-           var status = new $.Deferred();
-           var diaries = mymd.ajax.get('/diary/mine/');
-           diaries.done(function(data){
-               if(data.error) {
-                   status.reject(data.error.code, data.error);
-               } else {
-                   status.resolve(data.diaries_list.status, data.diaries_list);
-               }
-           });
+  function diaries(){
+    var getDiaries = mymd.ajax.getDataObject('/diary/mine/', 'diaries_list');
 
-           diaries.fail(function(data){
-               status.reject('NETWORK_FAILED', data);
-           });
-           return status.promise();
-       };
+    this.listDiaries = function(){
+       var diary = getDiaries();
+       diary.done(function(status, diary){
+           $("#idFeel").html(diary[0].feel);
+           $("#idDate").html(diary[0].date);
+       });
+    };
+  };
+  mymd.diaries = new diaries();
 
-       this.listDiaries = function(){
-           var diary = getDiaries();
-           diary.done(function(status, diary){
-               $("#idFeel").html(diary[0].feel);
-               $("#idDate").html(diary[0].date);
-           });
-       };
-   };
-    mymd.diaries = new diaries();
+  // define mymd.stream to represent stream specific functionalities
+  // which is a stream of activities
+  function stream() {
+    // private variables
+    var renderActivity = function(activity) {
+      var activityDiv = $('<div class="activity"></div>');
+      activityDiv.text(activity.string);
+      $('#stream-activities').append(activityDiv);
+    }
+    var renderStreamMine = function (stream) {
+      var i = 0;
+      for (i=0;i<stream.length;i++) {
+        renderActivity(stream[i]);
+      }
+    };
+    // public variables
+    this.initStreamMine = function() {
+      var stream = mymd.ajax.getDataObject('/stream/mine/', 'stream');
+      stream.done(function(status, stream){
+        renderStreamMine(stream);
+      });
+      stream.fail(function(data){
+        //TODO: ERROR HANDLING
+        return;
+      });
+    };
+  }
+  mymd.stream = new stream();
+
 })(jQuery);

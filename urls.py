@@ -2,10 +2,8 @@ import authority
 from django.conf import settings
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
-from idios.views import ProfileDetailView
 from django.contrib import admin
 admin.autodiscover()
-
 from pinax.apps.account.openid_consumer import PinaxConsumer
 
 handler500 = "pinax.views.server_error"
@@ -30,6 +28,7 @@ urlpatterns = patterns("",
     url(r"^diary/", include("diary.urls")),
     url(r"^comments/", include("django.contrib.comments.urls")),
     url(r"^search/", include("haystack.urls")),
+    url(r"^stream/", include("stream.urls")),
     url(r"^(?P<username>[\w\._-]+)/$", "home.views.home", name="person_home"),
 )
 

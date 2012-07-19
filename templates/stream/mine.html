@@ -1,0 +1,32 @@
+{% extends "site_base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load bootstrap_tags %}
+{% load ifsetting_tag %}
+{% load account_tags %}
+
+{% block head_title %}{% trans "Experience Sharing" %}{% endblock %}
+{% block body_class %}home{% endblock %}
+
+{% block body %}
+<div class="container pin-holder">
+  <div id="stream-container" class="row">
+    <div id="stream-filters" class="span3">
+    	{% trans "stream-filter" %}
+    </div>
+    <div id="stream-activities" class="span8">
+    	{% trans "stream-activities" %}
+    </div>
+    <div id="stream-ads" class="span1">
+    	{% trans "stream-ads" %}
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var static_url = "{{ STATIC_URL }}";
+    mymd.stream.initStreamMine();
+  })();
+</script>
+{% endblock %}
