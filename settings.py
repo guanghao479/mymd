@@ -189,7 +189,7 @@ INSTALLED_APPS = [
     "account",
     "actstream",
     "avatar",
-    "blogs",
+    "experiences",
     "diary",
     "friends",
     "my_comments",

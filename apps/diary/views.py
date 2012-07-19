@@ -116,7 +116,7 @@ class DiaryUpdateView(UpdateView):
         return '/'
 
     def get_object(self, queryset=None):
-        blog_class = Diary
+        experience_class = Diary
         diary_id = self.kwargs.get('id')
         diary = Diary.objects.get(pk=diary_id)
         self.author = diary.author

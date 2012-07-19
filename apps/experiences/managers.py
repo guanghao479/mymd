@@ -1,6 +1,6 @@
 from django.db.models import Manager
 
-class BlogPublishManager(Manager):
+class ExperiencePublishManager(Manager):
     """Returns the all posts."""
 
     def published(self):

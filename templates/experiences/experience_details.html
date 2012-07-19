@@ -1,0 +1,16 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load comments %}
+{% load account_tags %}
+
+{% block body_class %}experience{% endblock %}
+{% block body %}
+
+<h1>{% blocktrans %}{{ experience_author }}'s experiences{% endblocktrans %}</h1>
+{% include "experiences/_experience_info.html" %}
+<a href="{% url experience_edit experience.pk %}">Edit</a> | 
+<a href="{% url experience_delete experience.pk %}">Delete</a>
+{% render_comment_list for experience %}
+{% render_comment_form for experience %}
+{% endblock %}

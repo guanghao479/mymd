@@ -2,13 +2,13 @@ from django.db import models
 from diary.managers import DiaryManager
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
-from blogs.models import Post
+from experiences.models import Post
 import datetime
 
 class Diary(models.Model):
     """
     Model for user diary.
-    Each diary includes rate of motion, and a blog.
+    Each diary includes rate of motion, and an experience.
     """
     FEEL_CHOICES = (
         (1, _('Great')),

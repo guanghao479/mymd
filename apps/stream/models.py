@@ -3,7 +3,8 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from friends.models import FriendshipInvitation
 from friends.signals import *
-from actstream import action, follow
+from actstream import action
+from actstream.actions import follow
 
 @receiver(friends_connected)
 def friend_connected_action(sender, **kwargs):

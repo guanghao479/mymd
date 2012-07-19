@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django import forms
-from blogs.models import Post
+from experiences.models import Post
 
 
 class PostForm(forms.ModelForm):

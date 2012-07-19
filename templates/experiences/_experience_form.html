@@ -1,6 +1,6 @@
 {% load bootstrap_tags %}
 
-<form method="POST" action="{% url blog_create %}">
+<form method="POST" action="{% url experience_create %}">
 <fieldset>
 {% csrf_token %}
 {{ form|as_bootstrap }}

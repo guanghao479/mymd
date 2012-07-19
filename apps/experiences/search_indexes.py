@@ -1,6 +1,6 @@
 import datetime
 from haystack import indexes
-from blogs.models import Post
+from experiences.models import Post
 
 class PostIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)

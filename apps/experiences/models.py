@@ -1,12 +1,12 @@
 from django.db import models
-from blogs.managers import BlogPublishManager
+from experiences.managers import ExperiencePublishManager
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 import datetime
 
 class Post(models.Model):
     """
-    The blog post entry class.
+    The experience post entry class.
     """
     STATUS_CHOICES = (
         (1, _('Draft')),
@@ -20,12 +20,12 @@ class Post(models.Model):
     created_date = models.DateTimeField(_('created'), auto_now_add=True)
     modified_date = models.DateTimeField(_('modified'), auto_now=True)
 
-    objects = BlogPublishManager()
+    objects = ExperiencePublishManager()
 
     class Meta:
         verbose_name = _('post')
         verbose_name_plural = _('posts')
-        db_table = 'blog_posts'
+        db_table = 'experience_posts'
         ordering = ('-publish_date',)
         get_latest_by = 'publish'
 
@@ -34,4 +34,4 @@ class Post(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('blog_detail', [str(self.id)])
+        return ('experience_detail', [str(self.id)])
