@@ -271,8 +271,9 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'account.auth_backends.AuthenticationBackend',
 )
-GOOGLE_CONSUMER_KEY = 'lktest.sinaapp.com'
-GOOGLE_CONSUMER_SECRET = 'Cq7ESWzLcmdTrRW7RZpor_Oo'
+
+#GOOGLE_CONSUMER_KEY = 'lktest.sinaapp.com'
+#GOOGLE_CONSUMER_SECRET = 'Cq7ESWzLcmdTrRW7RZpor_Oo'
 
 DOUBAN_CONSUMER_KEY = '094e0fa52914923c1bea2eef7b3db6b4'
 DOUBAN_CONSUMER_SECRET = 'f090f610a931d71f'
