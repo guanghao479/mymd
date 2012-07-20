@@ -111,7 +111,17 @@ def ignore(request):
     return HttpResponse(json.dumps(result), content_type="application/json")
 
 def my_friends(request):
-    pass
+    result = {}
+    if not request.is_ajax():
+        return Http404
+
+    if not request.user.is_authenticated():
+        result = { "error": { "code" : "NOT_AUTHENTICATED", }, }
+    else:
+        page_user = request.user
+        friends = Friendship.objects.friends_for_user(page_user)
+        result = { "friends": {"friends_list": friends, }, }
+    return HttpResponse(json.dumps(result), content_type="application/json")
 
 def status(request):
     result = {}

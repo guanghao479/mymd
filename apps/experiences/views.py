@@ -5,12 +5,14 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from experiences.forms import PostForm
 from experiences.models import Post
+from friends.models import Friendship, FriendshipManager
 from django.shortcuts import redirect, get_object_or_404
 from django.http import HttpResponseForbidden
 import datetime
 from authority.decorators import permission_required_or_403, permission_required
 from mymdutils.decorators import ownership_required
 from django.conf import settings
+
 class ExperienceCreateView(CreateView):
     """
     Create a new experience.
@@ -54,6 +56,11 @@ class ExperienceListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ExperienceListView, self).get_context_data(**kwargs)
+        friends_object_list = Friendship.objects.friends_for_user(self.user)
+        friends = []
+        for friend in friends_object_list:
+            friends.append(friend.get('friend'))
+        context['friends'] = friends
         context['username'] = self.username
         return context
 

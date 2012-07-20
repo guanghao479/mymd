@@ -1,5 +1,6 @@
 {% extends "site_base.html" %}
 {% load i18n %}
+{% load avatar_tags %}
 {% block body_class %}experience{% endblock %}
 {% block body %}
 <h1> Experiences </h1>
@@ -20,6 +21,10 @@
 		</div>
 		<div class="span2">
 			<a href="{% url experience_create %}">{% trans "Create an Experience" %}</a>
+			{% for friend in friends %}
+				{% avatar friend %}
+				<a href="{% url profile_detail friend.username %}">{{ friend.username }}</a>
+			{% endfor %}
 		</div>
 	</div>
 </dviv>
