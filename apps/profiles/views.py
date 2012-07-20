@@ -5,9 +5,12 @@ from django.shortcuts import redirect, get_object_or_404, render_to_response
 from django.http import Http404
 from mymdutils.decorators import ownership_required
 from django.utils.decorators import method_decorator
-
+from django.conf import settings
 from profiles.models import Profile
 from profiles.forms import ProfileForm
+
+if settings.DEBUG:
+    import pdb
 
 class ProfileDetailView(DetailView):
     
@@ -15,7 +18,6 @@ class ProfileDetailView(DetailView):
     context_object_name = 'profile'
     
     def get_object(self):
-        
         username = self.kwargs.get('username')
         if username is None:
             username = self.request.user.username
