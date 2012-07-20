@@ -247,6 +247,7 @@ AUTHENTICATION_BACKENDS = (
     'social_auth.backends.google.GoogleOAuthBackend',
     'social_auth.backends.google.GoogleOAuth2Backend',
     'social_auth.backends.google.GoogleBackend',
+    'social_auth.backends.contrib.douban.DoubanBackend',
     'social_auth.backends.yahoo.YahooBackend',
     'social_auth.backends.contrib.linkedin.LinkedinBackend',
     'social_auth.backends.contrib.skyrock.SkyrockBackend',
@@ -272,6 +273,12 @@ AUTHENTICATION_BACKENDS = (
 )
 GOOGLE_CONSUMER_KEY = 'lktest.sinaapp.com'
 GOOGLE_CONSUMER_SECRET = 'Cq7ESWzLcmdTrRW7RZpor_Oo'
+
+DOUBAN_CONSUMER_KEY = '094e0fa52914923c1bea2eef7b3db6b4'
+DOUBAN_CONSUMER_SECRET = 'f090f610a931d71f'
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/about/what_next'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/about/what_next'
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
