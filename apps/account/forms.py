@@ -128,7 +128,7 @@ class SignupForm(GroupForm):
         (u'A', u'Alzheimer\'s'),
         (u'S', u'Stroke'),
         )
-    
+
     username = forms.CharField(
         label = _("Username"),
         max_length = 30,
@@ -154,10 +154,14 @@ class SignupForm(GroupForm):
     )
 
     gender = forms.ChoiceField(
-        label = _("Gender"), 
+        label = _("Gender"),
         choices=GENDER_CHOICES
     )
-    birth_date = forms.DateField()
+    birth_date = forms.DateField(
+        widget = forms.TextInput(
+            attrs = { 'data-date-format':'mm/dd/yyyy', 'class':'datepicker', }
+        ),
+    )
     disease = forms.ChoiceField(
         label = _("Disease"),
         choices=DISEASE_CHOICES
@@ -172,7 +176,7 @@ class SignupForm(GroupForm):
         else:
             self.fields["email"].label = ugettext("Email (optional)")
             self.fields["email"].required = False
-    
+
     def clean_username(self):
         if not alnum_re.search(self.cleaned_data["username"]):
             raise forms.ValidationError(_("Usernames can only contain letters, numbers and underscores."))
@@ -181,7 +185,7 @@ class SignupForm(GroupForm):
         except User.DoesNotExist:
             return self.cleaned_data["username"]
         raise forms.ValidationError(_("This username is already taken. Please choose another."))
-    
+
     def clean_email(self):
         value = self.cleaned_data["email"]
         if UNIQUE_EMAIL or EMAIL_AUTHENTICATION:
