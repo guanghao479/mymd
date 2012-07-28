@@ -21,8 +21,7 @@ from account.signals import user_login_attempt, user_signed_up, user_sign_up_att
 from account.utils import perform_login, change_password
 
 from profiles.models import Profile
-from staticapps.models import Address
-from staticapps.models import Disease
+from staticapps.models import Address, Disease, Gender
 
 alnum_re = re.compile(r"^\w+$")
 
@@ -121,11 +120,6 @@ class LoginForm(GroupForm):
 
 class SignupForm(GroupForm):
 
-    GENDER_CHOICES = (
-        (u'M', u'Male'),
-        (u'F', u'Female'),
-        )
-
     username = forms.CharField(
         label = _("Username"),
         max_length = 30,
@@ -149,9 +143,8 @@ class SignupForm(GroupForm):
         label = _("Address")
     )
 
-    gender = forms.ChoiceField(
+    gender = forms.CharField(
         label = _("Gender"),
-        choices=GENDER_CHOICES
     )
     birth_date = forms.DateField(
         widget = forms.TextInput(
@@ -170,6 +163,7 @@ class SignupForm(GroupForm):
             self.fields["email"].required = True
             self.fields["address"] = forms.ModelChoiceField(queryset = Address.objects.all(), empty_label=None)
             self.fields["disease"] = forms.ModelChoiceField(queryset = Disease.objects.all(), empty_label=None)
+            self.fields["gender"] = forms.ModelChoiceField(queryset = Gender.objects.all(), empty_label=None)
         else:
             self.fields["email"].label = ugettext("Email (optional)")
             self.fields["email"].required = False

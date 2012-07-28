@@ -40,5 +40,19 @@
 			"description": "中风",
 			"incidence":10
 		}
+	},
+		{
+		"pk":1,
+		"model": "staticapps.gender",
+		"fields": {
+			"type": "男"
+		}
+	},
+	{
+		"pk":2,
+		"model": "staticapps.gender",
+		"fields": {
+			"type": "女"
+		}
 	}
 ]

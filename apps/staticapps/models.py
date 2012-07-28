@@ -33,3 +33,17 @@ class Disease(models.Model):
 	def __unicode__(self):
 		return self.name
 
+
+class Gender(models.Model):
+	"""
+	"""
+	type = models.CharField(max_length=2)
+
+	class Meta:
+		verbose_name = _('gender')
+		verbose_name_plural = _('gender')
+
+	def __unicode__(self):
+		return self.type
+
+
