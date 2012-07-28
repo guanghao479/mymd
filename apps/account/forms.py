@@ -22,6 +22,7 @@ from account.utils import perform_login, change_password
 
 from profiles.models import Profile
 from staticapps.models import Address
+from staticapps.models import Disease
 
 alnum_re = re.compile(r"^\w+$")
 
@@ -124,10 +125,6 @@ class SignupForm(GroupForm):
         (u'M', u'Male'),
         (u'F', u'Female'),
         )
-    DISEASE_CHOICES = (
-        (u'A', u'Alzheimer\'s'),
-        (u'S', u'Stroke'),
-        )
 
     username = forms.CharField(
         label = _("Username"),
@@ -149,8 +146,7 @@ class SignupForm(GroupForm):
         widget = forms.HiddenInput()
     )
     address = forms.CharField(
-        label = _("Address"),
-        widget = forms.TextInput()
+        label = _("Address")
     )
 
     gender = forms.ChoiceField(
@@ -162,9 +158,8 @@ class SignupForm(GroupForm):
             attrs = { 'data-date-format':'mm/dd/yyyy', 'class':'datepicker', }
         ),
     )
-    disease = forms.ChoiceField(
-        label = _("Disease"),
-        choices=DISEASE_CHOICES
+    disease = forms.CharField(
+        label = _("Disease")
     )
 
 
@@ -174,6 +169,7 @@ class SignupForm(GroupForm):
             self.fields["email"].label = ugettext("Email")
             self.fields["email"].required = True
             self.fields["address"] = forms.ModelChoiceField(queryset = Address.objects.all(), empty_label=None)
+            self.fields["disease"] = forms.ModelChoiceField(queryset = Disease.objects.all(), empty_label=None)
         else:
             self.fields["email"].label = ugettext("Email (optional)")
             self.fields["email"].required = False

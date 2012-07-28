@@ -22,5 +22,23 @@
 			"x_coodinate": 0,
 			"y_coodinate": 0
 		}
+	},
+	{
+		"pk":1,
+		"model": "staticapps.disease",
+		"fields": {
+			"name": "老年痴呆",
+			"description": "老年痴呆",
+			"incidence":10
+		}
+	},
+	{
+		"pk":2,
+		"model": "staticapps.disease",
+		"fields": {
+			"name": "中风",
+			"description": "中风",
+			"incidence":10
+		}
 	}
 ]

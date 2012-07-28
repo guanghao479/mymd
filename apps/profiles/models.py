@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from staticapps.models import Address
+from staticapps.models import Disease
 
 class Profile(models.Model):
     """
@@ -13,14 +14,11 @@ class Profile(models.Model):
         (u'M', u'Male'),
         (u'F', u'Female'),
         )
-    DISEASE_CHOICES = (
-        (u'A', u'Alzheimer\'s'),
-        (u'S', u'Stroke'),
-        )
+
     address = models.ForeignKey(Address)
+    disease = models.ForeignKey(Disease)
     gender = models.CharField(max_length=2, choices=GENDER_CHOICES)
     birth_date = models.DateField(null=True)
-    disease = models.CharField(max_length=2, choices=DISEASE_CHOICES)
 
     class Meta:
         verbose_name = _("profile")
