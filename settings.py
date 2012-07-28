@@ -199,6 +199,7 @@ INSTALLED_APPS = [
     "south",
     "stream",
     'widget_tweaks',
+    "staticapps",
 ]
 
 FIXTURE_DIRS = [

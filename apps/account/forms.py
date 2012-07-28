@@ -21,7 +21,7 @@ from account.signals import user_login_attempt, user_signed_up, user_sign_up_att
 from account.utils import perform_login, change_password
 
 from profiles.models import Profile
-
+from staticapps.models import Address
 
 alnum_re = re.compile(r"^\w+$")
 
@@ -148,8 +148,8 @@ class SignupForm(GroupForm):
         required = False,
         widget = forms.HiddenInput()
     )
-    city = forms.CharField(
-        label = _("City"),
+    address = forms.CharField(
+        label = _("Address"),
         widget = forms.TextInput()
     )
 
@@ -173,6 +173,7 @@ class SignupForm(GroupForm):
         if REQUIRED_EMAIL or EMAIL_VERIFICATION or EMAIL_AUTHENTICATION:
             self.fields["email"].label = ugettext("Email")
             self.fields["email"].required = True
+            self.fields["address"] = forms.ModelChoiceField(queryset = Address.objects.all(), empty_label=None)
         else:
             self.fields["email"].label = ugettext("Email (optional)")
             self.fields["email"].required = False
@@ -220,7 +221,7 @@ class SignupForm(GroupForm):
 
     def create_profile(self, user, commit=True):
         profile = Profile()
-        profile.city = self.cleaned_data["city"]
+        profile.address = self.cleaned_data["address"]
         profile.gender = self.cleaned_data["gender"]
         profile.birth_date = self.cleaned_data["birth_date"]
         profile.disease = self.cleaned_data["disease"]

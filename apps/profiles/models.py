@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
+from staticapps.models import Address
 
 class Profile(models.Model):
     """
@@ -16,7 +17,7 @@ class Profile(models.Model):
         (u'A', u'Alzheimer\'s'),
         (u'S', u'Stroke'),
         )
-    city = models.CharField(_("city"), max_length=50)
+    address = models.ForeignKey(Address)
     gender = models.CharField(max_length=2, choices=GENDER_CHOICES)
     birth_date = models.DateField(null=True)
     disease = models.CharField(max_length=2, choices=DISEASE_CHOICES)
