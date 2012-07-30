@@ -30,14 +30,14 @@ if (typeof mymd === 'undefined') {
     this.post = function(url, data) {
       return call(url, 'POST', data);
     };
-    this.getDataObject = function(url, data) {
+    this.getDataObject = function(url, resultDataKey, requestData) {
       var status = new $.Deferred();
-      var promise = mymd.ajax.get(url);
+      var promise = mymd.ajax.get(url, requestData);
       promise.done(function(result) {
         if (result.error) {
           status.reject(result.error.code, result.error);
         } else {
-          status.resolve(result[data]['status'], result[data]);
+          status.resolve(result[resultDataKey]['status'], result[data]);
         }
       });
       promise.fail(function(result) {
@@ -52,27 +52,11 @@ if (typeof mymd === 'undefined') {
   // define mymd.friends to represent user-related friends data
   function friends() {
     // private variables
-    var getStatus = function (to_user) {
-      var status = new $.Deferred();
-      var data = {
+    var renderWidget = function(to_user) {
+      var requestData = {
         'to_user'   : to_user
       }
-      var promise = mymd.ajax.get('/friend/status/', data);
-      promise.done(function(data) {
-        if (data.error) {
-          status.reject(data.error.code, data.error);
-        } else {
-          status.resolve(data.friends.status, data.friends);
-        }
-      });
-      promise.fail(function(data) {
-        status.reject('NETWORK_FAILED', data);
-      });
-      return status.promise();
-    };
-
-    var renderWidget = function(to_user) {
-      var promise = getStatus(to_user);
+      var promise = mymd.ajax.getDataObject('/friend/status/', 'friends', requestData);
       promise.done(function(status){
         if (status === 'AVAILABLE') {
           // add as friend
@@ -201,21 +185,6 @@ if (typeof mymd === 'undefined') {
   // define mymd.pins to represent pins specific data
   function pins() {
     // private variables
-    var getPins = function () {
-      var status = new $.Deferred();
-      var promise = mymd.ajax.get('/pins/');
-      promise.done(function(data) {
-        if (data.error) {
-          status.reject(data.error.code, data.error);
-        } else {
-          status.resolve(data.pins.status, data.pins);
-        }
-      });
-      promise.fail(function(data) {
-        status.reject('NETWORK_FAILED', data);
-      });
-      return status.promise();
-    };
     var appendPin = function (colid, pin, static_url) {
       var pindiv = $('<div class="pin"></div>');
       if (pin.img) {
@@ -228,7 +197,7 @@ if (typeof mymd === 'undefined') {
     };
     // public variables
     this.initWidget = function(pincols, static_url) {
-      var pins = getPins();
+      var pins = mymd.ajax.getDataObject('/pins/', 'pins');
       pins.done(function(status, pins){
         var i = 0;
         var colsnum = pincols.length;
