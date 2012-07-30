@@ -29,7 +29,7 @@ urlpatterns = patterns("",
     url(r"^comments/", include("django.contrib.comments.urls")),
     url(r"^search/", include("haystack.urls")),
     url(r"^stream/", include("stream.urls")),
-    url(r"^(?P<username>[\w\._-]+)/$", "home.views.home", name="person_home"),
+    url(r"^user/(?P<username>[\w\._-]+)/$", "home.views.home", name="person_home"),
 )
 
 if settings.SERVE_MEDIA:

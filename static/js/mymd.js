@@ -295,7 +295,7 @@ if (typeof mymd === 'undefined') {
     };
     // public variables
     this.initStreamMine = function() {
-      var stream = mymd.ajax.getDataObject('/stream/mine/', 'stream');
+      var stream = mymd.ajax.getDataObject('/stream/ajax/mine/', 'stream');
       stream.done(function(status, stream){
         renderStreamMine(stream);
       });
@@ -305,7 +305,7 @@ if (typeof mymd === 'undefined') {
       });
     };
     this.initStream = function() {
-      var stream = mymd.ajax.getDataObject('/stream/', 'stream');
+      var stream = mymd.ajax.getDataObject('/stream/ajax/', 'stream');
       stream.done(function(status, stream){
         renderStreamMine(stream);
       });

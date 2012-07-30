@@ -3,6 +3,7 @@
 
 import os.path
 import posixpath
+from django.core.urlresolvers import reverse
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
@@ -274,7 +275,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ABSOLUTE_URL_OVERRIDES = {
-    'auth.user': lambda u: "/%s/" % u.username,
+    'auth.user': lambda u: reverse("person_home", kwargs={"username":u.username}),
 }
 
 #GOOGLE_CONSUMER_KEY = 'lktest.sinaapp.com'
