@@ -9,8 +9,8 @@ from actstream.actions import follow
 
 @receiver(friends_connected)
 def friend_connected_action(sender, **kwargs):
-    action.send(sender.from_user, verb=u'connected', action_object=sender.to_user)
-    action.send(sender.to_user, verb=u'connected', action_object=sender.from_user)
+    action.send(sender.from_user, verb=u'connected with', action_object=sender.to_user)
+    action.send(sender.to_user, verb=u'connected with', action_object=sender.from_user)
     follow(sender.from_user, sender.to_user)
     follow(sender.to_user, sender.from_user)
 

@@ -30,14 +30,26 @@ def stream_mine(request):
         return HttpResponse(json.dumps(result), content_type="application/json")
 
 def stream_to_activities(stream):
+    #import pdb;pdb.set_trace();
     activities = []
     for action in stream:
         activity = {}
         activity['description'] = action.description
+        activity['actor'] = {
+            "name":unicode(action.actor),
+            "url":action.actor.get_absolute_url()
+            }
         activity['verb'] = action.verb
-        activity['actor'] = unicode(action.actor)
-        activity['target'] = unicode(action.target)
-        activity['action_object'] = unicode(action.action_object)
+        if action.action_object:
+            activity['action_object'] = {
+                "name":unicode(action.action_object),
+                "url":action.action_object.get_absolute_url()
+                }
+        if action.target:
+            activity['target'] = {
+                "name":unicode(action.target),
+                "url":action.target.get_absolute_url()
+                }
         activity['timestamp'] = action.timestamp.strftime("%A %d %B %Y %I:%M%p")
         activity['string'] = unicode(activity)
         activities.append(activity)

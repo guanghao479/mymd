@@ -263,9 +263,28 @@ if (typeof mymd === 'undefined') {
     // private variables
     var renderActivity = function(activity) {
       var activityDiv = $('<div class="activity"></div>');
-      var descriptionArray = [activity.actor, activity.verb, activity.action_object]
+      var descriptionArray = [];
+      if (activity.actor) {
+        descriptionArray.push($('<a>', {
+          text:activity.actor.name,
+          href:activity.actor.url
+        }).prop('outerHTML'));
+      }
+      descriptionArray.push(activity.verb);
+      if (activity.action_object) {
+        descriptionArray.push($('<a>', {
+          text:activity.action_object.name,
+          href:activity.action_object.url
+        }).prop('outerHTML'));
+      }
+      if (activity.target) {
+        descriptionArray.push($('<a>', {
+          text:activity.target.name,
+          href:activity.target.url
+        }).prop('outerHTML'));
+      }
       var description = descriptionArray.join(' ');
-      activityDiv.text(description);
+      activityDiv.append(description);
       $('#stream-activities').append(activityDiv);
     }
     var renderStreamMine = function (stream) {

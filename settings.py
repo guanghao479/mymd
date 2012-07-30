@@ -273,6 +273,10 @@ AUTHENTICATION_BACKENDS = (
     'account.auth_backends.AuthenticationBackend',
 )
 
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: "/%s/" % u.username,
+}
+
 #GOOGLE_CONSUMER_KEY = 'lktest.sinaapp.com'
 #GOOGLE_CONSUMER_SECRET = 'Cq7ESWzLcmdTrRW7RZpor_Oo'
 
