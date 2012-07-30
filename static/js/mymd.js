@@ -37,7 +37,7 @@ if (typeof mymd === 'undefined') {
         if (result.error) {
           status.reject(result.error.code, result.error);
         } else {
-          status.resolve(result[resultDataKey]['status'], result[data]);
+          status.resolve(result[resultDataKey]['status'], result[resultDataKey]);
         }
       });
       promise.fail(function(result) {
