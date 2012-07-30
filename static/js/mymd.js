@@ -232,6 +232,7 @@ if (typeof mymd === 'undefined') {
     // private variables
     var renderActivity = function(activity) {
       var activityDiv = $('<div class="activity"></div>');
+      // Build and append title/summary
       var descriptionArray = [];
       if (activity.actor) {
         descriptionArray.push($('<a>', {
@@ -253,7 +254,14 @@ if (typeof mymd === 'undefined') {
         }).prop('outerHTML'));
       }
       var description = descriptionArray.join(' ');
-      activityDiv.append(description);
+      activityDiv.append($('<div class="summary"></div>').append(description));
+      // Build and append body/content
+      activityDiv.append($('<div class="content"></div>').append());
+      // Build and append footer
+      var text = $('<span class="timestamp"></span>').text(activity.timestamp);
+      activityDiv.append($('<div class="footer"></div>').append(text));
+
+      // Append activity
       $('#stream-activities').append(activityDiv);
     }
     var renderStreamMine = function (stream) {

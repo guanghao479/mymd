@@ -41,5 +41,15 @@ div.pin div.others {
 div.activity {
   border-bottom: 1px dotted;
   margin-bottom: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+div.activity div.summary {
+}
+
+div.activity div.footer {
+  margin-left:2em;
+  font-size: 0.9em;
+  color:#999;
+  padding-top: 5px;
 }
