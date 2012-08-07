@@ -38,6 +38,9 @@ class Post(models.Model):
     def get_absolute_url(self):
         return ('experience_detail', [str(self.id)])
 
+    def print_details(self):
+        return unicode(self.body)
+
 
 @receiver(models.signals.post_save, sender=Post)
 def post_post_save_handler(sender, instance, created, **kwargs):

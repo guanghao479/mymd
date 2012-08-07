@@ -256,7 +256,7 @@ if (typeof mymd === 'undefined') {
       var description = descriptionArray.join(' ');
       activityDiv.append($('<div class="summary"></div>').append(description));
       // Build and append body/content
-      activityDiv.append($('<div class="content"></div>').append());
+      activityDiv.append($('<div class="details"></div>').append(activity.details));
       // Build and append footer
       var text = $('<span class="timestamp"></span>').text(activity.timestamp);
       activityDiv.append($('<div class="footer"></div>').append(text));

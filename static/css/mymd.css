@@ -47,6 +47,11 @@ div.activity {
 div.activity div.summary {
 }
 
+div.activity div.details {
+  margin-left:2em;
+  padding-top: 5px;
+}
+
 div.activity div.footer {
   margin-left:2em;
   font-size: 0.9em;
