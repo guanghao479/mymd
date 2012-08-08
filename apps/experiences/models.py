@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 import datetime
 from experiences.signals import experience_posted
 from django.dispatch import receiver
+from django.conf import settings
 
 class Post(models.Model):
     """
@@ -40,6 +41,9 @@ class Post(models.Model):
 
     def print_details(self):
         return unicode(self.body)
+
+    def print_details_ellipsis(self):
+        return unicode(self.body)[:settings.STREAM_DETAILS_ELLIPSIS_LENGTH], len(unicode(self.body)) > settings.STREAM_DETAILS_ELLIPSIS_LENGTH
 
 
 @receiver(models.signals.post_save, sender=Post)

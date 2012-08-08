@@ -241,6 +241,7 @@ DEBUG_TOOLBAR_CONFIG = {
 # Activity Stream Specific Settings
 ACTSTREAM_ACTION_MODELS = ['auth.User', 'experiences.Post', ]
 ACTSTREAM_MANAGER = 'actstream.managers.ActionManager'
+STREAM_DETAILS_ELLIPSIS_LENGTH = 200
 
 #Django Authentication Backends
 AUTHENTICATION_BACKENDS = (

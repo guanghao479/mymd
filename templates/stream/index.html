@@ -4,9 +4,12 @@
 {% load bootstrap_tags %}
 {% load ifsetting_tag %}
 {% load account_tags %}
-
 {% block head_title %}{% trans "Experience Sharing" %}{% endblock %}
 {% block body_class %}experience{% endblock %}
+
+{% block page_script %}
+  <script src="{% static "js/jquery.jtruncate.js" %}"></script>
+{% endblock %}
 
 {% block body %}
 <div id="stream-container" class="row-fluid">

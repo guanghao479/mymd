@@ -52,7 +52,7 @@ def stream_to_activities(stream):
                 }
         activity['timestamp'] = action.timestamp.strftime("%A %d %B %Y %I:%M%p")
         activity['string'] = unicode(activity)
-        if hasattr(action.action_object, 'print_details'):
-            activity['details'] = action.action_object.print_details()
+        if hasattr(action.action_object, 'print_details_ellipsis'):
+            activity['details'], activity['hasMore'] = action.action_object.print_details_ellipsis()
         activities.append(activity)
     return activities
