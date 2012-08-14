@@ -1,0 +1,62 @@
+[
+    {
+        "pk":1,
+        "model": "community.community",
+        "fields": {
+            "name": "和平里街道兴化社区",
+            "district": 1,
+            "x_coodinate":0,
+            "y_coodinate":0
+        }
+    },
+    {
+        "pk":2,
+        "model": "community.community",
+        "fields": {
+            "name": "和平里街道东河沿社区",
+            "district": 1,
+            "x_coodinate":0,
+            "y_coodinate":0
+        }
+    },
+    {
+        "pk":3,
+        "model": "community.community",
+        "fields": {
+            "name": "和平里街道林调社区",
+            "district": 1,
+            "x_coodinate":0,
+            "y_coodinate":0
+        }
+    },
+    {
+        "pk":4,
+        "model": "community.community",
+        "fields": {
+            "name": "和平里街道小黄庄社区",
+            "district": 1,
+            "x_coodinate":0,
+            "y_coodinate":0
+        }
+    },
+    {
+        "pk":5,
+        "model": "community.community",
+        "fields": {
+            "name": "德胜街道德外大街西社区",
+            "district": 2,
+            "x_coodinate":0,
+            "y_coodinate":0
+        }
+    },
+    {
+        "pk":6,
+        "model": "community.community",
+        "fields": {
+            "name": "南京西路街道社区",
+            "district": 17,
+            "x_coodinate":0,
+            "y_coodinate":0
+        }
+    }
+]

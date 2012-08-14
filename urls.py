@@ -29,6 +29,8 @@ urlpatterns = patterns("",
     url(r"^comments/", include("django.contrib.comments.urls")),
     url(r"^search/", include("haystack.urls")),
     url(r"^stream/", include("stream.urls")),
+    url(r"^district/", include("district.urls")),
+    url(r"^community/", include("community.urls")),
     url(r"^user/(?P<username>[\w\._-]+)/$", "home.views.home", name="person_home"),
 )
 

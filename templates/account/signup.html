@@ -18,6 +18,7 @@
     <h1>{% trans "Sign Up" %}</h1>
     <div class="row">
         <div class="span8">
+            <b>Feels: </b><span id="idtest"></span>
             {% if user.is_authenticated %}
                 <p>{% trans "You are already logged in." %}</p>
             {% else %}
@@ -34,12 +35,7 @@
                         </div>
                     </fieldset>
                 </form>
- {% include "account/_terms.html" %}
-                <p>{% blocktrans %}If you have any trouble creating your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
             {% endif %}
-        </div>
-        <div class="span4">
-            {% include "account/_signup_sidebar.html" %}
         </div>
     </div>
 {% endblock %}
@@ -49,6 +45,12 @@
         $(function(){
             $("#id_username").focus();
             $(".datepicker").datepicker();
+            var svalue = $("#id_city").val();
+            mymd.district.renderDistrict(svalue);
+            var dvalue = $("#id_district").val();
+            mymd.district.renderCommunity(dvalue);
+            $("#id_city").change(function(){mymd.district.renderDistrict($(this).val());});
+            $("#id_district").change(function(){mymd.district.renderCommunity($(this).val());});
         });
     </script>
 {% endblock %}

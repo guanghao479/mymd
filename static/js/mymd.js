@@ -213,6 +213,58 @@ if (typeof mymd === 'undefined') {
   } // friends definition ends
   mymd.pins = new pins();
 
+  function district(){
+    var current_city = {}
+    var current_district = {}
+
+    this.renderCommunity = function(district_id){
+      var requestData = {district_id: district_id};
+      if(current_district[district_id]){
+        $("#id_community").html(current_district[district_id]);
+      }else{
+        var community = mymd.ajax.getDataObject('/community/', 'communities', requestData);
+        community.done(function(status, community) {
+          var options = '';
+          for (var i in community) {
+            options += '<option value="' + community[i].id + '">'
+              + community[i].name + '</option>';
+          }
+          current_district[district_id] = options;
+          $("#id_community").html(options);
+        });
+      };
+    };
+
+    this.renderDistrict = function(city_id){
+      var requestData = {city_id: city_id};
+      if(current_city[city_id]){
+        $("#id_district").html(current_city[city_id]);
+        if(current_district[$("#id_district").val()]){
+          alert($("#id_district").val());
+          $("#id_community").html(current_district[$("#id_district").val()]);
+        }else{
+          $("#id_community").html(current_district[$("#id_district").val()]);
+        }
+      }else{
+        var district = mymd.ajax.getDataObject('/district/', 'districts', requestData);
+        district.done(function(status, district) {
+          var options = '';
+          var district_options = options;
+          for (var i in district) {
+            district_options += '<option value="' + district[i].id + '">'
+              + district[i].name + '</option>';
+          }
+          current_city[city_id] = district_options;
+          $("#id_district").html(district_options);
+          mymd.district.renderCommunity($("#id_district").val());
+        });
+      };
+    };
+
+
+  };
+  mymd.district = new district();
+
   function diaries(){
     var getDiaries = mymd.ajax.getDataObject('/diary/mine/', 'diaries_list');
 

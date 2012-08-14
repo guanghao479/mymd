@@ -2,14 +2,18 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
-from staticapps.models import Address, Disease, Gender
+from disease.models import Disease
+from city.models import City
+from district.models import District
+from community.models import Community
+from gender.models import Gender
 
 class Profile(models.Model):
     """
     User profile class. Inherit from ProfileBase of idios.
     """
     user = models.OneToOneField(User)
-    address = models.ForeignKey(Address)
+    community = models.ForeignKey(Community)
     disease = models.ForeignKey(Disease)
     gender = models.ForeignKey(Gender)
     birth_date = models.DateField(null=True)

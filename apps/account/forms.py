@@ -19,9 +19,13 @@ from timezones.forms import TimeZoneField
 from account.models import Account, PasswordReset
 from account.signals import user_login_attempt, user_signed_up, user_sign_up_attempt
 from account.utils import perform_login, change_password
-
+from account.widgets import DistrictChoiceWidget
 from profiles.models import Profile
-from staticapps.models import Address, Disease, Gender
+from city.models import City
+from community.models import Community
+from district.models import District
+from gender.models import Gender
+from disease.models import Disease
 
 alnum_re = re.compile(r"^\w+$")
 
@@ -139,8 +143,16 @@ class SignupForm(GroupForm):
         required = False,
         widget = forms.HiddenInput()
     )
-    address = forms.CharField(
-        label = _("Address")
+    city = forms.CharField(
+        label = _("City")
+    )
+    district = forms.ChoiceField(
+        choices = [(d.id, d.name) for d in District.objects.all()],
+        label = _("District"),
+    )
+    community = forms.ChoiceField(
+        choices = [(c.id, c.name) for c in Community.objects.all()],
+        label = _("Community"),
     )
 
     gender = forms.CharField(
@@ -161,7 +173,7 @@ class SignupForm(GroupForm):
         if REQUIRED_EMAIL or EMAIL_VERIFICATION or EMAIL_AUTHENTICATION:
             self.fields["email"].label = ugettext("Email")
             self.fields["email"].required = True
-            self.fields["address"] = forms.ModelChoiceField(queryset = Address.objects.all(), empty_label=None)
+            self.fields["city"] = forms.ModelChoiceField(queryset = City.objects.all(), empty_label=None)
             self.fields["disease"] = forms.ModelChoiceField(queryset = Disease.objects.all(), empty_label=None)
             self.fields["gender"] = forms.ModelChoiceField(queryset = Gender.objects.all(), empty_label=None)
         else:
@@ -210,11 +222,16 @@ class SignupForm(GroupForm):
         return user
 
     def create_profile(self, user, commit=True):
+        community = Community.objects.get(pk=self.cleaned_data["community"])
+        disease = Disease.objects.get(pk=self.cleaned_data["disease"].id)
+        gender = Gender.objects.get(pk=self.cleaned_data["gender"].id)
+
         profile = Profile()
-        profile.address = self.cleaned_data["address"]
-        profile.gender = self.cleaned_data["gender"]
+        profile.disease = disease
+        profile.community = community
+        profile.gender = gender
         profile.birth_date = self.cleaned_data["birth_date"]
-        profile.disease = self.cleaned_data["disease"]
+
         profile.user = user
         if commit:
             profile.save()

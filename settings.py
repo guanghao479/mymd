@@ -200,7 +200,12 @@ INSTALLED_APPS = [
     "south",
     "stream",
     'widget_tweaks',
-    "staticapps",
+    "city",
+    "community",
+    "district",
+    "gender",
+    "disease",
+
 ]
 
 FIXTURE_DIRS = [
