@@ -240,7 +240,6 @@ if (typeof mymd === 'undefined') {
       if(current_city[city_id]){
         $("#id_district").html(current_city[city_id]);
         if(current_district[$("#id_district").val()]){
-          alert($("#id_district").val());
           $("#id_community").html(current_district[$("#id_district").val()]);
         }else{
           $("#id_community").html(current_district[$("#id_district").val()]);
