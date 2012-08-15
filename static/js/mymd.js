@@ -214,8 +214,8 @@ if (typeof mymd === 'undefined') {
   mymd.pins = new pins();
 
   function district(){
-    var current_city = {}
-    var current_district = {}
+    var current_city = {};
+    var current_district = {};
 
     this.renderCommunity = function(district_id){
       var requestData = {district_id: district_id};

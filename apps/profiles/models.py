@@ -12,10 +12,15 @@ class Profile(models.Model):
     """
     User profile class. Inherit from ProfileBase of idios.
     """
+    GENDER_CHOICES = (
+        ('M', 'Male'),
+        ('F', 'Female'),
+    )
     user = models.OneToOneField(User)
     community = models.ForeignKey(Community)
     disease = models.ForeignKey(Disease)
-    gender = models.ForeignKey(Gender)
+    gender = models.CharField(max_length=2,
+                              choices=GENDER_CHOICES)
     birth_date = models.DateField(null=True)
 
     class Meta:

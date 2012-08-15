@@ -123,7 +123,10 @@ class LoginForm(GroupForm):
 
 
 class SignupForm(GroupForm):
-
+    GENDER_CHOICES = (
+        ('M', 'Male'),
+        ('F', 'Female'),
+    )
     username = forms.CharField(
         label = _("Username"),
         max_length = 30,
@@ -155,8 +158,10 @@ class SignupForm(GroupForm):
         label = _("Community"),
     )
 
-    gender = forms.CharField(
+    gender = forms.ChoiceField(
         label = _("Gender"),
+        widget=forms.RadioSelect,
+        choices=GENDER_CHOICES
     )
     birth_date = forms.DateField(
         widget = forms.TextInput(
@@ -175,7 +180,6 @@ class SignupForm(GroupForm):
             self.fields["email"].required = True
             self.fields["city"] = forms.ModelChoiceField(queryset = City.objects.all(), empty_label=None)
             self.fields["disease"] = forms.ModelChoiceField(queryset = Disease.objects.all(), empty_label=None)
-            self.fields["gender"] = forms.ModelChoiceField(queryset = Gender.objects.all(), empty_label=None)
         else:
             self.fields["email"].label = ugettext("Email (optional)")
             self.fields["email"].required = False
@@ -224,7 +228,7 @@ class SignupForm(GroupForm):
     def create_profile(self, user, commit=True):
         community = Community.objects.get(pk=self.cleaned_data["community"])
         disease = Disease.objects.get(pk=self.cleaned_data["disease"].id)
-        gender = Gender.objects.get(pk=self.cleaned_data["gender"].id)
+        gender = self.cleaned_data["gender"]
 
         profile = Profile()
         profile.disease = disease

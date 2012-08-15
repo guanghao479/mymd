@@ -203,9 +203,7 @@ INSTALLED_APPS = [
     "city",
     "community",
     "district",
-    "gender",
     "disease",
-
 ]
 
 FIXTURE_DIRS = [
