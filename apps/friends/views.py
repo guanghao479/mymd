@@ -1,8 +1,11 @@
 from django.contrib.auth.models import User
+from django.views.generic import ListView
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from friends.models import *
 from django.utils import simplejson as json
 from friends.signals import *
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 def add_as_friend(request):
     """
@@ -110,19 +113,6 @@ def ignore(request):
             result = { "success":True }
     return HttpResponse(json.dumps(result), content_type="application/json")
 
-def my_friends(request):
-    result = {}
-    if not request.is_ajax():
-        return Http404
-
-    if not request.user.is_authenticated():
-        result = { "error": { "code" : "NOT_AUTHENTICATED", }, }
-    else:
-        page_user = request.user
-        friends = Friendship.objects.friends_for_user(page_user)
-        result = { "friends": {"friends_list": friends, }, }
-    return HttpResponse(json.dumps(result), content_type="application/json")
-
 def status(request):
     result = {}
     if not request.is_ajax():
@@ -144,3 +134,27 @@ def status(request):
             result = { "friends": { "status": "AVAILABLE"} }
 
     return HttpResponse(json.dumps(result), content_type="application/json")
+
+class FriendListView(ListView):
+    """
+    List all friends of current user.
+    """
+    template_name = 'friends/friends.html'
+    context_object_name = 'friends_list'
+    #paginate_by = settings.PAGINATE_NUM
+
+    def get_queryset(self):
+
+        self.user = self.request.user
+        self.username = self.user.username
+        friends = Friendship.objects.friends_for_user(self.user)
+        return friends
+
+    def get_context_data(self, **kwargs):
+        context = super(FriendListView, self).get_context_data(**kwargs)
+        context['username'] = self.username
+        return context
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(FriendListView, self).dispatch(*args, **kwargs)
