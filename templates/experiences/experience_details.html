@@ -9,8 +9,10 @@
 
 <h1>{% blocktrans %}{{ experience_author }}'s experiences{% endblocktrans %}</h1>
 {% include "experiences/_experience_info.html" %}
-<a href="{% url experience_edit experience.pk %}">Edit</a> | 
-<a href="{% url experience_delete experience.pk %}">Delete</a>
+{% if is_author %}
+    <a href="{% url experience_edit experience.pk %}">Edit</a> | 
+    <a href="{% url experience_delete experience.pk %}">Delete</a>
+{% endif %}
 {% render_comment_list for experience %}
 {% render_comment_form for experience %}
 {% endblock %}

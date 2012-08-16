@@ -81,8 +81,10 @@ class ExperienceDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         experience_author = self.author
+        is_author = self.request.user == self.author
         context = super(ExperienceDetailView, self).get_context_data(**kwargs)
         context['experience_author'] = experience_author
+        context['is_author'] = is_author
         return context
 
 def get_owner(request, *args, **kwargs):
