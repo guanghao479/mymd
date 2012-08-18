@@ -7,6 +7,11 @@ from friends.signals import *
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
+if "notification" in settings.INSTALLED_APPS:
+    from notification import models as notification
+else:
+    notification = None
+
 def add_as_friend(request):
     """
     Adding friends
@@ -35,6 +40,8 @@ def add_as_friend(request):
             else:
                 result = { "success":True }
                 friends_requested.send(sender=new_inv)
+                if notification:
+                    notification.send([new_inv.to_user], "friends_invite", {"invitation": new_inv})
 
     return HttpResponse(json.dumps(result), content_type="application/json")
 
@@ -61,6 +68,8 @@ def accept(request):
             invite.accept()
             result = { "success":True }
             friends_connected.send(sender=invite)
+            if notification:
+                notification.send([invite.from_user], "friends_accept", {"invitation": invite})
     return HttpResponse(json.dumps(result), content_type="application/json")
 
 

@@ -159,12 +159,6 @@ class JoinInvitation(models.Model):
         # notify
         if notification:
             notification.send([self.from_user], "join_accept", {"invitation": self, "new_user": new_user})
-            friends = []
-            for user in friend_set_for(new_user) | friend_set_for(self.from_user):
-                if user != new_user and user != self.from_user:
-                    friends.append(user)
-            notification.send(friends, "friends_otherconnect", {"invitation": self, "to_user": new_user})
-
 
 class FriendshipInvitationManager(models.Manager):
 
@@ -195,12 +189,6 @@ class FriendshipInvitation(models.Model):
             friendship.save()
             self.status = "5"
             self.save()
-            if notification:
-                notification.send([self.from_user], "friends_accept", {"invitation": self})
-                notification.send([self.to_user], "friends_accept_sent", {"invitation": self})
-                for user in friend_set_for(self.to_user) | friend_set_for(self.from_user):
-                    if user != self.to_user and user != self.from_user:
-                        notification.send([user], "friends_otherconnect", {"invitation": self, "to_user": self.to_user})
 
     def decline(self):
         if not Friendship.objects.are_friends(self.to_user, self.from_user):
