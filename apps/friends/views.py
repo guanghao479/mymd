@@ -155,13 +155,12 @@ class FriendListView(ListView):
     def get_queryset(self):
 
         self.user = self.request.user
-        self.username = self.user.username
         friends = Friendship.objects.friends_for_user(self.user)
         return friends
 
     def get_context_data(self, **kwargs):
         context = super(FriendListView, self).get_context_data(**kwargs)
-        context['username'] = self.username
+        context['username'] = self.user.username
         return context
 
     @method_decorator(login_required)
