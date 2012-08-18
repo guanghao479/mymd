@@ -19,7 +19,6 @@ from timezones.forms import TimeZoneField
 from account.models import Account, PasswordReset
 from account.signals import user_login_attempt, user_signed_up, user_sign_up_attempt
 from account.utils import perform_login, change_password
-from account.widgets import DistrictChoiceWidget
 from profiles.models import Profile
 from city.models import City
 from community.models import Community
