@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls.defaults import *
 from social_auth.views import auth, complete, disconnect
 
 
@@ -27,4 +27,5 @@ urlpatterns = patterns("",
     url(r"^password_reset/$", "account.views.password_reset", name="acct_passwd_reset"),
     url(r"^password_reset/done/$", "account.views.password_reset_done", name="acct_passwd_reset_done"),
     url(r"^password_reset_key/(?P<uidb36>[0-9A-Za-z]+)-(?P<key>.+)/$", "account.views.password_reset_from_key", name="acct_passwd_reset_key"),
+    url(r"^profiles/", include("profiles.urls")),
 )
