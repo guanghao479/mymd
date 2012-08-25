@@ -1,3 +1,0 @@
-== Search Query Samples ==
-
-curl -XGET 'http://127.0.0.1:9200/haystack/modelresult/_search?from=0&size=20' -d '{"query": {"filtered": {"filter": {"fquery": {"query": {"query_string": {"query": "django_ct:(blogs.post)"}}, "_cache": true}}, "query": {"query_string": {"query": "test", "default_operator": "AND", "default_field": "title", "auto_generate_phrase_queries": true, "analyze_wildcard": true}}}}}'

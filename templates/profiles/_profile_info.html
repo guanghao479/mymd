@@ -1,8 +1,0 @@
-{% load i18n %}
-<div class="profile_info">
-    {% if profile.user.username %}<p><b>{% trans "Name" %}</b>: {{ profile.user.username }}</p>{% endif %}
-    {% if profile.address %}<p><b>{% trans "Address" %}</b>: {{ profile.address }}</p>{% endif %}
-    {% if profile.gender %}<p><b>{% trans "Gender" %}</b>: {{ profile.gender }}</p>{% endif %}
-    {% if profile.birth_date %}<p><b>{% trans "Birth Date" %}</b>: {{ profile.birth_date }}</p>{% endif %}
-    {% if profile.disease %}<p><b>{% trans "Disease" %}</b>: {{ profile.disease }}</p>{% endif %}
-</div>
