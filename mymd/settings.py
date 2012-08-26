@@ -1,7 +1,9 @@
 # Django settings for mymd project.
-
+import os.path
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -11,8 +13,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'dev.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -64,6 +66,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, "static"),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -106,6 +109,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_ROOT, "templates"),
 )
 
 INSTALLED_APPS = (
@@ -115,10 +119,42 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "django.contrib.comments",
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admindocs',
+
+    # theme
+    "pinax_theme_bootstrap",
+
+    # external
+    "notification", # must be first
+    "debug_toolbar",
+    "pagination",
+    "haystack",
+    "social_auth",
+    "emailconfirmation",
+
+    # home brewed apps !!!! Please follow A->Z
+    "about",
+    "account",
+    "actstream",
+    "avatar",
+    "city",
+    "community",
+    "diary",
+    "district",
+    "disease",
+    "experiences",
+    "friends",
+    "my_comments",
+    "mymdutils",
+    "pins",
+    "profiles",
+    "south",
+    "stream",
+    'widget_tweaks',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -149,3 +185,35 @@ LOGGING = {
         },
     }
 }
+
+
+##############################################################################
+# Project specific settings
+
+#Haystack configuration
+HAYSTACK_CONNECTIONS = {
+    'default':{
+        'ENGINE':'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+        },
+}
+
+PAGINATE_NUM = 1
+
+# Account/Authentication related configuration
+AUTH_PROFILE_MODULE = "profiles.Profile"
+NOTIFICATION_LANGUAGE_MODULE = "account.Account"
+ACCOUNT_OPEN_SIGNUP = True
+ACCOUNT_USE_OPENID = False
+ACCOUNT_REQUIRED_EMAIL = True
+ACCOUNT_EMAIL_VERIFICATION = False
+ACCOUNT_EMAIL_AUTHENTICATION = True
+ACCOUNT_UNIQUE_EMAIL = EMAIL_CONFIRMATION_UNIQUE_EMAIL = True
+
+LOGIN_URL = "/account/login/" # @@@ any way this can be a url name?
+LOGIN_REDIRECT_URLNAME = "what_next"
+LOGOUT_REDIRECT_URLNAME = "home"
+
+EMAIL_CONFIRMATION_DAYS = 2
+EMAIL_DEBUG = DEBUG

@@ -1,0 +1,9 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+{% block head_title %}{% trans "Edit Diary" %}{% endblock %}
+
+{% block body_class %}diary{% endblock %}
+{% block body %}
+<h1> {% trans "Edit Diary" %} </h1>
+{% include "diary/_diary_edit_form.html" %}
+{% endblock %}

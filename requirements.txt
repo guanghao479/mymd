@@ -3,9 +3,19 @@
 # Put project-specific requirements here.
 # See http://pip-installer.org/requirement-format.html for more information.
 
+## Python Libraries
+pytz
+
+## Django Libraries
 Django==1.4.1
 pinax-theme-bootstrap==2.0.1
 
+#django-notification==0.2
+-e git+https://github.com/fmaj7/django-notification#egg=django-notification
+
+django-email-confirmation==0.2
+django-debug-toolbar==0.9.1
+django-pagination==1.0.7
 django-avatar==1.0.5
 #PIL==1.1.7
 South==0.7.4

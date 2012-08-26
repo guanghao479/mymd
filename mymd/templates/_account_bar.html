@@ -1,0 +1,41 @@
+{% load i18n %}
+{% load ifsetting_tag %}
+{% load widget_tweaks %}
+
+<ul class="nav pull-right">
+    {% if user.is_authenticated %}
+        <!-- Search Box -->
+        {% if nav_search_form %}
+        <li>
+        <form method="get" action="{% url haystack_search %}" class="navbar-search pull-right">
+            {% csrf_token %}
+            {{ nav_search_form.non_field_errors }}
+            {{ nav_search_form.q.errors }}
+            {{ nav_search_form.q|add_class:"search-query"|attr:"placeholder:Search" }}
+        </form>
+        </li>
+        {% endif %}
+        <!-- Account -->
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                {{ user }}
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url stream_mine %}"><i class="icon-random"></i> My Stream</a></li>
+                <li><a href="{% url acct_email %}"><i class="icon-user"></i> Account</a></li>
+                {% if user.is_staff %}
+                    <li><a href="{% url admin:index %}"><i class="icon-cog"></i> Admin</a></li>
+                {% endif %}
+                <li class="divider"></li>
+                <li><a href="{% url acct_logout %}"><i class="icon-off"></i> Log out</a></li>
+            </ul>
+        </li>
+    {% else %}
+        <li><a href="{% url acct_login %}">Log in</a></li>
+        {% ifsetting ACCOUNT_OPEN_SIGNUP %}
+            <li class="navbar-text">or</li>
+            <li><a href="{% url acct_signup %}">Sign up</a></li>
+        {% endifsetting %}
+    {% endif %}
+</ul>
