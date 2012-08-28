@@ -3,6 +3,7 @@ from django.utils.encoding import smart_unicode
 from django.utils import simplejson as json
 
 from district.models import District
+from community.models import Community
 
 class JSONResponse(HttpResponse):
     def __init__(self, data):
@@ -20,6 +21,16 @@ def district_for_city(request):
             district_content['name'] = district.name
             district_list.append(district_content)
         result['districts'] = district_list
+        return HttpResponse(json.dumps(result), content_type="application/json")
+    else:
+        return JSONResponse({'error': 'Not Ajax or no GET'})
+
+def district_for_community(request):
+    result = {}
+    if request.is_ajax() and request.GET and 'community_id' in request.GET:
+        obj = Community.objects.get(id=request.GET['community_id']);
+        district = obj.district
+        result = {"district": {"district_id": district.id}}
         return HttpResponse(json.dumps(result), content_type="application/json")
     else:
         return JSONResponse({'error': 'Not Ajax or no GET'})

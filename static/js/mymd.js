@@ -260,7 +260,23 @@ if (typeof mymd === 'undefined') {
       };
     };
 
-
+    this.renderEditInitial = function(community_id){
+      var communityId = {community_id: community_id};
+      var d = mymd.ajax.getDataObject('/district/single', 'district', communityId);
+      d.done(function(status, d) {
+        var districtId = d.district_id;
+        var districtIdObj = {district_id: districtId};
+        var city = mymd.ajax.getDataObject('/city/single', 'city', districtIdObj);
+        city.done(function(status, city) {
+          var cityId = city.city_id;
+          $("#id_city").val(cityId);
+          mymd.district.renderDistrict(cityId);
+          $("#id_district").val(districtId);
+          mymd.district.renderCommunity(districtId);
+          $("#id_community").val(community_id);
+        })
+      })
+    }
   };
   mymd.district = new district();
 

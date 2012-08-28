@@ -32,4 +32,4 @@ class Profile(models.Model):
 
     def get_absolute_url(self):
         kwargs={ "username": self.user.username }
-        return reverse("profile_detail", kwargs=kwargs)
+        return reverse("account:profile:profile_detail", kwargs=kwargs)

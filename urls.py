@@ -16,7 +16,7 @@ urlpatterns = patterns("",
     url(r"^user/$", "home.views.home", name="my_home"),
     url(r"^user/(?P<username>[\w\._-]+)/$", "home.views.home", name="user_home"),
     # User specific urls
-    url(r"^account/", include("account.urls")),
+    url(r"^account/", include("account.urls", namespace='account')),
     url(r"^friend/", include("friends.urls")),
     url(r"^notice/", include("notification.urls")),
     url(r"^activity/", include("actstream.urls")),
@@ -29,6 +29,7 @@ urlpatterns = patterns("",
     # Site specific urls
     url(r"^about/", include("about.urls")),
     url(r"^search/", include("haystack.urls")),
+    url(r"^city/", include("city.urls")),
     url(r"^district/", include("district.urls")),
     url(r"^community/", include("community.urls")),
 
