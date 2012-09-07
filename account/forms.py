@@ -22,7 +22,6 @@ from profiles.models import Profile
 from city.models import City
 from community.models import Community
 from district.models import District
-from gender.models import Gender
 from disease.models import Disease
 
 alnum_re = re.compile(r"^\w+$")
@@ -287,13 +286,13 @@ class SignupForm(GroupForm):
             new_user = self.create_user(username)
             new_profile = self.create_profile(new_user)
             if email:
-                if request and not EMAIL_VERIFICATION:
+                if request and EMAIL_VERIFICATION:
+                    EmailAddress.objects.add_email(new_user, email)
                     messages.add_message(request, messages.INFO,
                         ugettext(u"Confirmation email sent to %(email)s") % {
                             "email": email,
                         }
                     )
-                EmailAddress.objects.add_email(new_user, email)
         
         if EMAIL_VERIFICATION:
             new_user.is_active = False

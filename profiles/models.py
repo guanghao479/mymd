@@ -6,7 +6,6 @@ from disease.models import Disease
 from city.models import City
 from district.models import District
 from community.models import Community
-from gender.models import Gender
 
 class Profile(models.Model):
     """
