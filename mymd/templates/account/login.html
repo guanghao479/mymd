@@ -22,16 +22,16 @@
                 </div>
             {% else %}
                 {% ifsetting ACCOUNT_OPEN_SIGNUP %}
-                {% url acct_signup as signup_url %}
+                {% url account:acct_signup as signup_url %}
                 <p>{% blocktrans %}Don't have an account? <a href="{{ signup_url }}">Sign up</a>!{% endblocktrans %}</p>
                 {% endifsetting %}
                 <p>
-                    <a href="{% url acct_passwd_reset %}">{% trans "Forgot password?" %}</a>
+                    <a href="{% url account:acct_passwd_reset %}">{% trans "Forgot password?" %}</a>
                 </p>
                 <p><a href="/account/login/douban/">{% trans "用豆瓣帐户登陆" %}</a></p>
             {% endif %}
 
-            <form method="POST" action="{% url acct_login %}" autocapitalize="off" class="form-horizontal">
+            <form method="POST" action="{% url account:acct_login %}" autocapitalize="off" class="form-horizontal">
                 <fieldset>
                     {% csrf_token %}
                     {{ form|as_bootstrap }}
