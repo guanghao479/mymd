@@ -11,3 +11,16 @@
     {% include "profiles/_profile_form.html" %}
     
 {% endblock %}
+
+{% block extra_body %}
+    <script type="text/javascript">
+        $(function(){
+            var svalue = $("#id_city").val();
+            mymd.district.renderDistrict(svalue);
+            var dvalue = $("#id_district").val();
+            mymd.district.renderCommunity(dvalue);
+            $("#id_city").change(function(){mymd.district.renderDistrict($(this).val());});
+            $("#id_district").change(function(){mymd.district.renderCommunity($(this).val());});
+        });
+    </script>
+{% endblock %}

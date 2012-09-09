@@ -66,7 +66,4 @@ class ProfileUpdateView(UpdateView):
     
     def get_success_url(self):
         return self.object.get_absolute_url()
-    
-    def dispatch(self, request, *args, **kwargs):
-        return super(ProfileUpdateView, self).dispatch(request, *args, **kwargs)
 
