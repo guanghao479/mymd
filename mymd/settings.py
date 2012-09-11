@@ -192,6 +192,19 @@ LOGGING = {
 ##############################################################################
 # Project specific settings
 
+TEMPLATE_CONTEXT_PROCESSORS = [
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+    "django.contrib.messages.context_processors.messages",
+    "staticfiles.context_processors.static",
+    "account.context_processors.account",
+    "notification.context_processors.notification",
+    "mymdutils.context_processors.search",
+]
+
 #Haystack configuration
 HAYSTACK_CONNECTIONS = {
     'default':{
