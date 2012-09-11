@@ -205,18 +205,44 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "mymdutils.context_processors.search",
 ]
 
-#Haystack configuration
-HAYSTACK_CONNECTIONS = {
-    'default':{
-        'ENGINE':'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://127.0.0.1:9200/',
-        'INDEX_NAME': 'haystack',
-        },
+#Django Authentication Backends
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.twitter.TwitterBackend',
+    'social_auth.backends.facebook.FacebookBackend',
+    'social_auth.backends.google.GoogleOAuthBackend',
+    'social_auth.backends.google.GoogleOAuth2Backend',
+    'social_auth.backends.google.GoogleBackend',
+    'social_auth.backends.contrib.douban.DoubanBackend',
+    'social_auth.backends.yahoo.YahooBackend',
+    'social_auth.backends.contrib.linkedin.LinkedinBackend',
+    'social_auth.backends.contrib.skyrock.SkyrockBackend',
+    'social_auth.backends.contrib.flickr.FlickrBackend',
+    'social_auth.backends.contrib.instagram.InstagramBackend',
+    'social_auth.backends.contrib.github.GithubBackend',
+    'social_auth.backends.contrib.yandex.YandexBackend',
+    'social_auth.backends.contrib.yahoo.YahooOAuthBackend',
+    'social_auth.backends.contrib.foursquare.FoursquareBackend',
+    'social_auth.backends.OpenIDBackend',
+    'social_auth.backends.contrib.live.LiveBackend',
+    'social_auth.backends.contrib.livejournal.LiveJournalBackend',
+    'social_auth.backends.contrib.douban.DoubanBackend',
+    'social_auth.backends.browserid.BrowserIDBackend',
+    'social_auth.backends.contrib.vkontakte.VKontakteBackend',
+    'social_auth.backends.contrib.yandex.YandexOAuth2Backend',
+    'social_auth.backends.contrib.yandex.YaruBackend',
+    'social_auth.backends.contrib.odnoklassniki.OdnoklassnikiBackend',
+    'social_auth.backends.contrib.vkontakte.VKontakteOAuth2Backend',
+    'social_auth.backends.contrib.mailru.MailruBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    'account.auth_backends.AuthenticationBackend',
+)
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse("user_home", kwargs={"username":u.username}),
 }
 
-PAGINATE_NUM = 1
-
-# Account/Authentication related configuration
+# Account Settings
+#=================
 AUTH_PROFILE_MODULE = "profiles.Profile"
 NOTIFICATION_LANGUAGE_MODULE = "account.Account"
 ACCOUNT_OPEN_SIGNUP = True
@@ -232,3 +258,32 @@ LOGOUT_REDIRECT_URLNAME = "home"
 
 EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG
+
+# Social Auth Settings
+#=====================
+#GOOGLE_CONSUMER_KEY = 'lktest.sinaapp.com'
+#GOOGLE_CONSUMER_SECRET = 'Cq7ESWzLcmdTrRW7RZpor_Oo'
+DOUBAN_CONSUMER_KEY = '094e0fa52914923c1bea2eef7b3db6b4'
+DOUBAN_CONSUMER_SECRET = 'f090f610a931d71f'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/about/what_next'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/about/what_next'
+
+# Activity Stream Settings
+#=========================
+ACTSTREAM_ACTION_MODELS = ['auth.User', 'experiences.Post', ]
+ACTSTREAM_MANAGER = 'actstream.managers.ActionManager'
+STREAM_DETAILS_ELLIPSIS_LENGTH = 200
+
+#Haystack configuration
+#======================
+HAYSTACK_CONNECTIONS = {
+    'default':{
+        'ENGINE':'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+        },
+}
+
+# Pagination settings
+#====================
+PAGINATE_NUM = 1
