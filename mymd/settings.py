@@ -150,6 +150,7 @@ INSTALLED_APPS = (
     "disease",
     "experiences",
     "friends",
+    "meetup",
     "my_comments",
     "mymdutils",
     "pins",
