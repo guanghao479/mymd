@@ -4,7 +4,7 @@ from django import forms
 from django.conf import settings
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from django.utils.translation import ugettext_lazy as _, ugettext
+from django.utils.translation import ugettext_lazy as _
 from django.utils.http import int_to_base36
 
 from django.contrib import messages
@@ -60,12 +60,12 @@ class LoginForm(GroupForm):
         ordering = []
         if EMAIL_AUTHENTICATION:
             self.fields["email"] = forms.EmailField(
-                label = ugettext("Email"),
+                label = _("Email"),
             )
             ordering.append("email")
         else:
             self.fields["username"] = forms.CharField(
-                label = ugettext("Username"),
+                label = _("Username"),
                 max_length = 30,
             )
             ordering.append("username")
@@ -173,12 +173,12 @@ class SignupForm(GroupForm):
     def __init__(self, *args, **kwargs):
         super(SignupForm, self).__init__(*args, **kwargs)
         if REQUIRED_EMAIL or EMAIL_VERIFICATION or EMAIL_AUTHENTICATION:
-            self.fields["email"].label = ugettext("Email")
+            self.fields["email"].label = _("Email")
             self.fields["email"].required = True
             self.fields["city"] = forms.ModelChoiceField(queryset = City.objects.all(), empty_label=None)
             self.fields["disease"] = forms.ModelChoiceField(queryset = Disease.objects.all(), empty_label=None)
         else:
-            self.fields["email"].label = ugettext("Email (optional)")
+            self.fields["email"].label = _("Email (optional)")
             self.fields["email"].required = False
 
     def clean_username(self):
@@ -267,7 +267,7 @@ class SignupForm(GroupForm):
                 join_invitation.accept(new_user) # should go before creation of EmailAddress below
                 if request:
                     messages.add_message(request, messages.INFO,
-                        ugettext(u"Your email address has already been verified")
+                        _(u"Your email address has already been verified")
                     )
                 # already verified so can just create
                 EmailAddress(user=new_user, email=email, verified=True, primary=True).save()
@@ -277,7 +277,7 @@ class SignupForm(GroupForm):
                 if email:
                     if request:
                         messages.add_message(request, messages.INFO,
-                            ugettext(u"Confirmation email sent to %(email)s") % {
+                            _(u"Confirmation email sent to %(email)s") % {
                                 "email": email,
                             }
                         )
@@ -289,7 +289,7 @@ class SignupForm(GroupForm):
                 if request and EMAIL_VERIFICATION:
                     EmailAddress.objects.add_email(new_user, email)
                     messages.add_message(request, messages.INFO,
-                        ugettext(u"Confirmation email sent to %(email)s") % {
+                        _(u"Confirmation email sent to %(email)s") % {
                             "email": email,
                         }
                     )
