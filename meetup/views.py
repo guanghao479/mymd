@@ -1,11 +1,41 @@
+import datetime
+
 from django.contrib.auth.models import User
-from django.views.generic import DetailView, ListView
+from django.views.generic import CreateView, DetailView, ListView
 from city.models import City
 from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.shortcuts import redirect, get_object_or_404, render_to_response
 
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from meetup.forms import MeetupForm
+from meetup.models import Meetup
+
+class MeetupCreateView(CreateView):
+    """
+    Create a new meetup.
+    """
+    template_name = 'meetup/meetup_create.html'
+    form_class = MeetupForm
+
+    def get_template_names(self):
+        return [self.template_name]
+
+    def form_valid(self, form):
+        meetup = form.save(commit=False)
+        meetup.organizer = self.request.user
+        meetup.created_date = datetime.datetime.now()
+        meetup.modified_date = datetime.datetime.now()
+        meetup.save()
+        return redirect(self.get_success_url())
+
+    def get_success_url(self):
+        return '/'
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(MeetupCreateView, self).dispatch(*args, **kwargs)
 
 class MeetupListView(ListView):
     """
@@ -16,8 +46,8 @@ class MeetupListView(ListView):
     paginate_by = settings.PAGINATE_NUM
 
     def get_queryset(self):
-        self.cityname = self.kwargs.get('city')
-        self.city = get_object_or_404(City, name=self.city)
+        self.cityid = self.kwargs.get('city')
+        self.city = get_object_or_404(City, id=self.cityid)
         meetups = Meetup.objects.filter(city=self.city)
         return meetups
 
@@ -31,7 +61,7 @@ class MeetupListView(ListView):
 
 class MeetupDetailView(DetailView):
     
-    template_name = 'meetup/meetup.html'
+    template_name = 'meetup/meetup_datail.html'
     context_object_name = 'meetup'
     
     def get_object(self):

@@ -23,7 +23,7 @@ urlpatterns = patterns("",
     url(r"^stream/", include("stream.urls")),
     url(r"^avatar/", include("avatar.urls")),
     url(r"^comment/", include("django.contrib.comments.urls")),
-    url(r"^meetup/", include("meetup.urls")),
+    url(r"^meetup/", include("meetup.urls", namespace='meetup')),
 
     # Site specific urls
     url(r"^about/", include("about.urls")),

@@ -15,6 +15,8 @@ class Meetup(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
     date = models.DateField()
+    created_date = models.DateField()
+    modified_date = models.DateField()
     poster = models.ImageField(upload_to='images/poster/')
 
     class Meta:
@@ -24,5 +26,6 @@ class Meetup(models.Model):
     def __unicode__(self):
         return self.title
 
+    @models.permalink
     def get_absolute_url(self):
-        return reverse("meetup:meetup_detail", kwargs=kwargs)
+        return ('meetup_detail', [str(self.id)])
