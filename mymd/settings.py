@@ -288,3 +288,7 @@ HAYSTACK_CONNECTIONS = {
 # Pagination settings
 #====================
 PAGINATE_NUM = 1
+
+# Meetup settings
+#================
+MEETUP_POSTER_STORAGE_DIR = os.path.join(os.path.join(PROJECT_ROOT, "static"), 'images/meetup/posters/')

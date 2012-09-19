@@ -1,4 +1,5 @@
 import datetime
+import pdb
 
 from django.contrib.auth.models import User
 from django.views.generic import CreateView, DetailView, ListView
@@ -10,7 +11,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from meetup.forms import MeetupForm
-from meetup.models import Meetup
+from meetup.models import Meetup, poster_file_path
 
 class MeetupCreateView(CreateView):
     """
@@ -24,6 +25,10 @@ class MeetupCreateView(CreateView):
 
     def form_valid(self, form):
         meetup = form.save(commit=False)
+        #pdb.set_trace()
+        poster_path = poster_file_path(filename=self.request.FILES['poster'].name)
+        meetup.poster=poster_path
+        meetup.poster.storage.save(poster_path, self.request.FILES['poster'])
         meetup.organizer = self.request.user
         meetup.created_date = datetime.datetime.now()
         meetup.modified_date = datetime.datetime.now()
