@@ -19,8 +19,9 @@ class Meetup(models.Model):
     Meetup app model.
     """
     organizer = models.ForeignKey(User, related_name='organizer')
-    attenders = models.ManyToManyField(User, related_name='attenders')
+    attenders = models.ManyToManyField(User, related_name='attenders', through='Attend')
     city  = models.ForeignKey(City)
+    address = models.CharField(max_length=300)
     title = models.CharField(max_length=100)
     content = models.TextField()
     date = models.DateField()
@@ -38,3 +39,16 @@ class Meetup(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('meetup_detail', [str(self.id)])
+
+class Attend(models.Model):
+    """
+    User attend meetup relationship. We use attend relationship
+    instead of directly use ManyToMany field because we may want
+    to establish other relationships, like follow.
+    """
+    attender = models.ForeignKey(User)
+    meetup = models.ForeignKey(Meetup)
+    attend_date = models.DateField(blank=True, null=True)
+
+    def __unicode__(self):
+        return "%s-%s" % (self.attender, self.meetup)
