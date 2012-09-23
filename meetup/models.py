@@ -40,6 +40,22 @@ class Meetup(models.Model):
     def get_absolute_url(self):
         return ('meetup_detail', [str(self.id)])
 
+class AttendManager(models.Manager):
+    """
+    Attend manager for Attend relationship.
+    """
+
+    def is_attent(self, user, meetup):
+        """
+        Check whether the given user is already attent the given
+        meetup.
+        """
+        if self.filter(attender=user, meetup=meetup).count() > 0:
+            return True
+        else:
+            return False
+
+    
 class Attend(models.Model):
     """
     User attend meetup relationship. We use attend relationship
@@ -50,5 +66,11 @@ class Attend(models.Model):
     meetup = models.ForeignKey(Meetup)
     attend_date = models.DateField(blank=True, null=True)
 
+    objects = AttendManager()
+
     def __unicode__(self):
         return "%s-%s" % (self.attender, self.meetup)
+
+
+#TODO: A invitation feature for meetup organizer to invite user
+# has not attent the meetup yet.
