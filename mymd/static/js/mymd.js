@@ -48,7 +48,36 @@ if (typeof mymd === 'undefined') {
   }
   mymd.ajax = new ajax();
 
+  function meetup(){
+    //private variables
+    var renderWidget = function(meetup) {
+      var requestData = {
+      'meetup': meetup
+     }
+     var promise = mymd.ajax.getDataObject('/meetup/status', 'meetup', requestData);
+     promise.done(function(status){
+      if(status === 'AVAILABLE'){
+        //Attend meetup
+        $('#meetup-attend').show();
+      }else if(status === 'ATTENT'){
+        $('#meetup-attent').show();
+      }
+     });
+    promise.fail(function(){
+        return;
+      });
+    };
 
+    this.initWidget = function(meetup) {
+      renderWidget(meetup);
+      //$('#add-as-friend .action').click({to_user:to_user}, inviteHandler);
+      //$('#accept-invitation a[action="accept"]').click({to_user:to_user}, acceptHandler);
+      //$('#accept-invitation a[action="decline"]').click({to_user:to_user}, declineHandler);
+      //$('#accept-invitation a[action="ignore"]').click({to_user:to_user}, ignoreHandler);
+    };
+  }
+
+  mymd.meetup = new meetup();
   // define mymd.friends to represent user-related friends data
   function friends() {
     // private variables

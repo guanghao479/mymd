@@ -1,0 +1,19 @@
+{% load i18n %}
+
+<span class="hide" id="meetup_id">{{meetup.id}}</span>
+<div id="meetup-attent" class="hide">
+    <p><a class="action btn" disabled="disabled">{% trans "You already attent" %}</a></p>
+</div>
+
+<div id="meetup-attend" class="hide">
+  <form>
+    <input type="hidden" name="username" value="{{page_user.username}}" />
+    <p><a class="action btn" processing-text="{% trans "+1 Attend meetup" %}" processed-text="{% trans "+1 Meetup attent" %}">
+    {% trans "+ Attend" %}
+  </a></p>
+  </form>
+</div>
+
+<script>
+  mymd.meetup.initWidget($('#meetup_id').text());
+</script>

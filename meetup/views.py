@@ -11,7 +11,11 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from meetup.forms import MeetupForm
-from meetup.models import Meetup, poster_file_path
+from meetup.models import Meetup, Attend, poster_file_path
+
+from django.utils import simplejson as json
+
+import pdb
 
 class MeetupCreateView(CreateView):
     """
@@ -77,6 +81,7 @@ class MeetupDetailView(DetailView):
     
     def get_context_data(self, **kwargs):
         context = super(MeetupDetailView, self).get_context_data(**kwargs)
+        context['meetup'] = self.meetup
         return context
 
 def attend_meetup(request):
@@ -126,3 +131,22 @@ def attenders(request):
             attenders.append(attender)
         result = {'attenders': attenders}
     return HttpResponse(json.dumps(result), content_type='application/json')
+
+def status(request):
+    """
+    View to check user whether already attent the given meetup.
+    """
+    result = {}
+    if not request.is_ajax():
+        return Http404
+    if not request.user.is_authenticated():
+        result = {'error': { 'code' : 'NOT_AUTHENTICATED', }, }
+    else:
+        #pdb.set_trace()
+        user = request.user
+        meetup = request.GET['meetup']
+        if Attend.objects.is_attent(meetup=meetup, user=user):
+            result = {'meetup': { 'status': 'ATTENT', }, }
+        else:
+            result = {'meetup': { 'status': 'AVAILABLE'}, }
+    return HttpResponse(json.dumps(result), content_type="application/json")
