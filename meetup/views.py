@@ -84,7 +84,7 @@ class MeetupDetailView(DetailView):
         context['meetup'] = self.meetup
         return context
 
-def attend_meetup(request):
+def attend(request):
     """
     View for user to attend meetup.
     """
@@ -94,10 +94,10 @@ def attend_meetup(request):
     if not request.user.is_authenticated():
         result = { 'error': { 'code' : 'NOT_AUTHENTICATED', }, }
     else:
-        meetup_name = request.POST['meetup']
-        meetup = Meetup.objects.get(name=meetup_name)
+        meetup_id = request.POST['meetup']
+        meetup = Meetup.objects.get(id=meetup_id)
         attender = request.user
-        if Attend.objects.is_attent(meetup=meetup, attender=attender):
+        if Attend.objects.is_attent(meetup=meetup, user=attender):
             result = { 'error': { 'code': 'ALREADY_ATTENT', }, }
         else:
             new_attender = Attend(attender=attender,
@@ -110,7 +110,6 @@ def attend_meetup(request):
                 result = { 'success':True }
 
     return HttpResponse(json.dumps(result), content_type='application/json')
-    user = request.user
 
 def attenders(request):
     """
@@ -123,11 +122,11 @@ def attenders(request):
         result = { 'error': { 'code' : 'NOT_AUTHENTICATED', }, }
     else:
         attenders = []
-        meetup_name = request.POST['meetup']
-        meetup = Meetup.objects.get(name=meetup_name)
-        attend_relationships = Attend.objects.get(meetup=meetup)
+        meetup_id = request.GET['meetup']
+        meetup = Meetup.objects.get(id=meetup_id)
+        attend_relationships = Attend.objects.filter(meetup=meetup)
         for attend_relationship in attend_relationships:
-            attender = {'attender': attend_relationship.attender}
+            attender = {'name': attend_relationship.attender.username}
             attenders.append(attender)
         result = {'attenders': attenders}
     return HttpResponse(json.dumps(result), content_type='application/json')

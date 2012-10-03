@@ -54,7 +54,7 @@ if (typeof mymd === 'undefined') {
       var requestData = {
       'meetup': meetup
      }
-     var promise = mymd.ajax.getDataObject('/meetup/status', 'meetup', requestData);
+     var promise = mymd.ajax.getDataObject('/meetup/status/', 'meetup', requestData);
      promise.done(function(status){
       if(status === 'AVAILABLE'){
         //Attend meetup
@@ -68,9 +68,36 @@ if (typeof mymd === 'undefined') {
       });
     };
 
+    var renderAttenders = function(meetup) {
+      var requestData = {
+        'meetup': meetup
+      }
+      var promise = mymd.ajax.getDataObject('/meetup/attenders/', 'attenders', requestData);
+      promise.done(function(status, attenders){
+        var attenders_div = $('#attenders');
+        for(var i in attenders){
+          attenders_div.append('<p>'+attenders[i].name+'</p>')
+        };
+      });
+    }
+
+    var attendHandler = function(event) {
+      var data = {meetup:event.data.meetup};
+      var promise = mymd.ajax.post('/meetup/attend/', data);
+      var btn = $(this);
+      btn.attr('disabled', 'disabled')
+        .text(btn.attr('processing-text'));
+      promise.done(function(result){
+        btn.attr('disabled', 'disabled')
+          .text(btn.attr('processed-text'));
+      })
+      return false;
+    }
+
     this.initWidget = function(meetup) {
       renderWidget(meetup);
-      //$('#add-as-friend .action').click({to_user:to_user}, inviteHandler);
+      renderAttenders(meetup);
+      $('#meetup-attend .action').click({meetup:meetup}, attendHandler);
       //$('#accept-invitation a[action="accept"]').click({to_user:to_user}, acceptHandler);
       //$('#accept-invitation a[action="decline"]').click({to_user:to_user}, declineHandler);
       //$('#accept-invitation a[action="ignore"]').click({to_user:to_user}, ignoreHandler);
