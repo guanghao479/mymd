@@ -18,7 +18,7 @@
         makes your site different.
         {% endblocktrans %}
     </p>
-    
+
     <h2>{% trans "About Basic Project" %}</h2>
     <p>
         {% blocktrans %}
@@ -27,7 +27,7 @@
         profiles.
         {% endblocktrans %}
     </p>
-    
+
     {% if user.is_authenticated %}
         {% url what_next as what_next_url %}
         <p class="what_next">{% blocktrans %}Wondering <a href="{{ what_next_url }}" class="btn primary large">What Next</a>?{% endblocktrans %}</p>
