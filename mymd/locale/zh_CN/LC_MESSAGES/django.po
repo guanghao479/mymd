@@ -106,7 +106,7 @@ msgstr "您的邮箱地址已经被验证"
 #: account/views.py:197
 #, python-format
 msgid "Confirmation email sent to %(email)s"
-msgstr ""
+msgstr "确认已经已经被发送到%(email)s"
 
 #: account/forms.py:368
 msgid "This email address already associated with this account."
@@ -114,7 +114,7 @@ msgstr ""
 
 #: account/forms.py:369
 msgid "This email address already associated with another account."
-msgstr ""
+msgstr "邮件地址已经被使用"
 
 #: account/forms.py:393
 msgid "Current Password"
@@ -138,7 +138,7 @@ msgstr ""
 
 #: account/forms.py:472
 msgid "Password reset email sent"
-msgstr ""
+msgstr "密码重置邮件已经发送"
 
 #: account/forms.py:516 mymd/templates/account/base.html:25
 msgid "Language"
@@ -188,75 +188,75 @@ msgstr ""
 
 #: city/models.py:12
 msgid "city"
-msgstr ""
+msgstr "城市"
 
 #: city/models.py:13
 msgid "cities"
-msgstr ""
+msgstr "城市"
 
 #: community/models.py:14
 msgid "community"
-msgstr ""
+msgstr "社区"
 
 #: community/models.py:15
 msgid "communities"
-msgstr ""
+msgstr "社区"
 
 #: diary/models.py:14
 msgid "Great"
-msgstr ""
+msgstr "很好"
 
 #: diary/models.py:15
 msgid "Good"
-msgstr ""
+msgstr "好"
 
 #: diary/models.py:16
 msgid "Normal"
-msgstr ""
+msgstr "一般"
 
 #: diary/models.py:17
 msgid "Bad"
-msgstr ""
+msgstr "不好"
 
 #: diary/models.py:18
 msgid "Horrible"
-msgstr ""
+msgstr "难受"
 
 #: diary/models.py:20 experiences/models.py:15
 msgid "Draft"
-msgstr ""
+msgstr "草稿"
 
 #: diary/models.py:21 experiences/models.py:16
 msgid "Published"
-msgstr ""
+msgstr "已发布"
 
 #: diary/models.py:23
 msgid "Public"
-msgstr ""
+msgstr "公开的"
 
 #: diary/models.py:24
 msgid "Privacy"
-msgstr ""
+msgstr "私人的"
 
 #: diary/models.py:25
 msgid "feel"
-msgstr ""
+msgstr "感觉"
 
 #: diary/models.py:28 experiences/models.py:20
 msgid "status"
-msgstr ""
+msgstr "状态"
 
 #: diary/models.py:29
 msgid "privacy"
-msgstr ""
+msgstr "隐私"
 
 #: diary/models.py:30 experiences/models.py:22
 msgid "publish"
-msgstr ""
+msgstr "发布"
 
 #: diary/models.py:31 experiences/models.py:23
 msgid "created"
-msgstr ""
+msgstr "已创建"
 
 #: diary/models.py:32 experiences/models.py:24
 msgid "modified"
@@ -264,31 +264,31 @@ msgstr ""
 
 #: diary/models.py:37
 msgid "diary"
-msgstr ""
+msgstr "日记"
 
 #: diary/models.py:38
 msgid "diaries"
-msgstr ""
+msgstr "日记"
 
 #: disease/models.py:12
 msgid "disease"
-msgstr ""
+msgstr "疾病"
 
 #: disease/models.py:13
 msgid "diseases"
-msgstr ""
+msgstr "疾病"
 
 #: district/models.py:12
 msgid "district"
-msgstr ""
+msgstr "区"
 
 #: district/models.py:13
 msgid "districts"
-msgstr ""
+msgstr "区"
 
 #: experiences/models.py:21
 msgid "allow comments"
-msgstr ""
+msgstr "允许评论"
 
 #: experiences/models.py:29
 msgid "post"
@@ -300,19 +300,19 @@ msgstr ""
 
 #: friends/management.py:10
 msgid "Invitation Received"
-msgstr ""
+msgstr "邀请已发送"
 
 #: friends/management.py:10
 msgid "you have received an invitation"
-msgstr ""
+msgstr "您有一个好友邀请"
 
 #: friends/management.py:11
 msgid "Acceptance Received"
-msgstr ""
+msgstr "好友邀请已被接受"
 
 #: friends/management.py:11
 msgid "an invitation you sent has been accepted"
-msgstr ""
+msgstr "您的一个好友邀请被接受了"
 
 #: friends/management.py:12
 msgid "Join Invitation Accepted"
@@ -325,7 +325,7 @@ msgstr ""
 #: friends/templates/notification/friends_accept/full.txt:1
 #, python-format
 msgid "%(invitation_to_user)s has accepted your friend request."
-msgstr ""
+msgstr "%(invitation_to_user)s已经接受了您的好友邀请"
 
 #: friends/templates/notification/friends_accept/notice.html:2
 #, python-format
@@ -337,7 +337,7 @@ msgstr ""
 #: friends/templates/notification/friends_accept_sent/full.txt:1
 #, python-format
 msgid "You accepted %(invitation_from_user)s's friend request."
-msgstr ""
+msgstr "您接受了%(invitation_from_user)s的好友邀请"
 
 #: friends/templates/notification/friends_accept_sent/notice.html:2
 #, python-format
@@ -419,7 +419,7 @@ msgstr ""
 
 #: mymd/templates/homepage.html:6
 msgid "Welcome"
-msgstr ""
+msgstr "欢迎"
 
 #: mymd/templates/homepage.html:11
 msgid "Welcome to Pinax"
@@ -470,20 +470,20 @@ msgstr ""
 
 #: mymd/templates/site_base.html:19
 msgid "Personal Diaries"
-msgstr ""
+msgstr "私人日记"
 
 #: mymd/templates/site_base.html:20 mymd/templates/stream/index.html:7
 #: mymd/templates/stream/mine.html:8
 msgid "Experience Sharing"
-msgstr ""
+msgstr "经验分享"
 
 #: mymd/templates/site_base.html:21 mymd/templates/notification/notices.html:7
 msgid "Notices"
-msgstr ""
+msgstr "消息"
 
 #: mymd/templates/about/what_next.html:6 mymd/templates/about/what_next.html:9
 msgid "What Next?"
-msgstr ""
+msgstr "下一步"
 
 #: mymd/templates/about/what_next.html:35
 #, python-format
@@ -499,35 +499,35 @@ msgstr ""
 
 #: mymd/templates/account/base.html:10
 msgid "Account"
-msgstr ""
+msgstr "账户"
 
 #: mymd/templates/account/base.html:11 mymd/templates/profiles/base.html:10
 msgid "Profile"
-msgstr ""
+msgstr "个人资料"
 
 #: mymd/templates/account/base.html:12
 msgid "Email Addresses"
-msgstr ""
+msgstr "邮件地址"
 
 #: mymd/templates/account/base.html:14
 msgid "OpenID Associations"
-msgstr ""
+msgstr "OpenID关联"
 
 #: mymd/templates/account/base.html:17
 msgid "Change Password"
-msgstr ""
+msgstr "更改密码"
 
 #: mymd/templates/account/base.html:19
 msgid "Set Password"
-msgstr ""
+msgstr "设置密码"
 
 #: mymd/templates/account/base.html:22
 msgid "Delete Password"
-msgstr ""
+msgstr "删除密码"
 
 #: mymd/templates/account/login.html:8 mymd/templates/account/login.html:13
 msgid "Log In"
-msgstr ""
+msgstr "登录"
 
 #: mymd/templates/account/login.html:20
 msgid "Note"
@@ -536,55 +536,55 @@ msgstr ""
 #: mymd/templates/account/login.html:21
 #, python-format
 msgid "you are already logged in as %(user_display)s."
-msgstr ""
+msgstr "您已经登录%(user_display)s"
 
 #: mymd/templates/account/login.html:26
 #, python-format
 msgid "Don't have an account? <a href=\"%(signup_url)s\">Sign up</a>!"
-msgstr ""
+msgstr "没有账户？ 把链接从翻译里去除%(signup_url)s"
 
 #: mymd/templates/account/login.html:29
 msgid "Forgot password?"
-msgstr ""
+msgstr "忘记密码？"
 
 #: mymd/templates/account/login.html:31
 msgid "用豆瓣帐户登陆"
-msgstr ""
+msgstr "用豆瓣帐户登陆"
 
 #: mymd/templates/account/login.html:42 mymd/templates/account/signup.html:25
 msgid "Log in"
-msgstr ""
+msgstr "登录"
 
 #: mymd/templates/account/login.html:48
 #, python-format
 msgid ""
 "If you have any trouble logging in to your account, contact us at <a href="
 "\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
-msgstr ""
+msgstr "如果登录过程中出现问题，请联系%(CONTACT_EMAIL)s 删除翻译里的链接"
 
 #: mymd/templates/account/signup.html:7 mymd/templates/account/signup.html:18
 msgid "Sign Up"
-msgstr ""
+msgstr "注册"
 
 #: mymd/templates/account/signup.html:23
 msgid "You are already logged in."
-msgstr ""
+msgstr "您已经登录"
 
 #: mymd/templates/account/signup.html:25
 msgid "Already have an account?"
-msgstr ""
+msgstr "已经注册过？"
 
 #: mymd/templates/account/signup.html:34
 msgid "Sign up"
-msgstr ""
+msgstr "注册"
 
 #: mymd/templates/activity/actor.html:24
 msgid "UNFOLLOW"
-msgstr ""
+msgstr "取消关注"
 
 #: mymd/templates/activity/actor.html:25
 msgid "FOLLOW"
-msgstr ""
+msgstr "关注"
 
 #: mymd/templates/activity/actor.html:30
 msgid "View my actions"
@@ -597,128 +597,128 @@ msgstr ""
 #: mymd/templates/diary/_diary_paginate.html:6
 #: mymd/templates/experiences/_experience_paginate.html:6
 msgid "Previous"
-msgstr ""
+msgstr "前一页"
 
 #: mymd/templates/diary/_diary_paginate.html:9
 #: mymd/templates/experiences/_experience_paginate.html:9
 msgid "Page"
-msgstr ""
+msgstr "页"
 
 #: mymd/templates/diary/_diary_paginate.html:12
 #: mymd/templates/experiences/_experience_paginate.html:12
 msgid "Next"
-msgstr ""
+msgstr "下一页"
 
 #: mymd/templates/diary/diary_create.html:3
 #: mymd/templates/diary/diary_create.html:7
 msgid "Create Diary"
-msgstr ""
+msgstr "创建日记"
 
 #: mymd/templates/diary/diary_details.html:10
 #, python-format
 msgid "%(diary_author)s's Diaries"
-msgstr ""
+msgstr "%(diary_author)s的日记"
 
 #: mymd/templates/diary/diary_edit.html:3
 #: mymd/templates/diary/diary_edit.html:7
 msgid "Edit Diary"
-msgstr ""
+msgstr "编辑日记"
 
 #: mymd/templates/diary/diary_list.html:7
 msgid "Create a Diary"
-msgstr ""
+msgstr "创建日记"
 
 #: mymd/templates/diary/diary_list.html:25
 msgid "No Diary Found!"
-msgstr ""
+msgstr "没有找到日记"
 
 #: mymd/templates/experiences/experience_create.html:5
 #: mymd/templates/experiences/experience_create.html:10
 msgid "Create experience"
-msgstr ""
+msgstr "分享经验"
 
 #: mymd/templates/experiences/experience_details.html:10
 #, python-format
 msgid "%(experience_author)s's experiences"
-msgstr ""
+msgstr "%(experience_author)s的经验分享"
 
 #: mymd/templates/experiences/experience_edit.html:3
 #: mymd/templates/experiences/experience_edit.html:7
 msgid "Edit Experience"
-msgstr ""
+msgstr "编辑经验"
 
 #: mymd/templates/experiences/experience_list.html:23
 msgid "Create an Experience"
-msgstr ""
+msgstr "分享经验"
 
 #: mymd/templates/friends/_add_as_friend.html:5
 #: mymd/templates/friends/_add_as_friend.html:11
 msgid "+1 Friend request sent"
-msgstr ""
+msgstr "+1 好友邀请已发送"
 
 #: mymd/templates/friends/_add_as_friend.html:11
 msgid "+1 Sending request"
-msgstr ""
+msgstr "+1 正在发送"
 
 #: mymd/templates/friends/_add_as_friend.html:12
 msgid "+1 Add as Friend"
-msgstr ""
+msgstr "+1 加为好友"
 
 #: mymd/templates/friends/_add_as_friend.html:22
 msgid "Accepting"
-msgstr ""
+msgstr "正在接受"
 
 #: mymd/templates/friends/_add_as_friend.html:22
 msgid "Accepted"
-msgstr ""
+msgstr "已接受"
 
 #: mymd/templates/friends/_add_as_friend.html:23
 msgid "Accept"
-msgstr ""
+msgstr "接受"
 
 #: mymd/templates/friends/_add_as_friend.html:25
 msgid "Declining"
-msgstr ""
+msgstr "正在拒绝"
 
 #: mymd/templates/friends/_add_as_friend.html:25
 msgid "Declined"
-msgstr ""
+msgstr "已拒绝"
 
 #: mymd/templates/friends/_add_as_friend.html:26
 msgid "Decline"
-msgstr ""
+msgstr "拒绝"
 
 #: mymd/templates/friends/_add_as_friend.html:28
 msgid "Ignoring"
-msgstr ""
+msgstr "正在忽略"
 
 #: mymd/templates/friends/_add_as_friend.html:28
 msgid "Ignored"
-msgstr ""
+msgstr "已忽略"
 
 #: mymd/templates/friends/_add_as_friend.html:29
 msgid "Ignore"
-msgstr ""
+msgstr "忽略"
 
 #: mymd/templates/friends/friends.html:4 mymd/templates/friends/friends.html:6
 msgid "Friends"
-msgstr ""
+msgstr "朋友"
 
 #: mymd/templates/home/home.html:8 mymd/templates/home/index.html:8
 #: mymd/templates/home/stranger.html:8
 msgid "Welcome to MYMD"
-msgstr ""
+msgstr "欢迎来到MYMD"
 
 #: mymd/templates/idios/profile.html:6 mymd/templates/idios/profile.html:11
 #: mymd/templates/profiles/profile.html:7
 #: mymd/templates/profiles/profile.html:12
 #, python-format
 msgid "Profile for %(page_user_display)s"
-msgstr ""
+msgstr "%(page_user_display)s的个人资料"
 
 #: mymd/templates/notification/notices.html:14
 msgid "Mark all unseen notices seen"
-msgstr ""
+msgstr "标记全部为已读"
 
 #: mymd/templates/notification/notices.html:20
 msgid "MONTH_DAY_FORMAT"
@@ -726,28 +726,28 @@ msgstr ""
 
 #: mymd/templates/notification/notices.html:38
 msgid "No notices."
-msgstr ""
+msgstr "没有消息"
 
 #: mymd/templates/profiles/_profile_info.html:3
 msgid "Name"
-msgstr ""
+msgstr "名字"
 
 #: mymd/templates/profiles/_profile_info.html:10
 msgid "Birth Date"
-msgstr ""
+msgstr "生日"
 
 #: mymd/templates/profiles/base.html:11
 msgid "Your Profile"
-msgstr ""
+msgstr "你的资料"
 
 #: mymd/templates/profiles/profile_edit.html:5
 #: mymd/templates/profiles/profile_edit.html:9
 msgid "Edit Profile"
-msgstr ""
+msgstr "编辑个人资料"
 
 #: mymd/templates/search/search.html:12
 msgid "Search"
-msgstr ""
+msgstr "搜索"
 
 #: mymd/templates/stream/index.html:13 mymd/templates/stream/mine.html:14
 msgid "stream-filter"
@@ -800,8 +800,8 @@ msgstr ""
 
 #: profiles/models.py:26
 msgid "profile"
-msgstr ""
+msgstr "资料"
 
 #: profiles/models.py:27
 msgid "profiles"
-msgstr ""
+msgstr "资料"
