@@ -63,7 +63,7 @@ msgstr "城市"
 #: account/forms.py:151 mymd/templates/profiles/_profile_info.html:6
 #: profiles/forms.py:23
 msgid "District"
-msgstr ""
+msgstr "区"
 
 #: account/forms.py:155 mymd/templates/profiles/_profile_info.html:7
 msgid "Community"
@@ -75,7 +75,7 @@ msgstr "性别"
 
 #: account/forms.py:169 mymd/templates/profiles/_profile_info.html:11
 msgid "Disease"
-msgstr ""
+msgstr "疾病"
 
 #: account/forms.py:181
 msgid "Email (optional)"
@@ -110,11 +110,11 @@ msgstr "确认已经已经被发送到%(email)s"
 
 #: account/forms.py:368
 msgid "This email address already associated with this account."
-msgstr ""
+msgstr "邮件地址已和此账户关联"
 
 #: account/forms.py:369
 msgid "This email address already associated with another account."
-msgstr "邮件地址已经被使用"
+msgstr "邮件地址已经和其他账户关联"
 
 #: account/forms.py:393
 msgid "Current Password"
@@ -134,7 +134,7 @@ msgstr "请输入当前密码"
 
 #: account/forms.py:452
 msgid "Email address not verified for any user account"
-msgstr ""
+msgstr "邮件地址没有被确认"
 
 #: account/forms.py:472
 msgid "Password reset email sent"
@@ -158,33 +158,33 @@ msgstr ""
 
 #: account/models.py:47
 msgid "timestamp"
-msgstr ""
+msgstr "时间"
 
 #: account/models.py:48
 msgid "reset yet?"
-msgstr ""
+msgstr "重置？"
 
 #: account/openid_consumer.py:122 account/views.py:87 account/views.py:151
 #, python-format
 msgid "Successfully logged in as %(user)s."
-msgstr ""
+msgstr "%(user)s，欢迎成功登录"
 
 #: account/views.py:213
 #, python-format
 msgid "Removed email address %(email)s"
-msgstr ""
+msgstr "已经删除邮件地址%(email)s"
 
 #: account/views.py:253 account/views.py:380
 msgid "Password successfully changed."
-msgstr ""
+msgstr "密码已经成功被改变"
 
 #: account/views.py:283
 msgid "Password successfully set."
-msgstr ""
+msgstr "成功设置密码"
 
 #: account/views.py:408
 msgid "Language successfully updated."
-msgstr ""
+msgstr "成功更新语言设置"
 
 #: city/models.py:12
 msgid "city"
@@ -316,7 +316,7 @@ msgstr "您的一个好友邀请被接受了"
 
 #: friends/management.py:12
 msgid "Join Invitation Accepted"
-msgstr ""
+msgstr "加入邀请被接受了"
 
 #: friends/management.py:12
 msgid "an invitation you sent to join this site has been accepted"
@@ -377,41 +377,41 @@ msgstr ""
 #: friends/templates/notification/friends_otherconnect/full.txt:1
 #, python-format
 msgid "%(invitation_from_user)s and %(to_user)s are now friends."
-msgstr ""
+msgstr "%(invitation_from_user)s和%(to_user)s成为朋友"
 
 #: friends/templates/notification/friends_otherconnect/notice.html:2
 #, python-format
 msgid ""
 "<a href=\"%(from_user_url)s\">%(invitation_from_user)s</a> and <a href="
 "\"%(to_user_url)s\">%(to_user)s</a> are now friends."
-msgstr ""
+msgstr "%(from_user_url)s%(invitation_from_user)s%(to_user_url)s%(to_user)s成为朋友了"
 
 #: friends/templates/notification/join_accept/full.txt:1
 #, python-format
 msgid "%(new_user)s has joined and is now a friend."
-msgstr ""
+msgstr "%(new_user)s已经加入成为您的好友"
 
 #: friends/templates/notification/join_accept/notice.html:2
 #, python-format
 msgid ""
 "<a href=\"%(user_url)s\">%(new_user)s</a> has joined and is now a friend."
-msgstr ""
+msgstr "%(user_url)s%(new_user)s已经加入成为您的好友"
 
 #: meetup/models.py:21
 msgid "meetup"
-msgstr ""
+msgstr "线下会面"
 
 #: meetup/models.py:22
 msgid "meetups"
-msgstr ""
+msgstr "线下会面"
 
 #: mymd/templates/403.html:5
 msgid "Not Found"
-msgstr ""
+msgstr "没有找到"
 
 #: mymd/templates/403.html:8
 msgid "We're sorry you are not authorized."
-msgstr ""
+msgstr "您没有权利访问此页面"
 
 #: mymd/templates/_footer.html:3
 msgid "&copy; 2012 &lt;MYMD Inc.&gt;"
@@ -423,7 +423,7 @@ msgstr "欢迎"
 
 #: mymd/templates/homepage.html:11
 msgid "Welcome to Pinax"
-msgstr ""
+msgstr "欢迎来Pinax"
 
 #: mymd/templates/homepage.html:13
 msgid ""
@@ -452,21 +452,21 @@ msgstr ""
 msgid ""
 "Wondering <a href=\"%(what_next_url)s\" class=\"btn primary large\">What "
 "Next</a>?"
-msgstr ""
+msgstr "想知道下一步是什么？%(what_next_url)s"
 
 #: mymd/templates/homepage.html:38
 #, python-format
 msgid ""
 "You can <a href=\"%(login_url)s\" class=\"btn\">Log In</a> or <a href="
 "\"%(signup_url)s\" class=\"btn btn-primary\">Sign Up</a> to try out the site."
-msgstr ""
+msgstr "您可以注册来尝试网站%(login_url)s%(signup_url)s"
 
 #: mymd/templates/homepage.html:40
 #, python-format
 msgid ""
 "You can <a href=\"%(login_url)s\" class=\"btn btn-primary btn-large\">Log "
 "In</a> to try out the site."
-msgstr ""
+msgstr "您可以登录来浏览网站%(login_url)s"
 
 #: mymd/templates/site_base.html:19
 msgid "Personal Diaries"
@@ -490,12 +490,12 @@ msgstr "下一步"
 msgid ""
 "Start by <a href=\"%(signup_url)s\">signing up</a> and <a href="
 "\"%(login_url)s\">logging in</a>."
-msgstr ""
+msgstr "从注册开始%(signup_url)s%(login_url)s"
 
 #: mymd/templates/about/what_next.html:37
 #, python-format
 msgid "Start by <a href=\"%(login_url)s\">logging in</a>."
-msgstr ""
+msgstr "从登录开始%(login_url)s"
 
 #: mymd/templates/account/base.html:10
 msgid "Account"
@@ -531,7 +531,7 @@ msgstr "登录"
 
 #: mymd/templates/account/login.html:20
 msgid "Note"
-msgstr ""
+msgstr "注意"
 
 #: mymd/templates/account/login.html:21
 #, python-format
@@ -588,11 +588,11 @@ msgstr "关注"
 
 #: mymd/templates/activity/actor.html:30
 msgid "View my actions"
-msgstr ""
+msgstr "查看我的活动"
 
 #: mymd/templates/activity/actor.html:36
 msgid "No actions yet"
-msgstr ""
+msgstr "还没有活动"
 
 #: mymd/templates/diary/_diary_paginate.html:6
 #: mymd/templates/experiences/_experience_paginate.html:6
@@ -722,7 +722,7 @@ msgstr "标记全部为已读"
 
 #: mymd/templates/notification/notices.html:20
 msgid "MONTH_DAY_FORMAT"
-msgstr ""
+msgstr "月_日_格式"
 
 #: mymd/templates/notification/notices.html:38
 msgid "No notices."
