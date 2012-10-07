@@ -6,7 +6,21 @@
 
 {% block body_class %}Meetup{% endblock %}
 {% block body %}
-{% include "meetup/_attend_meetup.html" %}
-{% include "meetup/_meetup_info.html" %}
-{% include "meetup/_meetup_attenders.html" %}
+<div class="container">
+    <div class="row-fluid">
+        <div class="span10">
+            {% include "meetup/_attend_meetup.html" %}
+            {% include "meetup/_meetup_info.html" %}
+        </div>
+        <div class="span2">
+            {% trans "Attenders: " %}
+            {% include "meetup/_meetup_attenders.html" %}
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span5">
+            {% include "meetup/_meetup_details.html" %}
+        </div>
+    </div>
+</div>
 {% endblock %}

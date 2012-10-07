@@ -1,5 +1,7 @@
+{% load i18n %}
 <h1>{{meetup.title}}</h1>
-<p>{{meetup.city}}</p>
-<p>{{meetup.address}}</p>
-<p>{{meetup.date}}</p>
-<p>{{meetup.content}}</p>
+<p>{% trans "City: " %}{{meetup.city}}</p>
+<p>{% trans "Address: " %}{{meetup.address}}</p>
+<p>{% trans "Date: " %}{{meetup.date}}</p>
+<p>{% trans "Organizer: " %}{{meetup.organizer}}</p>
+

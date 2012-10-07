@@ -90,6 +90,7 @@ if (typeof mymd === 'undefined') {
       promise.done(function(result){
         btn.attr('disabled', 'disabled')
           .text(btn.attr('processed-text'));
+        
       })
       return false;
     }
