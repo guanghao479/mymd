@@ -29,7 +29,10 @@ class Meetup(models.Model):
     modified_date = models.DateField()
     poster = models.ImageField(upload_to=poster_file_path)
 
+    objects = models.Manager()
+
     class Meta:
+        app_label = 'meetup'
         verbose_name = _("meetup")
         verbose_name_plural = _("meetups")
 
