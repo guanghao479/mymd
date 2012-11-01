@@ -1,0 +1,24 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+{% load avatar_tags %}
+{% block body_class %}My Meetups{% endblock %}
+{% block body %}
+<h1> My Meetup </h1>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span7">
+            {% if meetups %}
+                <ul>
+                {% for meetup in meetups %}
+                    <a href="{{ meetup.get_absolute_url }}">{{ meetup.title }}</a>
+                    <p>{{ meetup.content|truncatewords:10}}</p>
+                {% endfor %}
+                </ul>
+                {% include "meetup/_meetup_paginate.html" %}
+            {% else %}
+                <p><% trans "No meetup joined!" %></p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock%}

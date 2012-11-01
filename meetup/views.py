@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.views.generic import CreateView, DetailView, ListView
 from city.models import City
 from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.template import RequestContext
+
 from django.shortcuts import redirect, get_object_or_404, render_to_response
 
 from django.utils.decorators import method_decorator
@@ -149,3 +151,20 @@ def status(request):
         else:
             result = {'meetup': { 'status': 'AVAILABLE'}, }
     return HttpResponse(json.dumps(result), content_type="application/json")
+
+def mine(request, template='meetup/mine.html'):
+    """
+    Current user meetups information.
+
+    """
+    context = {'request': request}
+    user = request.user
+    meetups = []
+    attends = Attend.objects.filter(attender=user)
+    for attend_relationship in attends:
+        meetups.append(attend_relationship.meetup)
+    context['meetups'] = meetups
+    variables = RequestContext(request, context)
+    response = render_to_response(template, variables)
+
+    return response
