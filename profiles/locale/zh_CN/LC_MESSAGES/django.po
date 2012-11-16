@@ -1,0 +1,73 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-16 14:41+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+#: forms.py:19 templates/profiles/_profile_info.html:5
+msgid "City"
+msgstr ""
+
+#: forms.py:23 templates/profiles/_profile_info.html:6
+msgid "District"
+msgstr ""
+
+#: models.py:26
+msgid "profile"
+msgstr ""
+
+#: models.py:27
+msgid "profiles"
+msgstr ""
+
+#: templates/profiles/_profile_info.html:3
+msgid "Name"
+msgstr ""
+
+#: templates/profiles/_profile_info.html:7
+msgid "Community"
+msgstr ""
+
+#: templates/profiles/_profile_info.html:9
+msgid "Gender"
+msgstr ""
+
+#: templates/profiles/_profile_info.html:10
+msgid "Birth Date"
+msgstr ""
+
+#: templates/profiles/_profile_info.html:11
+msgid "Disease"
+msgstr ""
+
+#: templates/profiles/base.html:10
+msgid "Profile"
+msgstr ""
+
+#: templates/profiles/base.html:11
+msgid "Your Profile"
+msgstr ""
+
+#: templates/profiles/profile.html:7 templates/profiles/profile.html.py:12
+#, python-format
+msgid "Profile for %(page_user_display)s"
+msgstr ""
+
+#: templates/profiles/profile_edit.html:5
+#: templates/profiles/profile_edit.html:9
+msgid "Edit Profile"
+msgstr ""

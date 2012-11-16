@@ -1,0 +1,171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-16 14:42+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+#: management.py:10
+msgid "Invitation Received"
+msgstr ""
+
+#: management.py:10
+msgid "you have received an invitation"
+msgstr ""
+
+#: management.py:11
+msgid "Acceptance Received"
+msgstr ""
+
+#: management.py:11
+msgid "an invitation you sent has been accepted"
+msgstr ""
+
+#: management.py:12
+msgid "Join Invitation Accepted"
+msgstr ""
+
+#: management.py:12
+msgid "an invitation you sent to join this site has been accepted"
+msgstr ""
+
+#: templates/friends/_add_as_friend.html:5
+#: templates/friends/_add_as_friend.html:11
+msgid "+1 Friend request sent"
+msgstr ""
+
+#: templates/friends/_add_as_friend.html:11
+msgid "+1 Sending request"
+msgstr ""
+
+#: templates/friends/_add_as_friend.html:12
+msgid "+1 Add as Friend"
+msgstr ""
+
+#: templates/friends/_add_as_friend.html:22
+msgid "Accepting"
+msgstr ""
+
+#: templates/friends/_add_as_friend.html:22
+msgid "Accepted"
+msgstr ""
+
+#: templates/friends/_add_as_friend.html:23
+msgid "Accept"
+msgstr ""
+
+#: templates/friends/_add_as_friend.html:25
+msgid "Declining"
+msgstr ""
+
+#: templates/friends/_add_as_friend.html:25
+msgid "Declined"
+msgstr ""
+
+#: templates/friends/_add_as_friend.html:26
+msgid "Decline"
+msgstr ""
+
+#: templates/friends/_add_as_friend.html:28
+msgid "Ignoring"
+msgstr ""
+
+#: templates/friends/_add_as_friend.html:28
+msgid "Ignored"
+msgstr ""
+
+#: templates/friends/_add_as_friend.html:29
+msgid "Ignore"
+msgstr ""
+
+#: templates/friends/friends.html:4 templates/friends/friends.html.py:6
+msgid "Friends"
+msgstr ""
+
+#: templates/notification/friends_accept/full.txt:1
+#, python-format
+msgid "%(invitation_to_user)s has accepted your friend request."
+msgstr ""
+
+#: templates/notification/friends_accept/notice.html:2
+#, python-format
+msgid ""
+"<a href=\"%(user_url)s\">%(invitation_user)s</a> has accepted your friend "
+"request."
+msgstr ""
+
+#: templates/notification/friends_accept_sent/full.txt:1
+#, python-format
+msgid "You accepted %(invitation_from_user)s's friend request."
+msgstr ""
+
+#: templates/notification/friends_accept_sent/notice.html:2
+#, python-format
+msgid ""
+"You accepted <a href=\"%(user_url)s\">%(invitation_from_user)s</a>'s friend "
+"request."
+msgstr ""
+
+#: templates/notification/friends_invite/full.txt:1
+#, python-format
+msgid ""
+"%(invitation_from_user)s has requested to add you as a friend. You can "
+"accept their invitation at:\n"
+"\n"
+"http://%(current_site)s%(invitation_page)s\n"
+msgstr ""
+
+#: templates/notification/friends_invite/notice.html:2
+#, python-format
+msgid ""
+"<a href=\"%(user_url)s\">%(invitation_from_user)s</a> has requested to add "
+"you as a friend (see <a href=\"%(invitation_page)s\">invitations</a>)"
+msgstr ""
+
+#: templates/notification/friends_invite_sent/full.txt:1
+#, python-format
+msgid "you have invited %(invitation_to_user)s to add you as a friend."
+msgstr ""
+
+#: templates/notification/friends_invite_sent/notice.html:2
+#, python-format
+msgid ""
+"you have invited <a href=\"%(user_url)s\">%(invitation_to_user)s</a> to add "
+"you as a friend."
+msgstr ""
+
+#: templates/notification/friends_otherconnect/full.txt:1
+#, python-format
+msgid "%(invitation_from_user)s and %(to_user)s are now friends."
+msgstr ""
+
+#: templates/notification/friends_otherconnect/notice.html:2
+#, python-format
+msgid ""
+"<a href=\"%(from_user_url)s\">%(invitation_from_user)s</a> and <a href="
+"\"%(to_user_url)s\">%(to_user)s</a> are now friends."
+msgstr ""
+
+#: templates/notification/join_accept/full.txt:1
+#, python-format
+msgid "%(new_user)s has joined and is now a friend."
+msgstr ""
+
+#: templates/notification/join_accept/notice.html:2
+#, python-format
+msgid ""
+"<a href=\"%(user_url)s\">%(new_user)s</a> has joined and is now a friend."
+msgstr ""

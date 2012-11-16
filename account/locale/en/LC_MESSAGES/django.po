@@ -1,0 +1,262 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-16 14:41+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: forms.py:47 forms.py:133 forms.py:423
+msgid "Password"
+msgstr ""
+
+#: forms.py:51
+msgid "Remember Me"
+msgstr ""
+
+#: forms.py:52
+msgid "If checked you will stay logged in for 3 weeks"
+msgstr ""
+
+#: forms.py:63 forms.py:176 forms.py:360 forms.py:445
+msgid "Email"
+msgstr ""
+
+#: forms.py:68 forms.py:128
+msgid "Username"
+msgstr ""
+
+#: forms.py:96
+msgid "This account is currently inactive."
+msgstr ""
+
+#: forms.py:99
+msgid "The email address and/or password you specified are not correct."
+msgstr ""
+
+#: forms.py:101
+msgid "The username and/or password you specified are not correct."
+msgstr ""
+
+#: forms.py:137 forms.py:427
+msgid "Password (again)"
+msgstr ""
+
+#: forms.py:147
+msgid "City"
+msgstr ""
+
+#: forms.py:151
+msgid "District"
+msgstr ""
+
+#: forms.py:155
+msgid "Community"
+msgstr ""
+
+#: forms.py:159
+msgid "Gender"
+msgstr ""
+
+#: forms.py:169
+msgid "Disease"
+msgstr ""
+
+#: forms.py:181
+msgid "Email (optional)"
+msgstr ""
+
+#: forms.py:186
+msgid "Usernames can only contain letters, numbers and underscores."
+msgstr ""
+
+#: forms.py:191
+msgid "This username is already taken. Please choose another."
+msgstr ""
+
+#: forms.py:200
+msgid "A user is registered with this email address."
+msgstr ""
+
+#: forms.py:206 forms.py:413 forms.py:434 forms.py:502
+msgid "You must type the same password each time."
+msgstr ""
+
+#: forms.py:270
+msgid "Your email address has already been verified"
+msgstr ""
+
+#: forms.py:280 forms.py:292 views.py:182 views.py:197
+#, python-format
+msgid "Confirmation email sent to %(email)s"
+msgstr ""
+
+#: forms.py:368
+msgid "This email address already associated with this account."
+msgstr ""
+
+#: forms.py:369
+msgid "This email address already associated with another account."
+msgstr ""
+
+#: forms.py:393
+msgid "Current Password"
+msgstr ""
+
+#: forms.py:397 forms.py:486
+msgid "New Password"
+msgstr ""
+
+#: forms.py:401 forms.py:490
+msgid "New Password (again)"
+msgstr ""
+
+#: forms.py:407
+msgid "Please type your current password."
+msgstr ""
+
+#: forms.py:452
+msgid "Email address not verified for any user account"
+msgstr ""
+
+#: forms.py:472
+msgid "Password reset email sent"
+msgstr ""
+
+#: forms.py:516 templates/account/base.html:25
+msgid "Language"
+msgstr ""
+
+#: models.py:18 models.py:44
+msgid "user"
+msgstr ""
+
+#: models.py:19
+msgid "language"
+msgstr ""
+
+#: models.py:46
+msgid "temp_key"
+msgstr ""
+
+#: models.py:47
+msgid "timestamp"
+msgstr ""
+
+#: models.py:48
+msgid "reset yet?"
+msgstr ""
+
+#: openid_consumer.py:122 views.py:87 views.py:151
+#, python-format
+msgid "Successfully logged in as %(user)s."
+msgstr ""
+
+#: views.py:213
+#, python-format
+msgid "Removed email address %(email)s"
+msgstr ""
+
+#: views.py:253 views.py:380
+msgid "Password successfully changed."
+msgstr ""
+
+#: views.py:283
+msgid "Password successfully set."
+msgstr ""
+
+#: views.py:408
+msgid "Language successfully updated."
+msgstr ""
+
+#: templates/account/base.html:10
+msgid "Account"
+msgstr ""
+
+#: templates/account/base.html:11
+msgid "Profile"
+msgstr ""
+
+#: templates/account/base.html:12
+msgid "Email Addresses"
+msgstr ""
+
+#: templates/account/base.html:14
+msgid "OpenID Associations"
+msgstr ""
+
+#: templates/account/base.html:17
+msgid "Change Password"
+msgstr ""
+
+#: templates/account/base.html:19
+msgid "Set Password"
+msgstr ""
+
+#: templates/account/base.html:22
+msgid "Delete Password"
+msgstr ""
+
+#: templates/account/login.html:8 templates/account/login.html.py:13
+msgid "Log In"
+msgstr ""
+
+#: templates/account/login.html:20
+msgid "Note"
+msgstr ""
+
+#: templates/account/login.html:21
+#, python-format
+msgid "you are already logged in as %(user_display)s."
+msgstr ""
+
+#: templates/account/login.html:26
+#, python-format
+msgid "Don't have an account? <a href=\"%(signup_url)s\">Sign up</a>!"
+msgstr ""
+
+#: templates/account/login.html:29
+msgid "Forgot password?"
+msgstr ""
+
+#: templates/account/login.html:31
+msgid "用豆瓣帐户登陆"
+msgstr ""
+
+#: templates/account/login.html:42 templates/account/signup.html:25
+msgid "Log in"
+msgstr ""
+
+#: templates/account/login.html:48
+#, python-format
+msgid ""
+"If you have any trouble logging in to your account, contact us at <a href="
+"\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr ""
+
+#: templates/account/signup.html:7 templates/account/signup.html.py:18
+msgid "Sign Up"
+msgstr ""
+
+#: templates/account/signup.html:23
+msgid "You are already logged in."
+msgstr ""
+
+#: templates/account/signup.html:25
+msgid "Already have an account?"
+msgstr ""
+
+#: templates/account/signup.html:34
+msgid "Sign up"
+msgstr ""
