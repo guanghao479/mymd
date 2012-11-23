@@ -20,67 +20,67 @@ msgstr ""
 
 #: models.py:15
 msgid "Draft"
-msgstr ""
+msgstr "草稿"
 
 #: models.py:16
 msgid "Published"
-msgstr ""
+msgstr "已发布"
 
 #: models.py:20
 msgid "status"
-msgstr ""
+msgstr "状态"
 
 #: models.py:21
 msgid "allow comments"
-msgstr ""
+msgstr "允许评论"
 
 #: models.py:22
 msgid "publish"
-msgstr ""
+msgstr "发布"
 
 #: models.py:23
 msgid "created"
-msgstr ""
+msgstr "已创建"
 
 #: models.py:24
 msgid "modified"
-msgstr ""
+msgstr "已修改"
 
 #: models.py:29
 msgid "post"
-msgstr ""
+msgstr "经验"
 
 #: models.py:30
 msgid "posts"
-msgstr ""
+msgstr "经验"
 
 #: templates/experiences/_experience_paginate.html:6
 msgid "Previous"
-msgstr ""
+msgstr "前一页"
 
 #: templates/experiences/_experience_paginate.html:9
 msgid "Page"
-msgstr ""
+msgstr "页"
 
 #: templates/experiences/_experience_paginate.html:12
 msgid "Next"
-msgstr ""
+msgstr "下一页"
 
 #: templates/experiences/experience_create.html:5
 #: templates/experiences/experience_create.html:10
 msgid "Create experience"
-msgstr ""
+msgstr "新建经验"
 
 #: templates/experiences/experience_details.html:10
 #, python-format
 msgid "%(experience_author)s's experiences"
-msgstr ""
+msgstr "%(experience_author)s的经验"
 
 #: templates/experiences/experience_edit.html:3
 #: templates/experiences/experience_edit.html:7
 msgid "Edit Experience"
-msgstr ""
+msgstr "编辑经验"
 
 #: templates/experiences/experience_list.html:23
 msgid "Create an Experience"
-msgstr ""
+msgstr "新建经验"

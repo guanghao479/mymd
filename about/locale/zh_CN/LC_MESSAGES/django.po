@@ -20,7 +20,7 @@ msgstr ""
 
 #: templates/about/what_next.html:6 templates/about/what_next.html.py:9
 msgid "What Next?"
-msgstr ""
+msgstr "下一步是什么？"
 
 #: templates/about/what_next.html:35
 #, python-format
@@ -28,8 +28,9 @@ msgid ""
 "Start by <a href=\"%(signup_url)s\">signing up</a> and <a href="
 "\"%(login_url)s\">logging in</a>."
 msgstr ""
+"从<a href=\"%(signup_url)s\">注册</a>或者<a href=\"%(login_url)s\">登录</a>开始"
 
 #: templates/about/what_next.html:37
 #, python-format
 msgid "Start by <a href=\"%(login_url)s\">logging in</a>."
-msgstr ""
+msgstr "从<a href=\"%(login_url)s\">登录</a>开始"

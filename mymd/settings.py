@@ -90,6 +90,13 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+TEMPLATE_DIRS = (
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_ROOT, "templates"),
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -99,6 +106,7 @@ MIDDLEWARE_CLASSES = (
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'pagination.middleware.PaginationMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'mymd.urls'
@@ -106,14 +114,32 @@ ROOT_URLCONF = 'mymd.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'mymd.wsgi.application'
 
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_ROOT, "templates"),
-)
 
+# Order is important!!! maintain the home brewed apps on top will make
+# them higher priority
 INSTALLED_APPS = (
+    # home brewed apps !!!! Please follow A->Z
+    "about",
+    "account",
+    "actstream",
+    "avatar",
+    "city",
+    "community",
+    "diary",
+    "district",
+    "disease",
+    "experiences",
+    "friends",
+    "home",
+    "meetup",
+    "my_comments",
+    "mymdutils",
+    "pins",
+    "profiles",
+    "south",
+    "stream",
+    'widget_tweaks',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -137,27 +163,6 @@ INSTALLED_APPS = (
     "haystack",
     "social_auth",
     "emailconfirmation",
-
-    # home brewed apps !!!! Please follow A->Z
-    "about",
-    "account",
-    "actstream",
-    "avatar",
-    "city",
-    "community",
-    "diary",
-    "district",
-    "disease",
-    "experiences",
-    "friends",
-    "meetup",
-    "my_comments",
-    "mymdutils",
-    "pins",
-    "profiles",
-    "south",
-    "stream",
-    'widget_tweaks',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -241,6 +246,10 @@ AUTHENTICATION_BACKENDS = (
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: reverse("user_home", kwargs={"username":u.username}),
 }
+
+# Debug Toolbar
+INTERNAL_IPS = ('127.0.0.1',)
+
 
 # Account Settings
 #=================
