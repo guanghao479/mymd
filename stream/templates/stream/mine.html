@@ -5,17 +5,21 @@
 {% load ifsetting_tag %}
 {% load account_tags %}
 {% block head_title %}{% trans "Experience Sharing" context "Page Header Title" %}{% endblock %}
-{% block body_class %}experience{% endblock %}
+{% block body_class %}experience-mine{% endblock %}
 
 {% block body %}
 <div id="stream-container" class="row-fluid">
 	<div id="stream-filters" class="span2">
-		{% trans "stream-filter" %}
+		<p>
+			<a class="btn btn-large btn-primary" href="{% url experience_create %}">
+				{% trans "Write Experience" %}
+			</a>
+		</p>
 	</div>
 	<div id="stream-activities" class="span8">
+		<h1>{% trans "My Experiences" %}</h1>
 	</div>
 	<div id="stream-ads" class="span2">
-		{% trans "stream-ads" %}
 	</div>
 </div>
 

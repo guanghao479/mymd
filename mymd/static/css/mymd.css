@@ -17,14 +17,25 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#900000', endColorstr='#A00000', GradientType=0);
 }
 
+.navbar {
+  font-size: 1.1em;
+}
+
 .navbar .nav > li > a {
-color: #FFF;
+  color: #FFF;
 }
 
 .navbar .nav .active > a, .navbar .nav .active > a:hover {
-background-color: #700000;
+  background-color: #700000;
 }
 
+.navbar .nav > li > a {
+  color: #FFF;
+}
+
+.nav-list {
+  font-size: 1.1em;
+}
 
 div.pin div.title {
   font-weight:bold;

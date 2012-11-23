@@ -1,12 +1,19 @@
 {% extends "site_base.html" %}
 {% load i18n %}
 {% load avatar_tags %}
-{% block body_class %}My Meetups{% endblock %}
+{% block body_class %}meetup{% endblock %}
 {% block body %}
-<h1>{% trans "My Meetup" %}</h1>
 <div class="container-fluid">
     <div class="row-fluid">
-        <div class="span7">
+        <div class="span2">
+            <p>
+                <a class="btn btn-large btn-primary" href="{% url meetup:meetup_create %}">
+                    {% trans "Create Meetup" %}
+                </a>
+            </p>
+        </div>
+        <div class="span8">
+            <h1>{% trans "My Meetup" %}</h1>
             {% if meetups %}
                 <ul>
                 {% for meetup in meetups %}
@@ -19,6 +26,7 @@
                 <p>{% trans "No meetup joined!" %}</p>
             {% endif %}
         </div>
+        <div class="span2"></div>
     </div>
 </div>
 {% endblock%}

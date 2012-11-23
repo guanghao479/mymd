@@ -10,16 +10,16 @@
 {% block body %}
 <div id="stream-container" class="row-fluid">
 	<div id="stream-filters" class="span2">
-		{% trans "stream-filter" %}
-	</div>
-	<div id="stream-activities" class="span8">
-	</div>
-	<div id="stream-ads" class="span2">
 		<p>
-			<a class="btn btn-large btn-primary" href="/experience/create">
+			<a class="btn btn-large btn-primary" href="{% url experience_create %}">
 				{% trans "Write Experience" %}
 			</a>
 		</p>
+	</div>
+	<div id="stream-activities" class="span8">
+		<h1>{% trans "Experience Share" %}</h1>
+	</div>
+	<div id="stream-ads" class="span2">
 	</div>
 </div>
 
