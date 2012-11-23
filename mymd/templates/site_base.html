@@ -18,6 +18,7 @@
         <ul class="nav">{% spaceless %}
             <li id="tab_diary"><a href="{% url diary_list user.username %}">{% trans "Personal Diaries" %}</a></li>
             <li id="tab_experience"><a href="{% url stream %}">{% trans "Experience Sharing" %}</a></li>
+            <li id="tab_meetup"><a href="{% url meetup:mine_meetup %}">{% trans "Meetup" %}</a></li>
             <li id="tab_notices"><a href="{% url notification_notices %}">{% trans "Notices" %}{% if notice_unseen_count %} ({{ notice_unseen_count }}){% endif %}</a></li>
         {% endspaceless %}</ul>
     {% endif %}

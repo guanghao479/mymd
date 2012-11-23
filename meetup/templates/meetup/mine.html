@@ -3,7 +3,7 @@
 {% load avatar_tags %}
 {% block body_class %}My Meetups{% endblock %}
 {% block body %}
-<h1> My Meetup </h1>
+<h1>{% trans "My Meetup" %}</h1>
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span7">
@@ -16,7 +16,7 @@
                 </ul>
                 {% include "meetup/_meetup_paginate.html" %}
             {% else %}
-                <p><% trans "No meetup joined!" %></p>
+                <p>{% trans "No meetup joined!" %}</p>
             {% endif %}
         </div>
     </div>

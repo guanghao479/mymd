@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-23 09:45+0800\n"
+"POT-Creation-Date: 2012-11-23 13:56+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,7 +117,11 @@ msgstr ""
 msgid "Experience Sharing"
 msgstr ""
 
-#: templates/site_base.html:21 templates/notification/base.html:13
+#: templates/site_base.html:21
+msgid "Meetup"
+msgstr ""
+
+#: templates/site_base.html:22 templates/notification/base.html:13
 #: templates/notification/base.html:14 templates/notification/notices.html:7
 msgid "Notices"
 msgstr ""

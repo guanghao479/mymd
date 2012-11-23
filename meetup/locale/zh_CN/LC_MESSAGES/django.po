@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-16 14:43+0800\n"
+"POT-Creation-Date: 2012-11-23 14:02+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,68 +20,80 @@ msgstr ""
 
 #: models.py:36
 msgid "meetup"
-msgstr ""
+msgstr "线下活动"
 
 #: models.py:37
 msgid "meetups"
-msgstr ""
+msgstr "线下活动"
 
 #: templates/meetup/_attend_meetup.html:5
 msgid "You already attent"
-msgstr ""
+msgstr "已经参加"
 
 #: templates/meetup/_attend_meetup.html:11
 msgid "+1 Attend meetup"
-msgstr ""
+msgstr "+1 参加"
 
 #: templates/meetup/_attend_meetup.html:11
 msgid "+1 Meetup attent"
-msgstr ""
+msgstr "已参加"
 
 #: templates/meetup/_attend_meetup.html:12
 msgid "+ Attend"
-msgstr ""
+msgstr "参加"
 
 #: templates/meetup/_meetup_details.html:2
 msgid "Content: "
-msgstr ""
+msgstr "详情："
 
 #: templates/meetup/_meetup_info.html:3
 msgid "City: "
-msgstr ""
+msgstr "城市："
 
 #: templates/meetup/_meetup_info.html:4
 msgid "Address: "
-msgstr ""
+msgstr "地址："
 
 #: templates/meetup/_meetup_info.html:5
 msgid "Date: "
-msgstr ""
+msgstr "日期："
 
 #: templates/meetup/_meetup_info.html:6
 msgid "Organizer: "
-msgstr ""
+msgstr "组织者："
 
 #: templates/meetup/_meetup_paginate.html:6
 msgid "Previous"
-msgstr ""
+msgstr "上一页"
 
 #: templates/meetup/_meetup_paginate.html:9
 msgid "Page"
-msgstr ""
+msgstr "页"
 
 #: templates/meetup/_meetup_paginate.html:12
 msgid "Next"
-msgstr ""
+msgstr "下一页"
 
 #: templates/meetup/meetup_create.html:5
 msgid "Create Meetup"
-msgstr ""
+msgstr "组织新活动"
 
 #: templates/meetup/meetup_create.html:10
 msgid "Create meetup"
-msgstr ""
+msgstr "组织新活动"
 
 #: templates/meetup/meetup_detail.html:16
 msgid "Attenders: "
-msgstr ""
+msgstr "参加者："
+
+#: templates/meetup/meetup_list.html:19
+msgid "No Meetup Found!"
+msgstr "没有找到活动！"
+
+#: templates/meetup/mine.html:6
+msgid "My Meetup"
+msgstr "我的活动"
+
+#: templates/meetup/mine.html:19
+msgid "No meetup joined!"
+msgstr "没有参加活动！"
