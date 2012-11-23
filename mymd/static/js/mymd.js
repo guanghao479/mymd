@@ -90,7 +90,6 @@ if (typeof mymd === 'undefined') {
       promise.done(function(result){
         btn.attr('disabled', 'disabled')
           .text(btn.attr('processed-text'));
-        
       })
       return false;
     }
@@ -323,14 +322,22 @@ if (typeof mymd === 'undefined') {
 
 
   // Personal Diaries
+  // <div class="diary">
+  //   <div class="title">
+  //     <a>title</a>
+  //   </div>
+  //   <div class="body">
+  //     body <a>... More</a>
+  //   </div>
+  //   <div class="footer">
+  //     <span class="timestamp"></span>
+  //   </div>
+  // </div>
   function diaries(){
     var renderDiary = function (diary, containerId) {
       var html = '';
-      for (var prop in diary) {
-        if (diary.hasOwnProperty(prop)) {
-          html += "prop: " + prop + " value: " + diary[prop] + " || ";
-        }
-      }
+      var diaryDiv = $('<div class="diary"></div>');
+      var titleDiv = $('<div class="title"></div>').append('<a></a>')
       $('#' + containerId).append(html);
     };
     var renderDiaries = function (diaries, containerId) {
@@ -350,6 +357,17 @@ if (typeof mymd === 'undefined') {
 
   // define mymd.stream to represent stream specific functionalities
   // which is a stream of activities
+  // <div class="activity">
+  //   <div class="summary">
+  //     <a>actor</a> verb <a>action_object</a> <a>target</a>
+  //   </div>
+  //   <div class="details">
+  //     details <a>... More</a>
+  //   </div>
+  //   <div class="footer">
+  //     <span class="timestamp"></span>
+  //   </div>
+  // </div>
   function stream() {
     // private variables
     var renderActivity = function(activity) {

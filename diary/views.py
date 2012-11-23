@@ -64,7 +64,8 @@ class DiaryListView(JSONResponseMixin, MultipleObjectTemplateResponseMixin, Base
             diary_content['date'] = diary['created_date'].strftime("%A %d %B %Y %I:%M%p")
             diary_content['feel'] = diary['feel']
             diary_content['body'] = diary['body']
-            diary_content['author'] = unicode(diary['author_id'])
+            #No Author needes since it's a private diary
+            #diary_content['author'] = unicode(diary.author)
             diary_content['privacy'] = diary['privacy']
             diaries_content_list.append(diary_content)
         return diaries_content_list

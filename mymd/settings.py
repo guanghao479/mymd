@@ -1,5 +1,6 @@
 # Django settings for mymd project.
 import os.path
+from django.core.urlresolvers import reverse
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
