@@ -14,17 +14,6 @@
 
 	<div id="content" class="span8">
 		<h1>{% trans "Diaries" %}</h1>
-		{% if diaries_list %}
-    		<ul>
-      		{% for diary in diaries_list %}
-        		<li>{{ diary.feel }}</li>
-        		<p>{{ diary.body }}</p>
-      		{% endfor %}
-    		</ul>
-			{% include "diary/_diary_paginate.html" %}
-		{% else %}
-			<p>{% trans "No Diary Found!" %}</p>
-		{% endif %}
 	</div>
 
 	<div class="span2"></div>
@@ -32,7 +21,7 @@
 
 <script>
   (function () {
-    mymd.diaries.listDiaries();
+    mymd.diaries.listDiaries("content");
   })();
 </script>
 {% endblock%}

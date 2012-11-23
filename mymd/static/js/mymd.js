@@ -321,15 +321,29 @@ if (typeof mymd === 'undefined') {
   };
   mymd.district = new district();
 
-  function diaries(){
-    var getDiaries = mymd.ajax.getDataObject('/diary/mine/', 'diaries_list');
 
-    this.listDiaries = function(){
-       var diary = getDiaries();
-       diary.done(function(status, diary){
-           $("#idFeel").html(diary[0].feel);
-           $("#idDate").html(diary[0].date);
-       });
+  // Personal Diaries
+  function diaries(){
+    var renderDiary = function (diary, containerId) {
+      var html = '';
+      for (var prop in diary) {
+        if (diary.hasOwnProperty(prop)) {
+          html += "prop: " + prop + " value: " + diary[prop] + " || ";
+        }
+      }
+      $('#' + containerId).append(html);
+    };
+    var renderDiaries = function (diaries, containerId) {
+      for (var i = 0; i < diaries.length; i++) {
+        renderDiary(diaries[i], containerId);
+      }
+    };
+
+    this.listDiaries = function (containerId) {
+      var getDiaries = mymd.ajax.getDataObject('/diary/mine/', 'diaries_list');
+      getDiaries.done(function(status, diaries) {
+        renderDiaries(diaries, containerId);
+      });
     };
   };
   mymd.diaries = new diaries();

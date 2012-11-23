@@ -52,7 +52,6 @@ class DiaryListView(JSONResponseMixin, MultipleObjectTemplateResponseMixin, Base
     #paginate_by = settings.PAGINATE_NUM
 
     def get_queryset(self):
-
         self.user = self.request.user
         self.username = self.user.username
         diaries = Diary.objects.filter(author=self.user)
@@ -62,8 +61,11 @@ class DiaryListView(JSONResponseMixin, MultipleObjectTemplateResponseMixin, Base
         diaries_content_list = []
         for diary in diaries:
             diary_content = {}
-            diary_content['date'] = diary['created_date'].isoformat()
+            diary_content['date'] = diary['created_date'].strftime("%A %d %B %Y %I:%M%p")
             diary_content['feel'] = diary['feel']
+            diary_content['body'] = diary['body']
+            diary_content['author'] = unicode(diary['author_id'])
+            diary_content['privacy'] = diary['privacy']
             diaries_content_list.append(diary_content)
         return diaries_content_list
 

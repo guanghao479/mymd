@@ -21,7 +21,7 @@ class Diary(models.Model):
         (2, _('Published')))
     PRIVACY_CHOICES = (
         (1, _('Public')),
-        (2, _('Privacy')))
+        (2, _('Private')))
     feel = models.IntegerField(_('feel'), choices=FEEL_CHOICES)
     body = models.TextField()
     author = models.ForeignKey(User, blank=True, null=True)
