@@ -8,423 +8,61 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-15 15:06-0700\n"
+"POT-Creation-Date: 2012-11-23 09:45+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: English <LL@li.org>\n"
-"Language: en\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: account/forms.py:47 account/forms.py:133 account/forms.py:423
-msgid "Password"
-msgstr ""
-
-#: account/forms.py:51
-msgid "Remember Me"
-msgstr ""
-
-#: account/forms.py:52
-msgid "If checked you will stay logged in for 3 weeks"
-msgstr ""
-
-#: account/forms.py:63 account/forms.py:176 account/forms.py:360
-#: account/forms.py:445
-msgid "Email"
-msgstr ""
-
-#: account/forms.py:68 account/forms.py:128
-msgid "Username"
-msgstr ""
-
-#: account/forms.py:96
-msgid "This account is currently inactive."
-msgstr ""
-
-#: account/forms.py:99
-msgid "The email address and/or password you specified are not correct."
-msgstr ""
-
-#: account/forms.py:101
-msgid "The username and/or password you specified are not correct."
-msgstr ""
-
-#: account/forms.py:137 account/forms.py:427
-msgid "Password (again)"
-msgstr ""
-
-#: account/forms.py:147 mymd/templates/profiles/_profile_info.html:5
-#: profiles/forms.py:19
-msgid "City"
-msgstr ""
-
-#: account/forms.py:151 mymd/templates/profiles/_profile_info.html:6
-#: profiles/forms.py:23
-msgid "District"
-msgstr ""
-
-#: account/forms.py:155 mymd/templates/profiles/_profile_info.html:7
-msgid "Community"
-msgstr ""
-
-#: account/forms.py:159 mymd/templates/profiles/_profile_info.html:9
-msgid "Gender"
-msgstr ""
-
-#: account/forms.py:169 mymd/templates/profiles/_profile_info.html:11
-msgid "Disease"
-msgstr ""
-
-#: account/forms.py:181
-msgid "Email (optional)"
-msgstr ""
-
-#: account/forms.py:186
-msgid "Usernames can only contain letters, numbers and underscores."
-msgstr ""
-
-#: account/forms.py:191
-msgid "This username is already taken. Please choose another."
-msgstr ""
-
-#: account/forms.py:200
-msgid "A user is registered with this email address."
-msgstr ""
-
-#: account/forms.py:206 account/forms.py:413 account/forms.py:434
-#: account/forms.py:502
-msgid "You must type the same password each time."
-msgstr ""
-
-#: account/forms.py:270
-msgid "Your email address has already been verified"
-msgstr ""
-
-#: account/forms.py:280 account/forms.py:292 account/views.py:182
-#: account/views.py:197
-#, python-format
-msgid "Confirmation email sent to %(email)s"
-msgstr ""
-
-#: account/forms.py:368
-msgid "This email address already associated with this account."
-msgstr ""
-
-#: account/forms.py:369
-msgid "This email address already associated with another account."
-msgstr ""
-
-#: account/forms.py:393
-msgid "Current Password"
-msgstr ""
-
-#: account/forms.py:397 account/forms.py:486
-msgid "New Password"
-msgstr ""
-
-#: account/forms.py:401 account/forms.py:490
-msgid "New Password (again)"
-msgstr ""
-
-#: account/forms.py:407
-msgid "Please type your current password."
-msgstr ""
-
-#: account/forms.py:452
-msgid "Email address not verified for any user account"
-msgstr ""
-
-#: account/forms.py:472
-msgid "Password reset email sent"
-msgstr ""
-
-#: account/forms.py:516 mymd/templates/account/base.html:25
-msgid "Language"
-msgstr ""
-
-#: account/models.py:18 account/models.py:44
-msgid "user"
-msgstr ""
-
-#: account/models.py:19
-msgid "language"
-msgstr ""
-
-#: account/models.py:46
-msgid "temp_key"
-msgstr ""
-
-#: account/models.py:47
-msgid "timestamp"
-msgstr ""
-
-#: account/models.py:48
-msgid "reset yet?"
-msgstr ""
-
-#: account/openid_consumer.py:122 account/views.py:87 account/views.py:151
-#, python-format
-msgid "Successfully logged in as %(user)s."
-msgstr ""
-
-#: account/views.py:213
-#, python-format
-msgid "Removed email address %(email)s"
-msgstr ""
-
-#: account/views.py:253 account/views.py:380
-msgid "Password successfully changed."
-msgstr ""
-
-#: account/views.py:283
-msgid "Password successfully set."
-msgstr ""
-
-#: account/views.py:408
-msgid "Language successfully updated."
-msgstr ""
-
-#: city/models.py:12
-msgid "city"
-msgstr ""
-
-#: city/models.py:13
-msgid "cities"
-msgstr ""
-
-#: community/models.py:14
-msgid "community"
-msgstr ""
-
-#: community/models.py:15
-msgid "communities"
-msgstr ""
-
-#: diary/models.py:14
-msgid "Great"
-msgstr ""
-
-#: diary/models.py:15
-msgid "Good"
-msgstr ""
-
-#: diary/models.py:16
-msgid "Normal"
-msgstr ""
-
-#: diary/models.py:17
-msgid "Bad"
-msgstr ""
-
-#: diary/models.py:18
-msgid "Horrible"
-msgstr ""
-
-#: diary/models.py:20 experiences/models.py:15
-msgid "Draft"
-msgstr ""
-
-#: diary/models.py:21 experiences/models.py:16
-msgid "Published"
-msgstr ""
-
-#: diary/models.py:23
-msgid "Public"
-msgstr ""
-
-#: diary/models.py:24
-msgid "Privacy"
-msgstr ""
-
-#: diary/models.py:25
-msgid "feel"
-msgstr ""
-
-#: diary/models.py:28 experiences/models.py:20
-msgid "status"
-msgstr ""
-
-#: diary/models.py:29
-msgid "privacy"
-msgstr ""
-
-#: diary/models.py:30 experiences/models.py:22
-msgid "publish"
-msgstr ""
-
-#: diary/models.py:31 experiences/models.py:23
-msgid "created"
-msgstr ""
-
-#: diary/models.py:32 experiences/models.py:24
-msgid "modified"
-msgstr ""
-
-#: diary/models.py:37
-msgid "diary"
-msgstr ""
-
-#: diary/models.py:38
-msgid "diaries"
-msgstr ""
-
-#: disease/models.py:12
-msgid "disease"
-msgstr ""
-
-#: disease/models.py:13
-msgid "diseases"
-msgstr ""
-
-#: district/models.py:12
-msgid "district"
-msgstr ""
-
-#: district/models.py:13
-msgid "districts"
-msgstr ""
-
-#: experiences/models.py:21
-msgid "allow comments"
-msgstr ""
-
-#: experiences/models.py:29
-msgid "post"
-msgstr ""
-
-#: experiences/models.py:30
-msgid "posts"
-msgstr ""
-
-#: friends/management.py:10
-msgid "Invitation Received"
-msgstr ""
-
-#: friends/management.py:10
-msgid "you have received an invitation"
-msgstr ""
-
-#: friends/management.py:11
-msgid "Acceptance Received"
-msgstr ""
-
-#: friends/management.py:11
-msgid "an invitation you sent has been accepted"
-msgstr ""
-
-#: friends/management.py:12
-msgid "Join Invitation Accepted"
-msgstr ""
-
-#: friends/management.py:12
-msgid "an invitation you sent to join this site has been accepted"
-msgstr ""
-
-#: friends/templates/notification/friends_accept/full.txt:1
-#, python-format
-msgid "%(invitation_to_user)s has accepted your friend request."
-msgstr ""
-
-#: friends/templates/notification/friends_accept/notice.html:2
-#, python-format
-msgid ""
-"<a href=\"%(user_url)s\">%(invitation_user)s</a> has accepted your friend "
-"request."
-msgstr ""
-
-#: friends/templates/notification/friends_accept_sent/full.txt:1
-#, python-format
-msgid "You accepted %(invitation_from_user)s's friend request."
-msgstr ""
-
-#: friends/templates/notification/friends_accept_sent/notice.html:2
-#, python-format
-msgid ""
-"You accepted <a href=\"%(user_url)s\">%(invitation_from_user)s</a>'s friend "
-"request."
-msgstr ""
-
-#: friends/templates/notification/friends_invite/full.txt:1
-#, python-format
-msgid ""
-"%(invitation_from_user)s has requested to add you as a friend. You can "
-"accept their invitation at:\n"
-"\n"
-"http://%(current_site)s%(invitation_page)s\n"
-msgstr ""
-
-#: friends/templates/notification/friends_invite/notice.html:2
-#, python-format
-msgid ""
-"<a href=\"%(user_url)s\">%(invitation_from_user)s</a> has requested to add "
-"you as a friend (see <a href=\"%(invitation_page)s\">invitations</a>)"
-msgstr ""
-
-#: friends/templates/notification/friends_invite_sent/full.txt:1
-#, python-format
-msgid "you have invited %(invitation_to_user)s to add you as a friend."
-msgstr ""
-
-#: friends/templates/notification/friends_invite_sent/notice.html:2
-#, python-format
-msgid ""
-"you have invited <a href=\"%(user_url)s\">%(invitation_to_user)s</a> to add "
-"you as a friend."
-msgstr ""
-
-#: friends/templates/notification/friends_otherconnect/full.txt:1
-#, python-format
-msgid "%(invitation_from_user)s and %(to_user)s are now friends."
-msgstr ""
-
-#: friends/templates/notification/friends_otherconnect/notice.html:2
-#, python-format
-msgid ""
-"<a href=\"%(from_user_url)s\">%(invitation_from_user)s</a> and <a href="
-"\"%(to_user_url)s\">%(to_user)s</a> are now friends."
-msgstr ""
-
-#: friends/templates/notification/join_accept/full.txt:1
-#, python-format
-msgid "%(new_user)s has joined and is now a friend."
-msgstr ""
-
-#: friends/templates/notification/join_accept/notice.html:2
-#, python-format
-msgid ""
-"<a href=\"%(user_url)s\">%(new_user)s</a> has joined and is now a friend."
-msgstr ""
-
-#: meetup/models.py:21
-msgid "meetup"
-msgstr ""
-
-#: meetup/models.py:22
-msgid "meetups"
-msgstr ""
-
-#: mymd/templates/403.html:5
+#: templates/403.html:5
+msgctxt "Page Header Title"
 msgid "Not Found"
 msgstr ""
 
-#: mymd/templates/403.html:8
+#: templates/403.html:8
 msgid "We're sorry you are not authorized."
 msgstr ""
 
-#: mymd/templates/_footer.html:3
+#: templates/_account_bar.html:25
+msgid "My Stream"
+msgstr ""
+
+#: templates/_account_bar.html:26
+msgid "Account"
+msgstr ""
+
+#: templates/_account_bar.html:28
+msgid "Admin"
+msgstr ""
+
+#: templates/_account_bar.html:31
+msgid "Log out"
+msgstr ""
+
+#: templates/_account_bar.html:35
+msgid "Log in"
+msgstr ""
+
+#: templates/_account_bar.html:38
+msgid "Sign up"
+msgstr ""
+
+#: templates/_footer.html:3
 msgid "&copy; 2012 &lt;MYMD Inc.&gt;"
 msgstr ""
 
-#: mymd/templates/homepage.html:6
+#: templates/homepage.html:6
 msgid "Welcome"
 msgstr ""
 
-#: mymd/templates/homepage.html:11
+#: templates/homepage.html:11
 msgid "Welcome to Pinax"
 msgstr ""
 
-#: mymd/templates/homepage.html:13
+#: templates/homepage.html:13
 msgid ""
 "\n"
 "        <b>Pinax</b> is a <a href=\"http://djangoproject.com/\">Django</a>\n"
@@ -435,7 +73,11 @@ msgid ""
 "        "
 msgstr ""
 
-#: mymd/templates/homepage.html:24
+#: templates/homepage.html:22
+msgid "About Basic Project"
+msgstr ""
+
+#: templates/homepage.html:24
 msgid ""
 "\n"
 "        This project takes the account_project and adds profiles and "
@@ -446,367 +88,77 @@ msgid ""
 "        "
 msgstr ""
 
-#: mymd/templates/homepage.html:33
+#: templates/homepage.html:33
 #, python-format
 msgid ""
 "Wondering <a href=\"%(what_next_url)s\" class=\"btn primary large\">What "
 "Next</a>?"
 msgstr ""
 
-#: mymd/templates/homepage.html:38
+#: templates/homepage.html:38
 #, python-format
 msgid ""
 "You can <a href=\"%(login_url)s\" class=\"btn\">Log In</a> or <a href="
 "\"%(signup_url)s\" class=\"btn btn-primary\">Sign Up</a> to try out the site."
 msgstr ""
 
-#: mymd/templates/homepage.html:40
+#: templates/homepage.html:40
 #, python-format
 msgid ""
 "You can <a href=\"%(login_url)s\" class=\"btn btn-primary btn-large\">Log "
 "In</a> to try out the site."
 msgstr ""
 
-#: mymd/templates/site_base.html:19
+#: templates/site_base.html:19
 msgid "Personal Diaries"
 msgstr ""
 
-#: mymd/templates/site_base.html:20 mymd/templates/stream/index.html:7
-#: mymd/templates/stream/mine.html:8
+#: templates/site_base.html:20
 msgid "Experience Sharing"
 msgstr ""
 
-#: mymd/templates/site_base.html:21 mymd/templates/notification/notices.html:7
+#: templates/site_base.html:21 templates/notification/base.html:13
+#: templates/notification/base.html:14 templates/notification/notices.html:7
 msgid "Notices"
 msgstr ""
 
-#: mymd/templates/about/what_next.html:6 mymd/templates/about/what_next.html:9
-msgid "What Next?"
-msgstr ""
-
-#: mymd/templates/about/what_next.html:35
-#, python-format
-msgid ""
-"Start by <a href=\"%(signup_url)s\">signing up</a> and <a href="
-"\"%(login_url)s\">logging in</a>."
-msgstr ""
-
-#: mymd/templates/about/what_next.html:37
-#, python-format
-msgid "Start by <a href=\"%(login_url)s\">logging in</a>."
-msgstr ""
-
-#: mymd/templates/account/base.html:10
-msgid "Account"
-msgstr ""
-
-#: mymd/templates/account/base.html:11 mymd/templates/profiles/base.html:10
-msgid "Profile"
-msgstr ""
-
-#: mymd/templates/account/base.html:12
-msgid "Email Addresses"
-msgstr ""
-
-#: mymd/templates/account/base.html:14
-msgid "OpenID Associations"
-msgstr ""
-
-#: mymd/templates/account/base.html:17
-msgid "Change Password"
-msgstr ""
-
-#: mymd/templates/account/base.html:19
-msgid "Set Password"
-msgstr ""
-
-#: mymd/templates/account/base.html:22
-msgid "Delete Password"
-msgstr ""
-
-#: mymd/templates/account/login.html:8 mymd/templates/account/login.html:13
-msgid "Log In"
-msgstr ""
-
-#: mymd/templates/account/login.html:20
-msgid "Note"
-msgstr ""
-
-#: mymd/templates/account/login.html:21
-#, python-format
-msgid "you are already logged in as %(user_display)s."
-msgstr ""
-
-#: mymd/templates/account/login.html:26
-#, python-format
-msgid "Don't have an account? <a href=\"%(signup_url)s\">Sign up</a>!"
-msgstr ""
-
-#: mymd/templates/account/login.html:29
-msgid "Forgot password?"
-msgstr ""
-
-#: mymd/templates/account/login.html:31
-msgid "用豆瓣帐户登陆"
-msgstr ""
-
-#: mymd/templates/account/login.html:42 mymd/templates/account/signup.html:25
-msgid "Log in"
-msgstr ""
-
-#: mymd/templates/account/login.html:48
-#, python-format
-msgid ""
-"If you have any trouble logging in to your account, contact us at <a href="
-"\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
-msgstr ""
-
-#: mymd/templates/account/signup.html:7 mymd/templates/account/signup.html:18
-msgid "Sign Up"
-msgstr ""
-
-#: mymd/templates/account/signup.html:23
-msgid "You are already logged in."
-msgstr ""
-
-#: mymd/templates/account/signup.html:25
-msgid "Already have an account?"
-msgstr ""
-
-#: mymd/templates/account/signup.html:34
-msgid "Sign up"
-msgstr ""
-
-#: mymd/templates/activity/actor.html:24
+#: templates/activity/actor.html:24
 msgid "UNFOLLOW"
 msgstr ""
 
-#: mymd/templates/activity/actor.html:25
+#: templates/activity/actor.html:25
 msgid "FOLLOW"
 msgstr ""
 
-#: mymd/templates/activity/actor.html:30
+#: templates/activity/actor.html:30
 msgid "View my actions"
 msgstr ""
 
-#: mymd/templates/activity/actor.html:36
+#: templates/activity/actor.html:36
 msgid "No actions yet"
 msgstr ""
 
-#: mymd/templates/diary/_diary_paginate.html:6
-#: mymd/templates/experiences/_experience_paginate.html:6
-msgid "Previous"
-msgstr ""
-
-#: mymd/templates/diary/_diary_paginate.html:9
-#: mymd/templates/experiences/_experience_paginate.html:9
-msgid "Page"
-msgstr ""
-
-#: mymd/templates/diary/_diary_paginate.html:12
-#: mymd/templates/experiences/_experience_paginate.html:12
-msgid "Next"
-msgstr ""
-
-#: mymd/templates/diary/diary_create.html:3
-#: mymd/templates/diary/diary_create.html:7
-msgid "Create Diary"
-msgstr ""
-
-#: mymd/templates/diary/diary_details.html:10
-#, python-format
-msgid "%(diary_author)s's Diaries"
-msgstr ""
-
-#: mymd/templates/diary/diary_edit.html:3
-#: mymd/templates/diary/diary_edit.html:7
-msgid "Edit Diary"
-msgstr ""
-
-#: mymd/templates/diary/diary_list.html:7
-msgid "Create a Diary"
-msgstr ""
-
-#: mymd/templates/diary/diary_list.html:25
-msgid "No Diary Found!"
-msgstr ""
-
-#: mymd/templates/experiences/experience_create.html:5
-#: mymd/templates/experiences/experience_create.html:10
-msgid "Create experience"
-msgstr ""
-
-#: mymd/templates/experiences/experience_details.html:10
-#, python-format
-msgid "%(experience_author)s's experiences"
-msgstr ""
-
-#: mymd/templates/experiences/experience_edit.html:3
-#: mymd/templates/experiences/experience_edit.html:7
-msgid "Edit Experience"
-msgstr ""
-
-#: mymd/templates/experiences/experience_list.html:23
-msgid "Create an Experience"
-msgstr ""
-
-#: mymd/templates/friends/_add_as_friend.html:5
-#: mymd/templates/friends/_add_as_friend.html:11
-msgid "+1 Friend request sent"
-msgstr ""
-
-#: mymd/templates/friends/_add_as_friend.html:11
-msgid "+1 Sending request"
-msgstr ""
-
-#: mymd/templates/friends/_add_as_friend.html:12
-msgid "+1 Add as Friend"
-msgstr ""
-
-#: mymd/templates/friends/_add_as_friend.html:22
-msgid "Accepting"
-msgstr ""
-
-#: mymd/templates/friends/_add_as_friend.html:22
-msgid "Accepted"
-msgstr ""
-
-#: mymd/templates/friends/_add_as_friend.html:23
-msgid "Accept"
-msgstr ""
-
-#: mymd/templates/friends/_add_as_friend.html:25
-msgid "Declining"
-msgstr ""
-
-#: mymd/templates/friends/_add_as_friend.html:25
-msgid "Declined"
-msgstr ""
-
-#: mymd/templates/friends/_add_as_friend.html:26
-msgid "Decline"
-msgstr ""
-
-#: mymd/templates/friends/_add_as_friend.html:28
-msgid "Ignoring"
-msgstr ""
-
-#: mymd/templates/friends/_add_as_friend.html:28
-msgid "Ignored"
-msgstr ""
-
-#: mymd/templates/friends/_add_as_friend.html:29
-msgid "Ignore"
-msgstr ""
-
-#: mymd/templates/friends/friends.html:4 mymd/templates/friends/friends.html:6
-msgid "Friends"
-msgstr ""
-
-#: mymd/templates/home/home.html:8 mymd/templates/home/index.html:8
-#: mymd/templates/home/stranger.html:8
-msgid "Welcome to MYMD"
-msgstr ""
-
-#: mymd/templates/idios/profile.html:6 mymd/templates/idios/profile.html:11
-#: mymd/templates/profiles/profile.html:7
-#: mymd/templates/profiles/profile.html:12
+#: templates/idios/profile.html:6 templates/idios/profile.html.py:11
 #, python-format
 msgid "Profile for %(page_user_display)s"
 msgstr ""
 
-#: mymd/templates/notification/notices.html:14
+#: templates/notification/base.html:15
+msgid "Settings"
+msgstr ""
+
+#: templates/notification/notices.html:14
 msgid "Mark all unseen notices seen"
 msgstr ""
 
-#: mymd/templates/notification/notices.html:20
+#: templates/notification/notices.html:20
 msgid "MONTH_DAY_FORMAT"
 msgstr ""
 
-#: mymd/templates/notification/notices.html:38
+#: templates/notification/notices.html:38
 msgid "No notices."
 msgstr ""
 
-#: mymd/templates/profiles/_profile_info.html:3
-msgid "Name"
-msgstr ""
-
-#: mymd/templates/profiles/_profile_info.html:10
-msgid "Birth Date"
-msgstr ""
-
-#: mymd/templates/profiles/base.html:11
-msgid "Your Profile"
-msgstr ""
-
-#: mymd/templates/profiles/profile_edit.html:5
-#: mymd/templates/profiles/profile_edit.html:9
-msgid "Edit Profile"
-msgstr ""
-
-#: mymd/templates/search/search.html:12
+#: templates/search/search.html:12
 msgid "Search"
-msgstr ""
-
-#: mymd/templates/stream/index.html:13 mymd/templates/stream/mine.html:14
-msgid "stream-filter"
-msgstr ""
-
-#: mymd/templates/stream/index.html:18 mymd/templates/stream/mine.html:19
-msgid "stream-ads"
-msgstr ""
-
-#: mymdutils/templatetags/shorttimesince_tag.py:17
-msgid "yr"
-msgid_plural "yr"
-msgstr[0] ""
-msgstr[1] ""
-
-#: mymdutils/templatetags/shorttimesince_tag.py:18
-msgid "mn"
-msgid_plural "mn"
-msgstr[0] ""
-msgstr[1] ""
-
-#: mymdutils/templatetags/shorttimesince_tag.py:19
-msgid "wk"
-msgid_plural "wk"
-msgstr[0] ""
-msgstr[1] ""
-
-#: mymdutils/templatetags/shorttimesince_tag.py:20
-msgid "d"
-msgid_plural "d"
-msgstr[0] ""
-msgstr[1] ""
-
-#: mymdutils/templatetags/shorttimesince_tag.py:21
-msgid "hr"
-msgid_plural "hr"
-msgstr[0] ""
-msgstr[1] ""
-
-#: mymdutils/templatetags/shorttimesince_tag.py:22
-#: mymdutils/templatetags/shorttimesince_tag.py:42
-msgid "min"
-msgid_plural "min"
-msgstr[0] ""
-msgstr[1] ""
-
-#: mymdutils/templatetags/shorttimesince_tag.py:47
-#, python-format
-msgid "%(number)d%(type)s"
-msgstr ""
-
-#: mymdutils/templatetags/shorttimesince_tag.py:53
-#, python-format
-msgid ", %(number)d%(type)s"
-msgstr ""
-
-#: profiles/models.py:26
-msgid "profile"
-msgstr ""
-
-#: profiles/models.py:27
-msgid "profiles"
 msgstr ""

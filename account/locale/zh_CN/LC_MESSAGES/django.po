@@ -20,27 +20,27 @@ msgstr ""
 
 #: forms.py:47 forms.py:133 forms.py:423
 msgid "Password"
-msgstr ""
+msgstr "密码"
 
 #: forms.py:51
 msgid "Remember Me"
-msgstr ""
+msgstr "记住我"
 
 #: forms.py:52
 msgid "If checked you will stay logged in for 3 weeks"
-msgstr ""
+msgstr "如果选中会保持登录状态3周"
 
 #: forms.py:63 forms.py:176 forms.py:360 forms.py:445
 msgid "Email"
-msgstr ""
+msgstr "邮件"
 
 #: forms.py:68 forms.py:128
 msgid "Username"
-msgstr ""
+msgstr "用户名"
 
 #: forms.py:96
 msgid "This account is currently inactive."
-msgstr ""
+msgstr "这个账户暂时未激活"
 
 #: forms.py:99
 msgid "The email address and/or password you specified are not correct."
@@ -48,104 +48,104 @@ msgstr ""
 
 #: forms.py:101
 msgid "The username and/or password you specified are not correct."
-msgstr ""
+msgstr "用户名或者密码不正确"
 
 #: forms.py:137 forms.py:427
 msgid "Password (again)"
-msgstr ""
+msgstr "密码（再一次）"
 
 #: forms.py:147
 msgid "City"
-msgstr ""
+msgstr "城市"
 
 #: forms.py:151
 msgid "District"
-msgstr ""
+msgstr "区域"
 
 #: forms.py:155
 msgid "Community"
-msgstr ""
+msgstr "小区"
 
 #: forms.py:159
 msgid "Gender"
-msgstr ""
+msgstr "性别"
 
 #: forms.py:169
 msgid "Disease"
-msgstr ""
+msgstr "疾病"
 
 #: forms.py:181
 msgid "Email (optional)"
-msgstr ""
+msgstr "邮件（可选）"
 
 #: forms.py:186
 msgid "Usernames can only contain letters, numbers and underscores."
-msgstr ""
+msgstr "用户名只能包括字母数字和下划线"
 
 #: forms.py:191
 msgid "This username is already taken. Please choose another."
-msgstr ""
+msgstr "用户名已被抢占，请重新选择"
 
 #: forms.py:200
 msgid "A user is registered with this email address."
-msgstr ""
+msgstr "邮件地址已经被使用"
 
 #: forms.py:206 forms.py:413 forms.py:434 forms.py:502
 msgid "You must type the same password each time."
-msgstr ""
+msgstr "两次密码必须相同"
 
 #: forms.py:270
 msgid "Your email address has already been verified"
-msgstr ""
+msgstr "您的邮件地址已被验证"
 
 #: forms.py:280 forms.py:292 views.py:182 views.py:197
 #, python-format
 msgid "Confirmation email sent to %(email)s"
-msgstr ""
+msgstr "验证邮件已发送到%(email)s"
 
 #: forms.py:368
 msgid "This email address already associated with this account."
-msgstr ""
+msgstr "邮件地址已经和账户关联"
 
 #: forms.py:369
 msgid "This email address already associated with another account."
-msgstr ""
+msgstr "邮件地址已经和其他账户关联"
 
 #: forms.py:393
 msgid "Current Password"
-msgstr ""
+msgstr "当前密码"
 
 #: forms.py:397 forms.py:486
 msgid "New Password"
-msgstr ""
+msgstr "新密码"
 
 #: forms.py:401 forms.py:490
 msgid "New Password (again)"
-msgstr ""
+msgstr "新密码（再一次）"
 
 #: forms.py:407
 msgid "Please type your current password."
-msgstr ""
+msgstr "请输入您的当前密码"
 
 #: forms.py:452
 msgid "Email address not verified for any user account"
-msgstr ""
+msgstr "邮件地址尚未被验证"
 
 #: forms.py:472
 msgid "Password reset email sent"
-msgstr ""
+msgstr "密码已经被重置"
 
 #: forms.py:516 templates/account/base.html:25
 msgid "Language"
-msgstr ""
+msgstr "语言"
 
 #: models.py:18 models.py:44
 msgid "user"
-msgstr ""
+msgstr "用户"
 
 #: models.py:19
 msgid "language"
-msgstr ""
+msgstr "语言"
 
 #: models.py:46
 msgid "temp_key"
@@ -162,82 +162,82 @@ msgstr ""
 #: openid_consumer.py:122 views.py:87 views.py:151
 #, python-format
 msgid "Successfully logged in as %(user)s."
-msgstr ""
+msgstr "%(user)s成功登录"
 
 #: views.py:213
 #, python-format
 msgid "Removed email address %(email)s"
-msgstr ""
+msgstr "%(email)s已被删除"
 
 #: views.py:253 views.py:380
 msgid "Password successfully changed."
-msgstr ""
+msgstr "密码更改成功"
 
 #: views.py:283
 msgid "Password successfully set."
-msgstr ""
+msgstr "密码设置成功"
 
 #: views.py:408
 msgid "Language successfully updated."
-msgstr ""
+msgstr "语言设置成功"
 
 #: templates/account/base.html:10
 msgid "Account"
-msgstr ""
+msgstr "账户"
 
 #: templates/account/base.html:11
 msgid "Profile"
-msgstr ""
+msgstr "资料"
 
 #: templates/account/base.html:12
 msgid "Email Addresses"
-msgstr ""
+msgstr "邮件地址"
 
 #: templates/account/base.html:14
 msgid "OpenID Associations"
-msgstr ""
+msgstr "OpenID关联"
 
 #: templates/account/base.html:17
 msgid "Change Password"
-msgstr ""
+msgstr "修改密码"
 
 #: templates/account/base.html:19
 msgid "Set Password"
-msgstr ""
+msgstr "设置密码"
 
 #: templates/account/base.html:22
 msgid "Delete Password"
-msgstr ""
+msgstr "删除密码"
 
 #: templates/account/login.html:8 templates/account/login.html.py:13
 msgid "Log In"
-msgstr ""
+msgstr "登录"
 
 #: templates/account/login.html:20
 msgid "Note"
-msgstr ""
+msgstr "记录"
 
 #: templates/account/login.html:21
 #, python-format
 msgid "you are already logged in as %(user_display)s."
-msgstr ""
+msgstr "您已经用%(user_display)s登录"
 
 #: templates/account/login.html:26
 #, python-format
 msgid "Don't have an account? <a href=\"%(signup_url)s\">Sign up</a>!"
-msgstr ""
+msgstr "还没有账户么？现在<a href=\"%(signup_url)s\">创建</a>！"
 
 #: templates/account/login.html:29
 msgid "Forgot password?"
-msgstr ""
+msgstr "忘记密码？"
 
 #: templates/account/login.html:31
 msgid "用豆瓣帐户登陆"
-msgstr ""
+msgstr "用豆瓣账户登录"
 
 #: templates/account/login.html:42 templates/account/signup.html:25
 msgid "Log in"
-msgstr ""
+msgstr "登录"
 
 #: templates/account/login.html:48
 #, python-format
@@ -245,19 +245,21 @@ msgid ""
 "If you have any trouble logging in to your account, contact us at <a href="
 "\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
 msgstr ""
+"如果您登录遇到困难，请发邮件联系我们 <a href="
+"\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>。"
 
 #: templates/account/signup.html:7 templates/account/signup.html.py:18
 msgid "Sign Up"
-msgstr ""
+msgstr "注册"
 
 #: templates/account/signup.html:23
 msgid "You are already logged in."
-msgstr ""
+msgstr "您已经登录"
 
 #: templates/account/signup.html:25
 msgid "Already have an account?"
-msgstr ""
+msgstr "已经有一个账户？"
 
 #: templates/account/signup.html:34
 msgid "Sign up"
-msgstr ""
+msgstr "注册"

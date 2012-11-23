@@ -21,7 +21,7 @@ msgstr ""
 #: templates/stream/index.html:7 templates/stream/mine.html:8
 msgctxt "Page Header Title"
 msgid "Experience Sharing"
-msgstr ""
+msgstr "经验分享"
 
 #: templates/stream/index.html:13 templates/stream/mine.html:14
 msgid "stream-filter"
