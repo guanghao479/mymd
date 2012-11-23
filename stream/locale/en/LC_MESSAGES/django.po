@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-16 14:44+0800\n"
+"POT-Creation-Date: 2012-11-23 16:06+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/stream/index.html:7 templates/stream/mine.html:8
+#: templates/stream/index.html:7 templates/stream/mine.html:7
 msgctxt "Page Header Title"
 msgid "Experience Sharing"
 msgstr ""
 
-#: templates/stream/index.html:13 templates/stream/mine.html:14
-msgid "stream-filter"
+#: templates/stream/index.html:15 templates/stream/mine.html:15
+msgid "Write Experience"
 msgstr ""
 
-#: templates/stream/index.html:18 templates/stream/mine.html:19
-msgid "stream-ads"
+#: templates/stream/index.html:20
+msgid "Experience Share"
+msgstr ""
+
+#: templates/stream/mine.html:20
+msgid "My Experiences"
 msgstr ""

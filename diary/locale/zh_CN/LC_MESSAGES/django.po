@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-16 14:42+0800\n"
+"POT-Creation-Date: 2012-11-23 16:24+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,41 +80,45 @@ msgstr ""
 
 #: models.py:37
 msgid "diary"
-msgstr ""
+msgstr "日记"
 
 #: models.py:38
 msgid "diaries"
-msgstr ""
+msgstr "日记"
 
 #: templates/diary/_diary_paginate.html:6
 msgid "Previous"
-msgstr ""
+msgstr "前一页"
 
 #: templates/diary/_diary_paginate.html:9
 msgid "Page"
-msgstr ""
+msgstr "页"
 
 #: templates/diary/_diary_paginate.html:12
 msgid "Next"
-msgstr ""
+msgstr "后一页"
 
 #: templates/diary/diary_create.html:3 templates/diary/diary_create.html:7
 msgid "Create Diary"
-msgstr ""
+msgstr "写日记"
 
 #: templates/diary/diary_details.html:10
 #, python-format
 msgid "%(diary_author)s's Diaries"
-msgstr ""
+msgstr "%(diary_author)s的私人日记"
 
 #: templates/diary/diary_edit.html:3 templates/diary/diary_edit.html.py:7
 msgid "Edit Diary"
-msgstr ""
+msgstr "编辑"
 
-#: templates/diary/diary_list.html:7
-msgid "Create a Diary"
-msgstr ""
+#: templates/diary/diary_list.html:10
+msgid "Write Diary"
+msgstr "写日记"
 
-#: templates/diary/diary_list.html:25
+#: templates/diary/diary_list.html:16
+msgid "Diaries"
+msgstr "私人日记"
+
+#: templates/diary/diary_list.html:26
 msgid "No Diary Found!"
-msgstr ""
+msgstr "目前没有写日记！"

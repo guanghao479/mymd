@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-16 14:40+0800\n"
+"POT-Creation-Date: 2012-11-23 16:06+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,6 +81,6 @@ msgstr "%(experience_author)s的经验"
 msgid "Edit Experience"
 msgstr "编辑经验"
 
-#: templates/experiences/experience_list.html:23
+#: templates/experiences/experience_list.html:24
 msgid "Create an Experience"
 msgstr "新建经验"
