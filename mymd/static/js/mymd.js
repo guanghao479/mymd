@@ -363,7 +363,7 @@ if (typeof mymd === 'undefined') {
   //   </div>
   // </div>
   function stream() {
-    var rednerStream = function (stream, containerId, templateId) {
+    var renderStream = function (stream, containerId, templateId) {
       $('#'+containerId).append(
         $( '#'+templateId ).render( stream )
       );
@@ -372,7 +372,7 @@ if (typeof mymd === 'undefined') {
     this.initStreamMine = function(containerId, templateId) {
       var stream = mymd.ajax.getDataObject('/stream/ajax/mine/', 'stream');
       stream.done(function(status, stream){
-        rednerStream(stream, containerId, templateId);
+        renderStream(stream, containerId, templateId);
       });
       stream.fail(function(data){
         //TODO: ERROR HANDLING
@@ -382,7 +382,7 @@ if (typeof mymd === 'undefined') {
     this.initStream = function(containerId, templateId) {
       var stream = mymd.ajax.getDataObject('/stream/ajax/', 'stream');
       stream.done(function(status, stream){
-        rednerStream(stream, containerId, templateId);
+        renderStream(stream, containerId, templateId);
       });
       stream.fail(function(data){
         //TODO: ERROR HANDLING
