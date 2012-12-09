@@ -3,6 +3,8 @@
 {% load i18n %}
 {% block body_class %}diary{% endblock %}
 {% block body %}
+{% load jsrender_tags %}
+
 <div id="diary-list-container" class="row-fluid">
 	<div class="span2">
 		<p>
@@ -22,13 +24,13 @@
 <script id="diary-template" type="text/x-jsrender">
 	<div class="diary">
 	  <div class="title">
-	      <a>{% templatetag openvariable %}>title{% templatetag closevariable %}</a>
+	      <a>{% jsrender ">title" %}</a>
 	  </div>
 	  <div class="body">
-	    {% templatetag openvariable %}>body{% templatetag closevariable %} <a>... More</a>
+	    {% jsrender ">body" %} <a>... More</a>
 	  </div>
 	  <div class="footer">
-	    <span class="timestamp">{% templatetag openvariable %}>date{% templatetag closevariable %}</span>
+	    <span class="timestamp">{% jsrender ">date" %}</span>
 	  </div>
 	</div>
 </script>
