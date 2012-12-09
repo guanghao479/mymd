@@ -334,22 +334,16 @@ if (typeof mymd === 'undefined') {
   //   </div>
   // </div>
   function diaries(){
-    var renderDiary = function (diary, containerId) {
-      var html = '';
-      var diaryDiv = $('<div class="diary"></div>');
-      var titleDiv = $('<div class="title"></div>').append('<a></a>')
-      $('#' + containerId).append(html);
-    };
-    var renderDiaries = function (diaries, containerId) {
-      for (var i = 0; i < diaries.length; i++) {
-        renderDiary(diaries[i], containerId);
-      }
+    var renderDiaries = function (diaries, containerId, templateId) {
+      $( "#"+containerId ).html(
+        $( "#"+templateId ).render( diaries )
+      );
     };
 
-    this.listDiaries = function (containerId) {
+    this.listDiaries = function (containerId, templateId) {
       var getDiaries = mymd.ajax.getDataObject('/diary/mine/', 'diaries_list');
       getDiaries.done(function(status, diaries) {
-        renderDiaries(diaries, containerId);
+        renderDiaries(diaries, containerId, templateId);
       });
     };
   };

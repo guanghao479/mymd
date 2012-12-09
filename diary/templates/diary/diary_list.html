@@ -19,9 +19,22 @@
 	<div class="span2"></div>
 <div>
 
+<script id="diary-template" type="text/x-jsrender">
+	<div class="diary">
+	  <div class="title">
+	      <a>{% templatetag openvariable %}>title{% templatetag closevariable %}</a>
+	  </div>
+	  <div class="body">
+	    {% templatetag openvariable %}>body{% templatetag closevariable %} <a>... More</a>
+	  </div>
+	  <div class="footer">
+	    <span class="timestamp">{% templatetag openvariable %}>date{% templatetag closevariable %}</span>
+	  </div>
+	</div>
+</script>
 <script>
   (function () {
-    mymd.diaries.listDiaries("content");
+    mymd.diaries.listDiaries("content", "diary-template");
   })();
 </script>
 {% endblock%}
