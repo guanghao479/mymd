@@ -3,7 +3,6 @@
 {% load i18n %}
 {% block body_class %}diary{% endblock %}
 {% block body %}
-{% load jsrender_tags %}
 
 <div id="diary-list-container" class="row-fluid">
 	<div class="span2">
@@ -15,25 +14,13 @@
 	</div>
 
 	<div id="content" class="span8">
-		<h1>{% trans "Diaries" %}</h1>
+		<div class="header"><h1>{% trans "Diaries" %}</h1></div>
 	</div>
 
 	<div class="span2"></div>
 <div>
 
-<script id="diary-template" type="text/x-jsrender">
-	<div class="diary">
-	  <div class="title">
-	      <a>{% jsrender ">title" %}</a>
-	  </div>
-	  <div class="body">
-	    {% jsrender ">body" %} <a>... More</a>
-	  </div>
-	  <div class="footer">
-	    <span class="timestamp">{% jsrender ">date" %}</span>
-	  </div>
-	</div>
-</script>
+{% include "diary/_diary_entry.tmpl" %}
 <script>
   (function () {
     mymd.diaries.listDiaries("content", "diary-template");

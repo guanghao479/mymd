@@ -1,0 +1,24 @@
+{% load jsrender_tags %}
+
+<script id="activity-template" type="text/x-jsrender">
+<div class="activity">
+  <div class="summary">
+    <a href="{% jsrender '>actor.url' %}">{% jsrender ">actor.name" %}</a>
+    &nbsp;{% jsrender ">verb" %}
+
+    {% jsrender "if action_object" %}
+    &nbsp;<a href="{% jsrender '>action_object.url' %}">{% jsrender ">action_object.name" %}</a>
+    {% jsrender "/if" %}
+
+    {% jsrender "if target" %}
+    &nbsp;<a href="{% jsrender '>target.url' %}">{% jsrender ">target.name" %}</a>
+    {% jsrender "/if" %}
+  </div>
+  <div class="details">
+    {% jsrender ">details" %} <a>... More</a>
+  </div>
+  <div class="footer">
+    <span class="timestamp">{% jsrender ">timestamp" %} </span>
+  </div>
+</div>
+</script>

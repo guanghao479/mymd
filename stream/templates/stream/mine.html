@@ -23,9 +23,11 @@
 	</div>
 </div>
 
+{% include "stream/_activity_entry.tmpl" %}
+
 <script>
   $(function () {
-    mymd.stream.initStreamMine();
+    mymd.stream.initStreamMine('stream-activities', 'activity-template');
   });
 </script>
 {% endblock %}

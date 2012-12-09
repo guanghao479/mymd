@@ -335,14 +335,14 @@ if (typeof mymd === 'undefined') {
   // </div>
   function diaries(){
     var renderDiaries = function (diaries, containerId, templateId) {
-      $( "#"+containerId ).html(
+      $( "#"+containerId ).append(
         $( "#"+templateId ).render( diaries )
       );
     };
 
     this.listDiaries = function (containerId, templateId) {
       var getDiaries = mymd.ajax.getDataObject('/diary/mine/', 'diaries_list');
-      getDiaries.done(function(status, diaries) {
+      getDiaries.done( function( status, diaries ) {
         renderDiaries(diaries, containerId, templateId);
       });
     };
@@ -363,69 +363,26 @@ if (typeof mymd === 'undefined') {
   //   </div>
   // </div>
   function stream() {
-    // private variables
-    var renderActivity = function(activity) {
-      var activityDiv = $('<div class="activity"></div>');
-      // Build and append title/summary
-      var descriptionArray = [];
-      if (activity.actor) {
-        descriptionArray.push($('<a>', {
-          text:activity.actor.name,
-          href:activity.actor.url
-        }).prop('outerHTML'));
-      }
-      descriptionArray.push(activity.verb);
-      if (activity.action_object) {
-        descriptionArray.push($('<a>', {
-          text:activity.action_object.name,
-          href:activity.action_object.url
-        }).prop('outerHTML'));
-      }
-      if (activity.target) {
-        descriptionArray.push($('<a>', {
-          text:activity.target.name,
-          href:activity.target.url
-        }).prop('outerHTML'));
-      }
-      var description = descriptionArray.join(' ');
-      activityDiv.append($('<div class="summary"></div>').append(description));
-      // Build and append body/content
-      if (activity.details) {
-        activityDiv.append(
-          $('<div class="details"></div>')
-            .append(activity.details)
-            .append('<span>... </span>')
-            .append('<a href="'+activity.action_object.url+'">More</a>')
-        );
-      }
-      // Build and append footer
-      var text = $('<span class="timestamp"></span>').text(activity.timestamp);
-      activityDiv.append($('<div class="footer"></div>').append(text));
-
-      // Append activity
-      $('#stream-activities').append(activityDiv);
-    }
-    var renderStreamMine = function (stream) {
-      var i = 0;
-      for (i=0;i<stream.length;i++) {
-        renderActivity(stream[i]);
-      }
+    var rednerStream = function (stream, containerId, templateId) {
+      $('#'+containerId).append(
+        $( '#'+templateId ).render( stream )
+      );
     };
     // public variables
-    this.initStreamMine = function() {
+    this.initStreamMine = function(containerId, templateId) {
       var stream = mymd.ajax.getDataObject('/stream/ajax/mine/', 'stream');
       stream.done(function(status, stream){
-        renderStreamMine(stream);
+        rednerStream(stream, containerId, templateId);
       });
       stream.fail(function(data){
         //TODO: ERROR HANDLING
         return;
       });
     };
-    this.initStream = function() {
+    this.initStream = function(containerId, templateId) {
       var stream = mymd.ajax.getDataObject('/stream/ajax/', 'stream');
       stream.done(function(status, stream){
-        renderStreamMine(stream);
+        rednerStream(stream, containerId, templateId);
       });
       stream.fail(function(data){
         //TODO: ERROR HANDLING

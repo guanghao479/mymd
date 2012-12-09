@@ -69,3 +69,29 @@ div.activity div.footer {
   color:#999;
   padding-top: 5px;
 }
+
+
+div#content div.header {
+  margin-bottom: 20px;
+}
+
+div.diary {
+  border-bottom: 1px dotted;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+div.diary div.title {
+}
+
+div.diary div.body {
+  margin-left:2em;
+  padding-top: 5px;
+}
+
+div.diary div.footer {
+  margin-left:2em;
+  font-size: 0.9em;
+  color:#999;
+  padding-top: 5px;
+}

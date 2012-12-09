@@ -1,0 +1,15 @@
+{% load jsrender_tags %}
+
+<script id="diary-template" type="text/x-jsrender">
+	<div class="diary">
+	  <div class="title">
+	      <a>{% jsrender ">title" %}</a>
+	  </div>
+	  <div class="body">
+	    {% jsrender ">body" %} <a>... More</a>
+	  </div>
+	  <div class="footer">
+	    <span class="timestamp">{% jsrender ">date" %}</span>
+	  </div>
+	</div>
+</script>
