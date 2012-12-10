@@ -137,7 +137,6 @@ INSTALLED_APPS = (
     "mymdutils",
     "pins",
     "profiles",
-    "south",
     "stream",
     'widget_tweaks',
 
@@ -164,6 +163,7 @@ INSTALLED_APPS = (
     "haystack",
     "social_auth",
     "emailconfirmation",
+    "tastypie",
 )
 
 # A sample logging configuration. The only tangible logging

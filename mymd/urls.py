@@ -2,6 +2,7 @@ import authority
 from django.conf import settings
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
+from diary.api import DiaryResource
 from django.contrib import admin
 admin.autodiscover()
 
@@ -20,6 +21,7 @@ urlpatterns = patterns("",
     url(r"^activity/", include("actstream.urls")),
     url(r"^experience/", include("experiences.urls")),
     url(r"^diary/", include("diary.urls")),
+    url(r"^api/", include(DiaryResource().urls)),
     url(r"^stream/", include("stream.urls")),
     url(r"^avatar/", include("avatar.urls")),
     url(r"^comment/", include("django.contrib.comments.urls")),
