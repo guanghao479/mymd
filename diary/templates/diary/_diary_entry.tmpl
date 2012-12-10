@@ -1,15 +1,17 @@
-{% load jsrender_tags %}
+{% load verbatim_tag %}
 
 <script id="diary-template" type="text/x-jsrender">
+  {% verbatim %}
 	<div class="diary">
 	  <div class="title">
-	      <a>{% jsrender ">title" %}</a>
+	      <a>{{>title}}</a>
 	  </div>
 	  <div class="body">
-	    {% jsrender ">body" %} <a>... More</a>
+	    {{>body}} <a href="">... More</a>
 	  </div>
 	  <div class="footer">
-	    <span class="timestamp">{% jsrender ">date" %}</span>
+	    <span class="timestamp">{{>date}}</span>
 	  </div>
 	</div>
+  {% endverbatim%}
 </script>

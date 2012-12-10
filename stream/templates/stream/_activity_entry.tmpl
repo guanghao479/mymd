@@ -1,24 +1,26 @@
-{% load jsrender_tags %}
+{% load verbatim_tag %}
 
 <script id="activity-template" type="text/x-jsrender">
-<div class="activity">
-  <div class="summary">
-    <a href="{% jsrender '>actor.url' %}">{% jsrender ">actor.name" %}</a>
-    &nbsp;{% jsrender ">verb" %}
+  {% verbatim %}
+    <div class="activity">
+      <div class="summary">
+        <a href="{{>actor.url}}">{{>actor.name}}</a>
+        &nbsp;{{>verb}}
 
-    {% jsrender "if action_object" %}
-    &nbsp;<a href="{% jsrender '>action_object.url' %}">{% jsrender ">action_object.name" %}</a>
-    {% jsrender "/if" %}
+        {{if action_object}}
+          &nbsp;<a href="{{>action_object.url}}">{{>action_object.name}}</a>
+        {{/if}}
 
-    {% jsrender "if target" %}
-    &nbsp;<a href="{% jsrender '>target.url' %}">{% jsrender ">target.name" %}</a>
-    {% jsrender "/if" %}
-  </div>
-  <div class="details">
-    {% jsrender ">details" %} <a>... More</a>
-  </div>
-  <div class="footer">
-    <span class="timestamp">{% jsrender ">timestamp" %} </span>
-  </div>
-</div>
+        {{if target}}
+          &nbsp;<a href="{{>target.url}}">{{>target.name}}</a>
+        {{/if}}
+      </div>
+      <div class="details">
+        {{>details}} <a href="{{>action_object.url}}">... More</a>
+      </div>
+      <div class="footer">
+        <span class="timestamp">{{>timestamp}} </span>
+      </div>
+    </div>
+  {% endverbatim%}
 </script>
