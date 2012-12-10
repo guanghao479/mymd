@@ -1,4 +1,7 @@
 """
+Taken from:
+https://gist.github.com/629508
+
 jQuery templates use constructs like:
 
     {{if condition}} print something{{/if}}
