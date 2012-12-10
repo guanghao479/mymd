@@ -2,11 +2,21 @@ import authority
 from django.conf import settings
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
-from diary.api import DiaryResource
 from django.contrib import admin
 admin.autodiscover()
 
 handler500 = "pinax.views.server_error"
+
+# Building up AJAX API
+from tastypie.api import Api
+from diary.api import DiaryResource
+from experiences.api import ExperienceResource
+from mymd.api import UserResource
+v1_api = Api(api_name='v1')
+v1_api.register(DiaryResource())
+v1_api.register(ExperienceResource())
+v1_api.register(UserResource())
+
 
 urlpatterns = patterns("",
     url(r"^$", "home.views.index", name="home"),
@@ -21,7 +31,6 @@ urlpatterns = patterns("",
     url(r"^activity/", include("actstream.urls")),
     url(r"^experience/", include("experiences.urls")),
     url(r"^diary/", include("diary.urls")),
-    url(r"^api/", include(DiaryResource().urls)),
     url(r"^stream/", include("stream.urls")),
     url(r"^avatar/", include("avatar.urls")),
     url(r"^comment/", include("django.contrib.comments.urls")),
@@ -32,6 +41,9 @@ urlpatterns = patterns("",
     url(r"^search/", include("haystack.urls")),
     url(r"^district/", include("district.urls")),
     url(r"^community/", include("community.urls")),
+
+    # AJAX API
+    url(r"^api/", include(v1_api.urls)),
 
     # TODO: research to keep or to remove or to be replaced
     url(r"^pin/", include("pins.urls")),
