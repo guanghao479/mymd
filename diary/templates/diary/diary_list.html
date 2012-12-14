@@ -24,6 +24,10 @@
 <script>
   (function () {
     mymd.diaries.listDiaries("content", "diary-template");
+    var resp = mymd.ajax.get('/api/v1/diary/?format=json');
+    resp.done(function (data) {
+    	console.log(data);
+    });
   })();
 </script>
 {% endblock%}
