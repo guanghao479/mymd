@@ -30,18 +30,22 @@ if (typeof mymd === 'undefined') {
     this.post = function(url, data) {
       return call(url, 'POST', data);
     };
-    this.getDataObject = function(url, resultDataKey, requestData) {
+    this.getDataObject = function(url, requestData, resultDataKey) {
       var status = new $.Deferred();
       var promise = mymd.ajax.get(url, requestData);
       promise.done(function(result) {
         if (result.error) {
           status.reject(result.error.code, result.error);
-        } else {
+        } else if (resultDataKey !== undefined) {
           status.resolve(result[resultDataKey]['status'], result[resultDataKey]);
+        } else {
+          status.resolve(result);
         }
       });
       promise.fail(function(result) {
         status.reject('NETWORK_FAILED', result);
+        console.log('NETWORK_FAILURE: ');
+        console.log(result);
       });
       return status.promise();
     };
@@ -54,7 +58,7 @@ if (typeof mymd === 'undefined') {
       var requestData = {
       'meetup': meetup
      }
-     var promise = mymd.ajax.getDataObject('/meetup/status/', 'meetup', requestData);
+     var promise = mymd.ajax.getDataObject('/meetup/status/', requestData, 'meetup');
      promise.done(function(status){
       if(status === 'AVAILABLE'){
         //Attend meetup
@@ -72,7 +76,7 @@ if (typeof mymd === 'undefined') {
       var requestData = {
         'meetup': meetup
       }
-      var promise = mymd.ajax.getDataObject('/meetup/attenders/', 'attenders', requestData);
+      var promise = mymd.ajax.getDataObject('/meetup/attenders/', requestData, 'attenders');
       promise.done(function(status, attenders){
         var attenders_div = $('#attenders');
         for(var i in attenders){
@@ -112,7 +116,7 @@ if (typeof mymd === 'undefined') {
       var requestData = {
         'to_user'   : to_user
       }
-      var promise = mymd.ajax.getDataObject('/friend/status/', 'friends', requestData);
+      var promise = mymd.ajax.getDataObject('/friend/status/', requestData, 'friends');
       promise.done(function(status){
         if (status === 'AVAILABLE') {
           // add as friend
@@ -253,7 +257,7 @@ if (typeof mymd === 'undefined') {
     };
     // public variables
     this.initWidget = function(pincols, static_url) {
-      var pins = mymd.ajax.getDataObject('/pins/', 'pins');
+      var pins = mymd.ajax.getDataObject('/pins/', undefined, 'pins');
       pins.done(function(status, pins){
         var i = 0;
         var colsnum = pincols.length;
@@ -278,7 +282,7 @@ if (typeof mymd === 'undefined') {
       if(current_district[district_id]){
         $("#id_community").html(current_district[district_id]);
       }else{
-        var community = mymd.ajax.getDataObject('/community/', 'communities', requestData);
+        var community = mymd.ajax.getDataObject('/community/', requestData, 'communities');
         community.done(function(status, community) {
           var options = '';
           for (var i in community) {
@@ -301,7 +305,7 @@ if (typeof mymd === 'undefined') {
           $("#id_community").html(current_district[$("#id_district").val()]);
         }
       }else{
-        var district = mymd.ajax.getDataObject('/district/', 'districts', requestData);
+        var district = mymd.ajax.getDataObject('/district/', requestData, 'districts');
         district.done(function(status, district) {
           var options = '';
           var district_options = options;
@@ -341,9 +345,9 @@ if (typeof mymd === 'undefined') {
     };
 
     this.listDiaries = function (containerId, templateId) {
-      var getDiaries = mymd.ajax.getDataObject('/diary/mine/', 'diaries_list');
-      getDiaries.done( function( status, diaries ) {
-        renderDiaries(diaries, containerId, templateId);
+      var getDiaries = mymd.ajax.get('/api/v1/diary/?format=json');
+      getDiaries.done( function( resp ) {
+        renderDiaries(resp.objects, containerId, templateId);
       });
     };
   };
@@ -370,7 +374,7 @@ if (typeof mymd === 'undefined') {
     };
     // public variables
     this.initStreamMine = function(containerId, templateId) {
-      var stream = mymd.ajax.getDataObject('/stream/ajax/mine/', 'stream');
+      var stream = mymd.ajax.getDataObject('/stream/ajax/mine/', undefined, 'stream');
       stream.done(function(status, stream){
         renderStream(stream, containerId, templateId);
       });
@@ -380,7 +384,7 @@ if (typeof mymd === 'undefined') {
       });
     };
     this.initStream = function(containerId, templateId) {
-      var stream = mymd.ajax.getDataObject('/stream/ajax/', 'stream');
+      var stream = mymd.ajax.getDataObject('/stream/ajax/', undefined, 'stream');
       stream.done(function(status, stream){
         renderStream(stream, containerId, templateId);
       });

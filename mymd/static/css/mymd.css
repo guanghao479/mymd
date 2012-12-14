@@ -95,3 +95,7 @@ div.diary div.footer {
   color:#999;
   padding-top: 5px;
 }
+
+div#footer div.legal {
+  text-align: center;
+}
