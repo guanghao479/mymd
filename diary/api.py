@@ -4,6 +4,7 @@ from diary.models import Diary
 from mymd.api import UserResource
 from tastypie.authentication import SessionAuthentication
 from tastypie.authorization import Authorization
+from django.core.urlresolvers import reverse
 
 class DiaryResource(ModelResource):
     author = fields.ForeignKey(UserResource, 'author', full=True)
@@ -19,3 +20,8 @@ class DiaryResource(ModelResource):
 
     def dehydrate_modified_date(self, bundle):
         return bundle.obj.modified_date.strftime("%A %d %B %Y %I:%M%p")
+
+    def dehydrate(self, bundle):
+        diary_id = bundle.obj.id
+        bundle.data['uri'] = reverse('diary_detail', kwargs={'id':diary_id})
+        return bundle
