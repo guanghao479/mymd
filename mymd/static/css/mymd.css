@@ -25,12 +25,10 @@
   color: #FFF;
 }
 
-.navbar .nav .active > a, .navbar .nav .active > a:hover {
+.navbar .nav .active > a,
+.navbar .nav .active > a:hover {
+  color: #f9f9f9
   background-color: #700000;
-}
-
-.navbar .nav > li > a {
-  color: #FFF;
 }
 
 .nav-list {
@@ -50,9 +48,17 @@ div.pin div.others {
 }
 
 div.activity {
-  border-bottom: 1px dotted;
-  margin-bottom: 10px;
-  padding-bottom: 5px;
+  min-height: 20px;
+  padding: 9px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #e3e3e3;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 div.activity div.summary {
@@ -76,9 +82,17 @@ div#content div.header {
 }
 
 div.diary {
-  border-bottom: 1px dotted;
-  margin-bottom: 10px;
-  padding-bottom: 5px;
+  min-height: 20px;
+  padding: 9px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #e3e3e3;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 div.diary div.title {
