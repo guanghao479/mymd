@@ -3,13 +3,9 @@
 # Put project-specific requirements here.
 # See http://pip-installer.org/requirement-format.html for more information.
 
-## Python Libraries
+###### Python Libraries
 pytz
-### tastypie requirements
-mimeparse>=0.1.3
-python-dateutil
 
-## Django Libraries
 Django==1.4.1
 pinax-theme-bootstrap
 django-email-confirmation==0.2
@@ -24,19 +20,17 @@ django-widget-tweaks
 django-social-auth
 django-tinymce
 
-# django-tastypie
--e git+https://github.com/toastdriven/django-tastypie.git@master#egg=django-tastypie
+# Useing source for sessionAuth
+git+https://github.com/toastdriven/django-tastypie.git
 
-# Django Haystack
-#django-haystack==1.2.7
--e git+https://github.com/toastdriven/django-haystack.git@master#egg=django-haystack
-#Haystack dependencies
+# I think it was for the translation or Django 1.4
+git+https://github.com/fmaj7/django-notification
+
+###### Django Haystack
+git+https://github.com/toastdriven/django-haystack.git
+# dependencies
 requests==0.13.2
-#pyelasticsearch==0.0.6
--e git+https://github.com/toastdriven/pyelasticsearch.git@master#egg=pyelasticsearch
-
-#django-notification==0.2
--e git+https://github.com/fmaj7/django-notification#egg=django-notification
+git+https://github.com/toastdriven/pyelasticsearch.git
 
 #First pip uninstall PIL, and then run pip install
 #http://stackoverflow.com/questions/9073455/ioerror-decoder-zip-not-available-using-matplotlib-png-in-reportlab-on-linux
@@ -44,5 +38,5 @@ pillow==1.7.7
 django-formwizard==1.0
 
 # Informal requirements, the apps we copied the source code
+# TODO: fork django-friends and develop
 # django-friends
-
