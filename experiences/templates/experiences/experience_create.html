@@ -1,13 +1,19 @@
 {% extends "site_base.html" %}
-
 {% load i18n %}
-
 {% block head_title %}{% trans "Create experience" %}{% endblock %}
-
+{% block page_script %}
+  {{ form.media }}
+{% endblock %}
 {% block body_class %}experience{% endblock %}
 {% block body %}
 
+<div class="row-fluid">
+  <div class="span2"></div>
+  <div class="span8">
     <h1>{% trans "Create experience" %}</h1>
     {% include "experiences/_experience_form.html" %}
+  </div>
+  <div class="span2"></div>
+</div>
 
 {% endblock %}
