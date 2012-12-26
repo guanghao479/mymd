@@ -11,16 +11,12 @@ python-dateutil
 
 ## Django Libraries
 Django==1.4.1
-pinax-theme-bootstrap==2.0.1
-
-#django-notification==0.2
--e git+https://github.com/fmaj7/django-notification#egg=django-notification
-
+pinax-theme-bootstrap
 django-email-confirmation==0.2
 django-debug-toolbar==0.9.1
 django-pagination==1.0.7
 django-avatar==1.0.5
-#PIL==1.1.7
+# PIL==1.1.7
 South==0.7.4
 django-activity-stream==0.4.3
 django-authority==0.4
@@ -37,6 +33,9 @@ django-social-auth
 requests==0.13.2
 #pyelasticsearch==0.0.6
 -e git+https://github.com/toastdriven/pyelasticsearch.git@master#egg=pyelasticsearch
+
+#django-notification==0.2
+-e git+https://github.com/fmaj7/django-notification#egg=django-notification
 
 #First pip uninstall PIL, and then run pip install
 #http://stackoverflow.com/questions/9073455/ioerror-decoder-zip-not-available-using-matplotlib-png-in-reportlab-on-linux

@@ -22,6 +22,5 @@ class DiaryResource(ModelResource):
         return bundle.obj.modified_date.strftime("%A %d %B %Y %I:%M%p")
 
     def dehydrate(self, bundle):
-        diary_id = bundle.obj.id
-        bundle.data['uri'] = reverse('diary_detail', kwargs={'id':diary_id})
+        bundle.data['uri'] = reverse('diary_detail', kwargs={'id':bundle.obj.id})
         return bundle
