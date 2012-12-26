@@ -158,6 +158,7 @@ INSTALLED_APPS = (
     "django_forms_bootstrap",
 
     # external
+    "tinymce",
     "notification", # must be first
     "debug_toolbar",
     "pagination",

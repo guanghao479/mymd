@@ -45,6 +45,9 @@ urlpatterns = patterns("",
     # AJAX API
     url(r"^api/", include(v1_api.urls)),
 
+    # TinyMCE
+    url(r'^tinymce/', include('tinymce.urls')),
+
     # TODO: research to keep or to remove or to be replaced
     url(r"^pin/", include("pins.urls")),
 )

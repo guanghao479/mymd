@@ -22,6 +22,7 @@ django-activity-stream==0.4.3
 django-authority==0.4
 django-widget-tweaks
 django-social-auth
+django-tinymce
 
 # django-tastypie
 -e git+https://github.com/toastdriven/django-tastypie.git@master#egg=django-tastypie
