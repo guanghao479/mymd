@@ -18,9 +18,8 @@ django-activity-stream==0.4.3
 django-authority==0.4
 django-widget-tweaks
 django-social-auth
-django-tinymce
 
-# Useing source for sessionAuth
+# Using source for sessionAuth
 git+https://github.com/toastdriven/django-tastypie.git
 
 # I think it was for the translation or Django 1.4
@@ -32,11 +31,15 @@ git+https://github.com/toastdriven/django-haystack.git
 requests==0.13.2
 git+https://github.com/toastdriven/pyelasticsearch.git
 
-#First pip uninstall PIL, and then run pip install
-#http://stackoverflow.com/questions/9073455/ioerror-decoder-zip-not-available-using-matplotlib-png-in-reportlab-on-linux
+# First pip uninstall PIL, and then run pip install
+# http://stackoverflow.com/questions/9073455/ioerror-decoder-zip-not-available-using-matplotlib-png-in-reportlab-on-linux
 pillow==1.7.7
 django-formwizard==1.0
 
-# Informal requirements, the apps we copied the source code
+# Using source to remove unnecessary jquery reference in the form
+git+https://github.com/fmaj7/django-redactor.git
+
+
+###### Informal requirements - the apps we copied the source code
 # TODO: fork django-friends and develop
 # django-friends

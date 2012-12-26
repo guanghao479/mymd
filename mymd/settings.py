@@ -31,7 +31,7 @@ TIME_ZONE = 'Asia/Shanghai'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'zh-CN'
+LANGUAGE_CODE = 'zh-cn'
 
 SITE_ID = 1
 
@@ -148,23 +148,18 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.comments',
     'django.contrib.humanize',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
 
-    # theme
-    "pinax_theme_bootstrap",
-    "django_forms_bootstrap",
-
-    # external
-    "tinymce",
-    "notification", # must be first
     "debug_toolbar",
-    "pagination",
-    "haystack",
-    "social_auth",
+    "django_forms_bootstrap",
     "emailconfirmation",
+    "haystack",
+    "notification", # must be first
+    "pagination",
+    "pinax_theme_bootstrap",
+    "redactor",
+    "social_auth",
     "tastypie",
 )
 
@@ -303,4 +298,15 @@ PAGINATE_NUM = 1
 
 # Meetup settings
 #================
-MEETUP_POSTER_STORAGE_DIR = os.path.join(os.path.join(PROJECT_ROOT, "static"), 'images/meetup/posters/')
+MEETUP_POSTER_STORAGE_DIR = os.path.join(
+    os.path.join(PROJECT_ROOT, "static"),
+    'images/meetup/posters/'
+    )
+
+# Redactor settings
+#================
+REDACTOR_SETTINGS = {
+    'autoformat': True,
+    'lang': 'zh_cn',
+    'overlay': True,
+    }
