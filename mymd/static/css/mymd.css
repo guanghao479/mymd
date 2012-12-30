@@ -76,7 +76,6 @@ div.activity div.footer {
   padding-top: 5px;
 }
 
-
 div#content div.header {
   margin-bottom: 20px;
 }
@@ -112,4 +111,20 @@ div.diary div.footer {
 
 div#footer div.legal {
   text-align: center;
+}
+
+form#new-meetup-form input#id_title {
+  width: 98%;
+}
+
+form#new-meetup-form input#id_content {
+  width: 98%;
+}
+
+form#new-meetup-form .control-label {
+  width: 60px;
+}
+
+form#new-meetup-form .controls {
+  margin-left: 80px;
 }

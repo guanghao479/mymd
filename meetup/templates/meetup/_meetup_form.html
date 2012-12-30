@@ -1,8 +1,65 @@
 {% load bootstrap_tags %}
+{% load widget_tweaks %}
+{% load getattr_filter %}
 
-<form method="POST" enctype="multipart/form-data" action="{% url meetup:meetup_create %}">
+<form method="POST" id="new-meetup-form" class="form-horizontal" enctype="multipart/form-data" action="{% url meetup:meetup_create %}">
+
+  {% if form.non_field_errors %}
+    <div class="alert alert-error">
+      {% if form_error_title %}
+        <strong>{{ form_error_title }}</strong>
+      {% endif %}
+      {% for error in form.non_field_errors %}
+        {{ error }}<br />
+      {% endfor %}
+    </div>
+  {% endif %}
+
   {% csrf_token %}
-  {{ form|as_bootstrap }}
+
+  <div class="control-group{% if form.title.errors %} error{% endif %}">
+    {% with form.title.label|getattr:"placeholder" as placeholderAttr %}
+      {{ form.title|attr:placeholderAttr }}
+      <span class="help-inline">{{ form.title.errors }}</span>
+    {% endwith %}
+  </div>
+
+  <div class="control-group{% if form.content.errors %} error{% endif %}">
+    {{ form.content }}
+  </div>
+
+  <div class="control-group{% if form.date.errors %} error{% endif %}">
+    <label class="control-label">{{ form.date.label }}</label>
+    <div class="controls">
+      {% render_field form.date data-date-format="mm/dd/yyyy" class+="datepicker" %}
+      <span class="help-inline">{{ form.date.errors }}</span>
+    </div>
+  </div>
+
+  <div class="control-group{% if form.city.errors %} error{% endif %}">
+    <label class="control-label">{{ form.city.label }}</label>
+    <div class="controls">
+      {{ form.city }}
+      <span class="help-inline">{{ form.city.errors }}</span>
+    </div>
+  </div>
+
+  <div class="control-group{% if form.address.errors %} error{% endif %}">
+    <label class="control-label">{{ form.address.label }}</label>
+    <div class="controls">
+      {{ form.address }}
+      <span class="help-inline">{{ form.address.errors }}</span>
+    </div>
+  </div>
+
+  <div class="control-group{% if form.poster.errors %} error{% endif %}">
+    <label class="control-label">{{ form.poster.label }}</label>
+    <div class="controls">
+      {{ form.poster }}
+      <span class="help-inline">{{ form.poster.errors }}</span>
+    </div>
+  </div>
+
   <div class="form-actions">
     <button type="submit" class="btn btn-primary">Submit</button>
   </div>

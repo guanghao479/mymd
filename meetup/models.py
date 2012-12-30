@@ -1,6 +1,5 @@
 import os
 import uuid
-
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -58,7 +57,7 @@ class AttendManager(models.Manager):
         else:
             return False
 
-    
+
 class Attend(models.Model):
     """
     User attend meetup relationship. We use attend relationship
