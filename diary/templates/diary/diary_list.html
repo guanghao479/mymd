@@ -1,5 +1,11 @@
 {% extends "site_base.html" %}
+{% load staticfiles %}
 {% load i18n %}
+
+{% block page_script %}
+  <script src="{% static "js/jquery.jqplot.min.js" %}"></script>
+{% endblock %}
+
 {% block head_title %}{% trans "Personal Diary" %}{% endblock %}
 {% block body_class %}diary{% endblock %}
 {% block body %}
@@ -18,6 +24,10 @@
           </a>
         </li>
     </ul>
+
+  </div>
+
+  <div id="diary-feel-container" class="span10" style="height:200px;width:300px; ">
   </div>
 
   <div id="content" class="span10 diary-list">
@@ -32,4 +42,8 @@
 	</div>
 </div>
 
+
+<script>
+    $.jqplot('diary-feel-container',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
+</script>
 {% endblock%}
