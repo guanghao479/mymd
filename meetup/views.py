@@ -1,23 +1,17 @@
 import datetime
-import pdb
-
 from django.contrib.auth.models import User
 from django.views.generic import CreateView, DetailView, ListView
 from city.models import City
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import RequestContext
-
 from django.shortcuts import redirect, get_object_or_404, render_to_response
-
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from meetup.forms import MeetupForm
 from meetup.models import Meetup, Attend, poster_file_path
-
 from django.utils import simplejson as json
-
-import pdb
+from django.db.models import Q
 
 class MeetupCreateView(CreateView):
     """
@@ -31,7 +25,6 @@ class MeetupCreateView(CreateView):
 
     def form_valid(self, form):
         meetup = form.save(commit=False)
-        #pdb.set_trace()
         poster_path = poster_file_path(filename=self.request.FILES['poster'].name)
         meetup.poster=poster_path
         meetup.poster.storage.save(poster_path, self.request.FILES['poster'])
@@ -71,16 +64,16 @@ class MeetupListView(ListView):
         return super(MeetupListView, self).dispatch(*args, **kwargs)
 
 class MeetupDetailView(DetailView):
-    
+
     template_name = 'meetup/meetup_datail.html'
     context_object_name = 'meetup'
-    
+
     def get_object(self):
         meetup_id = self.kwargs.get('id')
         meetup_class = Meetup
         self.meetup = get_object_or_404(meetup_class, pk=meetup_id)
         return self.meetup
-    
+
     def get_context_data(self, **kwargs):
         context = super(MeetupDetailView, self).get_context_data(**kwargs)
         context['meetup'] = self.meetup
@@ -143,7 +136,6 @@ def status(request):
     if not request.user.is_authenticated():
         result = {'error': { 'code' : 'NOT_AUTHENTICATED', }, }
     else:
-        #pdb.set_trace()
         user = request.user
         meetup = request.GET['meetup']
         if Attend.objects.is_attent(meetup=meetup, user=user):
@@ -159,12 +151,8 @@ def mine(request, template='meetup/mine.html'):
     """
     context = {'request': request}
     user = request.user
-    meetups = []
-    attends = Attend.objects.filter(attender=user)
-    for attend_relationship in attends:
-        meetups.append(attend_relationship.meetup)
-    context['meetups'] = meetups
-    variables = RequestContext(request, context)
-    response = render_to_response(template, variables)
+
+    context['meetups'] = Meetup.objects.filter(organizer=user)
+    response = render_to_response(template, RequestContext(request, context))
 
     return response

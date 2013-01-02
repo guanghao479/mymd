@@ -5,5 +5,5 @@ dev.db
 settings_local.py
 migrations/
 site_media/
-static/images/
+mymd/static/images/*
 .#*

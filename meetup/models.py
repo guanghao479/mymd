@@ -38,9 +38,8 @@ class Meetup(models.Model):
     def __unicode__(self):
         return self.title
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('meetup_detail', [str(self.id)])
+        return reverse('meetup:meetup_detail', args=[str(self.id)])
 
 class AttendManager(models.Manager):
     """
