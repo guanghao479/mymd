@@ -138,7 +138,6 @@ INSTALLED_APPS = (
     "pins",
     "profiles",
     "stream",
-    'widget_tweaks',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -150,7 +149,6 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.admindocs',
-
     "debug_toolbar",
     "django_forms_bootstrap",
     "emailconfirmation",
@@ -160,7 +158,9 @@ INSTALLED_APPS = (
     "pinax_theme_bootstrap",
     "redactor",
     "social_auth",
+    "south",
     "tastypie",
+    'widget_tweaks',
 )
 
 # A sample logging configuration. The only tangible logging

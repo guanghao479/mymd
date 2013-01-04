@@ -13,7 +13,7 @@ django-debug-toolbar==0.9.1
 django-pagination==1.0.7
 django-avatar==1.0.5
 # PIL==1.1.7
-South==0.7.4
+South
 django-activity-stream==0.4.3
 django-authority==0.4
 django-widget-tweaks
