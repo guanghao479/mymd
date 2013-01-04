@@ -475,15 +475,6 @@
     }
   },
   {
-    "pk": 31,
-    "model": "contenttypes.contenttype",
-    "fields": {
-      "model": "mycomment",
-      "name": "my comment",
-      "app_label": "my_comments"
-    }
-  },
-  {
     "pk": 15,
     "model": "contenttypes.contenttype",
     "fields": {

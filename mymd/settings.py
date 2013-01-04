@@ -133,7 +133,6 @@ INSTALLED_APPS = (
     "friends",
     "home",
     "meetup",
-    "my_comments",
     "mymdutils",
     "pins",
     "profiles",
