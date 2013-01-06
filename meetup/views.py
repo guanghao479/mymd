@@ -12,6 +12,7 @@ from meetup.forms import MeetupForm
 from meetup.models import Meetup, Attend, poster_file_path
 from django.utils import simplejson as json
 from django.db.models import Q
+from itertools import chain
 
 class MeetupCreateView(CreateView):
     """
@@ -92,7 +93,7 @@ def attend(request):
         meetup_id = request.POST['meetup']
         meetup = Meetup.objects.get(id=meetup_id)
         attender = request.user
-        if Attend.objects.is_attent(meetup=meetup, user=attender):
+        if Attend.objects.is_attendee(meetup=meetup, user=attender):
             result = { 'error': { 'code': 'ALREADY_ATTENT', }, }
         else:
             new_attender = Attend(attender=attender,
@@ -138,7 +139,7 @@ def status(request):
     else:
         user = request.user
         meetup = request.GET['meetup']
-        if Attend.objects.is_attent(meetup=meetup, user=user):
+        if Attend.objects.is_attendee(meetup=meetup, user=user):
             result = {'meetup': { 'status': 'ATTENT', }, }
         else:
             result = {'meetup': { 'status': 'AVAILABLE'}, }
@@ -152,7 +153,9 @@ def mine(request, template='meetup/mine.html'):
     context = {'request': request}
     user = request.user
 
-    context['meetups'] = Meetup.objects.filter(organizer=user)
+    meetups_organized = Meetup.objects.filter(organizer=user)
+    meetups_attended = user.meetups_attended.all()
+    context['meetups'] = meetups_organized | meetups_attended
     response = render_to_response(template, RequestContext(request, context))
 
     return response

@@ -13,12 +13,13 @@ def poster_file_path(instance=None, filename=None):
     storage_filename = "%s_%s" % (uuid.uuid4(), filename)
     return os.path.join(MEETUP_POSTER_STORAGE_DIR, storage_filename)
 
+
 class Meetup(models.Model):
     """
     Meetup app model.
     """
-    organizer = models.ForeignKey(User, related_name='organizer')
-    attenders = models.ManyToManyField(User, related_name='attenders', through='Attend')
+    organizer = models.ForeignKey(User, related_name='meetups_organi')
+    attenders = models.ManyToManyField(User, related_name='meetups_attended', through='Attend')
     city  = models.ForeignKey(City)
     address = models.CharField(max_length=300)
     title = models.CharField(max_length=100)
@@ -41,12 +42,13 @@ class Meetup(models.Model):
     def get_absolute_url(self):
         return reverse('meetup:meetup_detail', args=[str(self.id)])
 
+
 class AttendManager(models.Manager):
     """
     Attend manager for Attend relationship.
     """
 
-    def is_attent(self, user, meetup):
+    def is_attendee(self, user, meetup):
         """
         Check whether the given user is already attent the given
         meetup.

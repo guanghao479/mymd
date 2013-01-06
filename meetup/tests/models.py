@@ -54,8 +54,8 @@ class MeetupTestCase(TestCase):
         self.assertEquals(self.attend_relationship.attender.username, 'Lucy')
         self.assertEquals(self.attend_relationship.meetup.title, 'loveandhelp group discussion')
         self.assertEquals(self.attend_relationship.attend_date, date(2012, 10, 13))
-        self.assertTrue(Attend.objects.is_attent(self.attender1, self.meetup))
-        self.assertFalse(Attend.objects.is_attent(self.attender2, self.meetup))
+        self.assertTrue(Attend.objects.is_attendee(self.attender1, self.meetup))
+        self.assertFalse(Attend.objects.is_attendee(self.attender2, self.meetup))
 
 
 
