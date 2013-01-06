@@ -1,2 +1,5 @@
 {% load i18n %}
-<p>{% trans "Content: " %}{{meetup.content|linebreaks|urlize|safe }}</p>
+<p>
+  {% trans "Content: " %}
+  {{ meetup.content|safe }}
+</p>
