@@ -1,7 +1,31 @@
 {% load i18n %}
-<h1>{{meetup.title|title }}</h1>
-<p>{% trans "City: " %}{{meetup.city}}</p>
-<p>{% trans "Address: " %}{{meetup.address}}</p>
-<p>{% trans "Date: " %}{{meetup.date}}</p>
-<p>{% trans "Organizer: " %}{{meetup.organizer}}</p>
+{% load staticfiles %}
 
+<div class="row-fluid">
+  <div class="span12">
+    <h1>{{ meetup.title|title }}</h1>
+  </div>
+</div>
+
+<div class="row-fluid" id="">
+  {% if meetup.poster %}
+    <div class="span3">
+      <a href="" class="thumbnail">
+        <img src="{{ meetup.poster.url }}" alt="">
+      </a>
+    </div>
+  {% endif %}
+  <div class="span9">
+    <p>{% trans "City: " %}{{ meetup.city }}</p>
+    <p>{% trans "Address: " %}{{ meetup.address }}</p>
+    <p>{% trans "Date: " %}{{ meetup.date }}</p>
+    <p>{% trans "Organizer: " %}{{ meetup.organizer }}</p>
+  </div>
+</div>
+
+<div class="row-fluid meetup-content">
+  <div class="span12">
+    <p>{% trans "Content: " %}</p>
+    {{ meetup.content|safe }}
+  </div>
+</div>

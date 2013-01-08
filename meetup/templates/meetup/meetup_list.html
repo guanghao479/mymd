@@ -3,20 +3,22 @@
 {% load avatar_tags %}
 {% block body_class %}meetup{% endblock %}
 {% block body %}
-<h1> Meetup </h1>
-    <div class="row-fluid">
-        <div class="span7">
-            {% if meetup_list %}
-                <ul>
-                {% for meetup in meetup_list %}
+<h1>{% trans "Meetup" %}</h1>
+<div class="row-fluid">
+    <div class="span10">
+        {% if meetup_list %}
+            <div class="meetup-list">
+            {% for meetup in meetup_list %}
+                <div>
                     <a href="{{ meetup.get_absolute_url }}">{{ meetup.title }}</a>
                     <p>{{ meetup.content }}</p>
-                {% endfor %}
-                </ul>
-                {% include "meetup/_meetup_paginate.html" %}
-            {% else %}
-                <p>{% trans "No Meetup Found!" %}</p>
-            {% endif %}
-        </div>
+                </div>
+            {% endfor %}
+            </div>
+            {% include "meetup/_meetup_paginate.html" %}
+        {% else %}
+            <p>{% trans "No Meetup Found!" %}</p>
+        {% endif %}
     </div>
+</div>
 {% endblock%}

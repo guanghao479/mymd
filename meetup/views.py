@@ -1,4 +1,6 @@
 import datetime
+import uuid
+import os
 from django.contrib.auth.models import User
 from django.views.generic import CreateView, DetailView, ListView
 from city.models import City
@@ -9,10 +11,17 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from meetup.forms import MeetupForm
-from meetup.models import Meetup, Attend, poster_file_path
+from meetup.models import Meetup, Attend
 from django.utils import simplejson as json
 from django.db.models import Q
 from itertools import chain
+
+def get_poster_path(instance=None, filename=None):
+    storage_filename = "%s_%s" % (uuid.uuid4(), filename)
+    return os.path.join(
+        settings.MEETUP_POSTER_STORAGE_DIR,
+        storage_filename)
+
 
 class MeetupCreateView(CreateView):
     """
@@ -26,9 +35,11 @@ class MeetupCreateView(CreateView):
 
     def form_valid(self, form):
         meetup = form.save(commit=False)
-        poster_path = poster_file_path(filename=self.request.FILES['poster'].name)
+        poster_path = get_poster_path(filename=self.request.FILES['poster'].name)
+        poster_storage_path = os.path.join(settings.MEDIA_ROOT, poster_path)
+
         meetup.poster=poster_path
-        meetup.poster.storage.save(poster_path, self.request.FILES['poster'])
+        meetup.poster.storage.save(poster_storage_path, self.request.FILES['poster'])
         meetup.organizer = self.request.user
         meetup.created_date = datetime.datetime.now()
         meetup.modified_date = datetime.datetime.now()
@@ -41,6 +52,7 @@ class MeetupCreateView(CreateView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(MeetupCreateView, self).dispatch(*args, **kwargs)
+
 
 class MeetupListView(ListView):
     """
@@ -145,7 +157,7 @@ def status(request):
             result = {'meetup': { 'status': 'AVAILABLE'}, }
     return HttpResponse(json.dumps(result), content_type="application/json")
 
-def mine(request, template='meetup/mine.html'):
+def mine(request, template='meetup/meetup_mine.html'):
     """
     Current user meetups information.
 

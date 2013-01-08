@@ -1,17 +1,9 @@
-import os
-import uuid
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from city.models import City
-
-
-from meetup import MEETUP_POSTER_STORAGE_DIR
-
-def poster_file_path(instance=None, filename=None):
-    storage_filename = "%s_%s" % (uuid.uuid4(), filename)
-    return os.path.join(MEETUP_POSTER_STORAGE_DIR, storage_filename)
+from django.conf import settings
 
 
 class Meetup(models.Model):
@@ -27,7 +19,7 @@ class Meetup(models.Model):
     date = models.DateField()
     created_date = models.DateField()
     modified_date = models.DateField()
-    poster = models.ImageField(upload_to=poster_file_path)
+    poster = models.ImageField(upload_to="static/images/meetups")
 
     objects = models.Manager()
 
