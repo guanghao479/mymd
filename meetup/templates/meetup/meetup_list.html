@@ -5,20 +5,16 @@
 {% block body %}
 <h1>{% trans "Meetup" %}</h1>
 <div class="row-fluid">
+    <div class="span2">
+        <p>
+            <a class="btn btn-large btn-primary" href="{% url meetup:meetup_create %}">
+                {% trans "Create Meetup" %}
+            </a>
+        </p>
+    </div>
     <div class="span10">
-        {% if meetup_list %}
-            <div class="meetup-list">
-            {% for meetup in meetup_list %}
-                <div>
-                    <a href="{{ meetup.get_absolute_url }}">{{ meetup.title }}</a>
-                    <p>{{ meetup.content }}</p>
-                </div>
-            {% endfor %}
-            </div>
-            {% include "meetup/_meetup_paginate.html" %}
-        {% else %}
-            <p>{% trans "No Meetup Found!" %}</p>
-        {% endif %}
+        <h1>{% trans "Meetups" %}</h1>
+        {% include "meetup/_meetup_list.html" %}
     </div>
 </div>
 {% endblock%}

@@ -167,7 +167,7 @@ def mine(request, template='meetup/meetup_mine.html'):
 
     meetups_organized = Meetup.objects.filter(organizer=user)
     meetups_attended = user.meetups_attended.all()
-    context['meetups'] = meetups_organized | meetups_attended
+    context['meetup_list'] = meetups_organized | meetups_attended
     response = render_to_response(template, RequestContext(request, context))
 
     return response

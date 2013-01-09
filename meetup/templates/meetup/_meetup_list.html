@@ -1,0 +1,27 @@
+{% load i18n %}
+
+<div class="meetup-list">
+    {% if meetup_list %}
+        {% for meetup in meetup_list %}
+            <div class="meetup row-fluid">
+                {% if meetup.poster %}
+                    <div class="span9">
+                        <a href="{{ meetup.get_absolute_url }}">{{ meetup.title }}</a>
+                        {{ meetup.content|safe|truncatewords:50 }}
+                    </div>
+                    <div class="span3">
+                        <img src="{{ meetup.poster.url }}" />
+                    </div>
+                {% else %}
+                    <div class="span12">
+                        <a href="{{ meetup.get_absolute_url }}">{{ meetup.title }}</a>
+                        {{ meetup.content|safe|truncatewords:50 }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        {% include "meetup/_meetup_paginate.html" %}
+    {% else %}
+        <p>{% trans "No meetup Fount!" %}</p>
+    {% endif %}
+</div>

@@ -4,28 +4,16 @@
 {% block body_class %}meetup{% endblock %}
 {% block body %}
 <div class="row-fluid">
-<div class="span2">
-    <p>
-        <a class="btn btn-large btn-primary" href="{% url meetup:meetup_create %}">
-            {% trans "Create Meetup" %}
-        </a>
-    </p>
-</div>
-<div class="span10">
-    <h1>{% trans "My Meetup" %}</h1>
-    <div class="meetup-list">
-        {% if meetups %}
-            {% for meetup in meetups %}
-                <div class="meetup">
-                    <a href="{{ meetup.get_absolute_url }}">{{ meetup.title }}</a>
-                    {{ meetup.content|safe|truncatewords:50 }}
-                </div>
-            {% endfor %}
-            {% include "meetup/_meetup_paginate.html" %}
-        {% else %}
-            <p>{% trans "No meetup joined!" %}</p>
-        {% endif %}
+    <div class="span2">
+        <p>
+            <a class="btn btn-large btn-primary" href="{% url meetup:meetup_create %}">
+                {% trans "Create Meetup" %}
+            </a>
+        </p>
     </div>
-</div>
+    <div class="span10">
+        <h1>{% trans "My Meetups" %}</h1>
+        {% include "meetup/_meetup_list.html" %}
+    </div>
 </div>
 {% endblock%}
