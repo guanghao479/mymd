@@ -64,8 +64,11 @@ class MeetupListView(ListView):
 
     def get_queryset(self):
         self.cityid = self.kwargs.get('city')
-        self.city = get_object_or_404(City, id=self.cityid)
-        meetups = Meetup.objects.filter(city=self.city)
+        if self.cityid:
+            self.city = get_object_or_404(City, id=self.cityid)
+            meetups = Meetup.objects.filter(city=self.city)
+        else:
+            meetups = Meetup.objects.all()
         return meetups
 
     def get_context_data(self, **kwargs):

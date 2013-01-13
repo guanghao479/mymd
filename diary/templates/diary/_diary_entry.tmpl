@@ -1,17 +1,19 @@
 {% load verbatim_tag %}
 
+{% verbatim %}
+
 <script id="diary-template" type="text/x-jsrender">
-  {% verbatim %}
 	<div class="diary">
 	  <div class="title">
 	      <a>{{>title}}</a>
 	  </div>
 	  <div class="body">
-	    {{>body}} <a href="{{>uri}}">... More</a>
+	    {{:body}} <a href="{{>uri}}">... More</a>
 	  </div>
 	  <div class="footer">
 	    <span class="timestamp">{{>modified_date}}</span>
 	  </div>
 	</div>
-  {% endverbatim%}
 </script>
+
+{% endverbatim%}

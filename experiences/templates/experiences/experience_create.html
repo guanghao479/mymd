@@ -8,7 +8,25 @@
 {% block body %}
 
 <div class="row-fluid">
-  <div class="span2"></div>
+  <div class="span2">
+    <ul class="nav nav-pills nav-stacked">
+        <li>
+          <a href="{% url stream:stream %}">
+              {% trans "All Experience" %}
+          </a>
+        </li>
+        <li class="active">
+          <a href="{% url stream:stream_mine %}">
+              {% trans "My Experience" %}
+          </a>
+        </li>
+        <li>
+          <a href="{% url experience_create %}">
+            {% trans "Write Experience" %}
+          </a>
+        </li>
+    </ul>
+  </div>
   <div class="span8">
     <h1>{% trans "Create experience" %}</h1>
     {% include "experiences/_experience_form.html" %}

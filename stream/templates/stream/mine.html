@@ -10,11 +10,23 @@
 {% block body %}
 <div id="stream-container" class="row-fluid">
 	<div id="stream-filters" class="span2">
-		<p>
-			<a class="btn btn-large btn-primary" href="{% url experience_create %}">
-				{% trans "Write Experience" %}
-			</a>
-		</p>
+    <ul class="nav nav-pills nav-stacked">
+        <li>
+          <a href="{% url stream:stream %}">
+              {% trans "All Experience" %}
+          </a>
+        </li>
+        <li class="active">
+          <a href="{% url stream:stream_mine %}">
+              {% trans "My Experience" %}
+          </a>
+        </li>
+        <li>
+          <a href="{% url experience_create %}">
+            {% trans "Write Experience" %}
+          </a>
+        </li>
+    </ul>
 	</div>
 	<div id="stream-activities" class="span8">
 		<h1>{% trans "My Experiences" %}</h1>

@@ -293,7 +293,7 @@ HAYSTACK_CONNECTIONS = {
 
 # Pagination settings
 #====================
-PAGINATE_NUM = 1
+PAGINATE_NUM = 10
 
 # Meetup settings
 #================
