@@ -26,7 +26,7 @@ git+https://github.com/toastdriven/django-tastypie.git
 git+https://github.com/fmaj7/django-notification
 
 ###### Django Haystack
-git+https://github.com/fmaj7/django-haystack.git
+git+https://github.com/toastdriven/django-haystack.git
 # dependencies
 requests==0.13.2
 git+https://github.com/toastdriven/pyelasticsearch.git
