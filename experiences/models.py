@@ -1,11 +1,12 @@
+import datetime
 from django.db import models
 from experiences.managers import ExperiencePublishManager
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
-import datetime
 from experiences.signals import experience_posted
 from django.dispatch import receiver
 from django.conf import settings
+from taggit.managers import TaggableManager
 
 class Post(models.Model):
     """
@@ -24,6 +25,7 @@ class Post(models.Model):
     modified_date = models.DateTimeField(_('modified'), auto_now=True)
 
     objects = ExperiencePublishManager()
+    tags = TaggableManager()
 
     class Meta:
         verbose_name = _('post')

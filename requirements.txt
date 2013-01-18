@@ -18,6 +18,8 @@ django-activity-stream==0.4.3
 django-authority==0.4
 django-widget-tweaks
 django-social-auth
+django-taggit
+django-taggit-templatetags
 
 # Using source for sessionAuth
 git+https://github.com/toastdriven/django-tastypie.git

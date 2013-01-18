@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from city.models import City
 from django.conf import settings
-
+from taggit.managers import TaggableManager
 
 class Meetup(models.Model):
     """
@@ -22,6 +22,7 @@ class Meetup(models.Model):
     poster = models.ImageField(upload_to="static/images/meetups")
 
     objects = models.Manager()
+    tags = TaggableManager()
 
     class Meta:
         app_label = 'meetup'

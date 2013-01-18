@@ -158,6 +158,8 @@ INSTALLED_APPS = (
     "redactor",
     "social_auth",
     "south",
+    "taggit",
+    "taggit_templatetags",
     "tastypie",
     'widget_tweaks',
 )

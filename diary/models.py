@@ -1,9 +1,10 @@
+import datetime
 from django.db import models
 from diary.managers import DiaryManager
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from experiences.models import Post
-import datetime
+from taggit.managers import TaggableManager
 
 class Diary(models.Model):
     """
@@ -32,6 +33,7 @@ class Diary(models.Model):
     modified_date = models.DateTimeField(_('modified'), auto_now=True)
 
     objects = DiaryManager()
+    tags = TaggableManager()
 
     class Meta:
         verbose_name = _('diary')
