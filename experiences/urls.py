@@ -4,7 +4,7 @@ from experiences.views import ExperienceCreateView, ExperienceListView, Experien
 from experiences.models import Post
 
 urlpatterns = patterns('experiences.views',
-    url(r'^user/(?P<username>\w+)/$', ExperienceListView.as_view(), name='experience_list'),
+    url(r'^user/(?P<username>[\w.@+-]+)/$', ExperienceListView.as_view(), name='experience_list'),
     url(r'^create/$', ExperienceCreateView.as_view(), name='experience_create'),
     url(r'^edit/(?P<id>\d+)/$', ExperienceUpdateView.as_view(), name='experience_edit'),
     url(r'^delete/(?P<id>\d+)/$', ExperienceDeleteView.as_view(), name='experience_delete'),

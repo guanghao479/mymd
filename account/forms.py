@@ -24,7 +24,7 @@ from community.models import Community
 from district.models import District
 from disease.models import Disease
 
-alnum_re = re.compile(r"^\w+$")
+alnum_re = re.compile(r'^[\w.@+-]+$')
 
 
 # @@@ might want to find way to prevent settings access globally here.
@@ -35,14 +35,14 @@ UNIQUE_EMAIL = getattr(settings, "ACCOUNT_UNIQUE_EMAIL", False)
 
 
 class GroupForm(forms.Form):
-    
+
     def __init__(self, *args, **kwargs):
         self.group = kwargs.pop("group", None)
         super(GroupForm, self).__init__(*args, **kwargs)
 
 
 class LoginForm(GroupForm):
-    
+
     password = forms.CharField(
         label = _("Password"),
         widget = forms.PasswordInput(render_value=False)
@@ -52,9 +52,9 @@ class LoginForm(GroupForm):
         help_text = _("If checked you will stay logged in for 3 weeks"),
         required = False
     )
-    
+
     user = None
-    
+
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
         ordering = []
@@ -71,7 +71,7 @@ class LoginForm(GroupForm):
             ordering.append("username")
         ordering.extend(["password", "remember"])
         self.fields.keyOrder = ordering
-    
+
     def user_credentials(self):
         """
         Provides the credentials required to authenticate the user for
@@ -84,7 +84,7 @@ class LoginForm(GroupForm):
             credentials["username"] = self.cleaned_data["username"]
         credentials["password"] = self.cleaned_data["password"]
         return credentials
-    
+
     def clean(self):
         if self._errors:
             return
@@ -101,7 +101,7 @@ class LoginForm(GroupForm):
                 error = _("The username and/or password you specified are not correct.")
             raise forms.ValidationError(error)
         return self.cleaned_data
-    
+
     def is_valid(self, *args, **kwargs):
         result = super(LoginForm, self).is_valid(*args, **kwargs)
         if EMAIL_AUTHENTICATION:
@@ -110,7 +110,7 @@ class LoginForm(GroupForm):
             username = self.data["username"]
         user_login_attempt.send(sender=LoginForm, username=username, result=result)
         return result
-    
+
     def login(self, request):
         perform_login(request, self.user)
         if self.cleaned_data["remember"]:
@@ -199,13 +199,13 @@ class SignupForm(GroupForm):
                 return value
             raise forms.ValidationError(_("A user is registered with this email address."))
         return value
-    
+
     def clean(self):
         if "password1" in self.cleaned_data and "password2" in self.cleaned_data:
             if self.cleaned_data["password1"] != self.cleaned_data["password2"]:
                 raise forms.ValidationError(_("You must type the same password each time."))
         return self.cleaned_data
-    
+
     def create_user(self, username=None, commit=True):
         user = User()
         if username is None:
@@ -242,13 +242,13 @@ class SignupForm(GroupForm):
         # nasty hack to get get_user to work in Django
         user.backend = "django.contrib.auth.backends.ModelBackend"
         perform_login(request, user)
-    
+
     def save(self, request=None):
         # don't assume a username is available. it is a common removal if
         # site developer wants to use email authentication.
         username = self.cleaned_data.get("username")
         email = self.cleaned_data["email"]
-        
+
         if self.cleaned_data["confirmation_key"]:
             from friends.models import JoinInvitation # @@@ temporary fix for issue 93
             try:
@@ -258,9 +258,9 @@ class SignupForm(GroupForm):
                 confirmed = False
         else:
             confirmed = False
-        
+
         # @@@ clean up some of the repetition below -- DRY!
-        
+
         if confirmed:
             if email == join_invitation.contact.email:
                 new_user = self.create_user(username)
@@ -293,15 +293,15 @@ class SignupForm(GroupForm):
                             "email": email,
                         }
                     )
-        
+
         if EMAIL_VERIFICATION:
             new_user.is_active = False
             new_user.save()
-        
+
         self.after_signup(new_user)
-        
+
         return new_user
-    
+
     def is_valid(self, *args, **kwargs):
         result = super(SignupForm, self).is_valid(*args, **kwargs)
         user_sign_up_attempt.send(
@@ -311,7 +311,7 @@ class SignupForm(GroupForm):
             result=result
         )
         return result
-    
+
     def after_signup(self, user, **kwargs):
         """
         An extension point for subclasses.
@@ -320,7 +320,7 @@ class SignupForm(GroupForm):
 
 
 class OpenIDSignupForm(SignupForm):
-    
+
     def __init__(self, *args, **kwargs):
         # remember provided (validated!) OpenID to attach it to the new user
         # later.
@@ -329,23 +329,23 @@ class OpenIDSignupForm(SignupForm):
         # pass them to forms.Form.__init__
         kwargs.pop("reserved_usernames", [])
         kwargs.pop("no_duplicate_emails", False)
-        
+
         super(OpenIDSignupForm, self).__init__(*args, **kwargs)
-        
+
         # these fields make no sense in OpenID
         del self.fields["password1"]
         del self.fields["password2"]
 
 
 class UserForm(forms.Form):
-    
+
     def __init__(self, user=None, *args, **kwargs):
         self.user = user
         super(UserForm, self).__init__(*args, **kwargs)
 
 
 class AccountForm(UserForm):
-    
+
     def __init__(self, *args, **kwargs):
         super(AccountForm, self).__init__(*args, **kwargs)
         try:
@@ -355,13 +355,13 @@ class AccountForm(UserForm):
 
 
 class AddEmailForm(UserForm):
-    
+
     email = forms.EmailField(
         label = _("Email"),
         required = True,
         widget = forms.TextInput(attrs={"size": "30"})
     )
-    
+
     def clean_email(self):
         value = self.cleaned_data["email"]
         errors = {
@@ -382,13 +382,13 @@ class AddEmailForm(UserForm):
             except EmailAddress.DoesNotExist:
                 return value
             raise forms.ValidationError(errors["this_account"])
-    
+
     def save(self):
         return EmailAddress.objects.add_email(self.user, self.cleaned_data["email"])
 
 
 class ChangePasswordForm(UserForm):
-    
+
     oldpassword = forms.CharField(
         label = _("Current Password"),
         widget = forms.PasswordInput(render_value=False)
@@ -401,24 +401,24 @@ class ChangePasswordForm(UserForm):
         label = _("New Password (again)"),
         widget = forms.PasswordInput(render_value=False)
     )
-    
+
     def clean_oldpassword(self):
         if not self.user.check_password(self.cleaned_data.get("oldpassword")):
             raise forms.ValidationError(_("Please type your current password."))
         return self.cleaned_data["oldpassword"]
-    
+
     def clean_password2(self):
         if "password1" in self.cleaned_data and "password2" in self.cleaned_data:
             if self.cleaned_data["password1"] != self.cleaned_data["password2"]:
                 raise forms.ValidationError(_("You must type the same password each time."))
         return self.cleaned_data["password2"]
-    
+
     def save(self):
         change_password(self.user, self.cleaned_data["password1"])
 
 
 class SetPasswordForm(UserForm):
-    
+
     password1 = forms.CharField(
         label = _("Password"),
         widget = forms.PasswordInput(render_value=False)
@@ -427,47 +427,47 @@ class SetPasswordForm(UserForm):
         label = _("Password (again)"),
         widget = forms.PasswordInput(render_value=False)
     )
-    
+
     def clean_password2(self):
         if "password1" in self.cleaned_data and "password2" in self.cleaned_data:
             if self.cleaned_data["password1"] != self.cleaned_data["password2"]:
                 raise forms.ValidationError(_("You must type the same password each time."))
         return self.cleaned_data["password2"]
-    
+
     def save(self):
         self.user.set_password(self.cleaned_data["password1"])
         self.user.save()
 
 
 class ResetPasswordForm(forms.Form):
-    
+
     email = forms.EmailField(
         label = _("Email"),
         required = True,
         widget = forms.TextInput(attrs={"size":"30"})
     )
-    
+
     def clean_email(self):
         if EmailAddress.objects.filter(email__iexact=self.cleaned_data["email"], verified=True).count() == 0:
             raise forms.ValidationError(_("Email address not verified for any user account"))
         return self.cleaned_data["email"]
-    
+
     def save(self, **kwargs):
-        
+
         email = self.cleaned_data["email"]
         token_generator = kwargs.get("token_generator", default_token_generator)
-        
+
         for user in User.objects.filter(email__iexact=email):
-            
+
             temp_key = token_generator.make_token(user)
-            
+
             # save it to the password reset model
             password_reset = PasswordReset(user=user, temp_key=temp_key)
             password_reset.save()
-            
+
             current_site = Site.objects.get_current()
             domain = unicode(current_site.domain)
-            
+
             # send the password reset email
             subject = _("Password reset email sent")
             message = render_to_string("account/password_reset_key_message.txt", {
@@ -481,7 +481,7 @@ class ResetPasswordForm(forms.Form):
 
 
 class ResetPasswordKeyForm(forms.Form):
-    
+
     password1 = forms.CharField(
         label = _("New Password"),
         widget = forms.PasswordInput(render_value=False)
@@ -490,18 +490,18 @@ class ResetPasswordKeyForm(forms.Form):
         label = _("New Password (again)"),
         widget = forms.PasswordInput(render_value=False)
     )
-    
+
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop("user", None)
         self.temp_key = kwargs.pop("temp_key", None)
         super(ResetPasswordKeyForm, self).__init__(*args, **kwargs)
-    
+
     def clean_password2(self):
         if "password1" in self.cleaned_data and "password2" in self.cleaned_data:
             if self.cleaned_data["password1"] != self.cleaned_data["password2"]:
                 raise forms.ValidationError(_("You must type the same password each time."))
         return self.cleaned_data["password2"]
-    
+
     def save(self):
         # set the new user password
         user = self.user
@@ -511,17 +511,17 @@ class ResetPasswordKeyForm(forms.Form):
         PasswordReset.objects.filter(temp_key=self.temp_key).update(reset=True)
 
 class ChangeLanguageForm(AccountForm):
-    
+
     language = forms.ChoiceField(
         label = _("Language"),
         required = True,
         choices = settings.LANGUAGES
     )
-    
+
     def __init__(self, *args, **kwargs):
         super(ChangeLanguageForm, self).__init__(*args, **kwargs)
         self.initial.update({"language": self.account.language})
-    
+
     def save(self):
         self.account.language = self.cleaned_data["language"]
         self.account.save()

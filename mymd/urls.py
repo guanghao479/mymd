@@ -23,7 +23,7 @@ urlpatterns = patterns("",
     url(r"^admin/", include(admin.site.urls)),
 
     url(r"^user/$", "home.views.home", name="my_home"),
-    url(r"^user/(?P<username>[\w\._-]+)/$", "home.views.home", name="user_home"),
+    url(r"^user/(?P<username>[\w.@+-]+)/$", "home.views.home", name="user_home"),
     # User specific urls
     url(r"^account/", include("account.urls", namespace='account')),
     url(r"^friend/", include("friends.urls")),
