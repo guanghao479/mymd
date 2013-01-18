@@ -9,12 +9,12 @@ pytz
 Django==1.4.3
 pinax-theme-bootstrap
 django-email-confirmation==0.2
-django-debug-toolbar==0.9.1
+django-debug-toolbar
 django-pagination==1.0.7
 django-avatar==1.0.5
 # PIL==1.1.7
 South
-django-activity-stream==0.4.3
+django-activity-stream==0.4.4
 django-authority==0.4
 django-widget-tweaks
 django-social-auth
@@ -36,11 +36,9 @@ git+https://github.com/toastdriven/pyelasticsearch.git
 # First pip uninstall PIL, and then run pip install
 # http://stackoverflow.com/questions/9073455/ioerror-decoder-zip-not-available-using-matplotlib-png-in-reportlab-on-linux
 pillow==1.7.7
-django-formwizard==1.0
 
 # Using source to remove unnecessary jquery reference in the form
 git+https://github.com/fmaj7/django-redactor.git
-
 
 ###### Informal requirements - the apps we copied the source code
 # TODO: fork django-friends and develop
