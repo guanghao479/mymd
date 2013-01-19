@@ -6,6 +6,9 @@ from friends.signals import *
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from actstream.models import user_stream, actor_stream
+from django.views.generic import ListView
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 def stream(request):
     result = {}
@@ -28,6 +31,19 @@ def stream_mine(request):
         else:
             result = { "success" : True, "stream" : stream_to_activities(actor_stream(request.user)) }
         return HttpResponse(json.dumps(result), content_type="application/json")
+
+class StreamMineView(ListView):
+    template_name = 'stream/stream_mine.html'
+    context_object_name = 'activity_list'
+    paginate_by = settings.PAGINATE_NUM
+
+    def get_queryset(self):
+        return actor_stream(self.request.user)
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(StreamMineView, self).dispatch(*args, **kwargs)
+
 
 def stream_to_activities(stream):
     #import pdb;pdb.set_trace();

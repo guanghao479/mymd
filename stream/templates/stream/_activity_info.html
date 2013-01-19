@@ -1,0 +1,24 @@
+<div class="activity">
+  <div class="summary">
+    <a href="{{ activity.actor.get_absolute_url }}">{{ activity.actor }}</a>
+    &nbsp;{{ activity.verb }}
+
+    {% if activity.action_object %}
+      &nbsp;<a href="{{ activity.action_object.get_absolute_url }}">{{ activity.action_object }}</a>
+    {% endif %}
+
+    {% if activity.target %}
+      &nbsp;<a href="{{ activity.target.get_absolute_url }}">{{ activity.target }}</a>
+    {% endif %}
+  </div>
+
+  {% if activity.action_object %}
+    <div class="details">
+      {{ activity.action_object.print_details|safe|truncatewords:50 }}
+    </div>
+  {% endif %}
+
+  <div class="footer">
+    <span class="timestamp">{{ activity.timestamp }} </span>
+  </div>
+</div>

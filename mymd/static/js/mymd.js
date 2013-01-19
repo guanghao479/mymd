@@ -324,35 +324,6 @@ if (typeof mymd === 'undefined') {
   };
   mymd.district = new district();
 
-
-  // Personal Diaries
-  // <div class="diary">
-  //   <div class="title">
-  //     <a>title</a>
-  //   </div>
-  //   <div class="body">
-  //     body <a>... More</a>
-  //   </div>
-  //   <div class="footer">
-  //     <span class="timestamp"></span>
-  //   </div>
-  // </div>
-  function diaries(){
-    var renderDiaries = function (diaries, containerId, templateId) {
-      $( "#"+containerId ).append(
-        $( "#"+templateId ).render( diaries )
-      );
-    };
-
-    this.listDiaries = function (containerId, templateId) {
-      var getDiaries = mymd.ajax.get('/api/v1/diary/?format=json');
-      getDiaries.done( function( resp ) {
-        renderDiaries(resp.objects, containerId, templateId);
-      });
-    };
-  };
-  mymd.diaries = new diaries();
-
   // define mymd.stream to represent stream specific functionalities
   // which is a stream of activities
   // <div class="activity">
@@ -371,17 +342,6 @@ if (typeof mymd === 'undefined') {
       $('#'+containerId).append(
         $( '#'+templateId ).render( stream )
       );
-    };
-    // public variables
-    this.initStreamMine = function(containerId, templateId) {
-      var stream = mymd.ajax.getDataObject('/stream/ajax/mine/', undefined, 'stream');
-      stream.done(function(status, stream){
-        renderStream(stream, containerId, templateId);
-      });
-      stream.fail(function(data){
-        //TODO: ERROR HANDLING
-        return;
-      });
     };
     this.initStream = function(containerId, templateId) {
       var stream = mymd.ajax.getDataObject('/stream/ajax/', undefined, 'stream');

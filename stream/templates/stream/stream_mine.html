@@ -9,7 +9,7 @@
 
 {% block body %}
 <div id="stream-container" class="row-fluid">
-	<div id="stream-filters" class="span2">
+  <div id="stream-filters" class="span2">
     <ul class="nav nav-pills nav-stacked">
         <li>
           <a href="{% url stream:stream %}">
@@ -27,16 +27,17 @@
           </a>
         </li>
     </ul>
-	</div>
-	<div id="stream-activities" class="span10">
-	</div>
+  </div>
+
+  <div id="stream-activities" class="span10">
+    {% if activity_list %}
+      {% for activity in activity_list %}
+        {% include "stream/_activity_info.html" %}
+      {% endfor %}
+    {% else %}
+      <p>{% trans "No activity found!" %}</p>
+    {% endif %}
+  </div>
 </div>
 
-{% include "stream/_activity_entry.tmpl" %}
-
-<script>
-  $(function () {
-    mymd.stream.initStreamMine('stream-activities', 'activity-template');
-  });
-</script>
 {% endblock %}
