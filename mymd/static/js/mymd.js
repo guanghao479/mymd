@@ -324,36 +324,4 @@ if (typeof mymd === 'undefined') {
   };
   mymd.district = new district();
 
-  // define mymd.stream to represent stream specific functionalities
-  // which is a stream of activities
-  // <div class="activity">
-  //   <div class="summary">
-  //     <a>actor</a> verb <a>action_object</a> <a>target</a>
-  //   </div>
-  //   <div class="details">
-  //     details <a>... More</a>
-  //   </div>
-  //   <div class="footer">
-  //     <span class="timestamp"></span>
-  //   </div>
-  // </div>
-  function stream() {
-    var renderStream = function (stream, containerId, templateId) {
-      $('#'+containerId).append(
-        $( '#'+templateId ).render( stream )
-      );
-    };
-    this.initStream = function(containerId, templateId) {
-      var stream = mymd.ajax.getDataObject('/stream/ajax/', undefined, 'stream');
-      stream.done(function(status, stream){
-        renderStream(stream, containerId, templateId);
-      });
-      stream.fail(function(data){
-        //TODO: ERROR HANDLING
-        return;
-      });
-    };
-  }
-  mymd.stream = new stream();
-
 })(jQuery);

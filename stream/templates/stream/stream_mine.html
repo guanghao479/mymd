@@ -8,11 +8,11 @@
 {% block body_class %}experience-mine{% endblock %}
 
 {% block body %}
-<div id="stream-container" class="row-fluid">
-  <div id="stream-filters" class="span2">
+<div id="stream-mine-container" class="row-fluid">
+  <div class="span2">
     <ul class="nav nav-pills nav-stacked">
         <li>
-          <a href="{% url stream:stream %}">
+          <a href="{% url stream:stream_list%}">
               {% trans "All Experience" %}
           </a>
         </li>
@@ -29,7 +29,7 @@
     </ul>
   </div>
 
-  <div id="stream-activities" class="span10">
+  <div class="stream-activities span10">
     {% if activity_list %}
       {% for activity in activity_list %}
         {% include "stream/_activity_info.html" %}
