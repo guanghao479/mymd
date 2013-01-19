@@ -7,12 +7,35 @@
 {% block body_class %}experience{% endblock %}
 {% block body %}
 
-<h1>{% blocktrans %}{{ experience_author }}'s experiences{% endblocktrans %}</h1>
-{% include "experiences/_experience_info.html" %}
-{% if is_author %}
-    <a href="{% url experience_edit experience.pk %}">Edit</a> | 
-    <a href="{% url experience_delete experience.pk %}">Delete</a>
-{% endif %}
-{% render_comment_list for experience %}
-{% render_comment_form for experience %}
+<div class="row-fluid">
+  <div class="span2">
+    <ul class="nav nav-pills nav-stacked">
+        <li>
+          <a href="{% url stream:stream %}">
+              {% trans "All Experience" %}
+          </a>
+        </li>
+        <li>
+          <a href="{% url stream:stream_mine %}">
+              {% trans "My Experiences" %}
+          </a>
+        </li>
+        <li>
+          <a href="{% url experience_create %}">
+            {% trans "Write Experience" %}
+          </a>
+        </li>
+    </ul>
+  </div>
+  <div class="experience-detail span10">
+    {% include "experiences/_experience_info.html" %}
+    {% if is_author %}
+        <a href="{% url experience_edit experience.pk %}">Edit</a> |
+        <a href="{% url experience_delete experience.pk %}">Delete</a>
+    {% endif %}
+    {% render_comment_list for experience %}
+    {% render_comment_form for experience %}
+  </div>
+</div>
+
 {% endblock %}

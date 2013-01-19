@@ -7,16 +7,23 @@
 
 <div class="row-fluid">
   <div class="span2">
-    <p>
-      <a class="btn btn-large btn-primary" href="{% url diary_create %}">
-        {% trans "Write Diary" %}
-      </a>
-    </p>
+    <ul class="nav nav-pills nav-stacked">
+        <li>
+          <a href="{% url diary_list user.username %}">
+              {% trans "My Meetup" %}
+          </a>
+        </li>
+        <li>
+          <a href="{% url diary_create %}">
+            {% trans "Write Diary" %}
+          </a>
+        </li>
+    </ul>
   </div>
   <div class="span10">
     <h1>{% blocktrans %}{{ diary_author }}'s Diaries{% endblocktrans %}</h1>
     {% include "diary/_diary_info.html" %}
-</div>
+  </div>
 </div>
 
 {% endblock %}

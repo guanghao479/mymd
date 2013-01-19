@@ -15,9 +15,13 @@
           &nbsp;<a href="{{>target.url}}">{{>target.name}}</a>
         {{/if}}
       </div>
-      <div class="details">
-        {{:details}} <a href="{{>action_object.url}}"></a>
-      </div>
+
+      {{ if details }}
+        <div class="details">
+          {{:details}}
+        </div>
+      {{/if}}
+
       <div class="footer">
         <span class="timestamp">{{>timestamp}} </span>
       </div>

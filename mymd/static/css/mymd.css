@@ -81,6 +81,8 @@ div.activity div.details {
   padding-top: 5px;
   max-height:60px;
   overflow: hidden;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
 
