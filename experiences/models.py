@@ -44,10 +44,6 @@ class Post(models.Model):
     def print_details(self):
         return unicode(self.body)
 
-    def print_details_ellipsis(self):
-        return unicode(self.body)[:settings.STREAM_DETAILS_ELLIPSIS_LENGTH], len(unicode(self.body)) > settings.STREAM_DETAILS_ELLIPSIS_LENGTH
-
-
 @receiver(models.signals.post_save, sender=Post)
 def post_post_save_handler(sender, instance, created, **kwargs):
     if (created):

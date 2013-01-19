@@ -79,6 +79,9 @@ div.activity div.summary {
 div.activity div.details {
   margin-left:2em;
   padding-top: 5px;
+  max-height:60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 div.activity div.footer {
