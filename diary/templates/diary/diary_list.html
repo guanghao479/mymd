@@ -5,11 +5,11 @@
 {% block body %}
 
 <div id="diary-list-container" class="row-fluid">
-	<div class="span2">
+  <div class="span2">
     <ul class="nav nav-pills nav-stacked">
         <li class="active">
           <a href="{% url diary_list user.username %}">
-              {% trans "My Meetup" %}
+              {% trans "My Diaries" %}
           </a>
         </li>
         <li>
@@ -18,20 +18,18 @@
           </a>
         </li>
     </ul>
-	</div>
+  </div>
 
-	<div id="content" class="span10">
+  <div id="content" class="span10 diary-list">
+    {% if diary_list %}
+        {% for diary in diary_list %}
+          {% include "diary/_diary_info.html" %}
+        {% endfor %}
+        {% include "meetup/_meetup_paginate.html" %}
+    {% else %}
+        <p>{% trans "No diary found!" %}</p>
+    {% endif %}
 	</div>
 </div>
 
-{% include "diary/_diary_entry.tmpl" %}
-<script>
-  (function () {
-    mymd.diaries.listDiaries("content", "diary-template");
-    var resp = mymd.ajax.get('/api/v1/diary/?format=json');
-    resp.done(function (data) {
-    	console.log(data);
-    });
-  })();
-</script>
 {% endblock%}

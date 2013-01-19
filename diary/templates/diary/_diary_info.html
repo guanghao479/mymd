@@ -1,2 +1,14 @@
-<p>{{diary.feel}}</p>
-<p>{{diary.body|safe}}</p>
+<div class="diary">
+  <div class="title">
+      <a>{{ diary.title }}</a>
+  </div>
+  <div class="feel">
+    {{ diary.feel }}
+  </div>
+  <div class="body">
+    {{ diary.body|safe|truncatewords:50 }}
+  </div>
+  <div class="footer">
+    <span class="timestamp">{{ diary.modified_date }}</span>
+  </div>
+</div>

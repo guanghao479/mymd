@@ -42,12 +42,12 @@ class DiaryCreateView(CreateView):
     def dispatch(self, *args, **kwargs):
         return super(DiaryCreateView, self).dispatch(*args, **kwargs)
 
-class DiaryListView(JSONResponseMixin, MultipleObjectTemplateResponseMixin, BaseListView):
+class DiaryListView(ListView):
     """
     List all diaries of current user.
     """
     template_name = 'diary/diary_list.html'
-    context_object_name = 'diaries_list'
+    context_object_name = 'diary_list'
     result = {}
     #paginate_by = settings.PAGINATE_NUM
 
@@ -57,31 +57,10 @@ class DiaryListView(JSONResponseMixin, MultipleObjectTemplateResponseMixin, Base
         diaries = Diary.objects.filter(author=self.user)
         return diaries
 
-    def _process_result_json(self, diaries):
-        diaries_content_list = []
-        for diary in diaries:
-            diary_content = {}
-            diary_content['date'] = diary['created_date'].strftime("%A %d %B %Y %I:%M%p")
-            diary_content['feel'] = diary['feel']
-            diary_content['body'] = diary['body']
-            #No Author needes since it's a private diary
-            #diary_content['author'] = unicode(diary.author)
-            diary_content['privacy'] = diary['privacy']
-            diaries_content_list.append(diary_content)
-        return diaries_content_list
-
     def get_context_data(self, **kwargs):
         context = super(DiaryListView, self).get_context_data(**kwargs)
         context['username'] = self.username
-        self.result['username'] = context['username']
-        self.result['diaries_list'] = self._process_result_json(list(context['diaries_list'].values()))
-        return self.result
-
-    def render_to_response(self, context):
-        if not self.request.is_ajax():
-            return MultipleObjectTemplateResponseMixin.render_to_response(self, context)
-        else:
-            return JSONResponseMixin.render_to_response(self, context)
+        return context
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
