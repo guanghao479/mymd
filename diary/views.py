@@ -1,14 +1,11 @@
 from django.utils.decorators import method_decorator
-from django.utils import simplejson as json
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.views.generic.list import MultipleObjectTemplateResponseMixin, BaseListView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from diary.models import Diary
 from diary.forms import DiaryForm
-from diary.utils import JSONResponseMixin
 
 from django.shortcuts import redirect, get_object_or_404, render_to_response
 from django.http import Http404

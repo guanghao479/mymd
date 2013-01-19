@@ -47,7 +47,4 @@ urlpatterns = patterns("",
 
     # TinyMCE
     url(r'^tinymce/', include('tinymce.urls')),
-
-    # TODO: research to keep or to remove or to be replaced
-    url(r"^pin/", include("pins.urls")),
 )

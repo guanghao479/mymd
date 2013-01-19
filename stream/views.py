@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from friends.models import *
-from django.utils import simplejson as json
 from friends.signals import *
 from django.shortcuts import render_to_response
 from django.template import RequestContext

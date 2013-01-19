@@ -9,24 +9,5 @@
 {% block body_class %}home{% endblock %}
 
 {% block body %}
-<div class="container pin-holder">
-  <div id="pin-container" class="row">
-    <div id="pin-col-1" class="span3">
-    </div>
-    <div id="pin-col-2" class="span3">
-    </div>
-    <div id="pin-col-3" class="span3">
-    </div>
-    <div id="pin-col-4" class="span3">
-    </div>
-  </div>
-</div>
 
-<script>
-  (function () {
-    var static_url = "{{ STATIC_URL }}";
-    var pincols = ["pin-col-1", "pin-col-2", "pin-col-3", "pin-col-4"];
-    mymd.pins.initWidget(pincols, static_url);
-  })();
-</script>
 {% endblock %}

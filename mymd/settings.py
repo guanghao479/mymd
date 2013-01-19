@@ -134,7 +134,6 @@ INSTALLED_APPS = (
     "home",
     "meetup",
     "mymdutils",
-    "pins",
     "profiles",
     "stream",
 

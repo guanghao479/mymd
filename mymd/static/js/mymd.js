@@ -242,37 +242,6 @@ if (typeof mymd === 'undefined') {
   } // friends definition ends
   mymd.friends = new friends();
 
-  // define mymd.pins to represent pins specific data
-  function pins() {
-    // private variables
-    var appendPin = function (colid, pin, static_url) {
-      var pindiv = $('<div class="pin"></div>');
-      if (pin.img) {
-        pindiv.append($('<div class="img"><img src="'+static_url+pin.img+'"/></div>'));
-      } else if (pin.title) {
-        pindiv.append($('<div class="title"><p>'+pin.title+'</p></div>'));
-      }
-      pindiv.append($('<div class="description"><p>'+pin.description+'</p></div><div class="others"><p>'+pin.likes+' likes '+pin.comments+' comments</p></div>'));
-      $('#'+colid).append(pindiv);
-    };
-    // public variables
-    this.initWidget = function(pincols, static_url) {
-      var pins = mymd.ajax.getDataObject('/pins/', undefined, 'pins');
-      pins.done(function(status, pins){
-        var i = 0;
-        var colsnum = pincols.length;
-        for (i=0;i<pins.length;i++) {
-          appendPin(pincols[i%colsnum], pins[i], static_url);
-        }
-      });
-      pins.fail(function(data){
-        //TODO: ERROR HANDLING
-        return;
-      });
-    };
-  } // friends definition ends
-  mymd.pins = new pins();
-
   function district(){
     var current_city = {};
     var current_district = {};
