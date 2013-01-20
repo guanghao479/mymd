@@ -19,7 +19,8 @@
     <p>{% trans "City: " %}{{ meetup.city }}</p>
     <p>{% trans "Address: " %}{{ meetup.address }}</p>
     <p>{% trans "Date: " %}{{ meetup.date }}</p>
-    <p>{% trans "Organizer: " %}{{ meetup.organizer }}</p>
+    <p>{% trans "Organizer: " %}<a href="{{ meetup.organizer.get_absolute_url }}">{{ meetup.organizer }}</a></p>
+    {% include "meetup/_attend_meetup.html" %}
   </div>
 </div>
 

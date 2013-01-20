@@ -7,13 +7,28 @@
 {% block body_class %}meetup{% endblock %}
 {% block body %}
 <div class="row-fluid">
-    <div class="span10">
-        {% include "meetup/_attend_meetup.html" %}
-        {% include "meetup/_meetup_info.html" %}
-    </div>
     <div class="span2">
-        {% trans "Attenders: " %}
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active">
+                <a href="{% url meetup:meetup_index %}">
+                    {% trans "All Meetups" %}
+                </a>
+            </li>
+            <li>
+                <a href="{% url meetup:meetup_create %}">
+                    {% trans "Create Meetup" %}
+                </a>
+            </li>
+            <li>
+                <a href="{% url meetup:meetup_mine %}">
+                    {% trans "My Meetup" %}
+                </a>
+            </li>
+        </ul>
         {% include "meetup/_meetup_attenders.html" %}
+    </div>
+    <div class="span10">
+        {% include "meetup/_meetup_info.html" %}
     </div>
 </div>
 {% endblock %}

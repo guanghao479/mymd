@@ -26,6 +26,7 @@ urlpatterns = patterns("",
     url(r"^user/(?P<username>[\w.@+-]+)/$", "home.views.home", name="user_home"),
     # User specific urls
     url(r"^account/", include("account.urls", namespace='account')),
+    url(r"^profile/", include("profiles.urls", namespace='profile')),
     url(r"^friend/", include("friends.urls")),
     url(r"^notice/", include("notification.urls")),
     url(r"^activity/", include("actstream.urls")),

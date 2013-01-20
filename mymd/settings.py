@@ -242,7 +242,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ABSOLUTE_URL_OVERRIDES = {
-    'auth.user': lambda u: reverse("user_home", kwargs={"username":u.username}),
+    'auth.user': lambda u: reverse("profile:profile_detail", kwargs={"username":u.username}),
 }
 
 # Debug Toolbar
