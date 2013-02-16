@@ -52,6 +52,38 @@ if (typeof mymd === 'undefined') {
   }
   mymd.ajax = new ajax();
 
+    function diary(){
+
+        var processFeel = function() {
+            var data = {
+                'diary': diary
+            }
+            var promise = mymd.ajax.get('/api/v1/diary/?format=json', data);
+            promise.done(function (data) {
+                var objs = data.objects;
+                var feels = [];
+                for(var i in objs){
+                    feels[i] = [objs[i].created_date.split("T")[0], objs[i].feel];
+                };
+
+                $.jqplot('diary-feel-container', [feels], {
+                    title: 'How you feel',
+                    axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}}
+                });
+            });
+
+            promise.fail(function(){
+                return;
+            })
+        };
+
+        this.initChart = function(diary) {
+            processFeel(diary)
+        };
+    }
+
+    mymd.diary = new diary();
+
   function meetup(){
     //private variables
     var renderWidget = function(meetup) {

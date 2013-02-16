@@ -4,6 +4,7 @@
 
 {% block page_script %}
   <script src="{% static "js/jquery.jqplot.min.js" %}"></script>
+  <script src="{% static "js/jqplot.dateAxisRenderer.min.js" %}"></script>
 {% endblock %}
 
 {% block head_title %}{% trans "Personal Diary" %}{% endblock %}
@@ -27,7 +28,7 @@
 
   </div>
 
-  <div id="diary-feel-container" class="span10" style="height:200px;width:300px; ">
+  <div id="diary-feel-container" class="span10" style="height:300px;width:700px; ">
   </div>
 
   <div id="content" class="span10 diary-list">
@@ -44,6 +45,7 @@
 
 
 <script>
-    $.jqplot('diary-feel-container',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
+  mymd.diary.initChart();
+
 </script>
 {% endblock%}
