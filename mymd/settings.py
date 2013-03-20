@@ -278,9 +278,14 @@ SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/about/what_next'
 
 # Activity Stream Settings
 #=========================
-ACTSTREAM_ACTION_MODELS = ['auth.User', 'experiences.Post', ]
-ACTSTREAM_MANAGER = 'actstream.managers.ActionManager'
-STREAM_DETAILS_ELLIPSIS_LENGTH = 200
+ACTSTREAM_SETTINGS = {
+    'MODELS': ('auth.User', 'experiences.Post'),
+    'MANAGER': 'actstream.managers.ActionManager',
+    'FETCH_RELATIONS': True,
+    'USE_PREFETCH': True,
+    'USE_JSONFIELD': False,
+    'GFK_FETCH_DEPTH': 0,
+}
 
 #Haystack configuration
 #======================
