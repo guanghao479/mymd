@@ -10,10 +10,10 @@
 {% block head_title %}{% trans "Personal Diary" %}{% endblock %}
 {% block body_class %}diary{% endblock %}
 {% block body %}
-
-<div id="diary-list-container" class="row-fluid">
-  <div class="span2">
-    <ul class="nav nav-pills nav-stacked">
+<div id="diary-container" class="contain-fluid">
+  <div id="diary-list-container" class="row-fluid">
+    <div class="span2">
+      <ul class="nav nav-pills nav-stacked">
         <li class="active">
           <a href="{% url diary_list user.username %}">
               {% trans "My Diaries" %}
@@ -24,25 +24,26 @@
             {% trans "Write Diary" %}
           </a>
         </li>
-    </ul>
+      </ul>
+    </div>
 
-  </div>
-
-  <div id="diary-feel-container" class="span10" style="height:300px;width:700px; ">
-  </div>
 
   <div id="content" class="span10 diary-list">
-    {% if diary_list %}
-        {% for diary in diary_list %}
-          {% include "diary/_diary_info.html" %}
-        {% endfor %}
-        {% include "meetup/_meetup_paginate.html" %}
-    {% else %}
-        <p>{% trans "No diary found!" %}</p>
-    {% endif %}
-	</div>
+    <div id="diary-feel-container" class="hero-uint">
+    </div>
+    <div>
+      {% if diary_list %}
+      {% for diary in diary_list %}
+      {% include "diary/_diary_info.html" %}
+      {% endfor %}
+      {% include "meetup/_meetup_paginate.html" %}
+      {% else %}
+      <p>{% trans "No Diary Found!" %}</p>
+      {% endif %}
+    </div>
+  </div>
+  </div>
 </div>
-
 
 <script>
   mymd.diary.initChart();

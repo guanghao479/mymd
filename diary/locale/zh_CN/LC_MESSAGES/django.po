@@ -116,7 +116,7 @@ msgid "Write Diary"
 msgstr "写日记"
 
 #: templates/diary/diary_list.html:16
-msgid "Diaries"
+msgid "My Diaries"
 msgstr "私人日记"
 
 #: templates/diary/diary_list.html:26
