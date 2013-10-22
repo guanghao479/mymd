@@ -18,6 +18,8 @@ $ python virtualenv.py mymd-env
 $ . mymd-env/bin/activate
 (mymd-env)$ pip install -U -r mymd/requirements.txt
 
+# Database Setup
+
 # Now you can run the project as normal Django project
 (mymd-env)$ python manage.py syncdb
 (mymd-env)$ python manage.py runserver
