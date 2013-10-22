@@ -1,8 +1,6 @@
 # Django settings for mymd project.
 import os.path
 from django.core.urlresolvers import reverse
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
@@ -11,17 +9,6 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'dev.db',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -82,6 +69,8 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
+# TODO: This should not be in repository, should be in environment virables
+#       Refer to "Two Scoop of Django for 1.5 - 5.5"
 SECRET_KEY = 'q^4doyj_$30ncqru*&amp;h1c0!qd%_#bfrw_-z7a7pu1v7+d*&amp;==t'
 
 # List of callables that know how to import templates from various sources.
@@ -107,7 +96,6 @@ MIDDLEWARE_CLASSES = (
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'pagination.middleware.PaginationMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'mymd.urls'
@@ -147,7 +135,6 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    "debug_toolbar",
     "django_forms_bootstrap",
     "emailconfirmation",
     "haystack",
@@ -244,10 +231,6 @@ AUTHENTICATION_BACKENDS = (
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: reverse("profile:profile_detail", kwargs={"username":u.username}),
 }
-
-# Debug Toolbar
-INTERNAL_IPS = ('127.0.0.1',)
-
 
 # Account Settings
 #=================
