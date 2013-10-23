@@ -9,7 +9,6 @@ pytz
 Django==1.4.3
 pinax-theme-bootstrap
 django-email-confirmation==0.2
-django-debug-toolbar
 django-pagination==1.0.7
 django-avatar==1.0.5
 # PIL==1.1.7

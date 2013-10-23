@@ -1,0 +1,3 @@
+-r base.txt          # includ base.txt requirements
+
+django-debug-toolbar
