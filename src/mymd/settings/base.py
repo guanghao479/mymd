@@ -1,8 +1,8 @@
 # Django settings for mymd project.
-import os.path
+from unipath import Path
 from django.core.urlresolvers import reverse
 
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = Path(__file__).ancestor(3)
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -35,7 +35,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT)
+MEDIA_ROOT = PROJECT_ROOT.child("media")
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -46,7 +46,7 @@ MEDIA_URL = "http://127.0.0.1:8000/"
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = PROJECT_ROOT.child("static")
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -54,7 +54,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, "static"),
+    PROJECT_ROOT.child("static"),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -84,7 +84,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_ROOT, "templates"),
+    PROJECT_ROOT.child("templates"),
 )
 
 MIDDLEWARE_CLASSES = (

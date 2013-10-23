@@ -5,20 +5,22 @@
 
 ###### Python Libraries
 pytz
+Unipath
 
 Django==1.4.3
-pinax-theme-bootstrap
 django-email-confirmation==0.2
 django-pagination==1.0.7
 django-avatar==1.0.5
-# PIL==1.1.7
-South
 django-activity-stream==0.4.4
 django-authority==0.4
 django-widget-tweaks
 django-social-auth
 django-taggit
 django-taggit-templatetags
+pinax-theme-bootstrap
+South
+
+# PIL==1.1.7
 
 # Using source for sessionAuth
 git+https://github.com/toastdriven/django-tastypie.git
@@ -26,7 +28,7 @@ git+https://github.com/toastdriven/django-tastypie.git
 # I think it was for the translation or Django 1.4
 git+https://github.com/fmaj7/django-notification
 
-###### Django Haystack
+# Django Haystack
 git+https://github.com/toastdriven/django-haystack.git
 # dependencies
 requests==0.13.2
